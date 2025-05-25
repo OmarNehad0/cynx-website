@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PVM Services</title>
+  <style>
+    body { background: #0c1121; color: white; font-family: Arial; text-align: center; }
+    .container { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; }
+    .box {
+      background: #1a1f33;
+      border-radius: 10px;
+      margin: 15px;
+      padding: 15px;
+      width: 250px;
+      color: white;
+      box-shadow: 0 0 10px #000;
+    }
+    .box img {
+      width: 100px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    .price { font-size: 18px; color: #fbc531; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1 id="category-title">Loading...</h1>
+  <div class="container" id="item-container"></div>
+
+  <script>
+    // Helper to convert large numbers to readable form like 200m
+    function formatPrice(value) {
+      if (value >= 1_000_000_000) return (value / 1_000_000_000) + 'b';
+      if (value >= 1_000_000) return (value / 1_000_000) + 'm';
+      if (value >= 1_000) return (value / 1_000) + 'k';
+      return value;
+    }
+
+    // Get file name from URL
+    const params = new URLSearchParams(window.location.search);
+    const fileName = params.get("file");
+
+    if (!fileName) {
+      document.getElementById("category-title").textContent = "No file selected.";
+    } else {
+      document.getElementById("category-title").textContent = fileName;
+      const url = `https://raw.githubusercontent.com/OmarNehad0/cynx-website/main/pvm/${fileName}.json`;
+
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById("item-container");
+          data.items.forEach(item => {
+            const box = document.createElement("div");
+            box.className = "box";
+
+            box.innerHTML = `
+              <img src="${item.image}" alt="${item.name}">
+              <div><strong>${item.name}</strong></div>
+              <div class="price">${formatPrice(item.price)}</div>
+            `;
+            container.appendChild(box);
+          });
+        })
+        .catch(err => {
+          document.getElementById("category-title").textContent = "Failed to load content.";
+          console.error(err);
+        });
+    }
+  </script>
+</body>
+</html>
