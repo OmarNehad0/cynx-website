@@ -4,150 +4,208 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cynx OSRS Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0f1629;
-      color: #fff;
+      background-color: #0d112b;
+      color: #f8f9fa;
       text-align: center;
     }
 
     header img {
       width: 100%;
-      max-height: 250px;
+      max-height: 200px;
       object-fit: cover;
     }
 
     .logo {
-      margin-top: 10px;
-    }
-
-    .logo img {
-      width: 80px;
+      margin-top: -75px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
+      border: 5px solid #0d112b;
+      background-color: #0d112b;
     }
 
     h1 {
-      color: #fcd34d;
-      margin-top: 20px;
+      color: #ffcc00;
+      margin-top: 10px;
+    }
+
+    .buttons {
+      margin: 20px 0;
     }
 
     .buttons a {
-      display: inline-block;
-      margin: 15px 10px;
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-weight: bold;
       text-decoration: none;
-      color: #fff;
+      padding: 12px 20px;
+      border-radius: 6px;
+      margin: 0 10px;
+      font-weight: bold;
+      display: inline-block;
     }
 
-    .buttons .discord {
-      background-color: #5865F2;
+    .discord-btn {
+      background-color: #5865f2;
+      color: white;
     }
 
-    .buttons .sythe {
-      background-color: #fbbf24;
-      color: #000;
+    .vouches-btn {
+      background-color: #ffcc00;
+      color: black;
     }
 
-    .features {
-      margin-top: 30px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+    ul.features {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: auto;
       text-align: left;
     }
 
-    .features p {
+    ul.features li {
       margin: 12px 0;
-      font-size: 1.1rem;
+      font-size: 16px;
+    }
+
+    ul.features li i {
+      margin-right: 10px;
     }
 
     .payments-box {
       position: fixed;
       bottom: 20px;
       left: 20px;
-      background-color: #1c2333;
-      padding: 15px;
-      border-radius: 10px;
-      width: 220px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      background-color: #1a1e3c;
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
 
     .payments-box h3 {
-      margin-bottom: 10px;
-      color: #fcd34d;
-      font-size: 1.1rem;
+      color: #ffcc00;
+      margin-top: 0;
     }
 
     .payments-box ul {
       list-style: none;
-      padding: 0;
-      text-align: left;
+      padding-left: 0;
     }
 
     .payments-box li {
-      margin: 6px 0;
-      display: flex;
-      align-items: center;
+      text-align: left;
+      margin-bottom: 5px;
     }
 
-    .payments-box li img {
-      width: 18px;
-      height: 18px;
+    .payments-box img {
+      width: 20px;
+      vertical-align: middle;
       margin-right: 8px;
     }
 
-    footer {
-      margin-top: 50px;
-      font-size: 0.9rem;
-      color: #888;
+    .navbar {
+      display: flex;
+      justify-content: center;
+      background-color: #1a1e3c;
+      padding: 12px 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar a {
+      color: #ffcc00;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 18px;
+    }
+
+    .category-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 0;
+    }
+
+    .service-card {
+      background-color: #1a1e3c;
+      border-radius: 10px;
+      width: 200px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .service-card img {
+      width: 100%;
+      border-radius: 6px;
+    }
+
+    .price {
+      color: #ffcc00;
+      font-weight: bold;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://media.discordapp.net/attachments/1244695727637004490/1374124324566597662/server_banner.gif" alt="Cynx Banner" />
+    <img src="./fc69c5a4-eb1c-4011-b9ac-fb35ce9cc017.png" alt="Cynx Banner">
+    <img class="logo" src="./954a706b-771a-4710-a420-c42b1403aa43.png" alt="Cynx Logo">
   </header>
 
-  <div class="logo">
-    <img src="https://media.discordapp.net/attachments/985890908027367474/1208891137910120458/Cynx_avatar.gif" alt="Cynx Logo">
+  <div class="navbar">
+    <a href="#pvm">PVM</a>
+    <a href="#skilling">Skilling</a>
+    <a href="#minigames">Minigames</a>
+    <a href="#accounts">Accounts</a>
   </div>
 
   <h1>Cynx OSRS Services</h1>
 
   <div class="buttons">
-    <a class="discord" href="https://discord.gg/cynx" target="_blank">Join Our Discord</a>
-    <a class="sythe" href="https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/?__cf_chl_rt_tk=h80Q2ecMYootzWmZZzc8bt9robjNBf9TRZDVYY6OZzM-1748214935-1.0.1.1-GTOrfBHBZa3Vsghma9V5zWH1iTd6.IdUiGXdH0.b7CA" target="_blank">Our Sythe Vouches</a>
+    <a href="#" class="discord-btn">Join Our Discord</a>
+    <a href="#" class="vouches-btn">Our Sythe Vouches</a>
   </div>
 
-  <div class="features">
-    <p>✅ <strong>10+ Years of Experience</strong> in the OSRS market.</p>
-    <p>🛡️ Trusted by thousands of customers with <strong>1000+ vouches on Sythe & Discord</strong>.</p>
-    <p>🏆 Fast, Reliable, and Always Professional – we treat your account like it's ours.</p>
-    <p>💼 Dedicated team of hand-trained workers with elite experience in every service.</p>
-    <p>🔒 Secure, private, and 100% safe transactions.</p>
-  </div>
+  <ul class="features">
+    <li><i class="fa-solid fa-check-square" style="color:lime"></i> <strong>10+ Years of Experience</strong> in the OSRS market.</li>
+    <li><i class="fa-solid fa-shield" style="color:red"></i> Trusted by thousands of customers with <strong>1000+ vouches on Sythe & Discord</strong>.</li>
+    <li><i class="fa-solid fa-trophy" style="color:gold"></i> Fast, Reliable, and Always Professional – we treat your account like it's ours.</li>
+    <li><i class="fa-solid fa-briefcase"></i> Dedicated team of hand-trained workers with elite experience in every service.</li>
+    <li><i class="fa-solid fa-lock" style="color:gold"></i> Secure, private, and 100% safe transactions.</li>
+  </ul>
 
   <div class="payments-box">
     <h3>Accepted Payments</h3>
     <ul>
-      <li><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Crypto" /> Crypto (Recommended)</li>
-      <li><img src="https://img.icons8.com/color/48/000000/paypal.png" alt="PayPal" /> PayPal</li>
-      <li><img src="https://img.icons8.com/ios-filled/50/ffffff/zelle.png" alt="Zelle" /> Zelle</li>
-      <li><img src="https://img.icons8.com/fluency/48/000000/venmo.png" alt="Venmo" /> Venmo</li>
-      <li><img src="https://img.icons8.com/ios-filled/50/ffffff/cash-app.png" alt="Cash App" /> Cash App</li>
-      <li><img src="https://img.icons8.com/fluency/48/000000/mac-os.png" alt="Apple Pay" /> Apple Pay</li>
-      <li><img src="https://img.icons8.com/fluency/48/000000/revolut.png" alt="Revolut" /> Revolut</li>
-      <li><img src="https://img.icons8.com/color/48/000000/email-open.png" alt="E Transfer" /> E Transfer</li>
-      <li><img src="https://img.icons8.com/color/48/000000/bank-card-back-side.png" alt="Chime" /> Chime/Wise</li>
+      <li><img src="https://img.icons8.com/ios-filled/50/crypto.png"/> Crypto (Recommended)</li>
+      <li><img src="https://img.icons8.com/ios-filled/50/paypal.png"/> PayPal</li>
+      <li><img src="https://img.icons8.com/ios-filled/50/zelle.png"/> Zelle</li>
+      <li><img src="https://img.icons8.com/ios-filled/50/venmo.png"/> Venmo</li>
+      <li><img src="https://img.icons8.com/ios-filled/50/cash-app.png"/> Cash App</li>
+      <li><img src="https://img.icons8.com/ios-filled/50/apple-pay.png"/> Apple Pay</li>
+      <li><img src="https://img.icons8.com/ios-filled/50/revolut.png"/> Revolut</li>
+      <li><img src="https://img.icons8.com/ios-filled/50/bank.png"/> E Transfer</li>
+      <li><img src="https://img.icons8.com/ios-filled/50/money.png"/> Chime/Wise</li>
     </ul>
   </div>
 
-  <footer>
-    <p>© 2025 Cynx OSRS Services. All rights reserved.</p>
+  <section id="pvm" class="category-section">
+    <!-- Example Service Card -->
+    <div class="service-card">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Dizana%27s_quiver_detail.png/150px-Dizana%27s_quiver_detail.png?f6c23" alt="Dizana's Quiver">
+      <div class="price">200m</div>
+      <p style="font-size: 14px; margin-top: 5px;">Quiver Budget Gear - Login</p>
+    </div>
+  </section>
+
+  <footer style="margin-top: 50px; font-size: 14px; color: gray;">
+    © 2025 Cynx OSRS Services. All rights reserved.
   </footer>
 </body>
 </html>
