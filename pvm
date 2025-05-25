@@ -1,0 +1,1440 @@
+[
+    {
+        "name": "COX - Trio",
+        "aliases": [
+            "coxtrio"
+        ],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
+        "items": [
+            {
+                "name": "Trio",
+                "price": 12000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+            }
+        ],
+        "emoji" : "<:1068621254879346698:1231636672475566090>"
+    },
+    {
+        "name": "COX - Challenge Mode - CM",
+        "aliases": [
+            "coxcm"
+        ],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
+        "items": [
+            {
+                "name": "Challenge Mode - Mass",
+                "price": 20000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+            },
+            {
+                "name": "Challenge Mode - 3-5",
+                "price": 25000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+            }
+        ],
+        "emoji" : "<:1068621254879346698:1231636672475566090>"
+    },
+    {
+        "name": "COX Solo",
+        "aliases": [
+            "coxsolo"
+        ],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
+        "items": [
+            {
+                "name": "Twisted Bow (TBow)",
+                "price": 10000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+            },
+            {
+                "name": "Bow of Faerdhinen (Bowfa)",
+                "price": 12000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+            },
+            {
+                "name": "Tentacle Whip/Toxic Blowpipe (BP)",
+                "price": 15000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+            }
+        ],
+        "emoji" : "<:1068621254879346698:1231636672475566090>"
+    },{
+    "name": "Duke Sucellus",
+    "aliases": [
+      "Duke"
+    ],
+    "caption": "You keep all loot.\nPrices may vary depending on stats and gear\n+10% for no Tablet\n+10%for no BGS\n+10% for no Blood fury\n+10% If you're using Noxious halberd or Emberlight or Soulreaper\n+20% If you're using Tent whip or blade\n+10% if your Combat stats below 95\n+20% if below 90"  ,
+    "items": [
+      {
+        "name": "Duke Sucellus",
+        "price": 1750000,
+        "image": "https://oldschool.runescape.wiki/images/thumb/Duke_Sucellus.png/800px-Duke_Sucellus.png?d588a"
+      }
+    ],
+        "emoji" : "<:Duke_Sucellus:1269335561974583387>"
+  },
+            {
+                "name": "Vardorvis",
+                "aliases": [
+                  "Vard"
+                ],
+                "caption": "You keep all loot.\nPrices may vary depending on stats and gear\n+10% for no Tablet\n+10%for no BGS\n+10% for no Blood fury\n+10% If you're using Noxious halberd or Emberlight or Soulreaper\n+20% If you're using Tent whip or blade\n+10% if your Combat stats below 95\n+20% if below 90",
+                "items": [
+                  {
+                    "name": "Vardorvis",
+                    "price": 2000000,
+                    "image": "https://oldschool.runescape.wiki/images/Vardorvis.png?48af8"
+                  }
+                ],
+        "emoji" : "<:200pxVardorvis:1321171167154802780>"
+              },  {
+                "name": "The Whisperer",
+                "aliases": [
+                  "whisperer"
+                ],
+                "caption": "You keep all loot.\nPrices may vary depending on stats and gear\n+10% If No Xerics Honour tele or Tablet\n+20% If No Shadow\n+30% If No Sang\n+10% If No Saturated Heart or Magic boosts\n+10% If No Venator Bow\n+10% if your Combat stats below 95\n+20% if below 90",
+                "items": [
+                  {
+                    "name": "The Whisperer",
+                    "price": 2000000,
+                    "image": "https://oldschool.runescape.wiki/images/thumb/The_Whisperer.png/320px-The_Whisperer.png?aedab"
+                  }
+                ],
+                "emoji" : "<:120pxThe_Whisperer:1321171164290224198>"
+              },  {
+                "name": "The Leviathan",
+                "aliases": [
+                  "Levi"
+                ],
+                "caption": "You keep all loot.\nPrices may vary depending on stats and gear\n+10% If No Tablet\n+10% If No ZCB + Rubies (e)\n+10% If No Rigour\n+10% if your Combat stats below 95\n+20% if below 90",
+                "items": [
+                  {
+                    "name": "The Leviathan",
+                    "price": 2000000,
+                    "image": "https://oldschool.runescape.wiki/images/thumb/The_Leviathan.png/800px-The_Leviathan.png?d588a"
+                  }
+                ],
+                "emoji" : "<:280pxThe_Leviathan:1212850976264953926>"
+              },  {
+                "name": "Awakened Duke",
+                "aliases": [
+                  "AwDuke"
+                ],
+                "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
+                "items": [
+                  {
+                    "name": "Awakened Duke",
+                    "price": 120000000,
+                    "image": "https://oldschool.runescape.wiki/images/thumb/Duke_Sucellus.png/800px-Duke_Sucellus.png?d588a"
+                  }
+                ],
+        "emoji" : "<:Duke_Sucellus:1269335561974583387>"
+              },  {
+                "name": "Awakened Leviathan",
+                "aliases": [
+                  "AwLevi"
+                ],
+                "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
+                "items": [
+                  {
+                    "name": "Awakened Leviathan",
+                    "price": 150000000,
+                    "image": "https://oldschool.runescape.wiki/images/thumb/The_Leviathan.png/800px-The_Leviathan.png?d588a"
+                  }
+                ],
+                "emoji" : "<:280pxThe_Leviathan:1212850976264953926>"
+              },  
+              {
+                "name": "Awakened Vardorvis",
+                "aliases": [
+                  "AwVard"
+                ],
+                "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
+                "items": [
+                  {
+                    "name": "Awakened Vardorvis",
+                    "price": 120000000,
+                    "image": "https://oldschool.runescape.wiki/images/Vardorvis.png?48af8"
+                  }
+                ],
+        "emoji" : "<:200pxVardorvis:1321171167154802780>"
+              },  
+              {
+                "name": "Awakened Whisperer",
+                "aliases": [
+                  "AwWhisp"
+                ],
+                "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
+                "items": [
+                  {
+                    "name": "Awakened Whisperer",
+                    "price": 180000000,
+                    "image": "https://oldschool.runescape.wiki/images/thumb/The_Whisperer.png/320px-The_Whisperer.png?aedab"
+                  }
+                ],
+                "emoji" : "<:120pxThe_Whisperer:1321171164290224198>"
+              },  
+              {
+                "name": "BTorva",
+                "aliases": [
+                  "BTorva"
+                ],
+                "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
+                "items": [
+                  {
+                    "name": "BTorva",
+                    "price": 400000000,
+                    "image": "https://oldschool.runescape.wiki/images/thumb/Ancient_blood_ornament_kit_detail.png/800px-Ancient_blood_ornament_kit_detail.png?4b3c1"
+                  }
+                ],
+                "emoji" : "<:130pxAncient_blood_ornamentkit:1245095090590842940>"
+              },{
+        "name": "Firecape",
+        "aliases": ["fc"],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
+        "items": [
+            {
+                "name": "90+ Range + Rigour",
+                "price": 13000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "80+ Range + Rigour",
+                "price": 18000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "75+ Range + Rigour",
+                "price": 24000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            }
+        ],
+               "emoji" : "<:150pxFire_cape_detail:1321173086183100539>"
+    },
+    {
+        "name": "firecape low",
+        "aliases": ["fcLow"],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
+        "items": [
+            {
+                "name": "85-99 Range / -70 Defence",
+                "price": 20000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "75-84 Range / -70 Defence",
+                "price": 30000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "70-74 Range / -70 Defence",
+                "price": 40000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "61-69 Range / -70 Defence",
+                "price": 60000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            }
+        ],
+               "emoji" : "<:150pxFire_cape_detail:1321173086183100539>"
+    },
+    {
+        "name": "Firecape pure",
+        "aliases": ["purefc", "fcpure"],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
+        "items": [
+            {
+                "name": "85-99 Range",
+                "price": 30000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "75-84 Range",
+                "price": 40000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "71-74 Range",
+                "price": 60000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "61-70 Range",
+                "price": 80000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            }
+        ],
+               "emoji" : "<:150pxFire_cape_detail:1321173086183100539>"
+    },
+    {
+        "name": "No Pray Firecape",
+        "aliases" : ["NoPray"],
+        "caption": "Must Already Have Dwarven Rock Cake\nWe Provide All Items And Sweets Except Dwarven Cake or Twisted Bow",
+        "items": [
+            {
+                "name": "50+ Range, Below 50 Hp",
+                "price": 600000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "50+ Range, 50+ Hp",
+                "price": 566000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "50+ Range, 75+ Hp",
+                "price": 465000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "60+ Range, Below 50 Hp",
+                "price": 465000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "60+ Range, 50+ Hp",
+                "price": 433000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "60+ Range, 75+ Hp",
+                "price": 399000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "75+ Range, Below 50 Hp",
+                "price": 416000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "75+ Range, 50+ Hp",
+                "price": 382000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "75+ Range, 75+ Hp",
+                "price": 332000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "85+ Range, Below 50 Hp",
+                "price": 399000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "85+ Range, Below 50 Hp With Twisted Bow",
+                "price": 332000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "85+ Range, 50+ Hp",
+                "price": 366000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "85+ Range, 50+ Hp With Twisted Bow",
+                "price": 300000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "85+ Range, 75+ Hp",
+                "price": 300000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "85+ Range, 75+ Hp With Twisted Bow",
+                "price": 232000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "90+ Range, Below 50 Hp",
+                "price": 349000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "90+ Range, Below 50 Hp With Twisted Bow",
+                "price": 283000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "90+ Range, 50+ Hp",
+                "price": 315000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "90+ Range, 50+ Hp With Twisted Bow",
+                "price": 249000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "90+ Range, 75+ Hp",
+                "price": 283000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "90+ Range, 75+ Hp With Twisted Bow",
+                "price": 216000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "Unique Cape 40+ Range, 34+ Hp",
+                "price": 798000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "Unique Cape 40+ Range, 50+ Hp",
+                "price": 699000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "Unique Cape 40+ Range, 75+ Hp",
+                "price": 632000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            }
+        ],
+               "emoji" : "<:150pxFire_cape_detail:1321173086183100539>"
+    }, {
+        "name": "Armadyal",
+        "aliases": ["Arma"],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
+        "items": [
+            {
+                "name": "Armadyl (No Chins)",
+                "price": 1800000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/800px-Kree%27arra.png?ba75c"
+            },
+            {
+                "name": "Armadyl (Red Chins)",
+                "price": 1700000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/800px-Kree%27arra.png?ba75c"
+            },
+            {
+                "name": "Armadyl (Black Chins)",
+                "price": 1400000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/800px-Kree%27arra.png?ba75c"}],
+                "emoji" : "<:280pxKreearra:1321168406359179364>"
+        },
+     {
+                "name": "Bandos",
+                "aliases": ["Bandos"],
+                "caption" : "You keep all loot.\nPrices may vary depending on stats and gear.",
+                "items" : [
+
+               { "name": "Bandos",
+                 "price" : 1500000,
+                 "image" : "https://oldschool.runescape.wiki/images/thumb/General_Graardor.png/280px-General_Graardor.png?4dd90"
+               }],
+                "emoji" : "<:280pxGeneral_Graardor:1321168401967878185>"
+     },
+    {
+                "name": "Saradomin",
+                "aliases": ["sara"],
+                "caption" : "You keep all loot.\nPrices may vary depending on stats and gear.",
+                "items" : [
+
+               { "name": "Saradomin",
+                 "price" : 1200000,
+                 "image" : "https://oldschool.runescape.wiki/images/thumb/Commander_Zilyana.png/250px-Commander_Zilyana.png?c5eaa"}],
+                "emoji" : "<:250pxCommander_Zilyana:1321168398239137904>"
+    },
+                         {
+                "name": "Zamorak",
+                "aliases": ["zammy"],
+                "caption" : "You keep all loot.\nPrices may vary depending on stats and gear.",
+                "items" : [
+
+               { "name": "Zamorak",
+                 "price" : 1500000,
+                 "image" : "https://oldschool.runescape.wiki/images/thumb/K%27ril_Tsutsaroth.png/280px-K%27ril_Tsutsaroth.png?73bda"
+               }],
+                "emoji" : "<:280pxKril_Tsutsaroth:1321168411107262595>"
+                },                         {
+                    "name": "Nex",
+                    "aliases": ["Nex"],
+                    "caption" : "You keep all loot.\nPrices may vary depending on stats and gear.",
+                    "items" : [
+    
+                   { "name": "Nex - Logins - Small team (6-8) with Twisted Bow",
+                     "price" : 2000000,
+                     "image" : "https://oldschool.runescape.wiki/images/thumb/Nex.png/800px-Nex.png?2a1b3"
+                },
+                
+                {  "name": "Nex - Logins - 5 Mans with Twisted Bow",
+                   "price" : 4000000,
+                   "image" : "https://oldschool.runescape.wiki/images/thumb/Nex.png/800px-Nex.png?2a1b3"
+                 },
+                 
+                 
+                 {  "name": "Nex - Logins - 3 Mans with Twisted Bow",
+                 "price" : 6000000,
+                 "image" : "https://oldschool.runescape.wiki/images/thumb/Nex.png/800px-Nex.png?2a1b3"
+               }   
+                ],
+                "emoji" : "<:Nex:1217155665668079788>"
+                    },{
+        "name": "Dizana's Quiver",
+        "aliases": ["quiver"],
+        "caption" : "You keep all loot.\n Prices may vary depending on stats and gear \n Using Parsec Would Cost +50%",
+        "items": [
+            {
+                "name": "Quiver Max Gear - Login",
+                "price": 150000000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Dizana%27s_quiver_detail.png/150px-Dizana%27s_quiver_detail.png?f6c23"
+            },
+            {
+                "name": "Quiver Budget Gear - Login",
+                "price": 200000000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Dizana%27s_quiver_detail.png/150px-Dizana%27s_quiver_detail.png?f6c23"
+            }
+        ],
+                "emoji" : "<:Dizanas_max_cape_detail:1230053959452856371>"
+    },
+    {
+        "name": "Infernal Cape",
+        "aliases": ["inf", "infernal cape", "infernal"],
+        "caption" : "You keep all loot.\n Prices may vary depending on stats and gear \n Using Parsec Would Cost +50%",
+        "items": [
+            {
+                "name": "Twisted Bow (Tbow)",
+                "price": 200000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            },
+            {
+                "name": "Bow of Faerdhinen (Bowfa)",
+                "price": 230000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            },
+            {
+                "name": "Armadyl Crossbow (ACB)",
+                "price": 300000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            },
+            {
+                "name": "Rune Crossbow (RCB)",
+                "price": 400000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            },
+            {
+                "name": "Slayer Task (Max Gear)",
+                "price": 160000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            },
+            {
+                "name": "Additional cost for No Rigour",
+                "price": 30000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            },
+            {
+                "name": "Additional cost for lower than 94 Mage",
+                "price": 60000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            }
+        ],
+                "emoji" : "<a:infernalclowerfile:1275123207707426816>"
+    },
+    {
+        "name": "Zerker Infernal Cape",
+        "aliases": ["zerkerinfernal", "infernalzerker"],
+        "caption" : "You keep all loot.\n Prices may vary depending on stats and gear \n Using Parsec Would Cost +50%",
+        "items": [
+            {
+                "name": "Twisted Bow (Tbow)",
+                "price": 350000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            },
+            {
+                "name": "Armadyl Crossbow (ACB)",
+                "price": 500000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            },
+            {
+                "name": "Additional cost for lower than 94 Mage",
+                "price": 60000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            }
+        ],
+                "emoji" : "<a:infernalclowerfile:1275123207707426816>"
+    },
+    {
+        "name": "Pure Infernal Cape",
+        "aliases": ["pureinfernal", "infernalpure"],
+        "caption" : "You keep all loot.\n Prices may vary depending on stats and gear \n Using Parsec Would Cost +50%",
+        "items": [
+            {
+                "name": "Twisted Bow (Tbow)",
+                "price": 450000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            },
+            {
+                "name": "Armadyl Crossbow (ACB)",
+                "price": 550000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            },
+            {
+                "name": "Rune Crossbow or better",
+                "price": 800000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            },
+            {
+                "name": "Additional cost for lower than 94 Mage",
+                "price": 60000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            }
+        ],
+                "emoji" : "<a:infernalclowerfile:1275123207707426816>"
+    },
+    {
+        "name": "6 Jad Challenge",
+        "aliases": ["sixjad", "6jad", "vijad", "jad6", "jadsix"],
+        "caption" : "You keep all loot.\n Prices may vary depending on stats and gear \n Using Parsec Would Cost +50%",
+        "items": [
+            {
+                "name": "Twisted Bow (Tbow)",
+                "price": 100000000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/JalTok-Jad.png/280px-JalTok-Jad.png?7e369"
+            },
+            {
+                "name": "Toxic Blowpipe (BP)",
+                "price": 150000000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/JalTok-Jad.png/280px-JalTok-Jad.png?7e369"
+            }
+        ],
+                "emoji" : "<:792pxJalTokJad:1210271524364353616>"
+    },{
+        "name": "MegaScales - T-Bow Guaranted",
+        "aliases": [
+            "tbow"
+        ],
+        "caption": "Additional costs:\nNot able to fish/cook is +10%\nNo Fish Eater is 10m\nBuying 3 kc gets you 4% Discount\nBuying 5 kc gets you 7% Discount\nBuying 10 kc gets you 10% Discount.",
+        "items": [
+            {
+                "name": "MegaScales - T-Bow Guaranted",
+                "price": 25000000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Twisted_bow_detail.png/150px-Twisted_bow_detail.png?7aa10"
+            }
+        ],
+        "emoji" : "<:150pxTwisted_bow_detail:1247829163164041228>"
+    },
+    {
+        "name": "MegaScales - 50%",
+        "aliases": [
+            "50%"
+        ],
+        "caption": "Additional costs:\nNot able to fish/cook is +10%\nNo Fish Eater is 10m\nBuying 3 kc gets you 4% Discount\nBuying 5 kc gets you 7% Discount\nBuying 10 kc gets you 10% Discount.",
+        "items": [
+            {
+                "name": "50% Purple Chance",
+                "price": 270000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+            }
+        ],
+        "emoji" : "<:1068621254879346698:1231636672475566090>"
+    },
+    {
+        "name": "MegaScales - 65%",
+        "aliases": [
+            "65%"
+        ],
+        "caption": "Additional costs:\nNot able to fish/cook is +10%\nNo Fish Eater is 10m\nBuying 3 kc gets you 4% Discount\nBuying 5 kc gets you 7% Discount\nBuying 10 kc gets you 10% Discount.",
+        "items": [
+            {
+                "name": "65% Purple Chance",
+                "price": 430000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+            }
+        ],
+        "emoji" : "<:1068621254879346698:1231636672475566090>"
+    },
+    {
+        "name": "MegaScales - 100%",
+        "aliases": [
+            "100%"
+        ],
+        "caption": "Additional costs:\nNot able to fish/cook is +10%\nNo Fish Eater is 10m\nBuying 3 kc gets you 4% Discount\nBuying 5 kc gets you 7% Discount\nBuying 10 kc gets you 10% Discount.",
+        "items": [
+            {
+                "name": "100% Purple Chance",
+                "price": 700000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+            }
+        ],
+        "emoji" : "<:purple:1321670245848711229>"
+    },
+{
+        "name": "100% +1 Prayer Scroll Protection",
+        "aliases": [
+            "100% +1"
+        ],
+        "caption": "Additional costs:\nNot able to fish/cook is +10%\nNo Fish Eater is 10m\nBuying 3 kc gets you 4% Discount\nBuying 5 kc gets you 7% Discount\nBuying 10 kc gets you 10% Discount.",
+        "items": [
+            {
+                "name": "100% Purple Chance +1 Prayer Scroll Protection",
+                "price": 1050000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+            }
+        ],
+        "emoji" : "<:purple:1321670245848711229>"
+    },
+    {
+        "name": "100% +2 Prayer Scroll Protection",
+        "aliases": [
+            "100% +2"
+        ],
+        "caption": "Additional costs:\nNot able to fish/cook is +10%\nNo Fish Eater is 10m\nBuying 3 kc gets you 4% Discount\nBuying 5 kc gets you 7% Discount\nBuying 10 kc gets you 10% Discount.",
+        "items": [
+            {
+                "name": "100% Purple Chance +2 Prayer Scroll Protection",
+                "price": 1700000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+            }
+        ],
+        "emoji" : "<:purple:1321670245848711229>"
+    },
+     {
+        "name": "Arraxor",
+        "aliases": ["arraxor","arrax"],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
+        "items": [
+            {
+                "name": "Arraxor",
+                "price": 1000000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Araxxor.png/280px-Araxxor.png?35d2e"
+            }    ],
+                "emoji" : "<:280pxAraxxor:1321176564590706719>"
+     },
+    {
+      "name": "Abyssal Sire",
+      "aliases": [
+        "sire"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Abyssal Sire",
+          "price": 1000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Abyssal_Sire.png/280px-Abyssal_Sire.png?d2205"
+        }],
+          "emoji" : "<:280pxAbyssal_Sire:1231913897624338502>"
+    },
+{
+      "name": "Alchemical Hydra",
+      "aliases": [
+        "hydra"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Alchemical Hydra - Twisted Bow or Bowfa or Dragonhunter Lance",
+          "price": 800000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Alchemical_Hydra_%28serpentine%29.png/272px-Alchemical_Hydra_%28serpentine%29.png?925dd"
+        },       
+        {
+          "name": "Alchemical Hydra - Toxic Blowpipe (BP)",
+          "price": 1000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Alchemical_Hydra_%28serpentine%29.png/272px-Alchemical_Hydra_%28serpentine%29.png?925dd"
+        }
+        ],
+          "emoji" : "<:270pxAlchemical_Hydra:1222388990565421116>"
+ },
+     {
+      "name": "Barrows Chests",
+      "aliases": [
+        "barrows"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Barrows Brothers",
+          "price": 1000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Dharok_the_Wretched.png/38px-Dharok_the_Wretched.png?33092"
+        }],
+          "emoji" : "<:38pxAhrim_the_Blighted:1321210153311146015>"
+    },{
+      "name": "Cerbrus",
+      "aliases": [
+        "cerb"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Cerbrus",
+          "price": 750000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Cerberus_%28Christmas%29.png/280px-Cerberus_%28Christmas%29.png?e8bc2"
+        }],
+          "emoji" : "<:280pxCerberus:1222388820373274707>"
+    },{
+      "name": "Corporeal Beast",
+      "aliases": [
+        "corp"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Corporeal Beast - Dragonwar Hammer + Arclight + Bandos Godsword (BGS)",
+          "price": 4000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Corporeal_Beast_%28Christmas%29.png/270px-Corporeal_Beast_%28Christmas%29.png?c413a"
+        }],
+          "emoji" : "<:270pxCorporeal_Beast:1222386633203126312>"
+    },{
+      "name": "Dagganoth Kings",
+      "aliases": [
+        "dks"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+       {
+          "name": "Dagganoth Kings - Rex Only",
+          "price": 450000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Dagannoth_Supreme.png/230px-Dagannoth_Supreme.png?81f00"
+        },
+        {
+          "name": "Dagganoth Kings - Whole rotation",
+          "price": 1200000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Dagannoth_Supreme.png/230px-Dagannoth_Supreme.png?81f00"
+        },
+        {
+          "name": "Dagganoth Kings - Slayer Task",
+          "price": 800000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Dagannoth_Supreme.png/230px-Dagannoth_Supreme.png?81f00"
+        }],
+          "emoji" : "<:230pxDagannoth_Supreme:1321211822367571968>"
+    },{
+      "name": "Demonic Gorillas",
+      "aliases": [
+        "demonic"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Demonic Gorillas - High Gears",
+          "price": 750000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Demonic_gorilla.png/260px-Demonic_gorilla.png?5f457"
+        },
+        {
+          "name": "Demonic Gorillas - Low Gears",
+          "price": 1000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Demonic_gorilla.png/260px-Demonic_gorilla.png?5f457"
+        }
+               ],
+          "emoji" : "<:260pxDemonic_gorilla:1321212506240188416>"
+      },
+     {
+      "name": "Giant Mole",
+      "aliases": [
+        "mole"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Giant Mole - w/Falador Hard Diary",
+          "price": 450000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Giant_Mole_%28Christmas%29.png/280px-Giant_Mole_%28Christmas%29.png?5c1e2"
+        },
+        {
+          "name": "Giant Mole - w/out Falador Hard Diary",
+          "price": 600000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Giant_Mole_%28Christmas%29.png/280px-Giant_Mole_%28Christmas%29.png?5c1e2"
+        }
+               ],
+          "emoji" : "<:280pxGiant_Mole_Christmas:1321213345768145067>"
+      },
+     {
+      "name": "Grotesque Guardians",
+      "aliases": [
+        "guard"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Grotesque Guardians - w/Dragon Darts",
+          "price": 600000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Midnight_%28follower%29.png/200px-Midnight_%28follower%29.png?e4ec7"
+        },
+        {
+          "name": "Grotesque Guardians - w/out Dragon Darts",
+          "price": 700000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Midnight_%28follower%29.png/200px-Midnight_%28follower%29.png?e4ec7"
+        }
+               ],
+          "emoji" : "<:200pxMidnight_follower:1321214375511461908>"
+      },
+{
+      "name": "Kalphite Queen",
+      "aliases": [
+        "kq"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Kalphite Queen - w/Desert Elite Diary - High Gears",
+          "price": 1000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Kalphite_Queen.png/290px-Kalphite_Queen.png?a4955"
+        },
+        {
+          "name": "Kalphite Queen - w/Desert Elite Diary - Low Gears",
+          "price": 1400000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Kalphite_Queen.png/290px-Kalphite_Queen.png?a4955"
+        },
+        {
+          "name": "Kalphite Queen - w/out Desert Elite Diary - High Gears",
+          "price": 1500000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Kalphite_Queen.png/290px-Kalphite_Queen.png?a4955"
+        },
+        {
+          "name": "Kalphite Queen - w/out Desert Elite Diary - Low Gears",
+          "price": 2500000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Kalphite_Queen.png/290px-Kalphite_Queen.png?a4955"
+        }
+               ],
+          "emoji" : "<:290pxKalphite_Queen:1222389282900021379>"
+      },
+       {
+      "name": "Kraken",
+      "aliases": [
+        "kraken"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Kraken - w/Sanguinesti Staff",
+          "price": 250000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Kraken_%28Christmas%29.png/290px-Kraken_%28Christmas%29.png?9c9b4"
+        },
+        {
+          "name": "Kraken - w/out Sanguinesti Staff",
+          "price": 350000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Kraken_%28Christmas%29.png/290px-Kraken_%28Christmas%29.png?9c9b4"
+        }
+               ],
+          "emoji" : "<:290pxKraken_Christmas:1321216798808477757>"
+       },
+      {
+      "name": "Phosani's Nightmare",
+      "aliases": [
+        "pnm"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Phosani's Nightmare - Scythe",
+          "price": 7000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Phosani%27s_Nightmare_%28Christmas%29.png/250px-Phosani%27s_Nightmare_%28Christmas%29.png?10ebd"
+        },
+        {
+          "name": "Phosani's Nightmare - Inquisitor's Mace",
+          "price": 9000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Phosani%27s_Nightmare_%28Christmas%29.png/250px-Phosani%27s_Nightmare_%28Christmas%29.png?10ebd"
+        },
+        {
+          "name": "Phosani's Nightmare - Bludgeon",
+          "price": 10000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Phosani%27s_Nightmare_%28Christmas%29.png/250px-Phosani%27s_Nightmare_%28Christmas%29.png?10ebd"
+        },
+        {
+          "name": "Phosani's Nightmare - Scythe - Tele Unlocked",
+          "price": 7000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Phosani%27s_Nightmare_%28Christmas%29.png/250px-Phosani%27s_Nightmare_%28Christmas%29.png?10ebd"
+        }
+               ],
+          "emoji" : "<:250pxPhosanis_Nightmare_Christma:1321218051852603402>"
+        },  
+        {
+      "name": "Sarachnis",
+      "aliases": [
+        "sarachnis"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Sarachnis",
+          "price": 400000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Sarachnis.png/280px-Sarachnis.png?8f040"
+        }
+               ],
+          "emoji" : "<:280pxVenenatis:1321176451277393940>"
+        },
+       {
+      "name": "Lizardmen Shamans",
+      "aliases": [
+        "shamans"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name":"Shamans - w/ Blowpipe",
+          "price": 350000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Dragon_warhammer_detail.png/120px-Dragon_warhammer_detail.png?7f65a"
+        },
+        {
+          "name": "Shamans - w/ Blowpipe/Cannon",
+          "price": 250000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Dragon_warhammer_detail.png/120px-Dragon_warhammer_detail.png?7f65a"
+        },
+        {
+          "name": "Shamans - w/ MSB",
+          "price": 550000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Dragon_warhammer_detail.png/120px-Dragon_warhammer_detail.png?7f65a"
+        },
+        {
+          "name": "Shamans - w/ MSB/Cannon",
+          "price": 450000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Dragon_warhammer_detail.png/120px-Dragon_warhammer_detail.png?7f65a"
+        }
+               ],
+          "emoji" : "<:120pxDragon_warhammer_detail:1321221099161391114>"
+        },
+       {
+      "name": "The Nightmare",
+      "aliases": [
+        "nm"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "The Nightmare - Solo",
+          "price": 10000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Phosani%27s_Nightmare_%28Christmas%29.png/250px-Phosani%27s_Nightmare_%28Christmas%29.png?10ebd"
+        },
+        {
+          "name": "The Nightmare -Team 3-5",
+          "price": 6000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Phosani%27s_Nightmare_%28Christmas%29.png/250px-Phosani%27s_Nightmare_%28Christmas%29.png?10ebd"
+        }
+               ],
+          "emoji" : "<:250pxPhosanis_Nightmare_Christma:1321218051852603402>"
+       },
+ {
+      "name": "Skotizo",
+      "aliases": [
+        "skotizo"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Skotizo",
+          "price": 300000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Skotizo.png/250px-Skotizo.png?dc8b8"
+        }
+               ],
+          "emoji" : "<:250pxSkotizo:1321222794708783186>"
+       },
+         {
+      "name": "Thermonuclear Smoke Devil",
+      "aliases": [
+        "thermy"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Thermonuclear Smoke Devil - w/ spec pool",
+          "price": 200000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Thermonuclear_smoke_devil.png/260px-Thermonuclear_smoke_devil.png?de858"
+        },
+        {
+          "name": "Thermonuclear Smoke Devil - w/out spec pool",
+          "price": 250000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Thermonuclear_smoke_devil.png/260px-Thermonuclear_smoke_devil.png?de858"
+        }
+               ],
+          "emoji" : "<:260pxThermonuclear_smoke_devil:1321224577728123011>"
+       },
+        {
+      "name": "Vorkath",
+      "aliases": [
+        "vorkath"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Vorkath - w/Dragonhunter Crossbow (DHCB)",
+          "price": 1000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Vorkath_%28Christmas%29.png/280px-Vorkath_%28Christmas%29.png?e8bc2"
+        },
+        {
+          "name": "Vorkath - w/out Dragonhunter Crossbow (DHCB)",
+          "price": 1500000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Vorkath_%28Christmas%29.png/280px-Vorkath_%28Christmas%29.png?e8bc2"
+        }
+               ],
+          "emoji" : "<:280pxVorkath_Christmas:1321225671137296435>"
+       },
+       {
+      "name": "Zalcano",
+      "aliases": [
+        "zalcano"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+      "items": [
+        {
+          "name": "Zalcano",
+          "price": 500000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Zalcano.png/200px-Zalcano.png?6244d"
+        }
+               ],
+          "emoji" : "<:200pxZalcano:1321226133345144937>"
+       },
+       {
+      "name": "Zulrah",
+      "aliases": [
+        "zulrah"
+      ],
+      "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.\n+100k more if no anti",
+      "items": [
+        {
+          "name":"Zulrah - Regular Account, 75+ Mage/Range, Bowfa or Tbow w Trident",
+          "price": 1100000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Zulrah_%28serpentine%2C_Christmas%29.png/250px-Zulrah_%28serpentine%2C_Christmas%29.png?e8bc2"
+        },
+        {
+          "name": "Zulrah - Regular Account, 85+ Mage/Range, Bowfa or Tbow w Trident",
+          "price": 900000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Zulrah_%28serpentine%2C_Christmas%29.png/250px-Zulrah_%28serpentine%2C_Christmas%29.png?e8bc2"
+        },
+        {
+          "name": "Zulrah - Regular Account, 90+ Mage/Range, Bowfa or Tbow w Trident",
+          "price": 650000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Zulrah_%28serpentine%2C_Christmas%29.png/250px-Zulrah_%28serpentine%2C_Christmas%29.png?e8bc2"
+        },
+        {
+          "name": "Zulrah - Irons, 75+ Mage/Range, Bowfa or Tbow w Trident",
+          "price": 1100000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Zulrah_%28serpentine%2C_Christmas%29.png/250px-Zulrah_%28serpentine%2C_Christmas%29.png?e8bc2"
+        },
+        {
+          "name": "Zulrah - Irons, 85+ Mage/Range, Bowfa or Tbow w Trident",
+          "price": 900000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Zulrah_%28serpentine%2C_Christmas%29.png/250px-Zulrah_%28serpentine%2C_Christmas%29.png?e8bc2"
+        },
+        {
+          "name": "Zulrah - Irons, 90+ Mage/Range, Bowfa or Tbow w Trident",
+          "price": 700000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Zulrah_%28serpentine%2C_Christmas%29.png/250px-Zulrah_%28serpentine%2C_Christmas%29.png?e8bc2"
+        }
+               ],
+          "emoji" : "<:250pxZulrah_serpentine:1222390176563859547>"
+        },    {
+      "name": "Gauntlet",
+      "aliases": [
+        "gauntlet"
+      ],
+      "caption": "+10% for each prayer missing [Piety,Rigour,Augury]",
+      "items": [
+        {
+          "name": "Normal  80+",
+          "price": 2500000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Youngllef_%28follower%29.png/280px-Youngllef_%28follower%29.png?fc90e"
+        }
+      ],
+    "emoji" : "<:280pxCrystalline_Hunllef:1321170231888183326>"
+    },
+    {
+      "name": "Corrupted Gauntlet",
+      "aliases": [
+        "cg"
+      ],
+      "caption": "+10% for each prayer missing [Piety,Rigour,Augury]",
+      "items": [
+        {
+          "name": "Stats 99",
+          "price": 4600000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e"
+        },
+        {
+          "name": "Stats 90+",
+          "price": 5000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e"
+        },
+        {
+          "name": "Stats 85+",
+          "price": 5500000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e"
+        },
+        {
+          "name": "Stats 80+",
+          "price": 5900000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e"
+        },
+        {
+          "name": "Stats 75+",
+          "price": 6400000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e"
+        }],
+     "emoji" : "<:280pxCorrupted_Hunllef:1222390344377696288>"
+    },
+    {
+      "name": "Theatre of Blood - Login",
+      "caption" : "You keep all loot. \nPrices may vary depending on stats and gear",
+      "aliases": [
+        "tob",
+        "theatre of blood"
+      ],
+      "items": [
+        {
+          "name": "Login - With Scythe",
+          "price": 17000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+        },
+        {
+          "name": "Login - With Whip",
+          "price": 20000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+        }
+      ],
+         "emoji" : "<:800pxLil_Zik:1208821122620071978>"
+    },
+    {
+      "name": "Theatre of Blood - Modes",
+      "caption" : "You keep all loot. \nPrices may vary depending on stats and gear",
+      "aliases": [
+        "hmt","hardmode tob","hm tob","hmtob"
+      ],
+      "items": [
+        {
+          "name": "Hard Mode (Login) - With Scythe",
+          "price": 25000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+        },
+        {
+          "name": "Hard Mode (Login) - Without Scythe",
+          "price": 35000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+        }
+      ],
+         "emoji" : "<:800pxLil_Zik:1208821122620071978>"
+    },{
+      "name": "Solos - Expert / Normal Modes",
+      "caption" : " **Req Gear For Experts : **\nAssumes close to max gear if not.\n Upcharges may apply for missing gear ",
+      "aliases": [
+        "toa",
+        "tombs of amascuts"
+      ],
+      "items": [
+        {
+          "name": "150 Raid Level - With Budget Gear",
+          "price": 12000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Elidinis%27_Warden.png/180px-Elidinis%27_Warden.png?c9f68"
+        },
+        {
+          "name": "200 Raid Level - With Budget Gears",
+          "price": 14000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Elidinis%27_Warden.png/180px-Elidinis%27_Warden.png?c9f68"
+        },
+        {
+          "name": "250 Raid Level - With Budget Gears",
+          "price": 16000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Elidinis%27_Warden.png/180px-Elidinis%27_Warden.png?c9f68"
+        },
+        {
+          "name": "300 Raid Level",
+          "price": 21000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Elidinis%27_Warden.png/180px-Elidinis%27_Warden.png?c9f68"
+        },
+        {
+          "name": "350 Raid Level (Ava's Kit)",
+          "price": 30000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Elidinis%27_Warden.png/180px-Elidinis%27_Warden.png?c9f68"
+        },
+        {
+        "name" : "400 Raid Level",
+        "price" : 40000000,
+        "image" : "https://oldschool.runescape.wiki/images/thumb/Elidinis%27_Warden.png/180px-Elidinis%27_Warden.png?c9f68"
+        },
+        {
+          "name": "425 Raid Level (Ward Kit)",
+          "price": 56000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Elidinis%27_Warden.png/180px-Elidinis%27_Warden.png?c9f68"
+        },
+        {
+          "name": "450 Raid Level",
+          "price": 70000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Elidinis%27_Warden.png/180px-Elidinis%27_Warden.png?c9f68"
+        },
+        {
+          "name": "500 Raid Level (Fang Kit)",
+          "price": 95000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Elidinis%27_Warden.png/180px-Elidinis%27_Warden.png?c9f68"
+        }
+      ],
+          "emoji" : "<:Tombs_of_Amascut__Expert_Mode_ic:1321178273740361728>"
+    },
+    {
+      "name": "Pet Transmogs",
+      "caption" : " **Req Gear For Experts : **\nAssumes close to max gear if not.\n Upcharges may apply for missing gear ",
+      "aliases": [
+        "toapet",
+        "pettrans"
+      ],
+      "items": [
+        {
+          "name": "All Demiboss Transmogs Pack",
+          "price": 650000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Tumeken%27s_Guardian_%28follower%29.png/250px-Tumeken%27s_Guardian_%28follower%29.png?7583d"
+        }],
+          "emoji" : "<:250pxTumekens_Guardian_follower:1319271332692758548>"
+    },
+         {
+      "name": "Zebak Transmog",
+      "caption" : " **Req Gear For Experts : **\nAssumes close to max gear if not.\n Upcharges may apply for missing gear ",
+      "aliases": [
+        "zebak",
+        "toazebak"
+      ],
+      "items": [
+        {
+          "name": "Zebak Transmog",
+          "price": 150000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Zebo_%28follower%29.png/280px-Zebo_%28follower%29.png?f874d"
+        }],
+          "emoji" : "<:280pxZebo_follower:1321174930775081113>"
+         },
+        {
+      "name": "Kephri Transmog",
+      "caption" : " **Req Gear For Experts : **\nAssumes close to max gear if not.\n Upcharges may apply for missing gear ",
+      "aliases": [
+        "kephri",
+        "toakephri"
+      ],
+      "items": [
+        {
+          "name": "Kephri Transmog",
+          "price": 200000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Kephriti_%28follower%29.png/250px-Kephriti_%28follower%29.png?f874d"
+        }
+      ],
+          "emoji" : "<:250pxKephriti_follower:1321174922961358959>"
+    },
+    {
+      "name": "Baba Transmog",
+      "caption" : " **Req Gear For Experts : **\nAssumes close to max gear if not.\n Upcharges may apply for missing gear ",
+      "aliases": [
+        "baba",
+        "toababa"
+      ],
+      "items": [
+        {
+          "name": "Baba Transmog",
+          "price": 150000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Babi_%28follower%29.png/280px-Babi_%28follower%29.png?bb285"
+        }
+      ],
+         "emoji" : "<:280pxBabi_follower:1321174927448997928>"
+    },
+    {
+      "name": "Akha Transmog",
+      "caption" : " **Req Gear For Experts : **\nAssumes close to max gear if not.\n Upcharges may apply for missing gear ",
+      "aliases": [
+        "akha",
+        "toaakha"
+      ],
+      "items": [
+        {
+          "name": "Akha Transmog",
+          "price": 150000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Akkhito_%28follower%29.png/220px-Akkhito_%28follower%29.png?bb285"
+        }
+      ],
+         "emoji" : "<:220pxAkkhito_follower:1321174918636896417>"
+    }, {
+        "name": "Calisto / Artio",
+        "aliases": ["artio", "calisto"],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
+        "items": [
+            {
+                "name": "Callisto",
+                "price": 1800000,
+                "image" : "https://oldschool.runescape.wiki/images/Callisto.png?bfba7"
+         },{
+                "name": "Artio",
+                "price": 1000000,
+                "image" : "https://oldschool.runescape.wiki/images/Callisto.png?bfba7"}],
+                "emoji" : "<:290pxArtio:1321176454725107772>"
+
+    },
+
+
+     {
+        "name": "Chaos Fanatic",
+        "aliases": ["chaos"],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
+        "items": [
+            {
+                "name": "Chaos Fanatic",
+                "price": 800000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Chaos_Fanatic.png/180px-Chaos_Fanatic.png?8871d"
+            },
+            {
+                "name": "Chaos Elemental",
+                "price": 700000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Chaos_Fanatic.png/180px-Chaos_Fanatic.png?8871d"
+            },
+            {
+                "name": "Crazy Archaeologist",
+                "price": 600000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Chaos_Fanatic.png/180px-Chaos_Fanatic.png?8871d"
+            }    ], 
+                "emoji" : "<:250pxChaos_Elemental:1321176443757006910>"
+     },
+    {
+        "name": "Venenatis / Spindel",
+        "aliases": ["venenatis","spindel","ven"],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
+        "items": [
+            {
+                "name": "Venenatis",
+                "price": 1500000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Venenatis.png/280px-Venenatis.png?13693"
+            },
+            {
+                "name": "Spindel",
+                "price": 1000000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Venenatis.png/280px-Venenatis.png?13693"
+            }    ],
+                "emoji" : "<:280pxVenenatis:1321176451277393940>"
+     },
+     {
+        "name": "Vet'ion / Calvar'ion",
+        "aliases": ["vet'ion","cal","calvar'ion"],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
+        "items": [
+            {
+                "name": "Vet'ion",
+                "price": 1500000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Calvar%27ion.png/180px-Calvar%27ion.png?6268f"
+            },
+            {
+                "name": "Calvar'ion",
+                "price": 1000000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Calvar%27ion.png/180px-Calvar%27ion.png?6268f"
+            }    ],
+                "emoji" : "<:180pxVetion:1321176441236357161>"
+     },
+     {
+        "name": "Scorpia",
+        "aliases": ["scorpia"],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
+        "items": [
+            {
+                "name": "Scorpia",
+                "price": 800000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Scorpion.png/130px-Scorpion.png?79d06"
+            }    ],
+                 "emoji" : "<:130pxScorpion:1321176437406830725>"
+     },
+     {
+        "name": "King Black Dragon",
+        "aliases": ["kbd"],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
+        "items": [
+            {
+                "name": "King Black Dragon (KBD) - Normal Gear",
+                "price": 600000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/King_Black_Dragon_%28Christmas%29.png/290px-King_Black_Dragon_%28Christmas%29.png?a4b99"
+            },
+            {
+                "name": "King Black Dragon (KBD) - w/Dragon Hunter Items",
+                "price": 350000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/King_Black_Dragon_%28Christmas%29.png/290px-King_Black_Dragon_%28Christmas%29.png?a4b99"
+            }     ],
+                 "emoji" : "<:290pxKing_Black_Dragon_Christmas:1321229053214068808>"
+     }]
