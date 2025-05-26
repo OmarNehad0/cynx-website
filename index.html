@@ -14,7 +14,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-image: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png?ex=68352d2a&is=6833dbaa&hm=ad9246b3db979cf348b2c58f21abada0a5de7528e24efd1b100eb117ed44e305&=&format=webp&quality=lossless");
+      background-image: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
@@ -39,7 +39,17 @@
     h1 {
       color: #ffcc00;
       margin-top: 20px;
-      text-shadow: 0 0 10px #ffcc00;
+      text-shadow: 0 0 10px #ffcc00, 0 0 20px #fff;
+      animation: flicker 1.5s infinite alternate;
+    }
+
+    @keyframes flicker {
+      from {
+        text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #fff;
+      }
+      to {
+        text-shadow: 0 0 2px #ffcc00, 0 0 5px #ffcc00, 0 0 10px #fff;
+      }
     }
 
     .buttons {
@@ -157,20 +167,10 @@
       color: #ffcc00;
     }
 
-    .gold-rates-box h3::before {
-      content: url('https://oldschool.runescape.wiki/images/thumb/Platinum_token_detail.png/300px-Platinum_token_detail.png?a8cf8');
-      width: 24px;
+    .gold-rates-box h3 img {
       height: 24px;
       vertical-align: middle;
-      margin-right: 6px;
-    }
-
-    .gold-rates-box h3::after {
-      content: url('https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc');
-      width: 24px;
-      height: 24px;
-      vertical-align: middle;
-      margin-left: 6px;
+      filter: drop-shadow(0 0 4px #ffcc00);
     }
 
     .navbar {
@@ -256,6 +256,7 @@
   </style>
 </head>
 <body>
+
   <div class="navbar">
     <a href="index.html">
       <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle;"> Home
@@ -314,30 +315,30 @@
   </div>
 
   <div class="gold-rates-box">
-  <h3 style="display: flex; align-items: center; justify-content: center; gap: 8px;">
-    <img src="https://oldschool.runescape.wiki/images/thumb/Platinum_token_detail.png/300px-Platinum_token_detail.png?a8cf8" alt="Platinum" style="height: 20px;">
-    Our Gold Rate
-    <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" alt="Coins" style="height: 20px;">
-  </h3>
-  <div class="gold-rates-inner">
-    <div class="rate-box">
-      <strong>We Sell At</strong><br>
-      <span>$0.21/M</span>
+    <h3>
+      <img src="https://oldschool.runescape.wiki/images/thumb/Platinum_token_detail.png/300px-Platinum_token_detail.png?a8cf8" alt="Platinum">
+      Our Gold Rate
+      <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" alt="Coins">
+    </h3>
+    <div class="gold-rates-inner">
+      <div class="rate-box">
+        <strong>We Sell At</strong><br>
+        <span>$0.21/M</span>
+      </div>
+      <div class="rate-box">
+        <strong>We Buy At</strong><br>
+        <span>$0.15/M</span>
+      </div>
     </div>
-    <div class="rate-box">
-      <strong>We Buy At</strong><br>
-      <span>$0.15/M</span>
-    </div>
+    <a href="https://discord.gg/cynx" target="_blank" class="discord-btn">
+      <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Discord Icon" style="height: 1em; vertical-align: middle; margin-right: 0.3em;">
+      Join Our Discord
+    </a>
   </div>
-  <a href="https://discord.gg/cynx" target="_blank" class="discord-btn">
-  <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Discord Icon" style="height: 1em; vertical-align: middle; margin-right: 0.3em;">
-  Join Our Discord
-</a>
-</div>
-
 
   <footer>
     © 2025 Cynx OSRS Services. All rights reserved.
   </footer>
 </body>
 </html>
+
