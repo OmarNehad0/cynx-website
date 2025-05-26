@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PVM Details</title>
   <style>
     body {
@@ -10,12 +10,12 @@
       color: white;
       font-family: Arial, sans-serif;
       margin: 0;
+      text-align: center;
     }
 
     .navbar {
       background-color: #1a1e3c;
       padding: 1em;
-      text-align: center;
     }
 
     .navbar a {
@@ -26,7 +26,6 @@
     }
 
     .category-title {
-      text-align: center;
       color: #ffcc00;
       font-size: 28px;
       margin: 20px 0;
@@ -43,10 +42,9 @@
     .service-card {
       background-color: #1a1e3c;
       border-radius: 10px;
-      width: 200px;
+      width: 220px;
       padding: 15px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      text-align: center;
     }
 
     .service-card img {
@@ -79,39 +77,38 @@
   </div>
 
   <div class="category-title" id="categoryTitle">Loading...</div>
-
   <div class="card-container" id="serviceCards"></div>
 
   <script>
-  const params = new URLSearchParams(window.location.search);
-  const file = params.get('file');
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get('file');
 
-  const categoryTitle = document.getElementById('categoryTitle');
-  const container = document.getElementById('serviceCards');
+    const categoryTitle = document.getElementById('categoryTitle');
+    const container = document.getElementById('serviceCards');
 
-  categoryTitle.textContent = file || 'Category';
+    if (!file) {
+      categoryTitle.textContent = "⚠️ No file provided in URL.";
+      return;
+    }
 
-  if (file) {
+    categoryTitle.textContent = decodeURIComponent(file);
     const fileName = encodeURIComponent(file) + '.json';
     const rawUrl = `https://raw.githubusercontent.com/OmarNehad0/cynx-website/main/${fileName}`;
-    console.log("Fetching:", rawUrl);
+    console.log("📦 Fetching:", rawUrl);
 
     fetch(rawUrl)
       .then(res => {
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
-        }
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       })
       .then(data => {
         const items = Array.isArray(data) ? data : data.items;
         if (!items || !Array.isArray(items)) {
-        {
           container.innerHTML = `<p style="color: orange;">No items found in <strong>${fileName}</strong>.</p>`;
           return;
         }
 
-        data.items.forEach(item => {
+        items.forEach(item => {
           const card = document.createElement('div');
           card.className = 'service-card';
 
@@ -126,11 +123,9 @@
         });
       })
       .catch(error => {
-        container.innerHTML = `<p style="color: red;">❌ Failed to load services for "<strong>${file}</strong>": ${error.message}</p>`;
-        console.error("Error loading JSON:", error);
+        container.innerHTML = `<p style="color: red;">❌ Failed to load <strong>${fileName}</strong>: ${error.message}</p>`;
+        console.error("Fetch error:", error);
       });
-  }
-</script>
-
+  </script>
 </body>
 </html>
