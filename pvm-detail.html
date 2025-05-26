@@ -88,7 +88,7 @@
       return;
     }
 
-    const fileName = file + '.json';  // don't decode
+    const fileName = file + '.json';
     const rawUrl = `https://raw.githubusercontent.com/OmarNehad0/cynx-website/main/${encodeURIComponent(fileName)}`;
 
     categoryTitle.textContent = decodeURIComponent(file);
@@ -102,7 +102,7 @@
       })
       .then(data => {
         console.log("Data fetched:", data);
-        const items = Array.isArray(data) ? data : data.items;
+        const items = data.items;
         if (!items || !Array.isArray(items)) {
           container.innerHTML = `<p style='color: orange;'>No items found in <strong>${fileName}</strong>.</p>`;
           return;
