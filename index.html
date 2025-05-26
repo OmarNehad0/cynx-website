@@ -10,6 +10,31 @@
     * {
       scroll-behavior: smooth;
     }
+.discord-button-wrapper {
+  margin-top: 10px;
+}
+
+.discord-button {
+  background-color: #5865f2;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 0 10px #5865f2;
+}
+
+.discord-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #ffffff, 0 0 30px #5865f2;
+}
 
     body {
       margin: 0;
@@ -330,10 +355,12 @@
         <span>$0.15/M</span>
       </div>
     </div>
-    <a href="https://discord.gg/cynx" target="_blank" class="discord-btn">
-      <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Discord Icon" style="height: 1em; vertical-align: middle; margin-right: 0.3em;">
-      Join Our Discord
-    </a>
+    <div class="discord-button-wrapper">
+  <button class="discord-button" onclick="window.open('https://discord.gg/cynx', '_blank')">
+    <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Discord Icon" style="height: 1em; vertical-align: middle; margin-right: 0.3em;">
+    Join Our Discord
+  </button>
+</div>
   </div>
 
   <footer>
