@@ -9,9 +9,26 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0d112b;
+      background-image: url("A_digital_illustration_for_Old_School_RuneScape_fe.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
       color: #f8f9fa;
       text-align: center;
+      position: relative;
+      z-index: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: -1;
     }
 
     h1 {
@@ -98,7 +115,7 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 10;
     }
 
     .navbar a {
@@ -112,43 +129,41 @@
 </head>
 <body>
   <div class="navbar">
-  <a href="index.html">
-    <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Home Icon" style="height: 20px; vertical-align: middle;">
-    Home
-  </a>
-  <a href="skilling.html">Skilling</a>
-  <a href="pvm.html">
-    <img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" alt="Boss Icon" style="height: 20px; vertical-align: middle;">
-    Pvm
-  </a>
-  <a href="minigames.html">MiniGames</a>
-  <a href="accounts.html">Accounts</a>
-  <a href="https://discord.gg/cynx" target="_blank" style="margin-left: auto;">
-    <img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/67d00cf7266d2c75571aebde_Example.svg" alt="Discord" style="height: 28px; vertical-align: middle;">
-  </a>
-  <a href="https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/" target="_blank" style="margin-left: 15px;">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgFwI79WtDYjm1qMGxvUmsgxToIiCbHLJdOQ&s" alt="Our" style="height: 28px; vertical-align: middle;">
-  </a>
-</div>
+    <a href="index.html">
+      <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Home Icon" style="height: 20px; vertical-align: middle;">
+      Home
+    </a>
+    <a href="skilling.html">Skilling</a>
+    <a href="pvm.html">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" alt="Boss Icon" style="height: 20px; vertical-align: middle;">
+      Pvm
+    </a>
+    <a href="minigames.html">MiniGames</a>
+    <a href="accounts.html">Accounts</a>
+    <a href="https://discord.gg/cynx" target="_blank" style="margin-left: auto;">
+      <img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/67d00cf7266d2c75571aebde_Example.svg" alt="Discord" style="height: 28px; vertical-align: middle;">
+    </a>
+    <a href="https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/" target="_blank" style="margin-left: 15px;">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgFwI79WtDYjm1qMGxvUmsgxToIiCbHLJdOQ&s" alt="Our" style="height: 28px; vertical-align: middle;">
+    </a>
+  </div>
 
   <h1>
-  <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="icon" style="height: 1em; vertical-align: middle; margin-right: 0.3em;">
-  Cynx OSRS Services
-  <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="icon" style="height: 1em; vertical-align: middle; margin-left: 0.3em;">
-</h1>
-
+    <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="icon" style="height: 1em; vertical-align: middle; margin-right: 0.3em;">
+    Cynx OSRS Services
+    <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="icon" style="height: 1em; vertical-align: middle; margin-left: 0.3em;">
+  </h1>
 
   <div class="buttons">
-  <a href="https://discord.gg/cynx" class="discord-btn" target="_blank">
-    <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Discord" style="height: 1em; vertical-align: middle; margin-right: 0.3em;">
-    Join Our Discord
-  </a>
-  
-  <a href="https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/" class="vouches-btn" target="_blank">
-    🛡️ Our Sythe Vouches
-  </a>
-</div>
+    <a href="https://discord.gg/cynx" class="discord-btn" target="_blank">
+      <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Discord" style="height: 1em; vertical-align: middle; margin-right: 0.3em;">
+      Join Our Discord
+    </a>
 
+    <a href="https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/" class="vouches-btn" target="_blank">
+      🛡️ Our Sythe Vouches
+    </a>
+  </div>
 
   <ul class="features">
     <li><i class="fa-solid fa-check-square" style="color:lime"></i> <strong>10+ Years of Experience</strong> in the OSRS market.</li>
