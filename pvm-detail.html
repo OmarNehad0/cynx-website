@@ -42,13 +42,16 @@
     .service-card {
       background-color: #1a1e3c;
       border-radius: 10px;
-      width: 220px;
+      width: 200px;
       padding: 15px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      text-align: center;
+      margin-bottom: 20px;
     }
 
     .service-card img {
       width: 100%;
+      height: auto;
       border-radius: 6px;
     }
 
@@ -62,12 +65,6 @@
       color: #ffcc00;
       font-weight: bold;
       margin-top: 5px;
-    }
-
-    .description {
-      font-size: 13px;
-      margin-top: 5px;
-      color: #ccc;
     }
   </style>
 </head>
@@ -91,10 +88,10 @@
       return;
     }
 
-    categoryTitle.textContent = decodeURIComponent(file);
     const fileName = encodeURIComponent(file) + '.json';
     const rawUrl = `https://raw.githubusercontent.com/OmarNehad0/cynx-website/main/${fileName}`;
-    console.log("📦 Fetching:", rawUrl);
+
+    categoryTitle.textContent = decodeURIComponent(file);
 
     fetch(rawUrl)
       .then(res => {
@@ -102,11 +99,13 @@
         return res.json();
       })
       .then(data => {
-        const items = Array.isArray(data) ? data : data.items;
+        const items = data.items;
         if (!items || !Array.isArray(items)) {
           container.innerHTML = `<p style="color: orange;">No items found in <strong>${fileName}</strong>.</p>`;
           return;
         }
+
+        items.sort((a, b) => a.price - b.price);
 
         items.forEach(item => {
           const card = document.createElement('div');
@@ -115,15 +114,14 @@
           card.innerHTML = `
             <img src="${item.image}" alt="${item.name}" />
             <div class="service-name">${item.name}</div>
-            <div class="price">${(item.price / 1e6).toFixed(0)}m</div>
-            <div class="description">${item.caption || ''}</div>
+            <div class="price">${(item.price / 1e6).toFixed(1)}m</div>
           `;
 
           container.appendChild(card);
         });
       })
       .catch(error => {
-        container.innerHTML = `<p style="color: red;">❌ Failed to load <strong>${fileName}</strong>: ${error.message}</p>`;
+        container.innerHTML = `<p style="color: red;">❌ Failed to load <strong>${file}</strong>: ${error.message}</p>`;
         console.error("Fetch error:", error);
       });
   </script>
