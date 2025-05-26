@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gold Rates - Cynx OSRS</title>
+  <link rel="icon" href="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" type="image/webp">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png");
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      color: #fff;
+      text-align: center;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #1a1e3c;
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar a {
+      color: #ffcc00;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 10px 15px;
+      font-size: 18px;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .navbar a:hover {
+      color: white;
+    }
+
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: #ffcc00;
+      transition: width 0.3s ease-in-out;
+    }
+
+    .navbar a:hover::after {
+      width: 100%;
+    }
+
+    h1 {
+      margin: 30px 0 20px;
+      color: #ffcc00;
+      text-shadow: 0 0 10px #ffcc00;
+    }
+
+    .rate-box-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding: 40px 20px;
+    }
+
+    .rate-box {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 25px;
+      border-radius: 12px;
+      width: 300px;
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+    }
+
+    .rate-box h2 {
+      margin-bottom: 20px;
+      color: #ffcc00;
+    }
+
+    .rate-box input {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      text-align: center;
+    }
+
+    .rate-box .output {
+      margin-top: 15px;
+      font-size: 18px;
+      color: #00ff99;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="index.html">
+      <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle;">
+      Home
+    </a>
+    <a href="skilling.html">Skilling</a>
+    <a href="pvm.html">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" style="height: 20px; vertical-align: middle;">
+      PVM
+    </a>
+    <a href="minigames.html">MiniGames</a>
+    <a href="gold-detail.html">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 20px; vertical-align: middle;">
+      Gold (Buy/Sell)
+    </a>
+  </div>
+
+  <h1>Calculate Your Gold Value</h1>
+
+  <div class="rate-box-container">
+    <div class="rate-box">
+      <h2>We Sell At ($0.21/M)</h2>
+      <input type="number" id="sellInput" placeholder="Enter M Amount" oninput="calculateSell()"/>
+      <div class="output" id="sellOutput">$0.00</div>
+    </div>
+
+    <div class="rate-box">
+      <h2>We Buy At ($0.15/M)</h2>
+      <input type="number" id="buyInput" placeholder="Enter M Amount" oninput="calculateBuy()"/>
+      <div class="output" id="buyOutput">$0.00</div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Cynx OSRS Services. All rights reserved.
+  </footer>
+
+  <script>
+    function calculateSell() {
+      const input = document.getElementById("sellInput").value;
+      const result = parseFloat(input) * 0.21;
+      document.getElementById("sellOutput").textContent = "$" + (isNaN(result) ? "0.00" : result.toFixed(2));
+    }
+
+    function calculateBuy() {
+      const input = document.getElementById("buyInput").value;
+      const result = parseFloat(input) * 0.15;
+      document.getElementById("buyOutput").textContent = "$" + (isNaN(result) ? "0.00" : result.toFixed(2));
+    }
+  </script>
+</body>
+</html>
