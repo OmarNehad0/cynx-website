@@ -88,20 +88,24 @@
       return;
     }
 
-    const fileName = encodeURIComponent(file) + '.json';
+    const decodedFileName = decodeURIComponent(file);
+    const fileName = decodedFileName + '.json';
     const rawUrl = `https://raw.githubusercontent.com/OmarNehad0/cynx-website/main/${fileName}`;
 
-    categoryTitle.textContent = decodeURIComponent(file);
+    categoryTitle.textContent = decodedFileName;
+    console.log("Fetching from:", rawUrl);
 
     fetch(rawUrl)
       .then(res => {
+        console.log("Status:", res.status);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       })
       .then(data => {
+        console.log("Data fetched:", data);
         const items = data.items;
         if (!items || !Array.isArray(items)) {
-          container.innerHTML = `<p style="color: orange;">No items found in <strong>${fileName}</strong>.</p>`;
+          container.innerHTML = `<p style=\"color: orange;\">No items found in <strong>${fileName}</strong>.</p>`;
           return;
         }
 
@@ -121,7 +125,7 @@
         });
       })
       .catch(error => {
-        container.innerHTML = `<p style="color: red;">❌ Failed to load <strong>${file}</strong>: ${error.message}</p>`;
+        container.innerHTML = `<p style=\"color: red;\">❌ Failed to load <strong>${fileName}</strong>: ${error.message}</p>`;
         console.error("Fetch error:", error);
       });
   </script>
