@@ -120,6 +120,63 @@
       margin-right: 8px;
     }
 
+    .gold-rates-box {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: rgba(10, 10, 30, 0.85);
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      color: #fff;
+      max-width: 280px;
+    }
+
+    .gold-rates-box h3 {
+      color: #ffcc00;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .gold-rates-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .rate-box {
+      background-color: #1a1e3c;
+      padding: 10px;
+      border-radius: 8px;
+      width: 48%;
+      text-align: center;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
+    }
+
+    .rate-box span {
+      display: block;
+      font-weight: bold;
+      color: #ffcc00;
+      margin-top: 5px;
+    }
+
+    .gold-discord-btn {
+      text-decoration: none;
+      display: inline-block;
+      background-color: #5865f2;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: transform 0.2s;
+      font-size: 14px;
+    }
+
+    .gold-discord-btn:hover {
+      transform: scale(1.05);
+    }
+
     .navbar {
       display: flex;
       flex-wrap: wrap;
@@ -151,13 +208,11 @@
       color: gray;
     }
 
-    /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Responsive Fixes */
     @media screen and (max-width: 768px) {
       .navbar {
         flex-direction: column;
@@ -174,7 +229,8 @@
         padding: 0 20px;
       }
 
-      .payments-box {
+      .payments-box,
+      .gold-rates-box {
         position: static;
         margin: 30px auto;
         width: 90%;
@@ -244,6 +300,23 @@
       <li><img src="https://img.icons8.com/ios-filled/50/bank.png"/> E Transfer</li>
       <li><img src="https://img.icons8.com/ios-filled/50/money.png"/> Chime/Wise</li>
     </ul>
+  </div>
+
+  <div class="gold-rates-box">
+    <h3>Our Gold Rates</h3>
+    <div class="gold-rates-inner">
+      <div class="rate-box">
+        We Sell At
+        <span>$0.21/M</span>
+      </div>
+      <div class="rate-box">
+        We Buy At
+        <span>$0.15/M</span>
+      </div>
+    </div>
+    <a href="https://discord.gg/cynx" class="gold-discord-btn" target="_blank">
+      Join Our Discord
+    </a>
   </div>
 
   <footer>
