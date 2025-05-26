@@ -80,43 +80,38 @@
 
   <div class="grid" id="pvmList"></div>
 
-  <script>
-    const jsonFiles = [
-      { name: "Desert Treasure 2 Bosses", image: "https://oldschool.runescape.wiki/images/thumb/Duke_Sucellus.png/800px-Duke_Sucellus.png?d588a" },
-      { name: "Chambers Of Xeric", image: "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39" },
-      { name: "FireCapes", image: "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08" },
-      { name: "God Wars Dungeon", image: "https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/800px-Kree%27arra.png?ba75c" },
-      { name: "Infernal - Quivers", image: "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d" },
-      { name: "MegaScales", image: "https://oldschool.runescape.wiki/images/thumb/Twisted_bow_detail.png/150px-Twisted_bow_detail.png?7aa10" },
-      { name: "Other Bosses", image: "https://oldschool.runescape.wiki/images/thumb/Tormented_Demon_%281%29.png/320px-Tormented_Demon_%281%29.png?6c099" },
-      { name: "The Gauntlet", image: "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e" },
-      { name: "Theatre Of Blood", image: "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023" },
-      { name: "Tombs Of Amascuts", image: "https://oldschool.runescape.wiki/images/thumb/Elidinis%27_Warden.png/180px-Elidinis%27_Warden.png?c9f68" },
-      { name: "Wilderness Bosses", image: "https://oldschool.runescape.wiki/images/Callisto.png?bfba7" }
-    ];
+<script>
+  const jsonFiles = [
+    { name: "Desert Treasure 2 Bosses", image: "https://oldschool.runescape.wiki/images/thumb/Duke_Sucellus.png/800px-Duke_Sucellus.png?d588a" },
+    { name: "Chambers Of Xeric", image: "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39" },
+    { name: "FireCapes", image: "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08" },
+    { name: "God Wars Dungeon", image: "https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/800px-Kree%27arra.png?ba75c" },
+    { name: "Infernal - Quivers", image: "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d" },
+    { name: "MegaScales", image: "https://oldschool.runescape.wiki/images/thumb/Twisted_bow_detail.png/150px-Twisted_bow_detail.png?7aa10" },
+    { name: "Other Bosses", image: "https://oldschool.runescape.wiki/images/thumb/Tormented_Demon_%281%29.png/320px-Tormented_Demon_%281%29.png?6c099" },
+    { name: "The Gauntlet", image: "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e" },
+    { name: "Theatre Of Blood", image: "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023" },
+    { name: "Tombs Of Amascuts", image: "https://oldschool.runescape.wiki/images/thumb/Elidinis%27_Warden.png/180px-Elidinis%27_Warden.png?c9f68" },
+    { name: "Wilderness Bosses", image: "https://oldschool.runescape.wiki/images/Callisto.png?bfba7" }
+  ];
 
-    const container = document.getElementById("pvmList");
+  const container = document.getElementById("pvmList");
 
-    jsonFiles.forEach(entry => {
-      const card = document.createElement("div");
-      card.className = "card";
+  jsonFiles.forEach(entry => {
+    const card = document.createElement("div");
+    card.className = "card";
 
-      const link = document.createElement("a");
-      link.href = `pvm-detail.html?file=${encodeURIComponent(entry.name)}`;
+    card.innerHTML = `
+      <a href="pvm-detail.html?file=${encodeURIComponent(entry.name)}">
+        <img src="${entry.image}" alt="${entry.name}" style="width:100%; height:auto; border-radius: 6px; margin-bottom: 10px;">
+        <div>${entry.name}</div>
+      </a>
+    `;
 
-      const image = document.createElement("img");
-      image.src = entry.image;
-      image.alt = entry.name;
+    container.appendChild(card);
+  });
+</script>
 
-      const title = document.createElement("div");
-      title.textContent = entry.name;
-
-      link.appendChild(image);
-      link.appendChild(title);
-      card.appendChild(link);
-      container.appendChild(card);
-    });
-  </script>
 </body>
 </html>
 
