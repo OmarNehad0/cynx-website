@@ -73,62 +73,63 @@
     <a href="index.html">Home</a>
   </div>
 
-  <div class="category-title" id="categoryTitle">Loading...</div>
-  <div class="card-container" id="serviceCards"></div>
+  <div class="category-title">Chambers Of Xeric</div>
+  <div class="card-container">
+    <!-- COX - Trio -->
+    <div class="service-card">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39" alt="Trio">
+      <div class="service-name">Trio</div>
+      <div class="price">12.0m</div>
+    </div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const file = params.get('file');
+    <!-- COX - Challenge Mode -->
+    <div class="service-card">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39" alt="Challenge Mode - Mass">
+      <div class="service-name">Challenge Mode - Mass</div>
+      <div class="price">20.0m</div>
+    </div>
+    <div class="service-card">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39" alt="Challenge Mode - 3-5">
+      <div class="service-name">Challenge Mode - 3-5</div>
+      <div class="price">25.0m</div>
+    </div>
 
-    const categoryTitle = document.getElementById('categoryTitle');
-    const container = document.getElementById('serviceCards');
+    <!-- COX - Solo -->
+    <div class="service-card">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39" alt="Twisted Bow (TBow)">
+      <div class="service-name">Twisted Bow (TBow)</div>
+      <div class="price">10.0m</div>
+    </div>
+    <div class="service-card">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39" alt="Bow of Faerdhinen (Bowfa)">
+      <div class="service-name">Bow of Faerdhinen (Bowfa)</div>
+      <div class="price">12.0m</div>
+    </div>
+    <div class="service-card">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39" alt="Tentacle Whip/Toxic Blowpipe (BP)">
+      <div class="service-name">Tentacle Whip/Toxic Blowpipe (BP)</div>
+      <div class="price">15.0m</div>
+    </div>
+  </div>
 
-    if (!file) {
-      categoryTitle.textContent = "⚠️ No file provided in URL.";
-      return;
-    }
+  <div class="category-title">FireCapes</div>
+  <div class="card-container">
+    <!-- Add FireCapes items here -->
+    <div class="service-card">
+      <img src="https://example.com/firecape1.png" alt="Fire Cape">
+      <div class="service-name">Fire Cape</div>
+      <div class="price">3.0m</div>
+    </div>
+  </div>
 
-    const fileName = file + '.json';
-    const rawUrl = `https://raw.githubusercontent.com/OmarNehad0/cynx-website/main/${encodeURIComponent(fileName)}`;
-
-    categoryTitle.textContent = decodeURIComponent(file);
-    console.log("Fetching from:", rawUrl);
-
-    fetch(rawUrl)
-      .then(res => {
-        console.log("Status:", res.status);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then(data => {
-        console.log("Data fetched:", data);
-        const items = data.items;
-        if (!items || !Array.isArray(items)) {
-          container.innerHTML = `<p style='color: orange;'>No items found in <strong>${fileName}</strong>.</p>`;
-          return;
-        }
-
-        items.sort((a, b) => a.price - b.price);
-
-        container.innerHTML = ''; // clear loading text if still present
-
-        items.forEach(item => {
-          const card = document.createElement('div');
-          card.className = 'service-card';
-
-          card.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" />
-            <div class="service-name">${item.name}</div>
-            <div class="price">${(item.price / 1e6).toFixed(1)}m</div>
-          `;
-
-          container.appendChild(card);
-        });
-      })
-      .catch(error => {
-        container.innerHTML = `<p style='color: red;'>❌ Failed to load <strong>${fileName}</strong>: ${error.message}</p>`;
-        console.error("Fetch error:", error);
-      });
-  </script>
+  <div class="category-title">Infernal - Quivers</div>
+  <div class="card-container">
+    <!-- Add Infernal Quivers items here -->
+    <div class="service-card">
+      <img src="https://example.com/infernalquiver.png" alt="Quiver Max Gear">
+      <div class="service-name">Quiver Max Gear</div>
+      <div class="price">150.0m</div>
+    </div>
+  </div>
 </body>
 </html>
