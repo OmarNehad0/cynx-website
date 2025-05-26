@@ -88,7 +88,7 @@
       return;
     }
 
-    const fileName = decodeURIComponent(file) + '.json';
+    const fileName = file + '.json';  // don't decode
     const rawUrl = `https://raw.githubusercontent.com/OmarNehad0/cynx-website/main/${encodeURIComponent(fileName)}`;
 
     categoryTitle.textContent = decodeURIComponent(file);
