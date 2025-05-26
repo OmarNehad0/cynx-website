@@ -14,24 +14,9 @@
       text-align: center;
     }
 
-    header img {
-      width: 100%;
-      max-height: 200px;
-      object-fit: cover;
-    }
-
-    .logo {
-      margin-top: -75px;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 5px solid #0d112b;
-      background-color: #0d112b;
-    }
-
     h1 {
       color: #ffcc00;
-      margin-top: 10px;
+      margin-top: 20px;
     }
 
     .buttons {
@@ -123,73 +108,12 @@
       margin: 0 20px;
       font-size: 18px;
     }
-
-    .category-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 30px 0;
-    }
-
-    .service-card {
-      background-color: #1a1e3c;
-      border-radius: 10px;
-      width: 200px;
-      padding: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-
-    .service-card img {
-      width: 100%;
-      border-radius: 6px;
-    }
-
-    .price {
-      color: #ffcc00;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 2em;
-    }
-
-    .card {
-      background-color: #1a1e3c;
-      border-radius: 8px;
-      padding: 1.5em;
-      margin: 1em;
-      width: 250px;
-      text-align: center;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    .card a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.1em;
-      font-weight: bold;
-    }
   </style>
 </head>
 <body>
-  <header>
-    <img src="./fc69c5a4-eb1c-4011-b9ac-fb35ce9cc017.png" alt="Cynx Banner">
-    <img class="logo" src="./954a706b-771a-4710-a420-c42b1403aa43.png" alt="Cynx Logo">
-  </header>
-
   <div class="navbar">
-    <a href="#pvm">PVM</a>
+    <a href="index.html">Home</a>
+    <a href="pvm.html">PVM</a>
     <a href="#skilling">Skilling</a>
     <a href="#minigames">Minigames</a>
     <a href="#accounts">Accounts</a>
@@ -224,50 +148,6 @@
       <li><img src="https://img.icons8.com/ios-filled/50/money.png"/> Chime/Wise</li>
     </ul>
   </div>
-
-  <section id="pvm" class="category-section">
-    <!-- Example Service Card -->
-    <div class="service-card">
-      <img src="https://oldschool.runescape.wiki/images/thumb/Dizana%27s_quiver_detail.png/150px-Dizana%27s_quiver_detail.png?f6c23" alt="Dizana's Quiver">
-      <div class="price">200m</div>
-      <p style="font-size: 14px; margin-top: 5px;">Quiver Budget Gear - Login</p>
-    </div>
-  </section>
-
-  <div class="navbar">
-    <a href="index.html">Home</a>
-  </div>
-
-  <div class="grid" id="pvmList"></div>
-
-  <script>
-    const jsonFiles = [
-      "Desert Treasure 2 Bosses",
-      "Chambers Of Xeric",
-      "FireCapes",
-      "Infernal - Quivers",
-      "MegaScales",
-      "Other Bosses",
-      "The Gauntlet",
-      "Theatre Of Blood",
-      "Tombs Of Amascuts",
-      "Wilderness Bosses"
-    ];
-
-    const container = document.getElementById("pvmList");
-
-    jsonFiles.forEach(name => {
-      const card = document.createElement("div");
-      card.className = "card";
-
-      const link = document.createElement("a");
-      link.href = `pvm-detail.html?file=${encodeURIComponent(name)}`;
-      link.textContent = name;
-
-      card.appendChild(link);
-      container.appendChild(card);
-    });
-  </script>
 
   <footer style="margin-top: 50px; font-size: 14px; color: gray;">
     © 2025 Cynx OSRS Services. All rights reserved.
