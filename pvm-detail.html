@@ -86,43 +86,49 @@
   const params = new URLSearchParams(window.location.search);
   const file = params.get('file');
 
-  document.getElementById('categoryTitle').textContent = file || 'Category';
+  const categoryTitle = document.getElementById('categoryTitle');
+  const container = document.getElementById('serviceCards');
+
+  categoryTitle.textContent = file || 'Category';
 
   if (file) {
-    const githubURL = `https://raw.githubusercontent.com/OmarNehad0/cynx-website/main/pvm/${encodeURIComponent(file)}.json`;
+    const fileName = encodeURIComponent(file) + '.json';
+    const rawUrl = `https://raw.githubusercontent.com/OmarNehad0/cynx-website/main/${fileName}`;
+    console.log("Fetching:", rawUrl);
 
-    fetch(githubURL)
+    fetch(rawUrl)
       .then(res => {
-        if (!res.ok) throw new Error("File not found");
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}`);
+        }
         return res.json();
       })
       .then(data => {
-        const container = document.getElementById("serviceCards");
-
         if (!data.items || !Array.isArray(data.items)) {
-          container.innerHTML = `<p style="color: orange;">No items found in "${file}.json"</p>`;
+          container.innerHTML = `<p style="color: orange;">No items found in <strong>${fileName}</strong>.</p>`;
           return;
         }
 
         data.items.forEach(item => {
-          const card = document.createElement("div");
-          card.className = "service-card";
+          const card = document.createElement('div');
+          card.className = 'service-card';
 
           card.innerHTML = `
             <img src="${item.image}" alt="${item.name}" />
             <div class="service-name">${item.name}</div>
             <div class="price">${(item.price / 1e6).toFixed(0)}m</div>
-            <div class="description">${item.description || ''}</div>
+            <div class="description">${item.caption || ''}</div>
           `;
 
           container.appendChild(card);
         });
       })
-      .catch(err => {
-        document.getElementById("serviceCards").innerHTML = `<p style="color: red;">Failed to load services for "${file}"</p>`;
-        console.error(err);
+      .catch(error => {
+        container.innerHTML = `<p style="color: red;">❌ Failed to load services for "<strong>${file}</strong>": ${error.message}</p>`;
+        console.error("Error loading JSON:", error);
       });
   }
 </script>
+
 </body>
 </html>
