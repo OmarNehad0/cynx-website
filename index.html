@@ -130,51 +130,52 @@
       box-shadow: 0 0 15px rgba(0,0,0,0.6);
       color: #fff;
       max-width: 280px;
+      text-align: center;
     }
 
     .gold-rates-box h3 {
       color: #ffcc00;
       margin-top: 0;
-      margin-bottom: 10px;
     }
 
     .gold-rates-inner {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+      align-items: center;
       gap: 10px;
-      margin-bottom: 10px;
+      margin: 10px 0;
     }
 
     .rate-box {
-      background-color: #1a1e3c;
+      background-color: rgba(255, 255, 255, 0.1);
       padding: 10px;
       border-radius: 8px;
-      width: 48%;
-      text-align: center;
-      box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
+      min-width: 100px;
     }
 
     .rate-box span {
-      display: block;
-      font-weight: bold;
+      font-size: 1.2em;
       color: #ffcc00;
-      margin-top: 5px;
     }
 
-    .gold-discord-btn {
-      text-decoration: none;
+    .gold-rates-inner::before {
+      content: '';
       display: inline-block;
-      background-color: #5865f2;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: transform 0.2s;
-      font-size: 14px;
+      width: 28px;
+      height: 28px;
+      background-image: url('https://oldschool.runescape.wiki/images/thumb/Platinum_token_detail.png/300px-Platinum_token_detail.png?a8cf8');
+      background-size: contain;
+      background-repeat: no-repeat;
     }
 
-    .gold-discord-btn:hover {
-      transform: scale(1.05);
+    .gold-rates-inner::after {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      background-image: url('https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc');
+      background-size: contain;
+      background-repeat: no-repeat;
     }
 
     .navbar {
@@ -195,10 +196,30 @@
       text-decoration: none;
       margin: 10px 15px;
       font-size: 18px;
+      position: relative;
       transition: color 0.2s ease-in-out;
     }
 
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0%;
+      height: 2px;
+      background-color: #ffcc00;
+      transition: all 0.3s ease-in-out;
+      transform: translateX(-50%);
+    }
+
+    .navbar a:hover::after {
+      width: 100%;
+    }
+
     .navbar a:hover {
+      background-color: rgba(255, 204, 0, 0.1);
+      border-radius: 6px;
+      padding: 8px 14px;
       color: #ffffff;
     }
 
@@ -232,7 +253,7 @@
       .payments-box,
       .gold-rates-box {
         position: static;
-        margin: 30px auto;
+        margin: 20px auto;
         width: 90%;
       }
     }
@@ -290,7 +311,7 @@
   <div class="payments-box">
     <h3>Accepted Payments</h3>
     <ul>
-      <li><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/2048px-Bitcoin.svg.png"/> Crypto (Recommended)</li>
+      <li><img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"/> Crypto (Recommended)</li>
       <li><img src="https://cdn-icons-png.flaticon.com/512/174/174861.png"/> PayPal</li>
       <li><img src="https://img.icons8.com/?size=512&id=Iirw95F6Nl9c&format=png"/> Zelle</li>
       <li><img src="https://images.ctfassets.net/.../App_Icon.png"/> Venmo</li>
@@ -303,20 +324,18 @@
   </div>
 
   <div class="gold-rates-box">
-    <h3>Our Gold Rates</h3>
+    <h3>Our Gold Rate</h3>
     <div class="gold-rates-inner">
       <div class="rate-box">
-        We Sell At
+        <strong>We Sell At</strong><br>
         <span>$0.21/M</span>
       </div>
       <div class="rate-box">
-        We Buy At
+        <strong>We Buy At</strong><br>
         <span>$0.15/M</span>
       </div>
     </div>
-    <a href="https://discord.gg/cynx" class="gold-discord-btn" target="_blank">
-      Join Our Discord
-    </a>
+    <a href="https://discord.gg/cynx" target="_blank" class="discord-btn">Join Our Discord</a>
   </div>
 
   <footer>
