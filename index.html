@@ -209,3 +209,101 @@
   </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PVM Directory</title>
+  <style>
+    body {
+      background-color: #0d112b;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #1a1e3c;
+      padding: 1em;
+      text-align: center;
+    }
+
+    .navbar a {
+      color: #ffcc00;
+      margin: 0 1em;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2em;
+    }
+
+    .card {
+      background-color: #1a1e3c;
+      border-radius: 8px;
+      padding: 1.5em;
+      margin: 1em;
+      width: 250px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="index.html">Home</a>
+  </div>
+
+  <div class="grid" id="pvmList">
+    <!-- Boss list will be generated here -->
+  </div>
+
+  <script>
+    const jsonFiles = [
+      "Desert Treasure 2 Bosses",
+      "Chambers Of Xeric",
+      "FireCapes",
+      "Infernal - Quivers",
+      "MegaScales",
+      "Other Bosses",
+      "The Gauntlet",
+      "Theatre Of Blood",
+      "Tombs Of Amascuts",
+      "Wilderness Bosses"
+    ];
+
+    const container = document.getElementById("pvmList");
+
+    jsonFiles.forEach(name => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const link = document.createElement("a");
+      link.href = `pvm-detail.html?file=${encodeURIComponent(name)}`;
+      link.textContent = name;
+
+      card.appendChild(link);
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
