@@ -14,7 +14,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-image: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png?ex=68352d2a&is=6833dbaa&hm=ad9246b3db979cf348b2c58f21abada0a5de7528e24efd1b100eb117ed44e305&=&format=webp&quality=lossless&width=525&height=350");
+      background-image: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
@@ -75,7 +75,6 @@
       max-width: 600px;
       margin: auto;
       text-align: left;
-      animation: fadeIn 1s ease-in-out;
     }
 
     ul.features li {
@@ -127,7 +126,7 @@
       background-color: rgba(10, 10, 30, 0.85);
       padding: 15px 20px;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.3);
       color: #fff;
       max-width: 280px;
       text-align: center;
@@ -136,6 +135,15 @@
     .gold-rates-box h3 {
       color: #ffcc00;
       margin-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .gold-rates-box h3 img {
+      width: 24px;
+      height: 24px;
     }
 
     .gold-rates-inner {
@@ -156,26 +164,6 @@
     .rate-box span {
       font-size: 1.2em;
       color: #ffcc00;
-    }
-
-    .gold-rates-inner::before {
-      content: '';
-      display: inline-block;
-      width: 28px;
-      height: 28px;
-      background-image: url('https://oldschool.runescape.wiki/images/thumb/Platinum_token_detail.png/300px-Platinum_token_detail.png?a8cf8');
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-
-    .gold-rates-inner::after {
-      content: '';
-      display: inline-block;
-      width: 28px;
-      height: 28px;
-      background-image: url('https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc');
-      background-size: contain;
-      background-repeat: no-repeat;
     }
 
     .navbar {
@@ -221,17 +209,13 @@
       border-radius: 6px;
       padding: 8px 14px;
       color: #ffffff;
+      box-shadow: 0 0 8px #ffcc00;
     }
 
     footer {
       margin-top: 60px;
       font-size: 14px;
       color: gray;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     @media screen and (max-width: 768px) {
@@ -301,22 +285,20 @@
     <li><i class="fa-solid fa-check-square" style="color:lime"></i> <strong>Buy OSRS Services Through Cynx And Have The Best Worker For Your Account!</strong></li>
     <li><i class="fa-solid fa-check-square" style="color:lime"></i> <strong>We Use Dink To Keep You Updated All The Time!</strong></li>
     <li><i class="fa-solid fa-check-square" style="color:lime"></i> <strong>24/7 Support • Buying & Selling 07GP with Best Rates (Crypto Only)</strong></li>
-    <li><i class="fa-solid fa-check-square" style="color:lime"></i> <strong>10+ Years of Experience</strong> in the OSRS market.</li>
-    <li><i class="fa-solid fa-shield" style="color:red"></i> Trusted by thousands of customers with <strong>1000+ vouches on Sythe & Discord</strong>.</li>
+    <li><i class="fa-solid fa-shield" style="color:red"></i> Trusted by thousands of customers with <strong>1000+ vouches</strong> on Sythe & Discord.</li>
     <li><i class="fa-solid fa-trophy" style="color:gold"></i> Fast, Reliable, and Always Professional – we treat your account like it's ours.</li>
-    <li><i class="fa-solid fa-briefcase"></i> Dedicated team of hand-trained workers with elite experience in every service.</li>
     <li><i class="fa-solid fa-lock" style="color:gold"></i> Secure, private, and 100% safe transactions.</li>
   </ul>
 
   <div class="payments-box">
     <h3>Accepted Payments</h3>
     <ul>
-      <li><img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"/> Crypto (Recommended)</li>
+      <li><img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"/> Crypto</li>
       <li><img src="https://cdn-icons-png.flaticon.com/512/174/174861.png"/> PayPal</li>
       <li><img src="https://img.icons8.com/?size=512&id=Iirw95F6Nl9c&format=png"/> Zelle</li>
-      <li><img src="https://images.ctfassets.net/.../App_Icon.png"/> Venmo</li>
-      <li><img src="https://upload.wikimedia.org/.../Square_Cash_app_logo.svg"/> Cash App</li>
-      <li><img src="https://encrypted-tbn0.gstatic.com/..."/> Apple Pay</li>
+      <li><img src="https://img.icons8.com/color/48/venmo.png"/> Venmo</li>
+      <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Square_Cash_app_logo.svg"/> Cash App</li>
+      <li><img src="https://img.icons8.com/ios-filled/50/apple-pay.png"/> Apple Pay</li>
       <li><img src="https://img.icons8.com/ios-filled/50/revolut.png"/> Revolut</li>
       <li><img src="https://img.icons8.com/ios-filled/50/bank.png"/> E Transfer</li>
       <li><img src="https://img.icons8.com/ios-filled/50/money.png"/> Chime/Wise</li>
@@ -324,7 +306,11 @@
   </div>
 
   <div class="gold-rates-box">
-    <h3>Our Gold Rate</h3>
+    <h3>
+      <img src="https://oldschool.runescape.wiki/images/thumb/Platinum_token_detail.png/300px-Platinum_token_detail.png?a8cf8" alt="Platinum">
+      Our Gold Rate
+      <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" alt="Coins">
+    </h3>
     <div class="gold-rates-inner">
       <div class="rate-box">
         <strong>We Sell At</strong><br>
