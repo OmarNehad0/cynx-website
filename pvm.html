@@ -13,34 +13,30 @@
       padding: 0;
       text-align: center;
     }
-
     .navbar {
       background-color: #1a1e3c;
       padding: 1em;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 1em;
     }
-
     .navbar a {
       color: #ffcc00;
-      margin: 0 1em;
       text-decoration: none;
       font-weight: bold;
       font-size: 18px;
     }
-
     h1 {
       color: #ffcc00;
       margin-top: 20px;
     }
-
     .grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       padding: 2em;
     }
-
     .card {
       background-color: #1a1e3c;
       border-radius: 8px;
@@ -52,23 +48,32 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
       transition: transform 0.2s;
     }
-
     .card:hover {
       transform: scale(1.05);
     }
-
     .card a {
       color: #fff;
       text-decoration: none;
       font-size: 1.1em;
       font-weight: bold;
+      display: block;
+    }
+    .card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
   <div class="navbar">
     <a href="index.html">Home</a>
+    <a href="skilling.html">Skilling</a>
     <a href="pvm.html">PVM</a>
+    <a href="minigames.html">MiniGames</a>
+    <a href="accounts.html">Accounts</a>
   </div>
 
   <h1>PVM Bossing Services</h1>
@@ -77,32 +82,41 @@
 
   <script>
     const jsonFiles = [
-      "Desert Treasure 2 Bosses",
-      "Chambers Of Xeric",
-      "FireCapes",
-      "Infernal - Quivers",
-      "MegaScales",
-      "Other Bosses",
-      "The Gauntlet",
-      "Theatre Of Blood",
-      "Tombs Of Amascuts",
-      "Wilderness Bosses",
-      "God Wars Dungeon"
+      { name: "Desert Treasure 2 Bosses", image: "https://oldschool.runescape.wiki/images/thumb/Duke_Sucellus.png/800px-Duke_Sucellus.png?d588a" },
+      { name: "Chambers Of Xeric", image: "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39" },
+      { name: "FireCapes", image: "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08" },
+      { name: "God Wars Dungeon", image: "https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/800px-Kree%27arra.png?ba75c" },
+      { name: "Infernal - Quivers", image: "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d" },
+      { name: "MegaScales", image: "https://oldschool.runescape.wiki/images/thumb/Twisted_bow_detail.png/150px-Twisted_bow_detail.png?7aa10" },
+      { name: "Other Bosses", image: "https://oldschool.runescape.wiki/images/thumb/Tormented_Demon_%281%29.png/320px-Tormented_Demon_%281%29.png?6c099" },
+      { name: "The Gauntlet", image: "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e" },
+      { name: "Theatre Of Blood", image: "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023" },
+      { name: "Tombs Of Amascuts", image: "https://oldschool.runescape.wiki/images/thumb/Elidinis%27_Warden.png/180px-Elidinis%27_Warden.png?c9f68" },
+      { name: "Wilderness Bosses", image: "https://oldschool.runescape.wiki/images/Callisto.png?bfba7" }
     ];
 
     const container = document.getElementById("pvmList");
 
-    jsonFiles.forEach(name => {
+    jsonFiles.forEach(entry => {
       const card = document.createElement("div");
       card.className = "card";
 
       const link = document.createElement("a");
-      link.href = `pvm-detail.html?file=${encodeURIComponent(name)}`;
-      link.textContent = name;
+      link.href = `pvm-detail.html?file=${encodeURIComponent(entry.name)}`;
 
+      const image = document.createElement("img");
+      image.src = entry.image;
+      image.alt = entry.name;
+
+      const title = document.createElement("div");
+      title.textContent = entry.name;
+
+      link.appendChild(image);
+      link.appendChild(title);
       card.appendChild(link);
       container.appendChild(card);
     });
   </script>
 </body>
 </html>
+
