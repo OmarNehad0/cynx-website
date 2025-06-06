@@ -262,20 +262,28 @@
   <div id="wilderness" class="card-container"></div>
 
 <script>
-function changeQuantity(id, delta) {
-  const input = document.getElementById(id);
-  let value = parseInt(input.value) || 1;
-  value = Math.max(1, value + delta);
-  input.value = value;
-}
+
+  function changeQuantity(id, delta) {
+    const input = document.getElementById(id);
+    let qty = parseInt(input.value);
+    qty = isNaN(qty) ? 1 : Math.max(1, qty + delta);
+    input.value = qty;
+  }
 
   function addToCart(name, price, id) {
-  const quantity = parseInt(document.getElementById(id).value) || 1;
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  cart.push({ name, price, quantity });
-  localStorage.setItem('cart', JSON.stringify(cart));
-  alert(`${name} (x${quantity}) added to cart!`);
-}
+    const input = document.getElementById(id);
+    const qty = parseInt(input.value);
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    cart.push({
+      name,
+      price: (price * qty) / 1_000_000, // convert from GP to M
+      quantity: qty
+    });
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${qty} x ${name} added to cart!`);
+  }
 </script>
 
   <script>
