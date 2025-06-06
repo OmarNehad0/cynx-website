@@ -10,7 +10,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-image: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png?ex=6835d5ea&is=6834846a&hm=12bd0689a088cf6bb8d0c3f2cbc0a68b4eb49dbaf9f2dfed600c3b596de6c2cc&=&format=webp&quality=lossless&width=786&height=524");
+      background-image: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png");
       background-size: cover;
       background-attachment: fixed;
       background-position: center;
@@ -69,7 +69,6 @@
     <h2>Register</h2>
     <form onsubmit="handleRegister(event)">
       <input type="text" id="registerUsername" placeholder="Username" required />
-      <input type="email" id="registerEmail" placeholder="Email" required />
       <input type="password" id="registerPassword" placeholder="Password" required />
       <button type="submit">Register</button>
       <p id="registerMessage"></p>
@@ -80,18 +79,17 @@
   <script>
     async function handleRegister(event) {
       event.preventDefault();
-      const res = await fetch('https://backend-production-e0a6.up.railway.app/login', {
-
+      const res = await fetch('https://backend-production-e0a6.up.railway.app/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           username: document.getElementById('registerUsername').value,
-          email: document.getElementById('registerEmail').value,
           password: document.getElementById('registerPassword').value
         })
       });
-      const data = await res.json();
-      document.getElementById('registerMessage').textContent = data.message;
+
+      const text = await res.text();
+      document.getElementById('registerMessage').textContent = text;
     }
   </script>
 </body>
