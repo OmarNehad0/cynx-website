@@ -6,15 +6,80 @@
   <title>Cynx OSRS Services</title>
   <link rel="icon" href="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" type="image/webp">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script>
+function showLogin() {
+  document.getElementById('loginModal').style.display = 'block';
+  document.getElementById('registerModal').style.display = 'none';
+}
+function showRegister() {
+  document.getElementById('registerModal').style.display = 'block';
+  document.getElementById('loginModal').style.display = 'none';
+}
+
+async function handleLogin(event) {
+  event.preventDefault();
+  const res = await fetch('/api/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: document.getElementById('loginEmail').value,
+      password: document.getElementById('loginPassword').value
+    })
+  });
+  const data = await res.json();
+  document.getElementById('loginMessage').textContent = data.message;
+}
+
+async function handleRegister(event) {
+  event.preventDefault();
+  const res = await fetch('/api/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      username: document.getElementById('registerUsername').value,
+      email: document.getElementById('registerEmail').value,
+      password: document.getElementById('registerPassword').value
+    })
+  });
+  const data = await res.json();
+  document.getElementById('registerMessage').textContent = data.message;
+}
+</script>
   <style>
     * {
       scroll-behavior: smooth;
     }
+.discord-button-wrapper {
+  margin-top: 10px;
+}
+
+.discord-button {
+  background-color: #5865f2;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 0 10px #5865f2;
+}
+
+
+.discord-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #ffffff, 0 0 30px #5865f2;
+}
 
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-image: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png?ex=68352d2a&is=6833dbaa&hm=ad9246b3db979cf348b2c58f21abada0a5de7528e24efd1b100eb117ed44e305&=&format=webp&quality=lossless");
+      background-image: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png?ex=6835d5ea&is=6834846a&hm=12bd0689a088cf6bb8d0c3f2cbc0a68b4eb49dbaf9f2dfed600c3b596de6c2cc&=&format=webp&quality=lossless&width=786&height=524");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
@@ -37,9 +102,19 @@
     }
 
     h1 {
-      color: #ffcc00;
+      color: #0417e4;
       margin-top: 20px;
-      text-shadow: 0 0 10px #ffcc00;
+      text-shadow: 0 0 10px #fd0000, 0 0 20px #fff;
+      animation: flicker 1.5s infinite alternate;
+    }
+
+    @keyframes flicker {
+      from {
+        text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #fff;
+      }
+      to {
+        text-shadow: 0 0 2px #ffcc00, 0 0 5px #ffcc00, 0 0 10px #fff;
+      }
     }
 
     .buttons {
@@ -157,33 +232,24 @@
       color: #ffcc00;
     }
 
-    .gold-rates-box h3::before {
-      content: url('https://oldschool.runescape.wiki/images/thumb/Platinum_token_detail.png/300px-Platinum_token_detail.png?a8cf8');
-      width: 24px;
+    .gold-rates-box h3 img {
       height: 24px;
       vertical-align: middle;
-      margin-right: 6px;
-    }
-
-    .gold-rates-box h3::after {
-      content: url('https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc');
-      width: 24px;
-      height: 24px;
-      vertical-align: middle;
-      margin-left: 6px;
+      filter: drop-shadow(0 0 4px #ffcc00);
     }
 
     .navbar {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      background-color: #1a1e3c;
+      background-color: rgba(10, 10, 30, 0.85);
       padding: 12px 0;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       position: sticky;
       top: 0;
       z-index: 10;
     }
+
 
     .navbar a {
       color: #ffcc00;
@@ -215,7 +281,7 @@
       background-color: rgba(255, 204, 0, 0.1);
       border-radius: 6px;
       padding: 8px 14px;
-      color: #ffffff;
+      color: #fd0000;
       box-shadow: 0 0 10px #ffcc00;
     }
 
@@ -232,6 +298,10 @@
 
     @media screen and (max-width: 768px) {
       .navbar {
+      <div class="auth-buttons">
+  <button onclick="showLogin()">Login</button>
+  <button onclick="showRegister()">Register</button>
+  </div>
         flex-direction: column;
       }
 
@@ -253,9 +323,34 @@
         width: 90%;
       }
     }
+.auth-modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  padding: 20px;
+  border: 1px solid #ffcc00;
+  box-shadow: 0 0 15px #ffcc00;
+  z-index: 9999;
+  color: #fff;
+}
+.auth-modal input {
+  padding: 8px;
+  width: 90%;
+  margin: 10px 0;
+}
+.auth-buttons button {
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  margin: 0 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
   </style>
 </head>
 <body>
+
   <div class="navbar">
     <a href="index.html">
       <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle;"> Home
@@ -266,7 +361,7 @@
       PVM
     </a>
     <a href="minigames.html">MiniGames</a>
-    <a href="accounts.html">Accounts</a>
+    <a href="gold-detail.html"><img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 20px; vertical-align: middle;"> Gold (Buy/Sell)</a>
     <a href="https://discord.gg/cynx" target="_blank" style="margin-left: auto;">
       <img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/67d00cf7266d2c75571aebde_Example.svg" style="height: 28px; vertical-align: middle;">
     </a>
@@ -282,10 +377,19 @@
   </h1>
 
   <div class="buttons">
-    <a href="https://discord.gg/cynx" class="discord-btn" target="_blank">Join Our Discord</a>
+    <a href="https://discord.gg/cynx" class="discord-btn" target="_blank">
+  <img src="https://img.favpng.com/0/20/16/discord-computer-icons-logo-user-internet-bot-png-favpng-2YyJpD2FvNd2uNkEGJ1h2Uc8X.jpg" alt="Discord Icon" style="height: 1em; vertical-align: middle; margin-right: 0.5em;">
+  Join Our Discord
+     </a>
     <a href="https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/" class="vouches-btn" target="_blank">🛡️ Our Sythe Vouches</a>
   </div>
-
+<div class="banner-box">
+  <img src="https://s14.gifyu.com/images/bxLAI.gif" 
+       alt="Cynx Banner" 
+       width="865" 
+       height="2368"
+       style="max-width: 90%; height: auto; border-radius: 12px; box-shadow: 0 0 25px rgba(255, 204, 0, 0.5); margin-top: 20px;">
+</div>
   <ul class="features">
     <li><i class="fa-solid fa-check-square" style="color:lime"></i> Join Our Discord And Place Your Order Now!</li>
     <li><i class="fa-solid fa-check-square" style="color:lime"></i> Buy OSRS Services Through Cynx And Have The Best Worker For Your Account!</li>
@@ -304,35 +408,59 @@
       <li><img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" /> Crypto (Recommended)</li>
       <li><img src="https://cdn-icons-png.flaticon.com/512/174/174861.png" /> PayPal</li>
       <li><img src="https://img.icons8.com/?size=512&id=Iirw95F6Nl9c&format=png" /> Zelle</li>
-      <li><img src="https://img.icons8.com/?size=512&id=QsaZMxA5H3wL&format=png" /> Venmo</li>
+      <li><img src="https://images.ctfassets.net/gkyt4bl1j2fs/ym6BkLqyGjMBmiCwtM7AW/829bf561ea771c00839b484cb8edeebb/App_Icon.png?w=276&h=276&q=50&fm=png&bg=transparent" /> Venmo</li>
       <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Square_Cash_app_logo.svg" /> Cash App</li>
-      <li><img src="https://img.icons8.com/ios-filled/50/apple-pay.png" /> Apple Pay</li>
-      <li><img src="https://img.icons8.com/ios-filled/50/revolut.png" /> Revolut</li>
-      <li><img src="https://img.icons8.com/ios-filled/50/bank.png" /> E Transfer</li>
-      <li><img src="https://img.icons8.com/ios-filled/50/money.png" /> Chime/Wise</li>
+      <li><img src="https://pngate.com/wp-content/uploads/2025/05/apple-pay-main-logo-2025-horizontal-1.png" /> Apple Pay</li>
+      <li><img src="https://cdn6.aptoide.com/imgs/9/7/a/97a9cb42f254cb56a1c5c96ae96e3665_icon.png" /> Revolut</li>
+      <li><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/e-transfer-4136564-3437237.png" /> E Transfer</li>
+      <li><img src="https://img.icons8.com/?size=512&id=mNhj6ePnTBkQ&format=png" /> Chime/Wise</li>
     </ul>
   </div>
 
   <div class="gold-rates-box">
-  <h3 style="display: flex; align-items: center; justify-content: center; gap: 8px;">
-    <img src="https://oldschool.runescape.wiki/images/thumb/Platinum_token_detail.png/300px-Platinum_token_detail.png?a8cf8" alt="Platinum" style="height: 20px;">
-    Our Gold Rate
-    <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" alt="Coins" style="height: 20px;">
-  </h3>
-  <div class="gold-rates-inner">
-    <div class="rate-box">
-      <strong>We Sell At</strong><br>
-      <span>$0.21/M</span>
+    <h3>
+      <img src="https://oldschool.runescape.wiki/images/thumb/Platinum_token_detail.png/300px-Platinum_token_detail.png?a8cf8" alt="Platinum">
+      Our Gold Rate
+      <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" alt="Coins">
+    </h3>
+    <div class="gold-rates-inner">
+      <div class="rate-box">
+        <strong>We Sell At</strong><br>
+        <span>$0.21/M</span>
+      </div>
+      <div class="rate-box">
+        <strong>We Buy At</strong><br>
+        <span>$0.15/M</span>
+      </div>
     </div>
-    <div class="rate-box">
-      <strong>We Buy At</strong><br>
-      <span>$0.15/M</span>
-    </div>
+    <div class="discord-button-wrapper">
+  <button class="discord-button" onclick="window.open('https://discord.gg/cynx', '_blank')">
+    <img src="https://img.favpng.com/0/20/16/discord-computer-icons-logo-user-internet-bot-png-favpng-2YyJpD2FvNd2uNkEGJ1h2Uc8X.jpg" alt="Discord Icon" style="height: 1em; vertical-align: middle; margin-right: 0.3em;">
+    Join Our Discord
+  </button>
+</div>
   </div>
-  <a href="https://discord.gg/cynx" target="_blank" class="discord-btn">
-  <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Discord Icon" style="height: 1em; vertical-align: middle; margin-right: 0.3em;">
-  Join Our Discord
-</a>
+<!-- Login Modal -->
+<div id="loginModal" style="display:none;" class="auth-modal">
+  <form onsubmit="handleLogin(event)">
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email" required><br>
+    <input type="password" id="loginPassword" placeholder="Password" required><br>
+    <button type="submit">Login</button>
+    <p id="loginMessage"></p>
+  </form>
+</div>
+
+<!-- Register Modal -->
+<div id="registerModal" style="display:none;" class="auth-modal">
+  <form onsubmit="handleRegister(event)">
+    <h2>Register</h2>
+    <input type="text" id="registerUsername" placeholder="Username" required><br>
+    <input type="email" id="registerEmail" placeholder="Email" required><br>
+    <input type="password" id="registerPassword" placeholder="Password" required><br>
+    <button type="submit">Register</button>
+    <p id="registerMessage"></p>
+  </form>
 </div>
 
 
