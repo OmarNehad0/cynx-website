@@ -362,13 +362,24 @@
   }
 </script>
 <script>
-  function addToCart(name, price) {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push({ name, price });
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(${name} added to cart!);
+  function changeQuantity(id, delta) {
+    const input = document.getElementById(id);
+    let value = parseInt(input.value) || 1;
+    value = Math.max(1, value + delta); // Ensure at least 1
+    input.value = value;
   }
 </script>
+
+<script>
+  function addToCart(name, price, qtyId) {
+    const qty = parseInt(document.getElementById(qtyId).value) || 1;
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name, price, qty });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${name} x${qty} added to cart!`);
+  }
+</script>
+
 
 </body>
 </html>
