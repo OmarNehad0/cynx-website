@@ -226,6 +226,15 @@
     `;
     navbar.appendChild(profileLink);
   }
+ const logoutBtn = document.createElement('a');
+logoutBtn.href = '#';
+logoutBtn.textContent = 'Logout';
+logoutBtn.style.marginLeft = '15px';
+logoutBtn.onclick = () => {
+  localStorage.removeItem('username');
+  location.reload();
+};
+navbar.appendChild(logoutBtn);
 </script>
 
 </body>
