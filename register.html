@@ -80,7 +80,8 @@
   <script>
     async function handleRegister(event) {
       event.preventDefault();
-      const res = await fetch('/api/register', {
+      const res = await fetch('https://backend-mer5t1441-omarnehad0s-projects.vercel.app/api/server/register', {
+
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
