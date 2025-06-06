@@ -293,7 +293,11 @@
       data[file].forEach(item => {
         const card = document.createElement('div');
         card.className = 'service-card';
-        card.innerHTML = `
+        const itemId = item.name.replace(/\s+/g, '-') + '-' + Math.floor(Math.random() * 10000);
+const priceM = Math.round(item.price / 1000000);
+const priceUSD = (item.price * 0.21 / 1000000).toFixed(2);
+
+card.innerHTML = `
   <img src="${item.image}" alt="${item.name}">
   <div class="service-name">${item.name}</div>
   <div class="price">${priceM}m (~$${priceUSD})</div>
@@ -304,6 +308,7 @@
   </div>
   <button onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
 `;
+
     }
   </script>
 <script>
