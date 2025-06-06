@@ -1,82 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PVM Services</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" type="image/webp">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>PVM Details</title>
   <style>
     body {
-      background: url('https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png') no-repeat center center fixed;
-      background-size: cover;
-      margin: 0;
-      font-family: 'Arial', sans-serif;
+      background-color: #0d112b;
       color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      text-align: center;
     }
     .navbar {
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 15px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      background-color: #1a1e3c;
+      padding: 1em;
     }
     .navbar a {
       color: #ffcc00;
-      margin: 0 10px;
-      font-weight: bold;
       text-decoration: none;
-      transition: 0.3s;
+      font-weight: bold;
+      margin: 0 1em;
     }
-    .navbar a:hover {
-      color: white;
-      text-shadow: 0 0 5px #ffcc00;
+    .category-title {
+      color: #ffcc00;
+      font-size: 28px;
+      margin: 20px 0;
     }
     .card-container {
-      display: flex;
+      display: none;
       flex-wrap: wrap;
       justify-content: center;
-      padding: 20px;
       gap: 20px;
+      padding: 20px;
     }
     .service-card {
-      background-color: rgba(0, 0, 0, 0.85);
-      border: 1px solid #ffcc00;
+      background-color: #1a1e3c;
       border-radius: 10px;
       width: 200px;
       padding: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
       text-align: center;
-      box-shadow: 0 0 10px #000;
+      margin-bottom: 20px;
     }
     .service-card img {
       width: 100%;
+      height: auto;
       border-radius: 6px;
     }
     .service-name {
       font-weight: bold;
-      margin: 10px 0 5px;
+      margin-top: 10px;
+      font-size: 16px;
     }
     .price {
       color: #ffcc00;
-      margin-bottom: 10px;
-    }
-    button {
-      background-color: #ffcc00;
-      border: none;
-      padding: 6px 12px;
-      margin: 3px;
-      border-radius: 5px;
-      cursor: pointer;
       font-weight: bold;
-      transition: 0.3s;
-    }
-    button:hover {
-      background-color: white;
-      color: black;
-    }
-    input[type="number"] {
-      width: 40px;
-      text-align: center;
+      margin-top: 5px;
     }
   </style>
 </head>
@@ -307,40 +289,27 @@
       container.style.display = 'flex';
       container.innerHTML = <div class='category-title'>${file}</div>;
 
-      services.forEach((item, i) => {
-      const card = document.createElement("div");
-      const itemId = `qty-${i}`;
-      const priceM = (item.price / 1_000_000).toFixed(1);
-      const priceUSD = (item.price * 0.21 / 1_000_000).toFixed(2);
+      data[file].forEach((item, index) => {
+  const card = document.createElement('div');
+  const itemId = qty-${index};
+  const priceM = (item.price / 1_000_000).toFixed(1);
+  const priceUSD = (item.price * 0.21 / 1_000_000).toFixed(2);
 
-      card.className = "service-card";
-      card.innerHTML = `
-        <img src="${item.image}" alt="${item.name}">
-        <div class="service-name">${item.name}</div>
-        <div class="price">${priceM}m (~$${priceUSD})</div>
-        <div>
-          <button onclick="changeQty('${itemId}', -1)">−</button>
-          <input id="${itemId}" type="number" value="1" min="1">
-          <button onclick="changeQty('${itemId}', 1)">+</button>
-        </div>
-        <button onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
-      `;
-      container.appendChild(card);
-    });
- function changeQty(id, delta) {
-      const input = document.getElementById(id);
-      let val = parseInt(input.value) || 1;
-      val = Math.max(1, val + delta);
-      input.value = val;
-    }
+  card.className = 'service-card';
+  card.innerHTML = 
+    <img src="${item.image}" alt="${item.name}">
+    <div class="service-name">${item.name}</div>
+    <div class="price">${priceM}m (~$${priceUSD})</div>
+    <div style="margin: 10px 0;">
+      <button onclick="changeQuantity('${itemId}', -1)">−</button>
+      <input id="${itemId}" type="number" value="1" min="1" style="width: 40px; text-align: center;" />
+      <button onclick="changeQuantity('${itemId}', 1)">+</button>
+    </div>
+    <button onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
+  ;
+  container.appendChild(card);
+});
 
-    function addToCart(name, price, qtyId) {
-      const qty = parseInt(document.getElementById(qtyId).value) || 1;
-      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-      cart.push({ name, price, qty });
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert(`${qty} x ${name} added to cart.`);
-    
 
     }
   </script>
