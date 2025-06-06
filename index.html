@@ -2,26 +2,50 @@
 <html lang="en">
 <head>
 <script>
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  function addToCart(name, price, quantityInputId) {
+    const quantity = parseInt(document.getElementById(quantityInputId).value);
+    if (quantity < 1) return alert("Quantity must be at least 1");
 
-  function addToCart(item) {
-    cart.push(item);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert("Added to cart!");
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existing = cart.find(item => item.name === name);
+
+    if (existing) {
+      existing.quantity += quantity;
+    } else {
+      cart.push({ name, price, quantity });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartLink();
+    alert(`${quantity} x ${name} added to cart!`);
   }
 
-  function viewCart() {
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    console.log("Cart:", storedCart);
-    // Redirect or open modal/cart page
-    window.location.href = "cart.html"; // Create a cart page
+  function changeQuantity(id, change) {
+    const input = document.getElementById(id);
+    let value = parseInt(input.value) + change;
+    if (value < 1) value = 1;
+    input.value = value;
   }
 
-  function clearCart() {
-    localStorage.removeItem("cart");
-    alert("Cart cleared!");
+  function updateCartLink() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    let cartLink = document.getElementById("cart-link");
+    if (!cartLink) {
+      cartLink = document.createElement("a");
+      cartLink.href = "cart.html";
+      cartLink.id = "cart-link";
+      cartLink.style.marginLeft = "15px";
+      document.querySelector(".navbar").appendChild(cartLink);
+    }
+    cartLink.innerHTML = `🛒 Cart (${totalItems})`;
   }
+
+  // Load cart item count on page load
+  updateCartLink();
 </script>
+
 
 <!-- TrustBox script -->
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
