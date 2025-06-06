@@ -262,7 +262,12 @@
   <div id="wilderness" class="card-container"></div>
 
 <script>
-
+function updateQuantity(id, delta) {
+    const qtyElem = document.getElementById(`qty-${id}`);
+    let qty = parseInt(qtyElem.textContent);
+    qty = Math.max(1, qty + delta);
+    qtyElem.textContent = qty;
+  }
   function changeQuantity(id, delta) {
     const input = document.getElementById(id);
     let qty = parseInt(input.value);
