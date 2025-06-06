@@ -277,7 +277,19 @@
   { name: "King Black Dragon (KBD) - w/Dragon Hunter Items", price: 350000, image: "https://oldschool.runescape.wiki/images/thumb/King_Black_Dragon_%28Christmas%29.png/290px-King_Black_Dragon_%28Christmas%29.png?a4b99" }
 ]
     };
-
+const containerMap = {
+      'Chambers Of Xeric': 'chambers',
+      'Desert Treasure 2 Bosses': 'dt2',
+      'FireCapes': 'firecapes',
+      'God Wars Dungeon': 'gwd',
+      'Other Bosses': 'otherbosses',
+      'MegaScales': 'megascales',
+      'Infernal - Quivers': 'infernal-quivers',
+      'The Gauntlet': 'gauntlet',
+      'Theatre Of Blood': 'tob',
+      'Tombs Of Amascuts': 'tombs',
+      'Wilderness Bosses': 'wilderness'
+    };
    const container = document.getElementById("pvm-cards");
     services.forEach((item, i) => {
       const card = document.createElement("div");
