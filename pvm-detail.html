@@ -285,15 +285,18 @@
 
     if (data[file]) {
       const containerId = containerMap[file];
+
       const container = document.getElementById(containerId);
       container.style.display = 'flex';
+      
+
       container.innerHTML = `<div class='category-title'>${file}</div>`;
 
 
       data[file].forEach(item => {
         const card = document.createElement('div');
         card.className = 'service-card';
-        const itemId = item.name.replace(/\s+/g, '-') + '-' + Math.floor(Math.random() * 10000);
+        container.appendChild(card); // <<== Missing line
 const priceM = (item.price / 1000000).toFixed(1);
 const priceUSD = (item.price * 0.21 / 1000000).toFixed(2);
 const itemId = item.name.replace(/\s+/g, '-') + '-' + Math.floor(Math.random() * 100000);
@@ -341,10 +344,11 @@ card.innerHTML = `
     // Add profile button
     const profileLink = document.createElement('a');
     profileLink.href = '#';
-    profileLink.innerHTML = 
-      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" style="height: 20px; vertical-align: middle; border-radius: 50%; margin-right: 5px;">
-      ${username}
-    ;
+    profileLink.innerHTML = `
+     <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" style="height: 20px; vertical-align: middle; border-radius: 50%; margin-right: 5px;">
+     ${username}
+    `;
+
     navbar.appendChild(profileLink);
 
     // Add logout button
@@ -374,7 +378,8 @@ function changeQuantity(id, delta) {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.push({ name, price });
     localStorage.setItem('cart', JSON.stringify(cart));
-    alert(${name} added to cart!);
+    alert(`${name} added to cart!`);
+
   }
 </script>
 
