@@ -289,6 +289,7 @@
       container.style.display = 'flex';
       container.innerHTML = <div class='category-title'>${file}</div>;
 
+
       data[file].forEach((item, index) => {
   const card = document.createElement('div');
   const itemId = qty-${index};
@@ -362,11 +363,21 @@
   }
 </script>
 <script>
-  function addToCart(name, price) {
+  function changeQuantity(id, delta) {
+    const input = document.getElementById(id);
+    let value = parseInt(input.value) || 1;
+    value = Math.max(1, value + delta); // Ensure at least 1
+    input.value = value;
+  }
+</script>
+
+<script>
+  function addToCart(name, price, qtyId) {
+    const qty = parseInt(document.getElementById(qtyId).value) || 1;
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push({ name, price });
+    cart.push({ name, price, qty });
     localStorage.setItem('cart', JSON.stringify(cart));
-    alert(${name} added to cart!);
+    alert(`${name} x${qty} added to cart!`);
   }
 </script>
 
