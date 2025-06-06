@@ -205,5 +205,28 @@
       container.appendChild(card);
     });
   </script>
+<script>
+  const username = localStorage.getItem('username');
+  const navbar = document.querySelector('.navbar');
+
+  if (username) {
+    // Remove login/register links
+    navbar.querySelectorAll('a').forEach(link => {
+      if (link.href.includes('login.html') || link.href.includes('register.html')) {
+        link.remove();
+      }
+    });
+
+    // Add profile button
+    const profileLink = document.createElement('a');
+    profileLink.href = '#';
+    profileLink.innerHTML = `
+      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" style="height: 20px; vertical-align: middle; border-radius: 50%; margin-right: 5px;">
+      ${username}
+    `;
+    navbar.appendChild(profileLink);
+  }
+</script>
+
 </body>
 </html>
