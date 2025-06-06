@@ -5,73 +5,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your Cart - Cynx OSRS Services</title>
   <link rel="icon" href="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" type="image/webp">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     body {
       background-color: #0d112b;
       color: #fff;
       font-family: Arial, sans-serif;
-      padding: 2em;
+      margin: 0;
+      padding: 0;
     }
+
+    .navbar {
+      background-color: #1a1e3c;
+      padding: 1em;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .navbar a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 1em;
+    }
+
     h1 {
       color: #ffcc00;
       text-align: center;
+      margin-top: 20px;
     }
+
     .cart-container {
-      max-width: 800px;
-      margin: auto;
+      max-width: 900px;
+      margin: 30px auto;
       background-color: #1a1e3c;
       padding: 20px;
       border-radius: 10px;
     }
+
     .cart-item {
       display: flex;
       justify-content: space-between;
-      padding: 10px;
+      align-items: center;
+      padding: 12px 0;
       border-bottom: 1px solid #333;
     }
+
+    .cart-item span {
+      flex: 1;
+      text-align: center;
+    }
+
     .cart-total {
       text-align: right;
       font-weight: bold;
       margin-top: 20px;
+      font-size: 18px;
     }
+
     button {
-      padding: 8px 15px;
+      padding: 6px 12px;
       background-color: #ffcc00;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
     }
+
     button:hover {
       background-color: #ffd700;
     }
   </style>
 </head>
 <body>
+
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="skilling.html">Skilling</a>
+    <a href="pvm.html">PVM</a>
+    <a href="minigames.html">MiniGames</a>
+    <a href="accounts.html">Accounts</a>
+  </div>
+
   <h1>Your Cart</h1>
   <div class="cart-container" id="cartItems"></div>
   <div class="cart-total" id="cartTotal"></div>
 
   <script>
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-
     const container = document.getElementById('cartItems');
     const totalDiv = document.getElementById('cartTotal');
-    let total = 0;
+    let totalM = 0;
+    let totalUSD = 0;
 
-    cartItems.forEach((item, index) => {
-      const div = document.createElement('div');
-      div.className = 'cart-item';
-      div.innerHTML = `
-        <span>${item.name}</span>
-        <span>${item.price}M</span>
-        <button onclick="removeItem(${index})">Remove</button>
-      `;
-      container.appendChild(div);
-      total += parseFloat(item.price);
-    });
+    if (cartItems.length === 0) {
+      container.innerHTML = "<p style='text-align:center;'>Your cart is empty.</p>";
+    } else {
+      cartItems.forEach((item, index) => {
+        const priceM = (item.price / 1_000_000).toFixed(1);
+        const priceUSD = (item.price * 0.21 / 1_000_000).toFixed(2);
 
-    totalDiv.innerHTML = `Total: ${total.toFixed(2)}M`;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <span>${item.name}</span>
+          <span>${priceM}m</span>
+          <span>~$${priceUSD}</span>
+          <span><button onclick="removeItem(${index})">Remove</button></span>
+        `;
+        container.appendChild(div);
+
+        totalM += item.price / 1_000_000;
+        totalUSD += item.price * 0.21 / 1_000_000;
+      });
+
+      totalDiv.innerHTML = `Total: ${totalM.toFixed(1)}m (~$${totalUSD.toFixed(2)})`;
+    }
 
     function removeItem(index) {
       cartItems.splice(index, 1);
@@ -79,5 +128,53 @@
       location.reload();
     }
   </script>
+
+  <script>
+    const username = localStorage.getItem('username');
+    const navbar = document.querySelector('.navbar');
+
+    function createAuthButtons() {
+      const loginBtn = document.createElement('a');
+      loginBtn.href = 'login.html';
+      loginBtn.textContent = 'Login';
+
+      const registerBtn = document.createElement('a');
+      registerBtn.href = 'register.html';
+      registerBtn.textContent = 'Register';
+
+      navbar.appendChild(loginBtn);
+      navbar.appendChild(registerBtn);
+    }
+
+    if (username) {
+      // Remove login & register links if they exist
+      navbar.querySelectorAll('a').forEach(link => {
+        if (link.href.includes('login.html') || link.href.includes('register.html')) {
+          link.remove();
+        }
+      });
+
+      const profileLink = document.createElement('a');
+      profileLink.href = '#';
+      profileLink.innerHTML = `
+       <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" style="height: 20px; vertical-align: middle; border-radius: 50%; margin-right: 5px;">
+       ${username}
+      `;
+      navbar.appendChild(profileLink);
+
+      const logoutBtn = document.createElement('a');
+      logoutBtn.href = '#';
+      logoutBtn.textContent = 'Logout';
+      logoutBtn.style.marginLeft = '15px';
+      logoutBtn.onclick = () => {
+        localStorage.removeItem('username');
+        location.reload();
+      };
+      navbar.appendChild(logoutBtn);
+    } else {
+      createAuthButtons();
+    }
+  </script>
+
 </body>
 </html>
