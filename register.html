@@ -76,21 +76,27 @@
     <a href="login.html">Already have an account? Login</a>
   </div>
 
-  <script>
-    async function handleRegister(event) {
-      event.preventDefault();
-      const res = await fetch('https://backend-production-e0a6.up.railway.app/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          username: document.getElementById('registerUsername').value,
-          password: document.getElementById('registerPassword').value
-        })
-      });
+ <script>
+  async function handleRegister(event) {
+    event.preventDefault();
+    const res = await fetch('https://backend-production-e0a6.up.railway.app/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: document.getElementById('registerUsername').value,
+        password: document.getElementById('registerPassword').value
+      })
+    });
 
-      const text = await res.text();
+    const text = await res.text();
+    if (res.ok) {
+      localStorage.setItem('username', document.getElementById('registerUsername').value);
+      window.location.href = 'index.html';
+    } else {
       document.getElementById('registerMessage').textContent = text;
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
