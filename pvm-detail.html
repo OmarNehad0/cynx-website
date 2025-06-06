@@ -81,16 +81,25 @@
   </style>
 </head>
 <body>
-  <div class="navbar" id="navbar">
-    <a href="index.html">Home</a>
-    <a href="skilling.html">Skilling</a>
-    <a href="pvm.html">PVM</a>
-    <a href="minigames.html">MiniGames</a>
-    <a href="accounts.html">Accounts</a>
-    <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
-  </div>
+  <div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="skilling.html">Skilling</a>
+  <a href="pvm.html">PVM</a>
+  <a href="minigames.html">MiniGames</a>
+  <a href="accounts.html">Accounts</a>
+</div>
 
-  <div class="card-container" id="pvm-cards"></div>
+  <div id="chambers" class="card-container"></div>
+  <div id="dt2" class="card-container"></div>
+  <div id="firecapes" class="card-container"></div>
+  <div id="gwd" class="card-container"></div>
+  <div id="infernal-quivers" class="card-container"></div>
+  <div id="megascales" class="card-container"></div>
+  <div id="otherbosses" class="card-container"></div>
+  <div id="gauntlet" class="card-container"></div>
+  <div id="tob" class="card-container"></div>
+  <div id="tombs" class="card-container"></div>
+  <div id="wilderness" class="card-container"></div>
 
 
   <script>
@@ -277,7 +286,8 @@
   { name: "King Black Dragon (KBD) - w/Dragon Hunter Items", price: 350000, image: "https://oldschool.runescape.wiki/images/thumb/King_Black_Dragon_%28Christmas%29.png/290px-King_Black_Dragon_%28Christmas%29.png?a4b99" }
 ]
     };
-const containerMap = {
+
+    const containerMap = {
       'Chambers Of Xeric': 'chambers',
       'Desert Treasure 2 Bosses': 'dt2',
       'FireCapes': 'firecapes',
@@ -290,8 +300,14 @@ const containerMap = {
       'Tombs Of Amascuts': 'tombs',
       'Wilderness Bosses': 'wilderness'
     };
-   const container = document.getElementById("pvm-cards");
-    services.forEach((item, i) => {
+
+    if (data[file]) {
+      const containerId = containerMap[file];
+      const container = document.getElementById(containerId);
+      container.style.display = 'flex';
+      container.innerHTML = <div class='category-title'>${file}</div>;
+
+      services.forEach((item, i) => {
       const card = document.createElement("div");
       const itemId = `qty-${i}`;
       const priceM = (item.price / 1_000_000).toFixed(1);
@@ -311,8 +327,7 @@ const containerMap = {
       `;
       container.appendChild(card);
     });
-
-    function changeQty(id, delta) {
+ function changeQty(id, delta) {
       const input = document.getElementById(id);
       let val = parseInt(input.value) || 1;
       val = Math.max(1, val + delta);
@@ -325,44 +340,66 @@ const containerMap = {
       cart.push({ name, price, qty });
       localStorage.setItem("cart", JSON.stringify(cart));
       alert(`${qty} x ${name} added to cart.`);
+    
+
     }
   </script>
 <script>
-    const username = localStorage.getItem('username');
-    const navbar = document.getElementById('navbar');
+  const username = localStorage.getItem('username');
+  const navbar = document.querySelector('.navbar');
 
-    function createAuthLinks() {
-      const login = document.createElement('a');
-      login.href = 'login.html';
-      login.textContent = 'Login';
-      const register = document.createElement('a');
-      register.href = 'register.html';
-      register.textContent = 'Register';
-      navbar.appendChild(login);
-      navbar.appendChild(register);
-    }
+  function createAuthButtons() {
+    const loginBtn = document.createElement('a');
+    loginBtn.href = 'login.html';
+    loginBtn.textContent = 'Login';
 
-    if (username) {
-      navbar.querySelectorAll('a').forEach(link => {
-        if (link.href.includes('login') || link.href.includes('register')) link.remove();
-      });
+    const registerBtn = document.createElement('a');
+    registerBtn.href = 'register.html';
+    registerBtn.textContent = 'Register';
 
-      const profile = document.createElement('a');
-      profile.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" style="height:20px;vertical-align:middle;border-radius:50%;margin-right:5px;"> ${username}`;
-      navbar.appendChild(profile);
+    navbar.appendChild(loginBtn);
+    navbar.appendChild(registerBtn);
+  }
 
-      const logout = document.createElement('a');
-      logout.textContent = 'Logout';
-      logout.style.marginLeft = '10px';
-      logout.onclick = () => {
-        localStorage.removeItem('username');
-        location.reload();
-      };
-      navbar.appendChild(logout);
-    } else {
-      createAuthLinks();
-    }
-  </script>
+  if (username) {
+    // Remove login & register links if they exist
+    navbar.querySelectorAll('a').forEach(link => {
+      if (link.href.includes('login.html') || link.href.includes('register.html')) {
+        link.remove();
+      }
+    });
+
+    // Add profile button
+    const profileLink = document.createElement('a');
+    profileLink.href = '#';
+    profileLink.innerHTML = 
+      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" style="height: 20px; vertical-align: middle; border-radius: 50%; margin-right: 5px;">
+      ${username}
+    ;
+    navbar.appendChild(profileLink);
+
+    // Add logout button
+    const logoutBtn = document.createElement('a');
+    logoutBtn.href = '#';
+    logoutBtn.textContent = 'Logout';
+    logoutBtn.style.marginLeft = '15px';
+    logoutBtn.onclick = () => {
+      localStorage.removeItem('username');
+      location.reload(); // Triggers re-check and brings back login/register
+    };
+    navbar.appendChild(logoutBtn);
+  } else {
+    createAuthButtons(); // Show login/register
+  }
+</script>
+<script>
+  function addToCart(name, price) {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name, price });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(${name} added to cart!);
+  }
+</script>
 
 </body>
 </html>
