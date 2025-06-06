@@ -91,13 +91,13 @@ function changeQuantity(id, delta) {
   input.value = value;
 }
 
-  function addToCart(name, price) {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push({ name, price });
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${name} added to cart!`);
-
-  }
+  function addToCart(name, price, id) {
+  const quantity = parseInt(document.getElementById(id).value) || 1;
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.push({ name, price, quantity });
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(`${name} (x${quantity}) added to cart!`);
+}
 </script>
 
   <script>
@@ -300,37 +300,35 @@ function changeQuantity(id, delta) {
     };
 
     if (data[file]) {
-      const containerId = containerMap[file];
+  const containerId = containerMap[file];
+  const container = document.getElementById(containerId);
+  container.style.display = 'flex';
 
-      const container = document.getElementById(containerId);
-      container.style.display = 'flex';
-      
+  container.innerHTML = `<div class='category-title'>${file}</div>`;
 
-      container.innerHTML = `<div class='category-title'>${file}</div>`;
+  data[file].forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'service-card';
+    container.appendChild(card);
 
+    const priceM = (item.price / 1000000).toFixed(1);
+    const priceUSD = (item.price * 0.21 / 1000000).toFixed(2);
+    const itemId = item.name.replace(/\s+/g, '-') + '-' + Math.floor(Math.random() * 100000);
 
-      data[file].forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'service-card';
-        container.appendChild(card); // <<== Missing line
-const priceM = (item.price / 1000000).toFixed(1);
-const priceUSD = (item.price * 0.21 / 1000000).toFixed(2);
-const itemId = item.name.replace(/\s+/g, '-') + '-' + Math.floor(Math.random() * 100000);
+    card.innerHTML = `
+      <img src="${item.image}" alt="${item.name}">
+      <div class="service-name">${item.name}</div>
+      <div class="price">${priceM}m (~$${priceUSD})</div>
+      <div style="margin: 10px 0;">
+        <button onclick="changeQuantity('${itemId}', -1)">−</button>
+        <input id="${itemId}" type="number" value="1" min="1" style="width: 40px; text-align: center;" />
+        <button onclick="changeQuantity('${itemId}', 1)">+</button>
+      </div>
+      <button onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
+    `;
+  });
+}
 
-card.innerHTML = `
-  <img src="${item.image}" alt="${item.name}">
-  <div class="service-name">${item.name}</div>
-  <div class="price">${priceM}m (~$${priceUSD})</div>
-  <div style="margin: 10px 0;">
-    <button onclick="changeQuantity('${itemId}', -1)">−</button>
-    <input id="${itemId}" type="number" value="1" min="1" style="width: 40px; text-align: center;" />
-    <button onclick="changeQuantity('${itemId}', 1)">+</button>
-  </div>
-  <button onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
-`;
-
-
-    }
   </script>
 <script>
   const username = localStorage.getItem('username');
@@ -381,8 +379,6 @@ card.innerHTML = `
     createAuthButtons(); // Show login/register
   }
 </script>
-
-
 
 </body>
 </html>
