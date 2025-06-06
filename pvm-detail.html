@@ -290,17 +290,15 @@
       container.innerHTML = <div class='category-title'>${file}</div>;
 
       data[file].forEach(item => {
-  const card = document.createElement('div');
-  card.className = 'service-card';
-  card.innerHTML = `
-    <img src="${item.image}" alt="${item.name}">
-    <div class="service-name">${item.name}</div>
-    <div class="price">${(item.price / 1000000).toFixed(1)}m</div>
-    <button onclick="addToCart('${item.name}', ${item.price})">Add to Cart</button>
-  `;
-  container.appendChild(card);
-});
-
+        const card = document.createElement('div');
+        card.className = 'service-card';
+        card.innerHTML = 
+          <img src="${item.image}" alt="${item.name}">
+          <div class="service-name">${item.name}</div>
+          <div class="price">${(item.price / 1000000).toFixed(1)}m</div>
+        ;
+        container.appendChild(card);
+      });
     }
   </script>
 <script>
@@ -352,50 +350,13 @@
   }
 </script>
 <script>
-  function addToCart(name, price, quantityInputId) {
-    const quantity = parseInt(document.getElementById(quantityInputId).value);
-    if (quantity < 1) return alert("Quantity must be at least 1");
-
+  function addToCart(name, price) {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const existing = cart.find(item => item.name === name);
-
-    if (existing) {
-      existing.quantity += quantity;
-    } else {
-      cart.push({ name, price, quantity });
-    }
-
+    cart.push({ name, price });
     localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartLink();
-    alert(`${quantity} x ${name} added to cart!`);
+    alert(${name} added to cart!);
   }
-
-  function changeQuantity(id, change) {
-    const input = document.getElementById(id);
-    let value = parseInt(input.value) + change;
-    if (value < 1) value = 1;
-    input.value = value;
-  }
-
-  function updateCartLink() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-    let cartLink = document.getElementById("cart-link");
-    if (!cartLink) {
-      cartLink = document.createElement("a");
-      cartLink.href = "cart.html";
-      cartLink.id = "cart-link";
-      cartLink.style.marginLeft = "15px";
-      document.querySelector(".navbar").appendChild(cartLink);
-    }
-    cartLink.innerHTML = `🛒 Cart (${totalItems})`;
-  }
-
-  // Load cart item count on page load
-  updateCartLink();
 </script>
-
 
 </body>
 </html>
