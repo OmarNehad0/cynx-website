@@ -287,34 +287,28 @@
       const containerId = containerMap[file];
       const container = document.getElementById(containerId);
       container.style.display = 'flex';
-      container.innerHTML = `<div class='category-title'>${file}</div>`;
-
+      container.innerHTML = <div class='category-title'>${file}</div>;
 
       data[file].forEach((item, index) => {
   const card = document.createElement('div');
-  const itemId = qty-${index};
+  const itemId = `qty-${index}`;
   const priceM = (item.price / 1_000_000).toFixed(1);
   const priceUSD = (item.price * 0.21 / 1_000_000).toFixed(2);
 
   card.className = 'service-card';
   card.innerHTML = `
-  <img src="${item.image}" alt="${item.name}">
-  <div class="service-name">${item.name}</div>
-  <div class="price">${priceM}m (~$${priceUSD})</div>
-  <div style="margin: 10px 0;">
-    <button onclick="changeQuantity('${itemId}', -1)">−</button>
-    <input id="${itemId}" type="number" value="1" min="1" style="width: 40px; text-align: center;" />
-    <button onclick="changeQuantity('${itemId}', 1)">+</button>
-  </div>
-  <button onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
-`;
-
-
-  ;
+    <img src="${item.image}" alt="${item.name}">
+    <div class="service-name">${item.name}</div>
+    <div class="price">${priceM}m (~$${priceUSD})</div>
+    <div style="margin: 10px 0;">
+      <button onclick="changeQuantity('${itemId}', -1)">−</button>
+      <input id="${itemId}" type="number" value="1" min="1" style="width: 40px; text-align: center;" />
+      <button onclick="changeQuantity('${itemId}', 1)">+</button>
+    </div>
+    <button onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
+  `;
   container.appendChild(card);
 });
-
-
     }
   </script>
 <script>
@@ -366,23 +360,50 @@
   }
 </script>
 <script>
-function changeQuantity(id, delta) {
-  const input = document.getElementById(id);
-  let value = parseInt(input.value) || 1;
-  value = Math.max(1, value + delta);
-  input.value = value;
-}
-</script>
+  function addToCart(name, price, quantityInputId) {
+    const quantity = parseInt(document.getElementById(quantityInputId).value);
+    if (quantity < 1) return alert("Quantity must be at least 1");
 
-<script>
-  function addToCart(name, price) {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push({ name, price });
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${name} added to cart!`);
+    const existing = cart.find(item => item.name === name);
 
+    if (existing) {
+      existing.quantity += quantity;
+    } else {
+      cart.push({ name, price, quantity });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartLink();
+    alert(`${quantity} x ${name} added to cart!`);
   }
+
+  function changeQuantity(id, change) {
+    const input = document.getElementById(id);
+    let value = parseInt(input.value) + change;
+    if (value < 1) value = 1;
+    input.value = value;
+  }
+
+  function updateCartLink() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    let cartLink = document.getElementById("cart-link");
+    if (!cartLink) {
+      cartLink = document.createElement("a");
+      cartLink.href = "cart.html";
+      cartLink.id = "cart-link";
+      cartLink.style.marginLeft = "15px";
+      document.querySelector(".navbar").appendChild(cartLink);
+    }
+    cartLink.innerHTML = `🛒 Cart (${totalItems})`;
+  }
+
+  // Load cart item count on page load
+  updateCartLink();
 </script>
+
 
 </body>
 </html>
