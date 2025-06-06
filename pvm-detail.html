@@ -122,6 +122,110 @@
       font-weight: bold;
       margin-top: 5px;
     }
+.navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: rgba(10, 10, 30, 0.85);
+      padding: 12px 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+
+    .navbar a {
+      color: #ffcc00;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 10px 15px;
+      font-size: 18px;
+      position: relative;
+      transition: 0.3s;
+    }
+    .navbar a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 1em;
+  position: relative;
+}
+
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0%;
+      height: 2px;
+      background-color: #ffcc00;
+      transition: all 0.3s ease-in-out;
+      transform: translateX(-50%);
+    }
+
+    .navbar a:hover::after {
+      width: 100%;
+    }
+
+    .navbar a:hover {
+      background-color: rgba(255, 204, 0, 0.1);
+      border-radius: 6px;
+      padding: 8px 14px;
+      color: #fd0000;
+      box-shadow: 0 0 10px #ffcc00;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: gray;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media screen and (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+      }
+
+      .buttons a {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+        font-size: 16px;
+      }
+
+      ul.features {
+        padding: 0 20px;
+      }
+.auth-modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  padding: 20px;
+  border: 1px solid #ffcc00;
+  box-shadow: 0 0 15px #ffcc00;
+  z-index: 9999;
+  color: #fff;
+}
+.auth-modal input {
+  padding: 8px;
+  width: 90%;
+  margin: 10px 0;
+}
+.auth-buttons button {
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  margin: 0 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
   </style>
 </head>
 <body>
