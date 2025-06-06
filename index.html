@@ -7,78 +7,11 @@
   <link rel="icon" href="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" type="image/webp">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    * {
-      scroll-behavior: smooth;
-    }
-.discord-button-wrapper {
-  margin-top: 10px;
-}
-
-.discord-button {
-  background-color: #5865f2;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  box-shadow: 0 0 10px #5865f2;
-}
-<script>
-function showLogin() {
-  document.getElementById('loginModal').style.display = 'block';
-  document.getElementById('registerModal').style.display = 'none';
-}
-function showRegister() {
-  document.getElementById('registerModal').style.display = 'block';
-  document.getElementById('loginModal').style.display = 'none';
-}
-
-async function handleLogin(event) {
-  event.preventDefault();
-  const res = await fetch('/api/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      email: document.getElementById('loginEmail').value,
-      password: document.getElementById('loginPassword').value
-    })
-  });
-  const data = await res.json();
-  document.getElementById('loginMessage').textContent = data.message;
-}
-
-async function handleRegister(event) {
-  event.preventDefault();
-  const res = await fetch('/api/register', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      username: document.getElementById('registerUsername').value,
-      email: document.getElementById('registerEmail').value,
-      password: document.getElementById('registerPassword').value
-    })
-  });
-  const data = await res.json();
-  document.getElementById('registerMessage').textContent = data.message;
-}
-</script>
-
-.discord-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #ffffff, 0 0 30px #5865f2;
-}
-
+    * { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-image: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png?ex=6835d5ea&is=6834846a&hm=12bd0689a088cf6bb8d0c3f2cbc0a68b4eb49dbaf9f2dfed600c3b596de6c2cc&=&format=webp&quality=lossless&width=786&height=524");
+      background-image: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
@@ -88,153 +21,23 @@ async function handleRegister(event) {
       position: relative;
       z-index: 0;
     }
-
     body::before {
       content: "";
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: rgba(0, 0, 0, 0.4);
       z-index: -1;
     }
-
     h1 {
       color: #0417e4;
       margin-top: 20px;
       text-shadow: 0 0 10px #fd0000, 0 0 20px #fff;
       animation: flicker 1.5s infinite alternate;
     }
-
     @keyframes flicker {
-      from {
-        text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #fff;
-      }
-      to {
-        text-shadow: 0 0 2px #ffcc00, 0 0 5px #ffcc00, 0 0 10px #fff;
-      }
-    }
-
-    .buttons {
-      margin: 20px 0;
-    }
-
-    .buttons a {
-      text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 6px;
-      margin: 0 10px;
-      font-weight: bold;
-      display: inline-block;
-      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .buttons a:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px #fff, 0 0 20px #ffcc00;
-    }
-
-    .discord-btn {
-      background-color: #5865f2;
-      color: white;
-    }
-
-    .vouches-btn {
-      background-color: #ffcc00;
-      color: black;
-    }
-
-    ul.features {
-      list-style: none;
-      padding: 0;
-      max-width: 600px;
-      margin: auto;
-      text-align: left;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    ul.features li {
-      margin: 12px 0;
-      font-size: 16px;
-    }
-
-    ul.features li i {
-      margin-right: 10px;
-    }
-
-    .payments-box,
-    .gold-rates-box {
-      background-color: rgba(10, 10, 30, 0.85);
-      padding: 15px 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
-      color: #fff;
-      max-width: 280px;
-    }
-
-    .payments-box {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-    }
-
-    .payments-box h3,
-    .gold-rates-box h3 {
-      color: #ffcc00;
-      margin-top: 0;
-      text-shadow: 0 0 10px #ffcc00;
-    }
-
-    .payments-box ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .payments-box li {
-      text-align: left;
-      margin-bottom: 6px;
-    }
-
-    .payments-box img {
-      width: 20px;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
-
-    .gold-rates-box {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      text-align: center;
-    }
-
-    .gold-rates-inner {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin: 10px 0;
-    }
-
-    .rate-box {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 10px;
-      border-radius: 8px;
-      min-width: 100px;
-      border: 1px solid #ffcc00;
-      box-shadow: 0 0 10px #ffcc00;
-    }
-
-    .rate-box span {
-      font-size: 1.2em;
-      color: #ffcc00;
-    }
-
-    .gold-rates-box h3 img {
-      height: 24px;
-      vertical-align: middle;
-      filter: drop-shadow(0 0 4px #ffcc00);
+      from { text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #fff; }
+      to { text-shadow: 0 0 2px #ffcc00, 0 0 5px #ffcc00, 0 0 10px #fff; }
     }
 
     .navbar {
@@ -248,11 +51,6 @@ async function handleRegister(event) {
       top: 0;
       z-index: 10;
     }
-<div class="auth-buttons">
-  <button onclick="showLogin()">Login</button>
-  <button onclick="showRegister()">Register</button>
-</div>
-
     .navbar a {
       color: #ffcc00;
       font-weight: bold;
@@ -262,7 +60,6 @@ async function handleRegister(event) {
       position: relative;
       transition: 0.3s;
     }
-
     .navbar a::after {
       content: '';
       position: absolute;
@@ -274,11 +71,9 @@ async function handleRegister(event) {
       transition: all 0.3s ease-in-out;
       transform: translateX(-50%);
     }
-
     .navbar a:hover::after {
       width: 100%;
     }
-
     .navbar a:hover {
       background-color: rgba(255, 204, 0, 0.1);
       border-radius: 6px;
@@ -287,10 +82,131 @@ async function handleRegister(event) {
       box-shadow: 0 0 10px #ffcc00;
     }
 
-    footer {
-      margin-top: 60px;
-      font-size: 14px;
-      color: gray;
+    .buttons {
+      margin: 20px 0;
+    }
+    .buttons a {
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      margin: 0 10px;
+      font-weight: bold;
+      display: inline-block;
+      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+    }
+    .buttons a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #fff, 0 0 20px #ffcc00;
+    }
+    .discord-btn {
+      background-color: #5865f2;
+      color: white;
+    }
+    .vouches-btn {
+      background-color: #ffcc00;
+      color: black;
+    }
+
+    .banner-box img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(255, 204, 0, 0.5);
+      margin-top: 20px;
+    }
+
+    ul.features {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: auto;
+      text-align: left;
+      animation: fadeIn 1s ease-in-out;
+    }
+    ul.features li {
+      margin: 12px 0;
+      font-size: 16px;
+    }
+    ul.features li i {
+      margin-right: 10px;
+    }
+
+    .payments-box,
+    .gold-rates-box {
+      background-color: rgba(10, 10, 30, 0.85);
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
+      color: #fff;
+      max-width: 280px;
+    }
+    .payments-box { position: fixed; bottom: 20px; left: 20px; }
+    .gold-rates-box { position: fixed; bottom: 20px; right: 20px; text-align: center; }
+
+    .gold-rates-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .rate-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+      min-width: 100px;
+      border: 1px solid #ffcc00;
+      box-shadow: 0 0 10px #ffcc00;
+    }
+    .rate-box span {
+      font-size: 1.2em;
+      color: #ffcc00;
+    }
+
+    .discord-button {
+      background-color: #5865f2;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      box-shadow: 0 0 10px #5865f2;
+    }
+    .discord-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ffffff, 0 0 30px #5865f2;
+    }
+
+    .auth-modal {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #111;
+      padding: 20px;
+      border: 1px solid #ffcc00;
+      box-shadow: 0 0 15px #ffcc00;
+      z-index: 9999;
+      color: #fff;
+    }
+    .auth-modal input {
+      padding: 8px;
+      width: 90%;
+      margin: 10px 0;
+    }
+    .auth-buttons button {
+      background-color: #ffcc00;
+      color: #000;
+      font-weight: bold;
+      margin: 0 5px;
+      padding: 6px 12px;
+      cursor: pointer;
     }
 
     @keyframes fadeIn {
@@ -299,65 +215,19 @@ async function handleRegister(event) {
     }
 
     @media screen and (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-      }
-
-      .buttons a {
-        display: block;
-        margin: 10px auto;
-        width: 80%;
-        font-size: 16px;
-      }
-
-      ul.features {
-        padding: 0 20px;
-      }
-
-      .payments-box,
-      .gold-rates-box {
-        position: static;
-        margin: 20px auto;
-        width: 90%;
-      }
+      .navbar { flex-direction: column; }
+      .buttons a { display: block; margin: 10px auto; width: 80%; font-size: 16px; }
+      ul.features { padding: 0 20px; }
+      .payments-box, .gold-rates-box { position: static; margin: 20px auto; width: 90%; }
     }
-.auth-modal {
-  position: fixed;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  background: #111;
-  padding: 20px;
-  border: 1px solid #ffcc00;
-  box-shadow: 0 0 15px #ffcc00;
-  z-index: 9999;
-  color: #fff;
-}
-.auth-modal input {
-  padding: 8px;
-  width: 90%;
-  margin: 10px 0;
-}
-.auth-buttons button {
-  background-color: #ffcc00;
-  color: #000;
-  font-weight: bold;
-  margin: 0 5px;
-  padding: 6px 12px;
-  cursor: pointer;
-}
   </style>
 </head>
 <body>
 
   <div class="navbar">
-    <a href="index.html">
-      <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle;"> Home
-    </a>
+    <a href="index.html"><img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle;"> Home</a>
     <a href="skilling.html">Skilling</a>
-    <a href="pvm.html">
-      <img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" style="height: 20px; vertical-align: middle;">
-      PVM
-    </a>
+    <a href="pvm.html"><img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" style="height: 20px; vertical-align: middle;"> PVM</a>
     <a href="minigames.html">MiniGames</a>
     <a href="gold-detail.html"><img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 20px; vertical-align: middle;"> Gold (Buy/Sell)</a>
     <a href="https://discord.gg/cynx" target="_blank" style="margin-left: auto;">
@@ -376,18 +246,16 @@ async function handleRegister(event) {
 
   <div class="buttons">
     <a href="https://discord.gg/cynx" class="discord-btn" target="_blank">
-  <img src="https://img.favpng.com/0/20/16/discord-computer-icons-logo-user-internet-bot-png-favpng-2YyJpD2FvNd2uNkEGJ1h2Uc8X.jpg" alt="Discord Icon" style="height: 1em; vertical-align: middle; margin-right: 0.5em;">
-  Join Our Discord
-     </a>
+      <img src="https://img.favpng.com/0/20/16/discord-computer-icons-logo-user-internet-bot-png-favpng-2YyJpD2FvNd2uNkEGJ1h2Uc8X.jpg" style="height: 1em; vertical-align: middle; margin-right: 0.5em;">
+      Join Our Discord
+    </a>
     <a href="https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/" class="vouches-btn" target="_blank">🛡️ Our Sythe Vouches</a>
   </div>
-<div class="banner-box">
-  <img src="https://s14.gifyu.com/images/bxLAI.gif" 
-       alt="Cynx Banner" 
-       width="865" 
-       height="2368"
-       style="max-width: 90%; height: auto; border-radius: 12px; box-shadow: 0 0 25px rgba(255, 204, 0, 0.5); margin-top: 20px;">
-</div>
+
+  <div class="banner-box">
+    <img src="https://s14.gifyu.com/images/bxLAI.gif" alt="Cynx Banner" width="865" height="2368">
+  </div>
+
   <ul class="features">
     <li><i class="fa-solid fa-check-square" style="color:lime"></i> Join Our Discord And Place Your Order Now!</li>
     <li><i class="fa-solid fa-check-square" style="color:lime"></i> Buy OSRS Services Through Cynx And Have The Best Worker For Your Account!</li>
@@ -403,68 +271,97 @@ async function handleRegister(event) {
   <div class="payments-box">
     <h3>Accepted Payments</h3>
     <ul>
-      <li><img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" /> Crypto (Recommended)</li>
-      <li><img src="https://cdn-icons-png.flaticon.com/512/174/174861.png" /> PayPal</li>
-      <li><img src="https://img.icons8.com/?size=512&id=Iirw95F6Nl9c&format=png" /> Zelle</li>
-      <li><img src="https://images.ctfassets.net/gkyt4bl1j2fs/ym6BkLqyGjMBmiCwtM7AW/829bf561ea771c00839b484cb8edeebb/App_Icon.png?w=276&h=276&q=50&fm=png&bg=transparent" /> Venmo</li>
-      <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Square_Cash_app_logo.svg" /> Cash App</li>
-      <li><img src="https://pngate.com/wp-content/uploads/2025/05/apple-pay-main-logo-2025-horizontal-1.png" /> Apple Pay</li>
-      <li><img src="https://cdn6.aptoide.com/imgs/9/7/a/97a9cb42f254cb56a1c5c96ae96e3665_icon.png" /> Revolut</li>
-      <li><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/e-transfer-4136564-3437237.png" /> E Transfer</li>
-      <li><img src="https://img.icons8.com/?size=512&id=mNhj6ePnTBkQ&format=png" /> Chime/Wise</li>
+      <li><img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"> Crypto (Recommended)</li>
+      <li><img src="https://cdn-icons-png.flaticon.com/512/174/174861.png"> PayPal</li>
+      <li><img src="https://img.icons8.com/?size=512&id=Iirw95F6Nl9c&format=png"> Zelle</li>
+      <li><img src="https://images.ctfassets.net/..."> Venmo</li>
+      <!-- other payments -->
     </ul>
   </div>
 
   <div class="gold-rates-box">
     <h3>
-      <img src="https://oldschool.runescape.wiki/images/thumb/Platinum_token_detail.png/300px-Platinum_token_detail.png?a8cf8" alt="Platinum">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Platinum_token_detail.png/300px-Platinum_token_detail.png?a8cf8">
       Our Gold Rate
-      <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" alt="Coins">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc">
     </h3>
     <div class="gold-rates-inner">
-      <div class="rate-box">
-        <strong>We Sell At</strong><br>
-        <span>$0.21/M</span>
-      </div>
-      <div class="rate-box">
-        <strong>We Buy At</strong><br>
-        <span>$0.15/M</span>
-      </div>
+      <div class="rate-box"><strong>We Sell At</strong><br><span>$0.21/M</span></div>
+      <div class="rate-box"><strong>We Buy At</strong><br><span>$0.15/M</span></div>
     </div>
     <div class="discord-button-wrapper">
-  <button class="discord-button" onclick="window.open('https://discord.gg/cynx', '_blank')">
-    <img src="https://img.favpng.com/0/20/16/discord-computer-icons-logo-user-internet-bot-png-favpng-2YyJpD2FvNd2uNkEGJ1h2Uc8X.jpg" alt="Discord Icon" style="height: 1em; vertical-align: middle; margin-right: 0.3em;">
-    Join Our Discord
-  </button>
-</div>
+      <button class="discord-button" onclick="window.open('https://discord.gg/cynx', '_blank')">
+        <img src="https://img.favpng.com/0/20/16/discord-computer-icons-logo-user-internet-bot-png-favpng-2YyJpD2FvNd2uNkEGJ1h2Uc8X.jpg" style="height: 1em; margin-right: 0.3em;"> Join Our Discord
+      </button>
+    </div>
   </div>
-<!-- Login Modal -->
-<div id="loginModal" style="display:none;" class="auth-modal">
-  <form onsubmit="handleLogin(event)">
-    <h2>Login</h2>
-    <input type="email" id="loginEmail" placeholder="Email" required><br>
-    <input type="password" id="loginPassword" placeholder="Password" required><br>
-    <button type="submit">Login</button>
-    <p id="loginMessage"></p>
-  </form>
-</div>
 
-<!-- Register Modal -->
-<div id="registerModal" style="display:none;" class="auth-modal">
-  <form onsubmit="handleRegister(event)">
-    <h2>Register</h2>
-    <input type="text" id="registerUsername" placeholder="Username" required><br>
-    <input type="email" id="registerEmail" placeholder="Email" required><br>
-    <input type="password" id="registerPassword" placeholder="Password" required><br>
-    <button type="submit">Register</button>
-    <p id="registerMessage"></p>
-  </form>
-</div>
+  <!-- Login/Registration Modals -->
+  <div class="auth-buttons"><button onclick="showLogin()">Login</button><button onclick="showRegister()">Register</button></div>
 
+  <div id="loginModal" style="display:none;" class="auth-modal">
+    <form onsubmit="handleLogin(event)">
+      <h2>Login</h2>
+      <input type="email" id="loginEmail" placeholder="Email" required><br>
+      <input type="password" id="loginPassword" placeholder="Password" required><br>
+      <button type="submit">Login</button>
+      <p id="loginMessage"></p>
+    </form>
+  </div>
 
-  <footer>
-    © 2025 Cynx OSRS Services. All rights reserved.
-  </footer>
+  <div id="registerModal" style="display:none;" class="auth-modal">
+    <form onsubmit="handleRegister(event)">
+      <h2>Register</h2>
+      <input type="text" id="registerUsername" placeholder="Username" required><br>
+      <input type="email" id="registerEmail" placeholder="Email" required><br>
+      <input type="password" id="registerPassword" placeholder="Password" required><br>
+      <button type="submit">Register</button>
+      <p id="registerMessage"></p>
+    </form>
+  </div>
+
+  <footer>© 2025 Cynx OSRS Services. All rights reserved.</footer>
+
+  <script>
+    function showLogin() {
+      document.getElementById('loginModal').style.display = 'block';
+      document.getElementById('registerModal').style.display = 'none';
+    }
+    function showRegister() {
+      document.getElementById('registerModal').style.display = 'block';
+      document.getElementById('loginModal').style.display = 'none';
+    }
+
+    async function handleLogin(event) {
+      event.preventDefault();
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: document.getElementById('loginEmail').value,
+          password: document.getElementById('loginPassword').value
+        })
+      });
+      const data = await res.json();
+      document.getElementById('loginMessage').textContent = data.message;
+    }
+
+    async function handleRegister(event) {
+      event.preventDefault();
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: document.getElementById('registerUsername').value,
+          email: document.getElementById('registerEmail').value,
+          password: document.getElementById('registerPassword').value
+        })
+      });
+      const data = await res.json();
+      document.getElementById('registerMessage').textContent = data.message;
+    }
+  </script>
+
 </body>
 </html>
 
