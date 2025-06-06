@@ -30,6 +30,45 @@
   margin: 0 auto;
   box-shadow: 0 0 10px #5865f2;
 }
+<script>
+function showLogin() {
+  document.getElementById('loginModal').style.display = 'block';
+  document.getElementById('registerModal').style.display = 'none';
+}
+function showRegister() {
+  document.getElementById('registerModal').style.display = 'block';
+  document.getElementById('loginModal').style.display = 'none';
+}
+
+async function handleLogin(event) {
+  event.preventDefault();
+  const res = await fetch('/api/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: document.getElementById('loginEmail').value,
+      password: document.getElementById('loginPassword').value
+    })
+  });
+  const data = await res.json();
+  document.getElementById('loginMessage').textContent = data.message;
+}
+
+async function handleRegister(event) {
+  event.preventDefault();
+  const res = await fetch('/api/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      username: document.getElementById('registerUsername').value,
+      email: document.getElementById('registerEmail').value,
+      password: document.getElementById('registerPassword').value
+    })
+  });
+  const data = await res.json();
+  document.getElementById('registerMessage').textContent = data.message;
+}
+</script>
 
 .discord-button:hover {
   transform: scale(1.05);
@@ -209,6 +248,10 @@
       top: 0;
       z-index: 10;
     }
+<div class="auth-buttons">
+  <button onclick="showLogin()">Login</button>
+  <button onclick="showRegister()">Register</button>
+</div>
 
     .navbar a {
       color: #ffcc00;
@@ -278,6 +321,30 @@
         width: 90%;
       }
     }
+.auth-modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  padding: 20px;
+  border: 1px solid #ffcc00;
+  box-shadow: 0 0 15px #ffcc00;
+  z-index: 9999;
+  color: #fff;
+}
+.auth-modal input {
+  padding: 8px;
+  width: 90%;
+  margin: 10px 0;
+}
+.auth-buttons button {
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  margin: 0 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
   </style>
 </head>
 <body>
@@ -371,27 +438,29 @@
   </button>
 </div>
   </div>
-<form id="registerForm">
-  <input type="text" id="username" placeholder="Username" required />
-  <input type="password" id="password" placeholder="Password" required />
-  <button type="submit">Register</button>
-</form>
+<!-- Login Modal -->
+<div id="loginModal" style="display:none;" class="auth-modal">
+  <form onsubmit="handleLogin(event)">
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email" required><br>
+    <input type="password" id="loginPassword" placeholder="Password" required><br>
+    <button type="submit">Login</button>
+    <p id="loginMessage"></p>
+  </form>
+</div>
 
-<script>
-  document.getElementById('registerForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    
-    const res = await fetch('https://your-backend.vercel.app/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
-    });
-    
-    alert(await res.text());
-  });
-</script>
+<!-- Register Modal -->
+<div id="registerModal" style="display:none;" class="auth-modal">
+  <form onsubmit="handleRegister(event)">
+    <h2>Register</h2>
+    <input type="text" id="registerUsername" placeholder="Username" required><br>
+    <input type="email" id="registerEmail" placeholder="Email" required><br>
+    <input type="password" id="registerPassword" placeholder="Password" required><br>
+    <button type="submit">Register</button>
+    <p id="registerMessage"></p>
+  </form>
+</div>
+
 
   <footer>
     © 2025 Cynx OSRS Services. All rights reserved.
