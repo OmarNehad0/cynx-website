@@ -289,6 +289,7 @@
       container.style.display = 'flex';
       container.innerHTML = `<div class='category-title'>${file}</div>`;
 
+
       data[file].forEach((item, index) => {
   const card = document.createElement('div');
   const itemId = qty-${index};
@@ -305,7 +306,9 @@
     <input id="${itemId}" type="number" value="1" min="1" style="width: 40px; text-align: center;" />
     <button onclick="changeQuantity('${itemId}', 1)">+</button>
   </div>
-  <button onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>`;
+  <button onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
+`;
+
 
   ;
   container.appendChild(card);
@@ -362,6 +365,15 @@
     createAuthButtons(); // Show login/register
   }
 </script>
+<script>
+function changeQuantity(id, delta) {
+  const input = document.getElementById(id);
+  let value = parseInt(input.value) || 1;
+  value = Math.max(1, value + delta);
+  input.value = value;
+}
+</script>
+
 <script>
   function addToCart(name, price) {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
