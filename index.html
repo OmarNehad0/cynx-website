@@ -410,8 +410,21 @@
   const username = localStorage.getItem('username');
   const navbar = document.querySelector('.navbar');
 
+  function createAuthButtons() {
+    const loginBtn = document.createElement('a');
+    loginBtn.href = 'login.html';
+    loginBtn.textContent = 'Login';
+
+    const registerBtn = document.createElement('a');
+    registerBtn.href = 'register.html';
+    registerBtn.textContent = 'Register';
+
+    navbar.appendChild(loginBtn);
+    navbar.appendChild(registerBtn);
+  }
+
   if (username) {
-    // Remove login/register links
+    // Remove login & register links if they exist
     navbar.querySelectorAll('a').forEach(link => {
       if (link.href.includes('login.html') || link.href.includes('register.html')) {
         link.remove();
@@ -426,8 +439,22 @@
       ${username}
     `;
     navbar.appendChild(profileLink);
+
+    // Add logout button
+    const logoutBtn = document.createElement('a');
+    logoutBtn.href = '#';
+    logoutBtn.textContent = 'Logout';
+    logoutBtn.style.marginLeft = '15px';
+    logoutBtn.onclick = () => {
+      localStorage.removeItem('username');
+      location.reload(); // Triggers re-check and brings back login/register
+    };
+    navbar.appendChild(logoutBtn);
+  } else {
+    createAuthButtons(); // Show login/register
   }
 </script>
+
 
   <footer>
     © 2025 Cynx OSRS Services. All rights reserved.
