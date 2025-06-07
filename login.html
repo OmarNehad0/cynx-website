@@ -23,6 +23,56 @@
       background: rgba(0, 0, 0, 0.4);
       z-index: -1;
     }
+/* Dropdown wrapper */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Main PVM button */
+.dropbtn {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 1em;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Dropdown content: hidden by default */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1a1e3c;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+/* Each link in the dropdown */
+.dropdown-content a {
+  color: #ffcc00;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Show dropdown when hovering on .dropdown */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: # rgba(10, 10, 30, 0.85);
+      padding: 12px 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
     .container {
       max-width: 400px;
       margin: 10% auto;
@@ -65,6 +115,52 @@
   </style>
 </head>
 <body>
+<div class="navbar">
+  <a href="index.html">
+    <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle;">
+    Home
+  </a>
+
+  <div class="dropdown">
+    <a href="pvm.html" class="dropbtn">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" style="height: 20px; vertical-align: middle; margin-right: 5px;">
+      PVM ▾
+    </a>
+    <div class="dropdown-content">
+      <a href="skilling.html">
+        <img src="https://oldschool.runescape.wiki/images/Stats_icon.png?1b467" style="height: 18px; vertical-align: middle; margin-right: 5px;">
+        Skilling
+      </a>
+      <a href="minigames.html">
+        <img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f" style="height: 18px; vertical-align: middle; margin-right: 5px;">
+        MiniGames
+      </a>
+      <a href="quests.html">
+        <img src="https://oldschool.runescape.wiki/images/thumb/Quests.png/260px-Quests.png?f5120" style="height: 18px; vertical-align: middle; margin-right: 5px;">
+        Quests
+      </a>
+      <a href="iron.html">
+        <img src="https://oldschool.runescape.wiki/images/thumb/Ironman_chat_badge.png/50px-Ironman_chat_badge.png?b927b" style="height: 18px; vertical-align: middle; margin-right: 5px;">
+        Iron/HCIM
+      </a>
+      <a href="diaries.html">
+        <img src="https://oldschool.runescape.wiki/images/thumb/Diary_icon.png/40px-Diary_icon.png?d193e" style="height: 18px; vertical-align: middle; margin-right: 5px;">
+        Diaries
+      </a>
+      <a href="bundles.html">
+        <img src="https://oldschool.runescape.wiki/images/thumb/Stack_of_coins_5.png/240px-Stack_of_coins_5.png?c10f3" style="height: 18px; vertical-align: middle; margin-right: 5px;">
+        Bundles
+      </a>
+    </div>
+  </div>
+
+  <a href="gold-detail.html">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 20px; vertical-align: middle;">
+    Gold (Buy/Sell)
+  </a>
+  <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+</div>
+
   <div class="container">
     <h2>Login</h2>
     <form onsubmit="handleLogin(event)">
