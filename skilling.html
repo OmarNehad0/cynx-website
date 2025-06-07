@@ -297,7 +297,7 @@ function addToCart(skill, method, price) {
   const totalXp = XP_TABLE[end] - XP_TABLE[start];
   let alternatives = '';
 for (const method of methods) {
-  if (method.req > start) continue;
+
 
   const cost = (totalXp * method.gpxp) / 1_000_000;
   const usd = cost * EXCHANGE_RATE;
