@@ -251,12 +251,11 @@ const skillMethods = {
   let breakdown = '';
   let totalCost = 0;
 
-  // Build cheapest path
+  // 🔹 Build cheapest path
   while (currentLevel < end) {
     const valid = methods.filter(m => m.req <= currentLevel);
     const cheapest = valid.sort((a, b) => a.gpxp - b.gpxp)[0];
 
-    // Find next method level OR cap at end level
     const nextLevel = Math.min(
       ...methods
         .filter(m => m.req > currentLevel)
@@ -271,40 +270,51 @@ const skillMethods = {
     totalCost += cost;
 
     breakdown += `
-      <div style="margin-bottom:10px;">
-        <b>Level ${currentLevel} → ${levelTo}</b>: ${cheapest.title}<br>
-        XP: ${xpChunk.toLocaleString()}<br>
-        Cost: <b>${cost.toFixed(2)}M</b> (~$${usd.toFixed(2)})
+      <div style="background-color: rgba(255,255,255,0.08); padding: 10px; border-left: 4px solid #ffcc00; margin-bottom: 10px; border-radius: 6px;">
+        <b style="color:#ffd700;">Level ${currentLevel} → ${levelTo}</b>: ${cheapest.title}<br>
+        <span style="color:#ccc;">XP:</span> ${xpChunk.toLocaleString()} &nbsp;&nbsp; 
+        <span style="color:#ccc;">Cost:</span> <b>${cost.toFixed(2)}M</b> (~$${usd.toFixed(2)})
       </div>
     `;
 
     currentLevel = levelTo;
   }
 
-  let alternatives = '';
+  // 🔹 Display total cost after the breakdown
+  breakdown += `
+    <div style="margin-top: 15px; background-color: rgba(0,0,0,0.6); padding: 12px; border: 2px solid #00ff91; border-radius: 8px;">
+      <h3 style="color:#00ff91; margin: 0;">💰 Total Cost (Cheapest Path)</h3>
+      <p style="font-size: 1.2em; margin: 8px 0;">
+        <b>${totalCost.toFixed(2)}M</b> GP &nbsp;&nbsp; (~$${(totalCost * EXCHANGE_RATE).toFixed(2)})
+      </p>
+    </div>
+  `;
+
+  // 🔹 All alternative methods
   const totalXp = XP_TABLE[end] - XP_TABLE[start];
+  let alternatives = '';
   for (const method of methods) {
     if (method.req > start) continue;
     const cost = (totalXp * method.gpxp) / 1_000_000;
     const usd = cost * EXCHANGE_RATE;
     alternatives += `
-      <div style="margin-bottom:6px;">
+      <div style="background-color: rgba(255,255,255,0.05); padding: 10px; border-left: 3px solid #aaa; border-radius: 5px; margin-bottom: 8px;">
         <b>${method.title}</b> (${method.gpxp} gp/xp)<br>
-        Full cost: ${cost.toFixed(2)}M (~$${usd.toFixed(2)})
+        <span style="color:#ccc;">Full Cost:</span> ${cost.toFixed(2)}M (~$${usd.toFixed(2)})
       </div>
     `;
   }
 
+  // 🔹 Display final output
   document.getElementById("resultBox").innerHTML = `
-    <h3>📈 Cheapest Method Breakdown</h3>
+    <h3 style="color:#ffd700;">📈 Cheapest Method Breakdown</h3>
     ${breakdown}
     <hr style="margin: 20px 0;">
-    <h3>🧪 Full Alternative Methods</h3>
+    <h3 style="color:#67b3ff;">🧪 Full Alternative Methods</h3>
     ${alternatives}
-    <hr style="margin: 20px 0;">
-    <b>Total GP: ${totalCost.toFixed(2)}M</b> (~$${(totalCost * EXCHANGE_RATE).toFixed(2)})
   `;
 }
+
 
   </script>
 </body>
