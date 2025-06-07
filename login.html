@@ -7,14 +7,17 @@
   <link rel="icon" href="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" type="image/webp">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    body {
+   body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-image: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png?ex=6835d5ea&is=6834846a&hm=12bd0689a088cf6bb8d0c3f2cbc0a68b4eb49dbaf9f2dfed600c3b596de6c2cc&=&format=webp&quality=lossless&width=786&height=524");
+      background-image: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png?ex=6835d5ea&is=6834846a&hm=12bd0689a088cf6bb8d0c3f2cbc0a68b4eb49dbaf9f2dfed600c3b596de6c2cc&=&format=webp&quality=lossless");
       background-size: cover;
       background-attachment: fixed;
       background-position: center;
+      background-repeat: no-repeat;
       color: #f8f9fa;
+      text-align: center;
+      position: relative;
     }
     body::before {
       content: "";
@@ -72,6 +75,39 @@
       position: sticky;
       top: 0;
       z-index: 10;
+    }
+ .navbar a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0%;
+      height: 2px;
+      background-color: #ffcc00;
+      transition: all 0.3s ease-in-out;
+      transform: translateX(-50%);
+    }
+
+    .navbar a:hover::after {
+      width: 100%;
+    }
+ .navbar a:hover::after {
+      width: 100%;
+    }
+
+    .navbar a:hover {
+      background-color: rgba(255, 204, 0, 0.1);
+      border-radius: 6px;
+      padding: 8px 14px;
+      color: #fd0000;
+      box-shadow: 0 0 10px #ffcc00;
+    }
+h1 {
+      margin: 30px 0 10px;
+      font-size: 2em;
+      color: #0417e4;
+      text-shadow: 0 0 10px #fd0000, 0 0 20px #fff;
+      animation: flicker 1.5s infinite alternate;
     }
     .container {
       max-width: 400px;
