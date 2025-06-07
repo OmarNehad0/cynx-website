@@ -125,6 +125,24 @@
       text-shadow: 0 0 10px #fd0000, 0 0 20px #fff;
       animation: flicker 1.5s infinite alternate;
     }
+.add-to-cart-btn {
+  background: linear-gradient(90deg, #ffcc00, #ffaa00);
+  border: none;
+  color: black;
+  font-weight: bold;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 0 10px #ffcc00;
+  transition: 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background: linear-gradient(90deg, #ffaa00, #ff6600);
+  box-shadow: 0 0 15px #ff6600, 0 0 5px #ffcc00;
+  transform: scale(1.05);
+}
 
     .skill-grid {
       display: flex;
@@ -135,18 +153,20 @@
     }
 
     .skill-box {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 15px;
-      border-radius: 10px;
-      width: 120px;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+  background: linear-gradient(135deg, #ffcc00, #ffd700);
+  padding: 15px;
+  border-radius: 10px;
+  width: 120px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+  border: 1px solid #fff4b3;
+}
+.skill-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #fff700, 0 0 10px #ffd700;
+}
 
-    .skill-box:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #ffcc00;
-    }
 
     .skill-box img {
       width: 40px;
@@ -154,10 +174,13 @@
     }
 
     .skill-box span {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #000; /* Contrast with gold background */
+  text-shadow: 0 0 3px #ffffff99;
+}
+
 
     .details-box {
       max-width: 500px;
@@ -401,7 +424,8 @@ function addToCart(skill, method, price) {
       <p style="font-size: 1.2em; margin: 8px 0;">
         <b>${totalCost.toFixed(2)}M</b> GP &nbsp;&nbsp; (~$${(totalCost * EXCHANGE_RATE).toFixed(2)})
       </p>
-      <button onclick="addToCart('${skillName}', 'Cheapest Path', ${totalCost.toFixed(2)})">Add Cheapest Plan to Cart</button>
+      <button class="add-to-cart-btn" onclick="addToCart('${skillName}', 'Cheapest Path', ${totalCost.toFixed(2)})">Add Cheapest Plan to Cart</button>
+
     </div>
   `;
 
@@ -418,7 +442,8 @@ for (const method of methods) {
     <div style="background-color: rgba(255,255,255,0.05); padding: 10px; border-left: 3px solid #aaa; border-radius: 5px; margin-bottom: 8px;">
       <b>${method.title}</b> (${method.gpxp} gp/xp)<br>
       <span style="color:#ccc;">Full Cost:</span> ${cost.toFixed(2)}M (~$${usd.toFixed(2)})<br>
-      <button onclick="addToCart('${skillName}', '${method.title} (${start}-${end})', ${cost.toFixed(2)})">Add to Cart</button>
+      <button class="add-to-cart-btn" onclick="addToCart('${skillName}', '${method.title} (${start}-${end})', ${cost.toFixed(2)})">Add to Cart</button>
+
     </div>
   `;
 }
