@@ -300,10 +300,20 @@ function addGoldToCart() {
       price: amount * 1000000 // store as millions like other services
     };
 
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const priceInM = parseFloat(document.getElementById('sellAmount').value);
+    if (!isNaN(priceInM)) {
+    const item = {
+    name: `${priceInM}M Gold`,
+    price: priceInM, // Already in M, not raw GP
+    type: 'gold'
+    };
+
+     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.push(item);
     localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${totalInM}M added to cart successfully!`);
+    alert("Gold added to cart!");
+    }
+
 
     // Optional: redirect to cart
     // window.location.href = 'cart.html';
