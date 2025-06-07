@@ -1,102 +1,215 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>Skills Calculator - Cynx OSRS</title> <link rel="icon" href="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" type="image/webp"> <style> body { background: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png") no-repeat center center fixed; background-size: cover; color: white; font-family: Arial, sans-serif; margin: 0; padding: 0; }
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: -1;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skilling Calculator</title>
+  <link rel="icon" href="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" type="image/webp">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      background: url('https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      color: #f8f9fa;
+      margin: 0;
+      text-align: center;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      background-color: rgba(10, 10, 30, 0.85);
+      padding: 1em;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .navbar a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 15px;
+      transition: 0.3s;
+    }
+
+    .navbar a:hover {
+      color: #fd0000;
+      text-shadow: 0 0 10px #ffcc00;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 2.5em;
+      color: #ffcc00;
+      text-shadow: 0 0 15px #fd0000;
+    }
+
+    .skill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .skill-box {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 15px;
+      border-radius: 10px;
+      width: 120px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .skill-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ffcc00;
+    }
+
+    .skill-box img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .skill-box span {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .details-box {
+      max-width: 500px;
+      background-color: rgba(0,0,0,0.7);
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #ffcc00;
+    }
+
+    input[type="number"] {
+      width: 80px;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #ffcc00;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ffd700;
+      box-shadow: 0 0 10px #ffffff;
+    }
+
+    .result-box {
+      margin-top: 20px;
+      background-color: rgba(0,0,0,0.6);
+      padding: 15px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="pvm.html">PVM</a>
+    <a href="minigames.html">Minigames</a>
+    <a href="quests.html">Quests</a>
+    <a href="gold-detail.html">Gold (Buy/Sell)</a>
+    <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+  </div>
+
+  <h1>🛠️ OSRS Skilling Calculator</h1>
+
+  <div class="skill-grid" id="skillGrid"></div>
+
+  <div class="details-box" id="skillDetails">
+    <h2>Agility</h2>
+    <img src="https://oldschool.runescape.wiki/images/8/86/Agility_icon.png?389e0" width="40" /><br>
+    <label>Current Level:</label>
+    <input type="number" id="currentLevel" value="1" min="1" max="98">
+    <label>Target Level:</label>
+    <input type="number" id="targetLevel" value="99" min="2" max="99"><br>
+    <button onclick="calculateSkill()">Calculate</button>
+    <div class="result-box" id="resultBox"></div>
+  </div>
+
+  <script>
+    const skills = [
+      { name: "Agility", icon: "https://oldschool.runescape.wiki/images/8/86/Agility_icon.png?389e0" },
+      { name: "Cooking", icon: "https://oldschool.runescape.wiki/images/d/dc/Cooking_icon.png" },
+      { name: "Fishing", icon: "https://oldschool.runescape.wiki/images/3/3b/Fishing_icon.png?15a98" },
+      { name: "Herblore", icon: "https://oldschool.runescape.wiki/images/0/03/Herblore_icon.png?ffa9e" }
+    ];
+const XP_TABLE = {
+  1: 0, 2: 83, 3: 174, 4: 276, 5: 388, 6: 512, 7: 650, 8: 801, 9: 969, 10: 1154,
+  11: 1358, 12: 1584, 13: 1833, 14: 2107, 15: 2411, 16: 2746, 17: 3115, 18: 3523,
+  19: 3973, 20: 4470, 21: 5018, 22: 5624, 23: 6291, 24: 7028, 25: 7842, 26: 8740,
+  27: 9730, 28: 10824, 29: 12031, 30: 13363, 31: 14833, 32: 16456, 33: 18247,
+  34: 20224, 35: 22406, 36: 24815, 37: 27473, 38: 30399, 39: 33648, 40: 37224,
+  41: 41171, 42: 45529, 43: 50339, 44: 55649, 45: 61512, 46: 67983, 47: 75127,
+  48: 83014, 49: 91721, 50: 101333, 51: 111945, 52: 123660, 53: 136594,
+  54: 150872, 55: 166636, 56: 184040, 57: 203254, 58: 224466, 59: 247886,
+  60: 273742, 61: 302288, 62: 333804, 63: 368599, 64: 407015, 65: 449428,
+  66: 496254, 67: 547953, 68: 605032, 69: 668051, 70: 737627, 71: 814445,
+  72: 899257, 73: 992895, 74: 1096278, 75: 1210421, 76: 1336443, 77: 1475581,
+  78: 1629200, 79: 1798808, 80: 1986068, 81: 2192818, 82: 2421087, 83: 2673114,
+  84: 2951373, 85: 3258594, 86: 3597792, 87: 3972294, 88: 4385776, 89: 4842295,
+  90: 5346332, 91: 5902831, 92: 6517253, 93: 7195629, 94: 7944614, 95: 8771558,
+  96: 9684577, 97: 10692629, 98: 11805606, 99: 13034431
+};
+
+    const skillGrid = document.getElementById("skillGrid");
+    const skillDetails = document.getElementById("skillDetails");
+
+    skills.forEach(skill => {
+      const box = document.createElement("div");
+      box.className = "skill-box";
+      box.innerHTML = `<img src="${skill.icon}" alt="${skill.name}"><span>${skill.name}</span>`;
+      box.onclick = () => {
+        skillDetails.querySelector("h2").textContent = skill.name;
+        skillDetails.querySelector("img").src = skill.icon;
+      };
+      skillGrid.appendChild(box);
+    });
+
+    function calculateSkill() {
+  const start = parseInt(document.getElementById("currentLevel").value);
+  const end = parseInt(document.getElementById("targetLevel").value);
+
+  if (start >= end || start < 1 || end > 99) {
+    alert("Invalid level range");
+    return;
+  }
+
+  const xpToTarget = XP_TABLE[end] - XP_TABLE[start];
+  const costM = (xpToTarget * 1.5 / 1e6).toFixed(2);  // 1.5 gp/xp → millions
+  const usd = (costM * 0.21).toFixed(2);              // $0.21 per 1m
+
+  document.getElementById("resultBox").innerHTML =
+    `Required XP: <b>${xpToTarget.toLocaleString()}</b><br>
+     Estimated Cost: <b>${costM}m (~$${usd})</b>`;
 }
 
-.navbar {
-  display: flex;
-  justify-content: center;
-  background: rgba(10, 10, 30, 0.85);
-  padding: 15px 0;
-  flex-wrap: wrap;
-}
-
-.navbar a {
-  color: #ffcc00;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 0 15px;
-}
-
-h1 {
-  text-align: center;
-  color: #ffcc00;
-  margin-top: 20px;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 15px;
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 0 15px;
-}
-
-.skill-box {
-  background: #1a1e3c;
-  padding: 10px;
-  text-align: center;
-  border: 2px solid #ffcc00;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.skill-box:hover {
-  box-shadow: 0 0 15px #ffcc00;
-  background: #2a2e4c;
-}
-
-.skill-box img {
-  height: 40px;
-  margin-bottom: 5px;
-}
-
-.calculator-box {
-  max-width: 600px;
-  margin: 30px auto;
-  background: rgba(26, 30, 60, 0.95);
-  padding: 20px;
-  border-radius: 12px;
-  border: 2px solid #ffcc00;
-  text-align: center;
-}
-
-.calculator-box input {
-  padding: 10px;
-  width: 80px;
-  margin: 10px;
-  font-size: 16px;
-  text-align: center;
-  border-radius: 6px;
-  border: none;
-}
-
-.calculator-box button {
-  padding: 10px 20px;
-  background-color: #ffcc00;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.calculator-box button:hover {
-  background-color: #ffd700;
-}
-
-#result {
-  margin-top: 20px;
-  background: #111;
-  padding: 15px;
-  border-radius: 10px;
-  color: #00ffcc;
-}
-</style> </head> <body> <div class="navbar"> <a href="index.html"> <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle;"> Home </a> <a href="pvm.html">PVM</a> <a href="skilling.html">Skilling</a> <a href="minigames.html">Minigames</a> <a href="quests.html">Quests</a> <a href="gold-detail.html">Gold Rates</a> </div> <h1>OSRS Skill Calculator</h1> <div class="skills-grid" id="skillsGrid"> <!-- Dynamically filled via JS --> </div> <div class="calculator-box"> <h2 id="selectedSkill">Agility</h2> <input type="number" id="startLevel" placeholder="Start Lv" min="1" max="98"> <input type="number" id="endLevel" placeholder="End Lv" min="2" max="99"> <br/> <button onclick="calculateSkill()">Calculate</button> <div id="result"></div> </div> <script> const skills = [ { name: "Agility", icon: "https://oldschool.runescape.wiki/images/Agility_icon.png" }, { name: "Fishing", icon: "https://oldschool.runescape.wiki/images/Fishing_icon.png" }, { name: "Mining", icon: "https://oldschool.runescape.wiki/images/Mining_icon.png" }, { name: "Smithing", icon: "https://oldschool.runescape.wiki/images/Smithing_icon.png" }, { name: "Cooking", icon: "https://oldschool.runescape.wiki/images/Cooking_icon.png" }, { name: "Thieving", icon: "https://oldschool.runescape.wiki/images/Thieving_icon.png" }, { name: "Herblore", icon: "https://oldschool.runescape.wiki/images/Herblore_icon.png" }, { name: "Fletching", icon: "https://oldschool.runescape.wiki/images/Fletching_icon.png" }, { name: "Firemaking", icon: "https://oldschool.runescape.wiki/images/Firemaking_icon.png" }, { name: "Crafting", icon: "https://oldschool.runescape.wiki/images/Crafting_icon.png" }, { name: "Prayer", icon: "https://oldschool.runescape.wiki/images/Prayer_icon.png" }, { name: "Runecrafting", icon: "https://oldschool.runescape.wiki/images/Runecraft_icon.png" } ]; const skillsGrid = document.getElementById("skillsGrid"); const selectedSkillHeader = document.getElementById("selectedSkill"); let selectedSkill = "Agility"; skills.forEach(skill => { const box = document.createElement("div"); box.className = "skill-box"; box.onclick = () => { selectedSkill = skill.name; selectedSkillHeader.textContent = skill.name; document.getElementById("result").innerHTML = ''; }; box.innerHTML = ` <img src="${skill.icon}" alt="${skill.name}" /> <div>${skill.name}</div> `; skillsGrid.appendChild(box); }); function calculateSkill() { const start = parseInt(document.getElementById("startLevel").value); const end = parseInt(document.getElementById("endLevel").value); if (isNaN(start) || isNaN(end) || start < 1 || end > 99 || start >= end) { document.getElementById("result").innerHTML = "❌ Invalid levels. Must be between 1 and 99."; return; } // Placeholder for actual calculations document.getElementById("result").innerHTML = ` 📊 Calculating for <b>${selectedSkill}</b> from level <b>${start}</b> to <b>${end}</b>...<br> (Methods and pricing will be shown here after you provide data) `; } </script> </body> </html>
+  </script>
+</body>
+</html>
