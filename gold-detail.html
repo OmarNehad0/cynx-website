@@ -276,7 +276,30 @@
         result.textContent = '';
       }
     }
+function addGoldToCart() {
+    const amount = parseFloat(document.getElementById('sellAmount').value);
+    if (isNaN(amount) || amount <= 0) {
+      alert("Please enter a valid amount in M");
+      return;
+    }
 
+    const pricePerM = 0.21;
+    const totalPrice = (amount * pricePerM).toFixed(2);
+    const totalInM = amount.toFixed(1);
+
+    const item = {
+      name: `OSRS GP (${totalInM}M)`,
+      price: amount * 1000000 // store as millions like other services
+    };
+
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(item);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${totalInM}M added to cart successfully!`);
+
+    // Optional: redirect to cart
+    // window.location.href = 'cart.html';
+  }
     function calculateBuy() {
       const amount = parseFloat(document.getElementById('buyAmount').value);
       const result = document.getElementById('buyResult');
