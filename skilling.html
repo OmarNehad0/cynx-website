@@ -1,0 +1,102 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>Skills Calculator - Cynx OSRS</title> <link rel="icon" href="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" type="image/webp"> <style> body { background: url("https://media.discordapp.net/attachments/1208792947232079955/1376397072512847962/osrs_background_for_imgur.png") no-repeat center center fixed; background-size: cover; color: white; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  background: rgba(10, 10, 30, 0.85);
+  padding: 15px 0;
+  flex-wrap: wrap;
+}
+
+.navbar a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 15px;
+}
+
+h1 {
+  text-align: center;
+  color: #ffcc00;
+  margin-top: 20px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+.skill-box {
+  background: #1a1e3c;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #ffcc00;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.skill-box:hover {
+  box-shadow: 0 0 15px #ffcc00;
+  background: #2a2e4c;
+}
+
+.skill-box img {
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+.calculator-box {
+  max-width: 600px;
+  margin: 30px auto;
+  background: rgba(26, 30, 60, 0.95);
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px solid #ffcc00;
+  text-align: center;
+}
+
+.calculator-box input {
+  padding: 10px;
+  width: 80px;
+  margin: 10px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 6px;
+  border: none;
+}
+
+.calculator-box button {
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.calculator-box button:hover {
+  background-color: #ffd700;
+}
+
+#result {
+  margin-top: 20px;
+  background: #111;
+  padding: 15px;
+  border-radius: 10px;
+  color: #00ffcc;
+}
+</style> </head> <body> <div class="navbar"> <a href="index.html"> <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle;"> Home </a> <a href="pvm.html">PVM</a> <a href="skilling.html">Skilling</a> <a href="minigames.html">Minigames</a> <a href="quests.html">Quests</a> <a href="gold-detail.html">Gold Rates</a> </div> <h1>OSRS Skill Calculator</h1> <div class="skills-grid" id="skillsGrid"> <!-- Dynamically filled via JS --> </div> <div class="calculator-box"> <h2 id="selectedSkill">Agility</h2> <input type="number" id="startLevel" placeholder="Start Lv" min="1" max="98"> <input type="number" id="endLevel" placeholder="End Lv" min="2" max="99"> <br/> <button onclick="calculateSkill()">Calculate</button> <div id="result"></div> </div> <script> const skills = [ { name: "Agility", icon: "https://oldschool.runescape.wiki/images/Agility_icon.png" }, { name: "Fishing", icon: "https://oldschool.runescape.wiki/images/Fishing_icon.png" }, { name: "Mining", icon: "https://oldschool.runescape.wiki/images/Mining_icon.png" }, { name: "Smithing", icon: "https://oldschool.runescape.wiki/images/Smithing_icon.png" }, { name: "Cooking", icon: "https://oldschool.runescape.wiki/images/Cooking_icon.png" }, { name: "Thieving", icon: "https://oldschool.runescape.wiki/images/Thieving_icon.png" }, { name: "Herblore", icon: "https://oldschool.runescape.wiki/images/Herblore_icon.png" }, { name: "Fletching", icon: "https://oldschool.runescape.wiki/images/Fletching_icon.png" }, { name: "Firemaking", icon: "https://oldschool.runescape.wiki/images/Firemaking_icon.png" }, { name: "Crafting", icon: "https://oldschool.runescape.wiki/images/Crafting_icon.png" }, { name: "Prayer", icon: "https://oldschool.runescape.wiki/images/Prayer_icon.png" }, { name: "Runecrafting", icon: "https://oldschool.runescape.wiki/images/Runecraft_icon.png" } ]; const skillsGrid = document.getElementById("skillsGrid"); const selectedSkillHeader = document.getElementById("selectedSkill"); let selectedSkill = "Agility"; skills.forEach(skill => { const box = document.createElement("div"); box.className = "skill-box"; box.onclick = () => { selectedSkill = skill.name; selectedSkillHeader.textContent = skill.name; document.getElementById("result").innerHTML = ''; }; box.innerHTML = ` <img src="${skill.icon}" alt="${skill.name}" /> <div>${skill.name}</div> `; skillsGrid.appendChild(box); }); function calculateSkill() { const start = parseInt(document.getElementById("startLevel").value); const end = parseInt(document.getElementById("endLevel").value); if (isNaN(start) || isNaN(end) || start < 1 || end > 99 || start >= end) { document.getElementById("result").innerHTML = "❌ Invalid levels. Must be between 1 and 99."; return; } // Placeholder for actual calculations document.getElementById("result").innerHTML = ` 📊 Calculating for <b>${selectedSkill}</b> from level <b>${start}</b> to <b>${end}</b>...<br> (Methods and pricing will be shown here after you provide data) `; } </script> </body> </html>
