@@ -262,12 +262,6 @@
   <div id="wilderness" class="card-container"></div>
 
 <script>
-function updateQuantity(id, delta) {
-    const qtyElem = document.getElementById(`qty-${id}`);
-    let qty = parseInt(qtyElem.textContent);
-    qty = Math.max(1, qty + delta);
-    qtyElem.textContent = qty;
-  }
   function changeQuantity(id, delta) {
     const input = document.getElementById(id);
     let qty = parseInt(input.value);
@@ -507,16 +501,16 @@ function updateQuantity(id, delta) {
     const itemId = item.name.replace(/\s+/g, '-') + '-' + Math.floor(Math.random() * 100000);
 
     card.innerHTML = `
-      <img src="${item.image}" alt="${item.name}">
-      <div class="service-name">${item.name}</div>
-      <div class="price">${priceM}m (~$${priceUSD})</div>
-      <div style="margin: 10px 0;">
-        <button onclick="changeQuantity('${itemId}', -1)">−</button>
-        <input id="${itemId}" type="number" value="1" min="1" style="width: 40px; text-align: center;" />
-        <button onclick="changeQuantity('${itemId}', 1)">+</button>
-      </div>
-      <button onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
-    `;
+  <img src="${item.image}" alt="${item.name}">
+  <div class="service-name">${item.name}</div>
+  <div class="price">${priceM}m (~$${priceUSD})</div>
+  <div style="margin: 10px 0;">
+    <button onclick="changeQuantity('${itemId}', -1)">−</button>
+    <input id="${itemId}" type="number" value="1" min="1" style="width: 40px; text-align: center;" />
+    <button onclick="changeQuantity('${itemId}', 1)">+</button>
+  </div>
+  <button onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
+`;
   });
 }
 
