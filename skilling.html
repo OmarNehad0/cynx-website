@@ -175,7 +175,7 @@
 }
 
     .skill-box {
-  background-color: rgba(255, 204, 0, 0.15); /* light gold */
+  background-color: rgba(50, 40, 0, 0.7); /* darker gold tone */
   padding: 15px;
   border-radius: 10px;
   width: 120px;
@@ -319,7 +319,56 @@
       { name: "Agility", icon: "https://oldschool.runescape.wiki/images/8/86/Agility_icon.png?389e0" },
       { name: "Cooking", icon: "https://oldschool.runescape.wiki/images/d/dc/Cooking_icon.png" },
       { name: "Fishing", icon: "https://oldschool.runescape.wiki/images/3/3b/Fishing_icon.png?15a98" },
-      { name: "Herblore", icon: "https://oldschool.runescape.wiki/images/0/03/Herblore_icon.png?ffa9e" }
+      { name: "Herblore", icon: "https://oldschool.runescape.wiki/images/0/03/Herblore_icon.png?ffa9e" },
+      { name: "Construction", icon: "https://oldschool.runescape.wiki/images/f/f6/Construction_icon.png?f9bf7" },
+      { name: "Crafting", icon: "https://oldschool.runescape.wiki/images/c/cf/Crafting_icon.png?a1f71" },
+      { name: "Farming", icon: "https://oldschool.runescape.wiki/images/f/fc/Farming_icon.png?558fa" },
+      { name: "Firemaking", icon: "https://oldschool.runescape.wiki/images/9/9b/Firemaking_icon.png?45ea0" },
+      { name: "Fletching", icon: "https://oldschool.runescape.wiki/images/9/93/Fletching_icon.png?15cda" },
+      {
+    name: "Hunter",
+    icon: "https://oldschool.runescape.wiki/images/d/dd/Hunter_icon.png?8762f"
+  },
+  {
+    name: "Magic",
+    icon: "https://oldschool.runescape.wiki/images/5/5c/Magic_icon.png?334cf"
+  },
+  {
+    name: "Melee",
+    icon: "https://oldschool.runescape.wiki/images/Melee.png?0a53d"
+  },
+  {
+    name: "Mining",
+    icon: "https://oldschool.runescape.wiki/images/4/4a/Mining_icon.png?00870"
+  },
+  {
+    name: "Prayer",
+    icon: "https://oldschool.runescape.wiki/images/f/f2/Prayer_icon.png?ca0dc"
+  },
+  {
+    name: "Ranged",
+    icon: "https://oldschool.runescape.wiki/images/1/19/Ranged_icon.png?01b0e"
+  },
+  {
+    name: "Runecrafting",
+    icon: "https://oldschool.runescape.wiki/images/6/63/Runecraft_icon.png?c278c"
+  },
+  {
+    name: "Slayer",
+    icon: "https://oldschool.runescape.wiki/images/2/28/Slayer_icon.png?cd34f"
+  },
+  {
+    name: "Smithing",
+    icon: "https://oldschool.runescape.wiki/images/d/dd/Smithing_icon.png?d26c5"
+  },
+  {
+    name: "Thieving",
+    icon: "https://oldschool.runescape.wiki/images/4/4a/Thieving_icon.png?973fe"
+  },
+  {
+    name: "Woodcutting",
+    icon: "https://oldschool.runescape.wiki/images/f/f4/Woodcutting_icon.png?6ead4"
+  }
     ];
 const XP_TABLE = {
   1: 0, 2: 83, 3: 174, 4: 276, 5: 388, 6: 512, 7: 650, 8: 801, 9: 969, 10: 1154,
@@ -375,7 +424,142 @@ const skillMethods = {
     { title: "Super Energy Potion", gpxp: 75, req: 52 },
     { title: "Super Restore Potion", gpxp: 65, req: 63 },
     { title: "Saradomin Brew", gpxp: 55, req: 81 }
-  ]
+  ],
+  "Construction": [
+    { title: "Any type", gpxp: 120, req: 1 },
+    { title: "Oak Larders Without Butler", gpxp: 160, req: 33 },
+    { title: "Oak Larders With Butler", gpxp: 100, req: 50 },
+    { title: "Mahogany Tables", gpxp: 60, req: 52 },
+    { title: "Teak Garden Bench", gpxp: 85, req: 66 },
+    { title: "Mahogany Homes", gpxp: 500, req: 1 },
+    { title: "Mahogany Homes", gpxp: 350, req: 20 },
+    { title: "Mahogany Homes", gpxp: 280, req: 50 },
+    { title: "Mahogany Homes", gpxp: 200, req: 70 }
+  ],
+  "Crafting": [
+    { title: "Leather/Gems", gpxp: 170, req: 1 },
+    { title: "Molten Glasses (irons) With (Gathering)", gpxp: 600, req: 1 },
+    { title: "Molten Glasses (irons) (Without Gathering)", gpxp: 300, req: 1 },
+    { title: "Molten Glasses (irons) With (Gathering)", gpxp: 500, req: 46 },
+    { title: "Molten Glasses (irons) With (Without Gathering)", gpxp: 260, req: 46 },
+    { title: "Battlestaves", gpxp: 120, req: 54 },
+    { title: "Molten Glasses (irons) With (Gathering)", gpxp: 400, req: 87 },
+    { title: "Molten Glasses (irons) With Without (Gathering)", gpxp: 200, req: 87 }
+  ],
+  "Farming": [
+    { title: "Best Tree Seeds", gpxp: 160, req: 1 },
+    { title: "Tree Runs + Fruit Tree Runs", gpxp: 120, req: 45 },
+    { title: "Tree Runs + Fruit Tree Runs", gpxp: 100, req: 75 },
+    { title: "Tithe Farm Using Golovanova Seeds", gpxp: 290, req: 34 },
+    { title: "Tithe Farm Using Bologano Seeds", gpxp: 250, req: 54 },
+    { title: "Tithe Farm Using Logavano Seeds", gpxp: 200, req: 74 }
+  ],
+  "Firemaking": [
+    { title: "Burning Best Logs", gpxp: 150, req: 1 },
+    { title: "Burning Best Logs", gpxp: 100, req: 1 },
+    { title: "Wintertodt (No Fletching)", gpxp: 60, req: 50 },
+    { title: "Wintertodt (With Fletching)", gpxp: 70, req: 50 }
+  ],
+  "Fletching": [
+    { title: "Best Method", gpxp: 120, req: 1 },
+    { title: "Mithril Darts", gpxp: 35, req: 52 },
+    { title: "Adamant Darts", gpxp: 30, req: 67 },
+    { title: "Rune Darts", gpxp: 25, req: 81 }
+  ],
+  "Hunter": [
+    { title: "Starter Method", gpxp: 550, req: 1 },
+    { title: "Swamp Lizards", gpxp: 290, req: 29 },
+    { title: "Orange Salamanders", gpxp: 250, req: 47 },
+    { title: "Red Salamanders", gpxp: 210, req: 59 },
+    { title: "Manacial Monkey MM2 Required", gpxp: 180, req: 60 },
+    { title: "Red chinchompas With Diary", gpxp: 180, req: 63 },
+    { title: "Red chinchompas Without Diary", gpxp: 280, req: 63 },
+    { title: "Black Salamanders", gpxp: 130, req: 67 },
+    { title: "Black Chinchompas", gpxp: 280, req: 73 },
+    { title: "Herbiboar With Stamina", gpxp: 270, req: 80 },
+    { title: "Herbiboar Without Stamina", gpxp: 320, req: 80 }
+  ],
+  "Magic": [
+    { title: "Sand crabs", gpxp: 170, req: 1 },
+    { title: "High Alchemy", gpxp: 100, req: 55 },
+    { title: "Humidify", gpxp: 170, req: 68 },
+    { title: "Nightmare Zone", gpxp: 160, req: 70 },
+    { title: "Bursting (MM1 Tunnels)", gpxp: 100, req: 70 },
+    { title: "Bursting (MM2 Tunnels)", gpxp: 80, req: 70 }
+  ],
+  "Melee": [
+    { title: "Sand Crabs - Mains", gpxp: 170, req: 1 },
+    { title: "Sand Crabs - Mains", gpxp: 120, req: 50 },
+    { title: "NMZ Prayer/Absorption - Mains", gpxp: 110, req: 60 },
+    { title: "Sand Crabs - Pures/Zerkers", gpxp: 200, req: 1 },
+    { title: "Sand Crabs - Pures/Zerkers", gpxp: 160, req: 50 },
+    { title: "NMZ Prayer/Absorption - Pures/Zerkers", gpxp: 120, req: 60 },
+    { title: "Sand Crabs - Obby", gpxp: 600, req: 1 },
+    { title: "Sand Crabs - Obby", gpxp: 500, req: 50 },
+    { title: "Sand Crabs - Obby", gpxp: 400, req: 60 },
+    { title: "Sand Crabs - Obby", gpxp: 320, req: 70 }
+  ],
+  "Mining": [
+    { title: "Copper/Tin", gpxp: 550, req: 1 },
+    { title: "Iron Ore Power Mining", gpxp: 220, req: 15 },
+    { title: "Motherlode Mine", gpxp: 200, req: 35 },
+    { title: "Motherlode Mine", gpxp: 180, req: 72 },
+    { title: "Motherlode Mine (Upper Level)", gpxp: 160, req: 72 }
+  ],
+  "Prayer": [
+    { title: "Ecto", gpxp: 110, req: 1 },
+    { title: "Chaos Altar Using Any Bones", gpxp: 130, req: 1 },
+    { title: "Gilded Altar Using Dragon Bones", gpxp: 80, req: 1 },
+    { title: "Gilded Altar Using Superior Dragon Bones", gpxp: 75, req: 70 }
+  ],
+  "Ranged": [
+    { title: "Sand Crabs Low Level", gpxp: 200, req: 1 },
+    { title: "Sand Crabs Higher Level", gpxp: 150, req: 60 },
+    { title: "Cannon Only Low Level", gpxp: 250, req: 1 },
+    { title: "Cannon Only Higher Level", gpxp: 200, req: 50 },
+    { title: "Cannon With Best Ranged Weapon Low Level", gpxp: 150, req: 1 },
+    { title: "Cannon With Best Ranged Weapon Higher Level", gpxp: 130, req: 50 },
+    { title: "NMZ (Prayer/Absorption)", gpxp: 130, req: 60 },
+    { title: "Chinning - MM1 Tunnels", gpxp: 85, req: 70 },
+    { title: "Chinning - MM2 Tunnels", gpxp: 65, req: 70 }
+  ],
+  "Runecrafting": [
+    { title: "Library", gpxp: 300, req: 1 },
+    { title: "Any/Best Runes", gpxp: 400, req: 1 },
+    { title: "ZMI", gpxp: 250, req: 1 },
+    { title: "Lava Runes Using Magic Imbue", gpxp: 3000, req: 23 },
+    { title: "Lava Runes Without Magic Imbue", gpxp: 350, req: 23 },
+    { title: "Guardian of The Rift Low Level", gpxp: 220, req: 27 },
+    { title: "Guardian of The Rift Higher Level", gpxp: 210, req: 77 },
+    { title: "Blood/Soul Runes", gpxp: 180, req: 77 }
+  ],
+  "Slayer": [
+  { title: "Stats Below 70's With Low Tier Gear", gpxp: 420, req: 1 },
+  { title: "Stats 70-85 With High Tier Gear", gpxp: 280, req: 1 },
+  { title: "Stats 85+ With Top Tier Gear", gpxp: 200, req: 1 }
+  ],
+  "Smithing": [
+  { title: "Best Bars", gpxp: 100, req: 1 },
+  { title: "Darts/Knives", gpxp: 300, req: 40 },
+  { title: "Best Platebodies", gpxp: 120, req: 40 },
+  { title: "Goldsmith Gauntlets", gpxp: 70, req: 40 }
+],
+"Thieving": [
+  { title: "Starter Method", gpxp: 400, req: 1 },
+  { title: "Fastest Method", gpxp: 250, req: 25 },
+  { title: "Ardy Knights (55-75) With Diary", gpxp: 150, req: 55 },
+  { title: "Ardy Knights (75-95) With Diary", gpxp: 130, req: 75 },
+  { title: "Ardy Knights (95-99) With Diary", gpxp: 80, req: 95 },
+  { title: "Ardy Knights (55-75) Without Diary", gpxp: 150, req: 55 },
+  { title: "Ardy Knights (75-95) Without Diary", gpxp: 125, req: 75 },
+  { title: "Ardy Knights (95-99) Without Diary", gpxp: 100, req: 95 }
+],
+"Woodcutting": [
+  { title: "Starter Method Best Trees", gpxp: 300, req: 1 },
+  { title: "Teak Trees", gpxp: 150, req: 35 },
+  { title: "Redwood Trees", gpxp: 100, req: 90 }
+]
+
 };
     const skillGrid = document.getElementById("skillGrid");
     const skillDetails = document.getElementById("skillDetails");
