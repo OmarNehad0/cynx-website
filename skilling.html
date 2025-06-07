@@ -209,7 +209,7 @@ const skillMethods = {
     { title: "Barb Fishing (70)", gpxp: 200, req: 70 }
   ],
   "Herblore": [
-    { title: "Best Potion", gpxp: 240, req: 3 },
+    { title: "Best Potion", gpxp: 240, req: 1 },
     { title: "Prayer Potion", gpxp: 95, req: 38 },
     { title: "Super Energy Potion", gpxp: 75, req: 52 },
     { title: "Super Restore Potion", gpxp: 65, req: 63 },
@@ -231,10 +231,12 @@ const skillMethods = {
     });
 function addToCart(skill, method, price) {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push({ skill, method, price });
+  const itemName = `${skill} - ${method}`;
+  cart.push({ name: itemName, price });
   localStorage.setItem("cart", JSON.stringify(cart));
-  alert(`${skill} - ${method} added to cart for ${price}M!`);
+  alert(`${itemName} added to cart for ${price}M!`);
 }
+
 
     function calculateSkill() {
   const start = parseInt(document.getElementById("currentLevel").value);
@@ -294,19 +296,20 @@ function addToCart(skill, method, price) {
   // 🧪 Alternatives
   const totalXp = XP_TABLE[end] - XP_TABLE[start];
   let alternatives = '';
-  for (const method of methods) {
-    if (method.req > start) continue;
-    const cost = (totalXp * method.gpxp) / 1_000_000;
-    const usd = cost * EXCHANGE_RATE;
+for (const method of methods) {
+  if (method.req > start) continue;
 
-    alternatives += `
-      <div style="background-color: rgba(255,255,255,0.05); padding: 10px; border-left: 3px solid #aaa; border-radius: 5px; margin-bottom: 8px;">
-        <b>${method.title}</b> (${method.gpxp} gp/xp)<br>
-        <span style="color:#ccc;">Full Cost:</span> ${cost.toFixed(2)}M (~$${usd.toFixed(2)})<br>
-        <button onclick="addToCart('${skillName}', '${method.title}', ${cost.toFixed(2)})">Add to Cart</button>
-      </div>
-    `;
-  }
+  const cost = (totalXp * method.gpxp) / 1_000_000;
+  const usd = cost * EXCHANGE_RATE;
+
+  alternatives += `
+    <div style="background-color: rgba(255,255,255,0.05); padding: 10px; border-left: 3px solid #aaa; border-radius: 5px; margin-bottom: 8px;">
+      <b>${method.title}</b> (${method.gpxp} gp/xp)<br>
+      <span style="color:#ccc;">Full Cost:</span> ${cost.toFixed(2)}M (~$${usd.toFixed(2)})<br>
+      <button onclick="addToCart('${skillName}', '${method.title} (${start}-${end})', ${cost.toFixed(2)})">Add to Cart</button>
+    </div>
+  `;
+}
 
   document.getElementById("resultBox").innerHTML = `
     <h3 style="color:#ffd700;">📈 Cheapest Method Breakdown</h3>
