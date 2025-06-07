@@ -177,7 +177,45 @@ const XP_TABLE = {
   90: 5346332, 91: 5902831, 92: 6517253, 93: 7195629, 94: 7944614, 95: 8771558,
   96: 9684577, 97: 10692629, 98: 11805606, 99: 13034431
 };
+const EXCHANGE_RATE = 0.21;
 
+const skillMethods = {
+  "Agility": [
+    { title: "Gnome Stronghold Course", gpxp: 1500, req: 1 },
+    { title: "Alkharid Rooftop Course", gpxp: 1300, req: 20 },
+    { title: "Varrock Rooftop Course", gpxp: 1200, req: 30 },
+    { title: "Canifis Rooftop Course", gpxp: 500, req: 40 },
+    { title: "Falador Rooftop Course", gpxp: 350, req: 50 },
+    { title: "Seers Rooftop Course Without Teleport", gpxp: 350, req: 60 },
+    { title: "Seers Rooftop Course With Teleport", gpxp: 300, req: 60 },
+    { title: "Pollnivneach Rooftop Course", gpxp: 250, req: 70 },
+    { title: "Prifddinas Agility Course", gpxp: 190, req: 75 },
+    { title: "Rellekka Rooftop Course With Teleport", gpxp: 170, req: 80 },
+    { title: "Ardougne Rooftop Course", gpxp: 140, req: 90 }
+  ],
+  "Cooking": [
+    { title: "Best Fish", gpxp: 160, req: 1 },
+    { title: "Cooking Fish Without Cooking Gauntlets", gpxp: 200, req: 35 },
+    { title: "Wines", gpxp: 65, req: 35 },
+    { title: "Cooking Fish With Cooking Gauntlets", gpxp: 140, req: 68 }
+  ],
+  "Fishing": [
+    { title: "Power Fishing", gpxp: 350, req: 1 },
+    { title: "Tempoross - Regular Harpoon", gpxp: 400, req: 35 },
+    { title: "Tempoross - Dragon/Crystal Harpoon", gpxp: 370, req: 35 },
+    { title: "Tempoross - Infernal Harpoon", gpxp: 350, req: 35 },
+    { title: "Minnows", gpxp: 260, req: 82 },
+    { title: "Barb Fishing (48)", gpxp: 220, req: 48 },
+    { title: "Barb Fishing (70)", gpxp: 200, req: 70 }
+  ],
+  "Herblore": [
+    { title: "Best Potion", gpxp: 240, req: 3 },
+    { title: "Prayer Potion", gpxp: 95, req: 38 },
+    { title: "Super Energy Potion", gpxp: 75, req: 52 },
+    { title: "Super Restore Potion", gpxp: 65, req: 63 },
+    { title: "Saradomin Brew", gpxp: 55, req: 81 }
+  ]
+};
     const skillGrid = document.getElementById("skillGrid");
     const skillDetails = document.getElementById("skillDetails");
 
@@ -195,6 +233,7 @@ const XP_TABLE = {
     function calculateSkill() {
   const start = parseInt(document.getElementById("currentLevel").value);
   const end = parseInt(document.getElementById("targetLevel").value);
+  const selectedSkill = document.querySelector("#skillDetails h2").innerText;
 
   if (start >= end || start < 1 || end > 99) {
     alert("Invalid level range");
@@ -202,11 +241,20 @@ const XP_TABLE = {
   }
 
   const xpToTarget = XP_TABLE[end] - XP_TABLE[start];
-  const costM = (xpToTarget * 1.5 / 1e6).toFixed(2);  // 1.5 gp/xp → millions
-  const usd = (costM * 0.21).toFixed(2);              // $0.21 per 1m
+  const methods = skillMethods[selectedSkill];
+  if (!methods) {
+    alert("No methods found for this skill.");
+    return;
+  }
+
+  const bestMethod = methods.filter(m => m.req <= start).sort((a, b) => a.gpxp - b.gpxp)[0];
+  const costM = (xpToTarget * bestMethod.gpxp / 1_000_000).toFixed(2);
+  const usd = (costM * EXCHANGE_RATE).toFixed(2);
 
   document.getElementById("resultBox").innerHTML =
     `Required XP: <b>${xpToTarget.toLocaleString()}</b><br>
+     Cheapest Method: <b>${bestMethod.title}</b><br>
+     Rate: <b>${bestMethod.gpxp} gp/xp</b><br>
      Estimated Cost: <b>${costM}m (~$${usd})</b>`;
 }
 
