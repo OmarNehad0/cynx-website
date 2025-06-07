@@ -233,29 +233,77 @@ const skillMethods = {
     function calculateSkill() {
   const start = parseInt(document.getElementById("currentLevel").value);
   const end = parseInt(document.getElementById("targetLevel").value);
-  const selectedSkill = document.querySelector("#skillDetails h2").innerText;
+  const skillName = document.querySelector("#skillDetails h2").innerText;
 
   if (start >= end || start < 1 || end > 99) {
     alert("Invalid level range");
     return;
   }
 
-  const xpToTarget = XP_TABLE[end] - XP_TABLE[start];
-  const methods = skillMethods[selectedSkill];
+  const methods = skillMethods[skillName];
   if (!methods) {
     alert("No methods found for this skill.");
     return;
   }
 
-  const bestMethod = methods.filter(m => m.req <= start).sort((a, b) => a.gpxp - b.gpxp)[0];
-  const costM = (xpToTarget * bestMethod.gpxp / 1_000_000).toFixed(2);
-  const usd = (costM * EXCHANGE_RATE).toFixed(2);
+  const xpNeeded = XP_TABLE[end] - XP_TABLE[start];
+  let currentLevel = start;
+  let breakdown = '';
+  let totalCost = 0;
 
-  document.getElementById("resultBox").innerHTML =
-    `Required XP: <b>${xpToTarget.toLocaleString()}</b><br>
-     Cheapest Method: <b>${bestMethod.title}</b><br>
-     Rate: <b>${bestMethod.gpxp} gp/xp</b><br>
-     Estimated Cost: <b>${costM}m (~$${usd})</b>`;
+  // Build cheapest path
+  while (currentLevel < end) {
+    const valid = methods.filter(m => m.req <= currentLevel);
+    const cheapest = valid.sort((a, b) => a.gpxp - b.gpxp)[0];
+
+    // Find next method level OR cap at end level
+    const nextLevel = Math.min(
+      ...methods
+        .filter(m => m.req > currentLevel)
+        .map(m => m.req)
+        .concat(end)
+    );
+
+    const levelTo = Math.min(nextLevel, end);
+    const xpChunk = XP_TABLE[levelTo] - XP_TABLE[currentLevel];
+    const cost = (xpChunk * cheapest.gpxp) / 1_000_000;
+    const usd = cost * EXCHANGE_RATE;
+    totalCost += cost;
+
+    breakdown += `
+      <div style="margin-bottom:10px;">
+        <b>Level ${currentLevel} → ${levelTo}</b>: ${cheapest.title}<br>
+        XP: ${xpChunk.toLocaleString()}<br>
+        Cost: <b>${cost.toFixed(2)}M</b> (~$${usd.toFixed(2)})
+      </div>
+    `;
+
+    currentLevel = levelTo;
+  }
+
+  let alternatives = '';
+  const totalXp = XP_TABLE[end] - XP_TABLE[start];
+  for (const method of methods) {
+    if (method.req > start) continue;
+    const cost = (totalXp * method.gpxp) / 1_000_000;
+    const usd = cost * EXCHANGE_RATE;
+    alternatives += `
+      <div style="margin-bottom:6px;">
+        <b>${method.title}</b> (${method.gpxp} gp/xp)<br>
+        Full cost: ${cost.toFixed(2)}M (~$${usd.toFixed(2)})
+      </div>
+    `;
+  }
+
+  document.getElementById("resultBox").innerHTML = `
+    <h3>📈 Cheapest Method Breakdown</h3>
+    ${breakdown}
+    <hr style="margin: 20px 0;">
+    <h3>🧪 Full Alternative Methods</h3>
+    ${alternatives}
+    <hr style="margin: 20px 0;">
+    <b>Total GP: ${totalCost.toFixed(2)}M</b> (~$${(totalCost * EXCHANGE_RATE).toFixed(2)})
+  `;
 }
 
   </script>
