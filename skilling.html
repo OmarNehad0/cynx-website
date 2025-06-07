@@ -229,6 +229,12 @@ const skillMethods = {
       };
       skillGrid.appendChild(box);
     });
+function addToCart(skill, method, price) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({ skill, method, price });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(`${skill} - ${method} added to cart for ${price}M!`);
+}
 
     function calculateSkill() {
   const start = parseInt(document.getElementById("currentLevel").value);
@@ -251,18 +257,13 @@ const skillMethods = {
   let breakdown = '';
   let totalCost = 0;
 
-  // 🔹 Build cheapest path
   while (currentLevel < end) {
     const valid = methods.filter(m => m.req <= currentLevel);
     const cheapest = valid.sort((a, b) => a.gpxp - b.gpxp)[0];
 
     const nextLevel = Math.min(
-      ...methods
-        .filter(m => m.req > currentLevel)
-        .map(m => m.req)
-        .concat(end)
+      ...methods.filter(m => m.req > currentLevel).map(m => m.req).concat(end)
     );
-
     const levelTo = Math.min(nextLevel, end);
     const xpChunk = XP_TABLE[levelTo] - XP_TABLE[currentLevel];
     const cost = (xpChunk * cheapest.gpxp) / 1_000_000;
@@ -272,40 +273,41 @@ const skillMethods = {
     breakdown += `
       <div style="background-color: rgba(255,255,255,0.08); padding: 10px; border-left: 4px solid #ffcc00; margin-bottom: 10px; border-radius: 6px;">
         <b style="color:#ffd700;">Level ${currentLevel} → ${levelTo}</b>: ${cheapest.title}<br>
-        <span style="color:#ccc;">XP:</span> ${xpChunk.toLocaleString()} &nbsp;&nbsp; 
+        <span style="color:#ccc;">XP:</span> ${xpChunk.toLocaleString()} &nbsp;&nbsp;
         <span style="color:#ccc;">Cost:</span> <b>${cost.toFixed(2)}M</b> (~$${usd.toFixed(2)})
       </div>
     `;
-
     currentLevel = levelTo;
   }
 
-  // 🔹 Display total cost after the breakdown
+  // 💰 Total cost for cheapest
   breakdown += `
     <div style="margin-top: 15px; background-color: rgba(0,0,0,0.6); padding: 12px; border: 2px solid #00ff91; border-radius: 8px;">
       <h3 style="color:#00ff91; margin: 0;">💰 Total Cost (Cheapest Path)</h3>
       <p style="font-size: 1.2em; margin: 8px 0;">
         <b>${totalCost.toFixed(2)}M</b> GP &nbsp;&nbsp; (~$${(totalCost * EXCHANGE_RATE).toFixed(2)})
       </p>
+      <button onclick="addToCart('${skillName}', 'Cheapest Path', ${totalCost.toFixed(2)})">Add Cheapest Plan to Cart</button>
     </div>
   `;
 
-  // 🔹 All alternative methods
+  // 🧪 Alternatives
   const totalXp = XP_TABLE[end] - XP_TABLE[start];
   let alternatives = '';
   for (const method of methods) {
     if (method.req > start) continue;
     const cost = (totalXp * method.gpxp) / 1_000_000;
     const usd = cost * EXCHANGE_RATE;
+
     alternatives += `
       <div style="background-color: rgba(255,255,255,0.05); padding: 10px; border-left: 3px solid #aaa; border-radius: 5px; margin-bottom: 8px;">
         <b>${method.title}</b> (${method.gpxp} gp/xp)<br>
-        <span style="color:#ccc;">Full Cost:</span> ${cost.toFixed(2)}M (~$${usd.toFixed(2)})
+        <span style="color:#ccc;">Full Cost:</span> ${cost.toFixed(2)}M (~$${usd.toFixed(2)})<br>
+        <button onclick="addToCart('${skillName}', '${method.title}', ${cost.toFixed(2)})">Add to Cart</button>
       </div>
     `;
   }
 
-  // 🔹 Display final output
   document.getElementById("resultBox").innerHTML = `
     <h3 style="color:#ffd700;">📈 Cheapest Method Breakdown</h3>
     ${breakdown}
@@ -314,6 +316,7 @@ const skillMethods = {
     ${alternatives}
   `;
 }
+
 
 
   </script>
