@@ -470,9 +470,11 @@
     const itemDiv = document.createElement("div");
     itemDiv.className = "quest-item";
 
-    const price = Number(quest.price);
-    const priceM = (price / 1_000_000).toFixed(1);
-    const priceUSD = (price * 0.21 / 1_000_000).toFixed(2);
+    const rawPrice = quest.price;
+    const price = Number(rawPrice);
+    const priceM = isNaN(price) ? "?" : (price / 1_000_000).toFixed(1);
+    const priceUSD = isNaN(price) ? "?" : (price * 0.21 / 1_000_000).toFixed(2);
+
 
     itemDiv.innerHTML = `
       <span>
@@ -484,21 +486,28 @@
     `;
 
     const button = itemDiv.querySelector(".add-to-cart-btn");
-    button.addEventListener("click", () => {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const existing = cart.find(item => item.name === quest.name);
+button.addEventListener("click", () => {
+  const rawPrice = quest.price;
+  const price = Number(rawPrice);
 
-  const price = Number(quest.price);
+  if (isNaN(price)) {
+    alert("Invalid price for this item.");
+    return;
+  }
+
   const priceM = parseFloat((price / 1_000_000).toFixed(1));
   const priceUSD = parseFloat((price * 0.21 / 1_000_000).toFixed(2));
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const existing = cart.find(item => item.name === quest.name);
 
   if (existing) {
     existing.quantity += 1;
   } else {
     cart.push({
       name: quest.name,
-      priceM: priceM,
-      priceUSD: priceUSD,
+      priceM,
+      priceUSD,
       quantity: 1
     });
   }
@@ -506,7 +515,6 @@
   localStorage.setItem("cart", JSON.stringify(cart));
   alert(`${quest.name} added to cart!`);
 });
-
 
     questContainer.appendChild(itemDiv);
   });
