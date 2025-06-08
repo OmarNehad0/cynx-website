@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cynx Quests</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url("https://i.postimg.cc/sxZffykR/osrs-background-for-imgur.png") no-repeat center center fixed;
+      background-size: cover;
+      color: #f8f9fa;
+      text-align: center;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    h1 {
+      margin: 20px;
+      color: #ffcc00;
+      text-shadow: 0 0 10px #fd0000, 0 0 20px #fff;
+    }
+
+    .quest-list {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quest-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 30, 0.85);
+      padding: 12px 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+    }
+
+    .quest-item span {
+      flex: 1;
+      text-align: left;
+    }
+
+    .price-box {
+      flex: 1;
+      text-align: center;
+    }
+
+    .quest-item button {
+      background-color: #ffcc00;
+      color: #000;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .quest-item button:hover {
+      background-color: #ffd700;
+      box-shadow: 0 0 10px #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🗺️ OSRS Quest Services</h1>
+  <div class="quest-list" id="questContainer"></div>
+
+  <script>
+    const quests = [
+      {"name": "Below Ice Mountain", "price": 3000000},
+      {"name": "Black Knight's Fortress", "price": 1500000},
+      {"name": "Cook's Assistant ", "price": 1000000},
+      {"name": "X Marks the Spot", "price": 1000000},
+      {"name": "The Corsair Curse", "price": 2500000},
+      {"name": "Demon Slayer", "price": 2500000},
+      {"name": "Doric's Quest", "price": 1000000},
+      {"name": "Dragon Slayer", "price": 4000000},
+      {"name": "Ernest the Chicken", "price": 2000000},
+      {"name": "Goblin Diplomacy", "price": 1000000},
+      {"name": "Imp Catcher", "price": 1000000},
+      {"name": "The Knight's Sword", "price": 2000000},
+      {"name": "Misthalin Mystery", "price": 2000000},
+      {"name": "Pirate's Treasure", "price": 1000000},
+      {"name": "Prince Ali Rescue", "price": 3000000},
+      {"name": "The Restless Ghost", "price": 1000000},
+      {"name": "Romeo & Juliet", "price": 2000000},
+      {"name": "Rune Mysteries", "price": 1000000},
+      {"name": "Sheep Shearer", "price": 1000000},
+      {"name": "Shield of Arrav", "price": 3000000},
+      {"name": "Vampire Slayer", "price": 1000000},
+      {"name": "Witch's Potion", "price": 1000000},
+      {"name": "Animal Magnetism", "price": 5000000},
+      {"name": "Another Slice of H.A.M", "price": 6000000},
+      {"name": "Ascent of Arceus", "price": 4500000},
+      {"name": "At First Light", "price": 3500000},
+      {"name": "Beneath Cursed Sands", "price": 18000000},
+      {"name": "Between a Rock", "price": 5000000},
+      {"name": "Big Chompy Bird Hunting", "price": 5000000},
+      {"name": "Biohazard", "price": 5000000},
+      {"name": "Bone Voyage", "price": 5000000},
+      {"name": "Bone Voyage + Kudos", "price": 8000000},
+      {"name": "Cabin Fever", "price": 8000000},
+      {"name": "Children of the sun", "price": 30000000},
+      {"name": "Client of Kourend", "price": 4500000},
+      {"name": "Clock Tower", "price": 3000000},
+      {"name": "Cold War", "price": 6000000},
+      {"name": "Contact!", "price": 12000000},
+      {"name": "Creature of Fenkenstrain", "price": 5000000},
+      {"name": "Darkness of Hallowvale", "price": 13000000},
+      {"name": "Death Plateau", "price": 3000000},
+      {"name": "Death to the Dorgeshuun", "price": 4000000},
+      {"name": "The Depths of Despair", "price": 3000000},
+      {"name": "Desert Treasure", "price": 15000000},
+      {"name": "Desert Treasure (-43 Pray)", "price": 24000000},
+      {"name": "Desert Treasure II - The Fallen Empire", "price": 92000000},
+      {"name": "Devious Minds", "price": 5000000},
+      {"name": "Defender Of Varrock", "price": 9000000},
+      {"name": "The Dig Site", "price": 5000000},
+      {"name": "Dragon Slayer II", "price": 55000000},
+      {"name": "Galvek kill", "price": 20000000},
+      {"name": "Dream Mentor", "price": 8000000},
+      {"name": "Druidic Ritual", "price": 3000000},
+      {"name": "Dwarf Cannon", "price": 3000000},
+      {"name": "Eadgar's Ruse", "price": 9000000},
+      {"name": "Eagles' Peak", "price": 5000000}
+    ];
+
+    const questContainer = document.getElementById("questContainer");
+    quests.forEach((quest, index) => {
+      const priceM = (quest.price / 1000000).toFixed(1);
+      const priceD = (quest.price / 1000000 * 0.28).toFixed(2); // $1 = 3.57m rate
+      const item = document.createElement("div");
+      item.className = "quest-item";
+      item.innerHTML = `
+        <span>${quest.name}</span>
+        <div class="price-box">
+          ${priceM}M / $${priceD}
+        </div>
+        <button onclick="addToCart('${quest.name}', ${quest.price}, 'quest-${index}')">Add to Cart</button>
+        <input id="quest-${index}" type="hidden" value="1">
+      `;
+      questContainer.appendChild(item);
+    });
+
+    function addToCart(name, price, id) {
+      const quantity = 1;
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existing = cart.find(item => item.name === name);
+      if (existing) existing.quantity += quantity;
+      else cart.push({ name, price, quantity });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${quantity} x ${name} added to cart!`);
+    }
+  </script>
+</body>
+</html>
