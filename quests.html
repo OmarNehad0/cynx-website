@@ -465,31 +465,38 @@
     ];
 
     const questContainer = document.getElementById("questContainer");
-    quests.forEach((quest, index) => {
-      const priceM = (quest.price / 1000000).toFixed(1);
-      const priceD = (quest.price * 0.21 / 1000000).toFixed(2);
-      const item = document.createElement("div");
-      item.className = "quest-item";
-      item.innerHTML = `
-        <span><img class="quest-icon" src="https://oldschool.runescape.wiki/images/thumb/Quests.png/130px-Quests.png?f5120">${quest.name}</span>
-        <div class="price-box">
-          ${priceM}M / $${priceD}
-        </div>
-        <button onclick="addToCart(\"${quest.name}\", ${quest.price})">Add to Cart</button>
-      `;
-      questContainer.appendChild(item);
-    });
+      quests.forEach((quest, index) => {
+        const priceM = (quest.price / 1000000).toFixed(1);
+        const priceD = (quest.price * 0.21 / 1000000).toFixed(2);
+        const item = document.createElement("div");
+        item.className = "quest-item";
+        item.innerHTML = `
+          <span><img class="quest-icon" src="https://oldschool.runescape.wiki/images/thumb/Quests.png/130px-Quests.png?f5120">${quest.name}</span>
+          <div class="price-box">
+            ${priceM}M / $${priceD}
+          </div>
+          <button data-name="${quest.name}" data-price="${quest.price}">Add to Cart</button>
+        `;
+        questContainer.appendChild(item);
+      });
 
-    function addToCart(name, price) {
-      const priceM = parseFloat((price / 1000000).toFixed(1));
-      const priceUSD = parseFloat((price * 0.21 / 1000000).toFixed(2));
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const existing = cart.find(item => item.name === name);
-      if (existing) existing.quantity += 1;
-      else cart.push({ name, priceM, priceUSD, quantity: 1 });
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`${name} added to cart!`);
-    }
+      document.querySelectorAll(".quest-item button").forEach(button => {
+        button.addEventListener("click", function () {
+          const name = this.dataset.name;
+          const price = parseInt(this.dataset.price);
+          const priceM = parseFloat((price / 1000000).toFixed(1));
+          const priceUSD = parseFloat((price * 0.21 / 1000000).toFixed(2));
+
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          const existing = cart.find(item => item.name === name);
+          if (existing) existing.quantity += 1;
+          else cart.push({ name, priceM, priceUSD, quantity: 1 });
+
+          localStorage.setItem('cart', JSON.stringify(cart));
+          alert(`${name} added to cart!`);
+        });
+      });
+    });
   </script>
 </body>
 </html>
