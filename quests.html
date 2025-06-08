@@ -485,23 +485,28 @@
 
     const button = itemDiv.querySelector(".add-to-cart-btn");
     button.addEventListener("click", () => {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      const existing = cart.find(item => item.name === quest.name);
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const existing = cart.find(item => item.name === quest.name);
 
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({
-          name: quest.name,
-          priceM: parseFloat(priceM),
-          priceUSD: parseFloat(priceUSD),
-          quantity: 1
-        });
-      }
+  const price = Number(quest.price);
+  const priceM = parseFloat((price / 1_000_000).toFixed(1));
+  const priceUSD = parseFloat((price * 0.21 / 1_000_000).toFixed(2));
 
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert(`${quest.name} added to cart!`);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({
+      name: quest.name,
+      priceM: priceM,
+      priceUSD: priceUSD,
+      quantity: 1
     });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(`${quest.name} added to cart!`);
+});
+
 
     questContainer.appendChild(itemDiv);
   });
