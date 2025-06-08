@@ -467,57 +467,64 @@
   const questContainer = document.getElementById("questContainer");
 
   quests.forEach((quest) => {
-    const itemDiv = document.createElement("div");
-    itemDiv.className = "quest-item";
+  const itemDiv = document.createElement("div");
+  itemDiv.className = "quest-item";
 
-    const rawPrice = quest.price;
-    const price = Number(rawPrice);
-    const priceM = isNaN(price) ? "?" : (price / 1_000_000).toFixed(1);
-    const priceUSD = isNaN(price) ? "?" : (price * 0.21 / 1_000_000).toFixed(2);
-
-
-    itemDiv.innerHTML = `
-      <span>
-        <img class="quest-icon" src="https://oldschool.runescape.wiki/images/thumb/Quests.png/130px-Quests.png?f5120">
-        ${quest.name}
-      </span>
-      <div class="price-box">${priceM}M / $${priceUSD}</div>
-      <button class="add-to-cart-btn">Add to Cart</button>
-    `;
-
-    const button = itemDiv.querySelector(".add-to-cart-btn");
-button.addEventListener("click", () => {
   const rawPrice = quest.price;
   const price = Number(rawPrice);
 
   if (isNaN(price)) {
-    alert("Invalid price for this item.");
-    return;
+    console.warn(`Invalid price for quest "${quest.name}"`, rawPrice);
+    return; // skip this broken item
   }
 
-  const priceM = parseFloat((price / 1_000_000).toFixed(1));
-  const priceUSD = parseFloat((price * 0.21 / 1_000_000).toFixed(2));
+  const priceM = (price / 1_000_000).toFixed(1);
+  const priceUSD = (price * 0.21 / 1_000_000).toFixed(2);
 
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const existing = cart.find(item => item.name === quest.name);
+  itemDiv.innerHTML = `
+    <span>
+      <img class="quest-icon" src="https://oldschool.runescape.wiki/images/thumb/Quests.png/130px-Quests.png?f5120">
+      ${quest.name}
+    </span>
+    <div class="price-box">${priceM}M / $${priceUSD}</div>
+    <button class="add-to-cart-btn" data-name="${quest.name}" data-price="${price}">Add to Cart</button>
+  `;
 
-  if (existing) {
-    existing.quantity += 1;
-  } else {
-    cart.push({
-      name: quest.name,
-      priceM,
-      priceUSD,
-      quantity: 1
-    });
-  }
+  const button = itemDiv.querySelector(".add-to-cart-btn");
+  button.addEventListener("click", () => {
+    const name = button.dataset.name;
+    const rawPrice = button.dataset.price;
+    const price = Number(rawPrice);
 
-  localStorage.setItem("cart", JSON.stringify(cart));
-  alert(`${quest.name} added to cart!`);
+    if (isNaN(price)) {
+      alert("❌ Invalid price for this item.");
+      return;
+    }
+
+    const priceM = parseFloat((price / 1_000_000).toFixed(1));
+    const priceUSD = parseFloat((price * 0.21 / 1_000_000).toFixed(2));
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existing = cart.find(item => item.name === name);
+
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({
+        name,
+        priceM,
+        priceUSD,
+        quantity: 1
+      });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${name} added to cart!`);
+  });
+
+  questContainer.appendChild(itemDiv);
 });
 
-    questContainer.appendChild(itemDiv);
-  });
 </script>
 </body>
 </html>
