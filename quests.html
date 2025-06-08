@@ -247,6 +247,20 @@
   <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
 </div>
   <h1>🗺️ OSRS Quest Services</h1>
+  <input type="text" id="questSearch" placeholder="Search for a quest..." style="
+  padding: 10px;
+  width: 60%;
+  max-width: 400px;
+  margin: 20px auto;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  display: block;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+  background-color: #1a1e3c;
+  color: #ffcc00;
+  text-align: center;
+">
   <div class="quest-list" id="questContainer"></div>
 
   <script>
@@ -508,6 +522,15 @@ const questContainer = document.getElementById("questContainer");
     });
 
     questContainer.appendChild(itemDiv);
+  });
+document.getElementById("questSearch").addEventListener("input", function () {
+    const searchValue = this.value.toLowerCase();
+    const questItems = document.querySelectorAll(".quest-item");
+
+    questItems.forEach(item => {
+      const name = item.querySelector("span").innerText.toLowerCase();
+      item.style.display = name.includes(searchValue) ? "flex" : "none";
+    });
   });
 </script>
 </body>
