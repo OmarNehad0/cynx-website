@@ -498,7 +498,7 @@ const questContainer = document.getElementById("questContainer");
       } else {
         cart.push({
           name: name,
-          price: Price, // 💥 store as GP only
+          price: rawPrice / 1000000, // 💥 store as GP only
           quantity: 1
         });
       }
