@@ -467,23 +467,23 @@
   const questContainer = document.getElementById("questContainer");
 
   quests.forEach((quest) => {
-    const item = document.createElement("div");
-    item.className = "quest-item";
+    const itemDiv = document.createElement("div");
+    itemDiv.className = "quest-item";
 
     const price = Number(quest.price);
     const priceM = (price / 1_000_000).toFixed(1);
     const priceUSD = (price * 0.21 / 1_000_000).toFixed(2);
 
-    item.innerHTML = `
+    itemDiv.innerHTML = `
       <span>
         <img class="quest-icon" src="https://oldschool.runescape.wiki/images/thumb/Quests.png/130px-Quests.png?f5120">
         ${quest.name}
       </span>
       <div class="price-box">${priceM}M / $${priceUSD}</div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart-btn">Add to Cart</button>
     `;
 
-    const button = item.querySelector("button");
+    const button = itemDiv.querySelector(".add-to-cart-btn");
     button.addEventListener("click", () => {
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
       const existing = cart.find(item => item.name === quest.name);
@@ -503,7 +503,7 @@
       alert(`${quest.name} added to cart!`);
     });
 
-    questContainer.appendChild(item);
+    questContainer.appendChild(itemDiv);
   });
 </script>
 </body>
