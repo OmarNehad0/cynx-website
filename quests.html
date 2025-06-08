@@ -462,11 +462,11 @@
     const questContainer = document.getElementById("questContainer");
     quests.forEach((quest, index) => {
       const priceM = (quest.price / 1000000).toFixed(1);
-      const priceD = (quest.price / 1000000 * 0.28).toFixed(2); // $1 = 3.57m rate
+      const priceD = (quest.price * 0.21 / 1000000).toFixed(2);
       const item = document.createElement("div");
       item.className = "quest-item";
       item.innerHTML = `
-        <span>${quest.name}</span>
+        <span><img class="quest-icon" src="https://oldschool.runescape.wiki/images/thumb/Quests.png/130px-Quests.png?f5120">${quest.name}</span>
         <div class="price-box">
           ${priceM}M / $${priceD}
         </div>
@@ -478,10 +478,11 @@
 
     function addToCart(name, price, id) {
       const quantity = 1;
+      const usdPrice = (price * 0.21 / 1000000).toFixed(2);
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       const existing = cart.find(item => item.name === name);
       if (existing) existing.quantity += quantity;
-      else cart.push({ name, price, quantity });
+      else cart.push({ name, priceM: (price / 1000000), priceUSD: parseFloat(usdPrice), quantity });
       localStorage.setItem('cart', JSON.stringify(cart));
       alert(`${quantity} x ${name} added to cart!`);
     }
