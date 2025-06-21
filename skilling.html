@@ -15,33 +15,36 @@
 .cynx-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-family: 'Segoe UI', sans-serif;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 600;
   color: #c084fc;
-  text-shadow: 0 0 8px #c084fc, 0 0 16px #7e22ce;
+  text-shadow: 0 0 6px #c084fc, 0 0 12px #7e22ce;
   text-decoration: none;
-  margin-right: 30px; /* optional spacing between logo and menu */
+  height: 100%;
+  padding: 0 15px;
 }
 
 .cynx-logo img {
-  width: 42px;
-  height: 42px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #a855f7;
-  vertical-align: middle;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  box-shadow: 0 0 6px #a855f7;
+  object-fit: contain;
+  display: block;
 }
 
 .cynx-logo span {
   display: flex;
   align-items: center;
-  letter-spacing: 1px;
+  line-height: 1;
 }
 
 .cynx-logo strong {
-  color: #ffffff;
+  color: white;
   font-weight: 700;
+  margin-left: 2px;
 }
 
 
@@ -123,7 +126,7 @@
     .navbar {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-between;
       background-color: # rgba(10, 10, 30, 0.85);
       padding: 12px 0;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -293,7 +296,7 @@
 <body>
 <a href="https://discord.gg/cynx" class="cynx-logo">
   <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Cynx Icon">
-  <span>Cynx <strong>Services</strong></span>
+  <span>Cynx <strong> Services</strong></span>
 </a>
 
 
