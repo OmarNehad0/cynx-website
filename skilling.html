@@ -12,46 +12,64 @@
   height: 100%;
   background: transparent;
 }
+/* Navbar wrapper */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  height: 65px;
+  background-color: transparent;
+}
+
+/* Logo anchor */
 .cynx-logo {
   display: flex;
   align-items: center;
-  text-decoration: none;
   gap: 12px;
   height: 100%;
-  margin-right: 30px;
+  text-decoration: none;
+  margin: 0; /* REMOVE margin-right */
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
+/* Animate logo hover */
+.cynx-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px #9333ea);
+}
+
+/* Icon */
 .cynx-logo img {
   width: 42px;
   height: 42px;
   border-radius: 8px;
   object-fit: contain;
-  box-shadow: 0 0 10px #7e22ce;
+  box-shadow: 0 0 8px #9333ea;
 }
 
+/* Text container */
 .logo-text {
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: #a855f7;
-  text-shadow: 0 0 6px #7e22ce, 0 0 12px #7e22ce;
-  transform: translateY(1px); /* Slight center tweak */
+  line-height: 1.1;
+  font-family: 'Segoe UI', sans-serif;
 }
 
+/* Cynx - purple */
 .logo-text span {
-  color: #a855f7;
   font-size: 26px;
+  font-weight: 700;
+  color: #9333ea; /* Aldor purple */
+  text-shadow: 0 0 4px #9333ea;
 }
 
+/* Services - white bold */
 .logo-text strong {
-  color: white;
   font-size: 24px;
+  color: #fff;
   font-weight: 800;
-  line-height: 1;
 }
 
 
@@ -304,11 +322,11 @@
 </head>
 <body>
 
-<div class="navbar">
 <a href="https://discord.gg/cynx" class="cynx-logo">
   <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Cynx Icon">
-  <span>Cynx <strong> Services</strong></span>
+  <div class="logo-text"><span>Cynx</span><strong>Services</strong></div>
 </a>
+
 
   <a href="index.html">
     <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle; margin-right: 5px;">
