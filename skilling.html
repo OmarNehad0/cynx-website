@@ -12,31 +12,35 @@
   height: 100%;
   background: transparent;
 }
-.logo-container {
+.cynx-logo {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: bold;
-  font-size: 24px;
-  color: #f8f9fa;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #c084fc; /* Aldor-style purple */
+  text-shadow: 0 0 8px #c084fc, 0 0 16px #7e22ce;
+  transition: transform 0.2s ease-in-out;
 }
 
-.logo-icon {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
+.cynx-logo img {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #a855f7;
 }
 
-.logo-text {
-  line-height: 1.2;
-  text-shadow: 0 0 10px #00f0ff;
+.cynx-logo span {
+  display: inline-block;
+  letter-spacing: 1px;
 }
 
-.logo-text .highlight {
-  color: #00f0ff;
-  font-size: 20px;
+.cynx-logo strong {
+  color: #ffffff;
+  font-weight: 700;
 }
+
 
     body {
   margin: 0;
@@ -284,10 +288,11 @@
   </style>
 </head>
 <body>
-<div class="logo-container">
-  <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Cynx Icon" class="logo-icon">
-  <div class="logo-text">Cynx<br><span class="highlight">Services</span></div>
+<div class="cynx-logo">
+  <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Cynx Icon">
+  <span>Cynx <strong>Services</strong></span>
 </div>
+
 
  <div class="navbar">
   <a href="index.html">
