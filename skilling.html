@@ -15,36 +15,43 @@
 .cynx-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: #c084fc;
-  text-shadow: 0 0 6px #c084fc, 0 0 12px #7e22ce;
   text-decoration: none;
+  gap: 12px;
   height: 100%;
-  padding: 0 15px;
+  margin-right: 30px;
 }
 
 .cynx-logo img {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  box-shadow: 0 0 6px #a855f7;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
   object-fit: contain;
-  display: block;
+  box-shadow: 0 0 10px #7e22ce;
 }
 
-.cynx-logo span {
-  display: flex;
-  align-items: center;
-  line-height: 1;
-}
-
-.cynx-logo strong {
-  color: white;
+.logo-text {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 28px;
   font-weight: 700;
-  margin-left: 2px;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #a855f7;
+  text-shadow: 0 0 6px #7e22ce, 0 0 12px #7e22ce;
+  transform: translateY(1px); /* Slight center tweak */
+}
+
+.logo-text span {
+  color: #a855f7;
+  font-size: 26px;
+}
+
+.logo-text strong {
+  color: white;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
 }
 
 
