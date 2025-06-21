@@ -141,27 +141,25 @@
 
 /* Dropdown content: hidden by default */
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #1a1e3c;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
-  z-index: 1;
-  border-radius: 5px;
+  background-color: rgba(20, 20, 30, 0.95);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
-/* Each link in the dropdown */
+
 .dropdown-content a {
   color: #ffcc00;
-  padding: 12px 16px;
+  padding: 10px 16px;
   text-decoration: none;
-  display: block;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s ease;
 }
 
-/* Show dropdown when hovering on .dropdown */
-.dropdown:hover .dropdown-content {
-  display: block;
+.dropdown-content a:hover {
+  background-color: rgba(255, 204, 0, 0.05);
 }
+
     body::before {
       content: "";
       position: fixed;
@@ -182,50 +180,56 @@
     }
 
     .navbar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      background-color: # rgba(10, 10, 30, 0.85);
-      height: 60px;
-      padding: 0 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 65px;
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+  background: rgba(15, 15, 30, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15);
+}
 
     .navbar a {
-      color: #ffcc00;
-      font-weight: bold;
-      text-decoration: none;
-      margin: 10px 15px;
-      font-size: 18px;
-      position: relative;
-      transition: 0.3s;
-    }
-.navbar a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0%;
-      height: 2px;
-      background-color: #ffcc00;
-      transition: all 0.3s ease-in-out;
-      transform: translateX(-50%);
-    }
-    .navbar a:hover::after {
-      width: 100%;
-    }
+  color: #ffcc00;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 10px 15px;
+  font-size: 17px;
+  position: relative;
+  transition: 0.3s;
+}
 
-    .navbar a:hover {
-      background-color: rgba(255, 204, 0, 0.1);
-      border-radius: 6px;
-      padding: 8px 14px;
-      color: #fd0000;
-      box-shadow: 0 0 10px #ffcc00;
-    }
+.navbar a:hover {
+  background-color: rgba(255, 204, 0, 0.08);
+  border-radius: 6px;
+  padding: 8px 14px;
+  color: #ffffff;
+  box-shadow: 0 0 10px #ffcc00;
+  text-shadow: 0 0 4px #ffcc00;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: #ffcc00;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
 
     h1 {
       margin: 30px 0 10px;
