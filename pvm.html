@@ -14,15 +14,24 @@
   height: 100%;
   background: transparent;
 }
-.nav-item {
+/* Base styles by item */
+.nav-item.home {
+  color: #00ffff;
+}
+.nav-item.osrs {
+  color: #ff0000;
+}
+.nav-item.gold {
   color: #ffcc00;
-  font-weight: bold;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  padding: 6px 12px;
-  border-radius: 6px;
-  transition: 0.3s;
+}
+.nav-item.cart {
+  color: #00ff44;
+}
+.nav-item.login {
+  color: #6a009b;
+}
+.nav-item.register {
+  color: #6a009b;
 }
 
 /* Base hover effect */
@@ -327,7 +336,7 @@
     }
   </style>
 </head>
-<div class="navbar">
+ <div class="navbar">
   <!-- LOGO LEFT -->
   <a href="https://discord.gg/cynx" class="cynx-logo">
     <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Cynx Icon">
@@ -341,8 +350,8 @@
       Home
     </a>
 
-    <div class="dropdown nav-item osrs">
-      <a href="index.html" class="dropbtn">
+    <div class="dropdown">
+      <a href="index.html" class="nav-item osrs dropbtn">
         <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2024/09/15/66f15b863272f_com.jagex.oldscape.android.png" style="height: 20px; vertical-align: middle; margin-right: 5px;">
         OSRS Services ▾
       </a>
