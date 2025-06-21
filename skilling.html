@@ -12,6 +12,31 @@
   height: 100%;
   background: transparent;
 }
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  color: #f8f9fa;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.logo-text {
+  line-height: 1.2;
+  text-shadow: 0 0 10px #00f0ff;
+}
+
+.logo-text .highlight {
+  color: #00f0ff;
+  font-size: 20px;
+}
 
     body {
   margin: 0;
@@ -259,6 +284,11 @@
   </style>
 </head>
 <body>
+<div class="logo-container">
+  <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Cynx Icon" class="logo-icon">
+  <div class="logo-text">Cynx<br><span class="highlight">Services</span></div>
+</div>
+
  <div class="navbar">
   <a href="index.html">
     <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle; margin-right: 5px;">
