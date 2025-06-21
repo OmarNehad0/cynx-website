@@ -12,12 +12,42 @@
   height: 100%;
   background: transparent;
 }
-
-.navbar {
+.nav-item {
+  color: #ffcc00;
+  font-weight: bold;
+  text-decoration: none;
   display: flex;
   align-items: center;
-  padding: 0 30px;
-  height: 65px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+/* Base hover effect */
+.nav-item:hover {
+  color: white;
+  box-shadow: 0 0 8px currentColor;
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* Per-item theme colors */
+.nav-item.home:hover {
+  color: #00ffff; /* Cyan */
+}
+.nav-item.osrs:hover {
+  color: #ff0077; /* Magenta */
+}
+.nav-item.gold:hover {
+  color: #ffcc00; /* Gold */
+}
+.nav-item.cart:hover {
+  color: #00ff44; /* Green */
+}
+.nav-item.login:hover {
+  color: #3399ff; /* Blue */
+}
+.nav-item.register:hover {
+  color: #ff6600; /* Orange */
 }
 
 /* LOGO */
@@ -367,12 +397,12 @@
 
   <!-- CENTERED NAVIGATION -->
   <div class="nav-center">
-    <a href="index.html">
+    <a href="index.html" class="nav-item home">
       <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle; margin-right: 5px;">
       Home
     </a>
 
-    <div class="dropdown">
+    <div class="dropdown nav-item osrs">
       <a href="index.html" class="dropbtn">
         <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2024/09/15/66f15b863272f_com.jagex.oldscape.android.png" style="height: 20px; vertical-align: middle; margin-right: 5px;">
         OSRS Services ▾
@@ -388,14 +418,17 @@
       </div>
     </div>
 
-    <a href="gold-detail.html">
+    <a href="gold-detail.html" class="nav-item gold">
       <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 20px; vertical-align: middle;">
       Gold (Buy/Sell)
     </a>
 
-    <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+    <a href="cart.html" class="nav-item cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+    <a href="login.html" class="nav-item login">Login</a>
+    <a href="register.html" class="nav-item register">Register</a>
   </div>
 </div>
+
 
   <h1>🛠️ OSRS Skilling Calculator</h1>
 
