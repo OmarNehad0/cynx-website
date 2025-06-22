@@ -77,14 +77,18 @@
   display: none;
   flex-direction: column;
   position: absolute;
-  top: 65px;
-  right: 20px;
+  top: 100%; /* aligns right below the navbar */
+  right: 10px;
+  width: auto;
+  min-width: 180px;
   background-color: rgba(20, 20, 30, 0.95);
   border: 1px solid #9333ea;
   border-radius: 8px;
   padding: 10px 15px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
   z-index: 999;
 }
+
 
 /* Mobile-only nav styling */
 @media (max-width: 768px) {
