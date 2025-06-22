@@ -62,6 +62,46 @@
 .discord-button-wrapper {
   margin-top: 10px;
 }
+/* Hide mobile menu & button on desktop */
+.mobile-menu-button {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #ffcc00;
+  padding: 10px;
+}
+
+/* Mobile menu container */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 65px;
+  right: 20px;
+  background-color: rgba(20, 20, 30, 0.95);
+  border: 1px solid #9333ea;
+  border-radius: 8px;
+  padding: 10px 15px;
+  z-index: 999;
+}
+
+/* Mobile menu links */
+.mobile-menu a {
+  margin: 6px 0;
+  padding: 6px;
+}
+
+/* Show only on small screens */
+@media (max-width: 768px) {
+  .nav-center {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: block;
+  }
+}
+
 /* Base styles by item */
 .nav-item.home {
   color: #00ffff;
@@ -575,6 +615,19 @@ html {
     </a>
 
     <a href="cart.html" class="nav-item cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+<!-- 3-Dots Menu Button (Mobile Only) -->
+<div class="mobile-menu-button" onclick="toggleMobileMenu()">
+  &#8942; <!-- ⋮ Unicode -->
+</div>
+
+<!-- Mobile Dropdown Menu (hidden by default) -->
+<div id="mobile-menu" class="mobile-menu">
+  <a href="index.html" class="nav-item home">Home</a>
+  <a href="index.html" class="nav-item osrs">OSRS Services</a>
+  <a href="gold-detail.html" class="nav-item gold">Gold (Buy/Sell)</a>
+  <a href="cart.html" class="nav-item cart">Cart</a>
+</div>
+
   </div>
 </div>
 
@@ -705,6 +758,12 @@ html {
   } else {
     createAuthButtons(); // Show login/register
   }
+</script>
+<script>
+function toggleMobileMenu() {
+  const menu = document.getElementById("mobile-menu");
+  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
 </script>
 
 
