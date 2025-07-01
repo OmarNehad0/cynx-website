@@ -240,7 +240,7 @@ body::before {
   background-color: rgba(255, 204, 0, 0.08);
 }
 
-/* ----- Responsive Design ----- */
+/* ----- RESPONSIVE DESIGN ----- */
 @media screen and (max-width: 768px) {
   .navbar {
     flex-direction: column; /* Stack navbar items vertically on mobile */
@@ -257,8 +257,8 @@ body::before {
     margin-left: auto; /* Align hamburger button to the right */
   }
 
-  /* Hide login/register on mobile */
-  .navbar-right {
+  /* Hide the navbar items on mobile */
+  .nav-center, .navbar-right {
     display: none;
   }
 
@@ -272,10 +272,13 @@ body::before {
     width: 100%;
   }
 
+  /* Hide the login/register on mobile */
   .navbar-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    display: none;
+  }
+
+  .navbar .cynx-logo {
+    margin-right: auto; /* Align logo to the left on mobile */
   }
 }
   .payments-box, .gold-rates-box {
