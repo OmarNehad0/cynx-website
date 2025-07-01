@@ -281,12 +281,10 @@ body::before {
   display: block;
 }
 
-/* Mobile layout */
+/* Hide the navbar items on mobile */
 @media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    padding: 10px 15px;
-    height: auto;
+  .nav-center, .navbar-right {
+    display: none; /* Hide the items */
   }
 
   /* Hide the navbar items on mobile */
@@ -306,7 +304,7 @@ body::before {
 
   /* Show mobile menu when the button is clicked */
   .mobile-menu.show {
-    display: block;
+    display: block; /* Show mobile menu */
   }
 }
 
@@ -729,12 +727,17 @@ ul.features li i {
 </div>
 
 <script>
-  function toggleMobileMenu() {
+  // Function to toggle the mobile menu
+function toggleMobileMenu() {
   const menu = document.getElementById("mobile-menu");
   menu.classList.toggle("show");
+  
+  // Rotate the hamburger button when active
   const hamburger = document.querySelector('.mobile-menu-button');
   hamburger.classList.toggle('active');
 }
+
+// Close the mobile menu if clicked outside
 window.onclick = function(event) {
   const menu = document.getElementById("mobile-menu");
   const hamburger = document.querySelector('.mobile-menu-button');
@@ -743,6 +746,7 @@ window.onclick = function(event) {
     hamburger.classList.remove('active');
   }
 }
+
 
   const username = localStorage.getItem('username');
   const desktopAuth = document.querySelector('.auth-buttons');
