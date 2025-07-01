@@ -186,18 +186,17 @@ body::before {
 /* ----- DROPDOWN MENU ----- */
 .dropdown {
   position: relative;
-  display: inline-block;
 }
 /* Ensure dropdown content is visible on hover */
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 100%; /* Ensure it positions below the dropdown button */
   left: 0;
   background-color: #1a1e3c;
   padding: 10px 0;
   min-width: 180px;
-  z-index: 1000;
+  z-index: 1000;  /* Make sure it's on top */
   border-radius: 5px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
@@ -239,8 +238,17 @@ body::before {
     display: none !important;
   }
   .mobile-menu-button {
-    display: block;
+    display: none;
   }
+/* Show the button on mobile screens */
+@media screen and (max-width: 768px) {
+  .mobile-menu-button {
+    display: block;  /* Make the button visible on small screens */
+    font-size: 30px;  /* Increase size of hamburger icon */
+    color: #fff; /* Change color if needed */
+    cursor: pointer;
+  }
+}
   .mobile-only {
     display: block !important;
   }
