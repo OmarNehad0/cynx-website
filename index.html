@@ -94,6 +94,21 @@ body::before {
 .mobile-menu-button.active {
   transform: rotate(90deg);
 }
+/* Mobile menu button (3 dots) */
+.mobile-menu-button {
+  display: none; /* Hidden on desktop by default */
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* Show hamburger menu on mobile */
+@media screen and (max-width: 768px) {
+  .mobile-menu-button {
+    display: block; /* Make the hamburger button visible on mobile */
+  }
+}
 
 /* ----- Basic Navbar layout ----- */
 .navbar {
