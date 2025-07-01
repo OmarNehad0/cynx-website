@@ -247,32 +247,27 @@ body::before {
 }
 
 /* ----- Mobile Menu Button (using text "Menu" now) ----- */
-.mobile-menu {
-  display: none;
-  position: absolute;
-  top: 65px;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 10px;
-  z-index: 999;
-  transition: opacity 0.3s ease-in-out;  /* Smooth transition */
-  opacity: 0;
+.menu-button {
+  display: none; /* Hidden by default */
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 10px 20px;
+  background-color: #9333ea; /* Purple background */
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
 }
 
-.mobile-menu.show {
-  display: block;
-  opacity: 1;
-}
-
-
-/* Make the mobile menu button visible on mobile */
+/* Make the menu button visible on mobile */
 @media screen and (max-width: 768px) {
   .menu-button {
-    display: block; /* Show "Menu" button on mobile */
+    display: block; /* Make "Menu" button visible only on mobile */
   }
 
-  /* Hide the rest of the navbar items on mobile */
+  /* Hide navbar items on mobile */
   .nav-center,
   .navbar-right {
     display: none;
@@ -282,6 +277,30 @@ body::before {
   .mobile-menu.show {
     display: block;
   }
+}
+
+/* ----- Mobile Menu ----- */
+#mobile-menu {
+  display: none;
+  position: absolute;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  z-index: 999;
+}
+
+#mobile-menu.show {
+  display: block;
+}
+
+#mobile-menu a {
+  color: #ffcc00;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
 }
 
 
