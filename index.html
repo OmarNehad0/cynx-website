@@ -94,14 +94,14 @@ body::before {
 /* Navbar layout */
 .navbar {
   display: flex;
-  justify-content: center; /* Center align navbar items */
+  justify-content: space-between; /* Spread out logo, center items, and login/register */
   align-items: center;
-  flex-wrap: wrap;  /* Allow navbar items to wrap correctly */
+  flex-wrap: nowrap; /* Prevent wrapping of items */
   height: 65px;
-  padding: 12px 30px;
+  padding: 0 30px;
   position: sticky;
   top: 0;
-  z-index: 10; /* Ensure it's on top */
+  z-index: 10;
   backdrop-filter: blur(12px);
   background: rgba(15, 15, 30, 0.6);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -145,10 +145,14 @@ body::before {
 .navbar a:hover::after {
   width: 100%;
 }
+/* Ensure items are aligned properly */
+.navbar .cynx-logo {
+  margin-right: auto; /* Push logo to the left */
+}
 .nav-center {
   display: flex;
   justify-content: center;
-  flex: 1; /* Allow the center items to take up available space */
+  flex: 1; /* Allow center items to take up available space */
 }
 
 /* Login and Register: aligned to the right */
@@ -156,7 +160,7 @@ body::before {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-left: auto; /* Push login/register to the far right */
+  margin-left: auto; /* Push login/register to the right */
 }
 
 /* ----- LOGO ----- */
@@ -199,11 +203,9 @@ body::before {
 
 /* Dropdown styling */
 .dropdown {
-  position: relative;
-  display: inline-block; /* Ensures proper alignment */
+  position: relative; /* Position the dropdown */
 }
 
-/* Main button */
 .dropbtn {
   color: #ffcc00;
   text-decoration: none;
@@ -217,11 +219,14 @@ body::before {
 .dropdown-content {
   display: none;
   position: absolute;
+  top: 100%; /* Position below the dropdown button */
+  left: 0;
   background-color: #1a1e3c;
   min-width: 160px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
   z-index: 1;
   border-radius: 5px;
+  padding: 10px 0;
 }
 
 .dropdown-content a {
@@ -231,8 +236,9 @@ body::before {
   display: block;
 }
 
+/* Show dropdown on hover */
 .dropdown:hover .dropdown-content {
-  display: block; /* Show dropdown on hover */
+  display: block;
 }
 
 /* ----- RESPONSIVE DESIGN ----- */
@@ -245,34 +251,46 @@ body::before {
   }
   /* Initially hide the mobile menu button on larger screens */
 /* Mobile menu button (3 dots) - Positioned on the right side */
+/* Mobile menu button (3 dots) */
 .mobile-menu-button {
-  display: none; /* Hidden on desktop by default */
+  display: none; /* Hidden by default on desktop */
 }
 
-/* Show the hamburger menu only on mobile */
+/* Show hamburger menu only on mobile */
 @media screen and (max-width: 768px) {
   .navbar {
-    flex-direction: row; /* Keep navbar items in a row */
-  }
-
-  .mobile-menu-button {
-    display: block;
-    font-size: 30px;
-    color: #fff;
-    cursor: pointer;
-    margin-left: auto; /* Push hamburger button to the far right */
+    flex-direction: column; /* Stack navbar items vertically */
+    justify-content: flex-start; /* Align items at the top */
+    height: auto; /* Remove fixed height */
+    padding: 10px;
   }
 
   .navbar-right {
     display: none; /* Hide login/register on mobile */
   }
 
-  /* Show mobile menu when toggled */
+  .mobile-menu-button {
+    display: block; /* Show hamburger button */
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: auto; /* Align hamburger button to the right */
+  }
+
+  .navbar .nav-center {
+    width: 100%; /* Ensure the center items take full width */
+  }
+
+  .navbar-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
   .mobile-menu.show {
     display: block;
   }
 }
-
   .payments-box, .gold-rates-box {
     position: static;
     margin: 20px auto;
