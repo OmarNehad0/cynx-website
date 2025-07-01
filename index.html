@@ -56,6 +56,47 @@
   <link rel="icon" href="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" type="image/webp">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
+
+
+
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.desktop-auth {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* Make sure nav stays aligned in desktop and mobile */
+@media (max-width: 768px) {
+  .desktop-auth {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block !important;
+  }
+
+  .mobile-menu {
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .mobile-menu a {
+    display: block;
+    margin: 8px 0;
+    padding: 10px 15px;
+  }
+}
+
+
     * {
       scroll-behavior: smooth;
     }
