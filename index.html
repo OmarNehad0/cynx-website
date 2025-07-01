@@ -93,16 +93,22 @@ body::before {
 
 /* ----- NAVBAR STYLES ----- */
 .navbar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      background-color: # rgba(10, 10, 30, 0.85);
-      padding: 12px 0;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;  /* Allow navbar items to wrap when necessary */
+  height: 65px;
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+  background: rgba(15, 15, 30, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15);
+  overflow: hidden;
+  position: relative; /* Allow dropdown to position itself relative to the navbar */
+}
 /* Make navbar items wrap properly on mobile */
 @media screen and (max-width: 768px) {
   .navbar {
