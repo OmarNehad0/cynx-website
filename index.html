@@ -712,21 +712,6 @@ ul.features li i {
 function toggleMobileMenu() {
   const menu = document.getElementById("mobile-menu");
   menu.classList.toggle("show"); // Toggle the visibility of mobile menu
-  
-  const button = document.querySelector(".menu-button");
-  button.classList.toggle("active");  // Optional: Add a rotation effect to the button
-}
-
-// Close the mobile menu if clicked outside of it
-window.onclick = function(event) {
-  const menu = document.getElementById("mobile-menu");
-  const button = document.querySelector('.menu-button');
-  
-  // Close menu if clicking outside of it
-  if (!menu.contains(event.target) && !button.contains(event.target)) {
-    menu.classList.remove("show");
-    button.classList.remove('active');
-  }
 }
 
 // Handle login/logout dynamically
