@@ -300,11 +300,12 @@ button, .nav-item, .dropdown-content a, .discord-button, .dropbtn {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #1a1a1a;
+  background-color: #1a1e3c;
   padding: 10px 0;
   min-width: 180px;
-  z-index: 999;
-  box-shadow: 0 0 10px #000;
+  z-index: 1000; /* Make sure it's above navbar elements */
+  border-radius: 5px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 .dropdown:hover .dropdown-content {
   display: block;
