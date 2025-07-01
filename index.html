@@ -90,6 +90,46 @@ body::before {
   background: rgba(0, 0, 0, 0.4);
   z-index: -1;
 }
+/* TrustPilot widget customization */
+.trustpilot-widget {
+  background-color: #6a0dad; /* Dark Purple background */
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  max-width: 100%; /* Ensure it adapts to the container's width */
+}
+
+.trustpilot-widget a {
+  color: white; /* Text color */
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.trustpilot-widget:hover {
+  background-color: #9b4f96; /* Lighter purple on hover */
+  transform: scale(1.05); /* Slightly enlarge the widget */
+}
+
+.trustpilot-widget a:hover {
+  color: #ffcc00; /* Change text color to yellow when hovering */
+  text-decoration: underline; /* Add underline effect */
+}
+
+.trustpilot-widget a:focus {
+  outline: none; /* Remove default outline for focus state */
+}
+
+.trustpilot-widget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* ----- Basic Navbar layout ----- */
 .navbar {
   display: flex;
@@ -480,7 +520,7 @@ button, .nav-item, .dropdown-content a, .discord-button, .dropbtn {
 
 /* ----- MISC ----- */
 h1 {
-  color: rgbargba(255, 0, 0);
+  color: rgba(255, 0, 0);
   margin-top: 20px;
   text-shadow: 0 0 10px #fd0000, 0 0 20px #fff;
   animation: flicker 1.5s infinite alternate;
@@ -585,7 +625,12 @@ ul.features li i {
       <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> Cart
     </a>
   </div>
-
+ <!-- Right side for Login/Register buttons -->
+  <div class="navbar-right">
+    <div class="auth-buttons desktop-auth">
+      <a href="login.html" class="nav-item login">Login</a>
+      <a href="register.html" class="nav-item register">Register</a>
+    </div>
   <!-- Menu Button (only visible on mobile) -->
   <div class="menu-button" onclick="toggleMobileMenu()">Menu</div>
 </div>
@@ -634,7 +679,7 @@ ul.features li i {
   }
 </script>
 
-      <!-- TrustBox widget - Review Collector -->
+<!-- TrustBox widget - Review Collector -->
 <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6842e4f92868929dafb26497" data-style-height="52px" data-style-width="100%">
   <a href="https://www.trustpilot.com/review/cynxosrs.com" target="_blank" rel="noopener">Trustpilot</a>
 </div>
