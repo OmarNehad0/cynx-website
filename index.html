@@ -245,26 +245,24 @@ body::before {
   background-color: #333;
   border-radius: 4px;
 }
-/* ----- Menu Button Styles (only for mobile) ----- */
+/* ----- Mobile Menu Button ----- */
 .menu-button {
   display: none; /* Hidden by default */
   font-size: 20px;
   color: #fff;
   cursor: pointer;
-  margin-left: auto;
+  background-color: #9333ea;
   padding: 10px 20px;
-  background-color: #9333ea; /* Purple background */
   border-radius: 5px;
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
-  margin-right: 15px; /* Add some spacing to the right */
 }
 
-/* ----- Ensure the button only shows on mobile ----- */
+/* ----- Show Menu Button on Mobile ----- */
 @media screen and (max-width: 768px) {
   .menu-button {
-    display: block; /* Show the menu button only on mobile */
+    display: block; /* Show menu button only on mobile */
   }
 
   /* Hide navbar items on mobile by default */
@@ -273,9 +271,9 @@ body::before {
     display: none;
   }
 
-  /* Mobile Menu itself */
+  /* Mobile Menu */
   #mobile-menu {
-    display: none; /* Hidden by default */
+    display: none;
     position: absolute;
     top: 65px; /* Adjust according to navbar height */
     left: 0;
@@ -283,11 +281,10 @@ body::before {
     background: rgba(0, 0, 0, 0.8);
     padding: 10px;
     z-index: 999;
-    transition: all 0.3s ease-in-out;
   }
 
   #mobile-menu.show {
-    display: block; /* Show mobile menu when active */
+    display: block;
   }
 
   #mobile-menu a {
@@ -299,15 +296,16 @@ body::before {
   }
 }
 
-/* ----- Desktop-only styles ----- */
+/* ----- Desktop Styles ----- */
 @media (min-width: 769px) {
-  /* Hide the mobile menu button and mobile menu on desktop */
-  .menu-button,
+  .menu-button {
+    display: none !important;
+  }
+
   #mobile-menu {
     display: none !important;
   }
 }
-
 /* ----- Mobile menu items ----- */
 .navbar .nav-center {
   width: 100%;
@@ -478,7 +476,7 @@ button, .nav-item, .dropdown-content a, .discord-button, .dropbtn {
 
 /* ----- MISC ----- */
 h1 {
-  color: rgba(0, 0, 0, 0.3);
+  color: rgbargba(255, 0, 0);
   margin-top: 20px;
   text-shadow: 0 0 10px #fd0000, 0 0 20px #fff;
   animation: flicker 1.5s infinite alternate;
