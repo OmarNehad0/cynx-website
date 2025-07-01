@@ -245,65 +245,69 @@ body::before {
   background-color: #333;
   border-radius: 4px;
 }
-/* ----- Mobile Menu Button ----- */
+
+/* Mobile Menu Button */
 .menu-button {
   display: none; /* Hidden by default */
   font-size: 20px;
   color: #fff;
   cursor: pointer;
-  background-color: #9333ea;
   padding: 10px 20px;
+  background-color: #9333ea; /* Purple background */
   border-radius: 5px;
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
+  margin-right: 15px; /* Add spacing */
 }
 
-/* ----- Show Menu Button on Mobile ----- */
+/* Mobile Menu */
+#mobile-menu {
+  display: none;
+  position: absolute;
+  top: 65px; /* Below the navbar */
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 15px;
+  z-index: 999;
+}
+
+#mobile-menu.show {
+  display: block; /* Show mobile menu when active */
+}
+
+#mobile-menu a {
+  color: #ffcc00;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+}
+
+/* ----- Mobile View Styles ----- */
 @media screen and (max-width: 768px) {
+  /* Show the menu button on mobile */
   .menu-button {
-    display: block; /* Show menu button only on mobile */
+    display: block;
   }
 
-  /* Hide navbar items on mobile by default */
-  .nav-center,
-  .navbar-right {
+  /* Hide the normal navbar items on mobile */
+  .nav-center {
     display: none;
   }
 
-  /* Mobile Menu */
-  #mobile-menu {
-    display: none;
-    position: absolute;
-    top: 65px; /* Adjust according to navbar height */
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 10px;
-    z-index: 999;
-  }
-
+  /* Show the mobile menu when the button is clicked */
   #mobile-menu.show {
     display: block;
   }
-
-  #mobile-menu a {
-    color: #ffcc00;
-    font-size: 18px;
-    text-decoration: none;
-    padding: 10px;
-    display: block;
-  }
 }
 
-/* ----- Desktop Styles ----- */
+/* ----- Desktop View Styles ----- */
 @media (min-width: 769px) {
-  .menu-button {
-    display: none !important;
-  }
-
+  .menu-button,
   #mobile-menu {
-    display: none !important;
+    display: none; /* Hide the mobile menu button and menu on desktop */
   }
 }
 /* ----- Mobile menu items ----- */
@@ -582,13 +586,8 @@ ul.features li i {
     </a>
   </div>
 
-  <div class="navbar-right">
-    <!-- Dynamic Login/Logout or Register buttons will be placed here -->
-    <div class="auth-buttons desktop-auth"></div>
-
-    <!-- Menu Button (Visible only on mobile) -->
-    <div class="menu-button" onclick="toggleMobileMenu()">Menu</div>
-  </div>
+  <!-- Menu Button (only visible on mobile) -->
+  <div class="menu-button" onclick="toggleMobileMenu()">Menu</div>
 </div>
 
 <!-- MOBILE MENU -->
@@ -627,6 +626,13 @@ ul.features li i {
   <a href="register.html" class="nav-item register mobile-only">Register</a>
 </div>
 
+<script>
+  // Toggle mobile menu visibility
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('show');
+  }
+</script>
 
       <!-- TrustBox widget - Review Collector -->
 <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6842e4f92868929dafb26497" data-style-height="52px" data-style-width="100%">
@@ -707,10 +713,6 @@ ul.features li i {
 </div>
 
 <script>
-function toggleMobileMenu() {
-  const menu = document.getElementById("mobile-menu");
-  menu.classList.toggle("show"); // Toggle the visibility of mobile menu
-}
 
 // Handle login/logout dynamically
 const username = localStorage.getItem('username');
