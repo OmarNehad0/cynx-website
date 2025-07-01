@@ -111,12 +111,12 @@ body::before {
 /* Trustpilot Logo */
 .trustpilot-logo {
   height: 20px; /* Adjust logo size */
-  margin-left: 10px; /* Space between text and logo */
+  margin-right: 10px; /* Space between logo and text */
 }
 
 /* Text Styling */
 .custom-trustpilot-button a span {
-  margin-right: 10px; /* Space between 'Review Us On' and logo */
+  margin-left: 10px; /* Space between the logo and text */
 }
 
 /* Hover effect */
@@ -584,6 +584,12 @@ ul.features li i {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* Hide Login/Register on Mobile */
+@media screen and (max-width: 768px) {
+  .navbar-right .auth-buttons {
+    display: none; /* Hide login/register on mobile */
+  }
+}
 
 </style>
 
@@ -683,8 +689,8 @@ ul.features li i {
 <!-- Custom TrustPilot Button -->
 <div class="custom-trustpilot-button">
   <a href="https://www.trustpilot.com/review/cynxosrs.com?utm_medium=trustbox&utm_source=TrustBoxReviewCollector" target="_blank" rel="noopener">
-    <span>Review Us On</span>
     <img src="https://cdn.trustpilot.net/brand-assets/4.3.0/logo-white.svg" alt="Trustpilot Logo" class="trustpilot-logo">
+    <span>Review Us</span>
   </a>
 </div>
 
