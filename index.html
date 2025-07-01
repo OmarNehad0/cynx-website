@@ -196,31 +196,36 @@ body::before {
 /* Dropdown wrapper */
 .dropdown {
   position: relative;
-  display: inline-block;
 }
 
 /* Dropdown content: hidden by default */
 .dropdown-content {
   display: none;
   position: absolute;
+  top: 100%; /* Make sure dropdown is positioned below the button */
+  left: 0;
   background-color: #1a1e3c;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
-  z-index: 1;
+  padding: 10px 0;
+  min-width: 180px;
+  z-index: 1000; /* Ensure the dropdown appears above the navbar */
   border-radius: 5px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
-
-/* Each link in the dropdown */
 .dropdown-content a {
-  color: #ffcc00;
-  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  color: #ffc107;
+  padding: 8px 16px;
   text-decoration: none;
-  display: block;
+  white-space: nowrap;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 1px solid transparent;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 
 .dropdown-content a:hover {
   background-color: #2b2b2b;
