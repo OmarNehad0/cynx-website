@@ -209,23 +209,22 @@ body::before {
   width: 100%;
 }
 
-/* Dropdown wrapper */
+/* Ensure dropdown button aligns with other items in the navbar */
 .dropdown {
-  position: relative;
-  display: inline-block;
+  display: inline-flex; /* Use inline-flex to align it properly in the same row */
+  align-items: center; /* Vertically center the dropdown button */
+  margin: 0; /* Remove margin if present */
 }
 
-/* Main PVM button */
 .dropbtn {
-  color: #ffcc00;
-  text-decoration: none;
+  display: inline-flex; /* Align the dropdown button text and image in the same row */
+  align-items: center; /* Vertically center the text and icon */
   font-weight: bold;
-  margin: 0 1em;
-  display: inline-block;
+  font-size: 17px; /* Ensure the font size matches the other navbar items */
+  color: #ffcc00;
   cursor: pointer;
 }
 
-/* Dropdown content: hidden by default */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -234,19 +233,21 @@ body::before {
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
   z-index: 1;
   border-radius: 5px;
-}
-
-/* Each link in the dropdown */
-.dropdown-content a {
-  color: #ffcc00;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+  top: 100%; /* Position it directly below the dropdown button */
 }
 
 /* Show dropdown when hovering on .dropdown */
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+/* Adjust the padding for items inside the dropdown */
+.dropdown-content a {
+  display: flex;
+  align-items: center; /* Align icons and text properly */
+  padding: 12px 16px;
+  color: #ffcc00;
+  text-decoration: none;
 }
 
 /* Hide navbar items on mobile */
