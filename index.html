@@ -278,8 +278,95 @@ body::before {
     align-items: flex-end;
   }
 }
+  .payments-box, .gold-rates-box {
+    position: static;
+    margin: 20px auto;
+    width: 90%;
+  }
+}
+@media (min-width: 769px) {
+  .mobile-menu, .mobile-menu-button {
+    display: none !important;
+  }
+}
 
-/* ----- Payments & Gold Box ----- */
+/* ----- NAV LINK COLORS & HOVERS ----- */
+.nav-item.home { color: #00ffff; }
+.nav-item.osrs { color: #ff0000; }
+.nav-item.gold { color: #ffcc00; }
+.nav-item.cart { color: #00ff44; }
+.nav-item.login, .nav-item.register { color: #6a009b; }
+.nav-item:hover {
+  color: white;
+  box-shadow: 0 0 8px currentColor;
+  text-shadow: 0 0 5px currentColor;
+}
+.nav-item.home:hover { color: #00ffff; }
+.nav-item.osrs:hover { color: #ff0077; }
+.nav-item.gold:hover { color: #ffcc00; }
+.nav-item.cart:hover { color: #00ff44; }
+.nav-item.login:hover { color: #3399ff; }
+.nav-item.register:hover { color: #ff6600; }
+/* ----- BUTTONS, EFFECTS, MODALS ----- */
+button, .nav-item, .dropdown-content a, .discord-button, .dropbtn {
+  transition: all 0.3s ease-in-out;
+}
+.discord-button {
+  background-color: #5865f2;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 0 10px #5865f2;
+}
+.discord-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #ffffff, 0 0 30px #5865f2;
+}
+.discord-button-wrapper {
+  position: relative;
+  margin-top: 10px;
+}
+.auth-modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  padding: 20px;
+  border: 1px solid #ffcc00;
+  box-shadow: 0 0 15px #ffcc00;
+  z-index: 9999;
+  color: #fff;
+}
+.auth-modal input {
+  padding: 8px;
+  width: 90%;
+  margin: 10px 0;
+}
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.auth-buttons button {
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  margin: 0 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.desktop-auth { display: flex; }
+
+/* ----- PAYMENT & GOLD BOXES ----- */
 .payments-box,
 .gold-rates-box {
   background-color: rgba(10, 10, 30, 0.85);
@@ -289,20 +376,87 @@ body::before {
   color: #fff;
   max-width: 280px;
 }
-
 .payments-box {
   position: fixed;
   bottom: 20px;
   left: 20px;
 }
+.payments-box h3,
+.gold-rates-box h3 {
+  color: #ffcc00;
+  margin-top: 0;
+  text-shadow: 0 0 10px #ffcc00;
+}
+@media screen and (max-width: 768px) {
+  .payments-box,
+  .gold-rates-box {
+    position: relative;
+    width: 100%;
+    bottom: auto;
+    left: auto;
+    padding: 10px;
+  }
+}
 
+.payments-box ul {
+  list-style: none;
+  padding-left: 0;
+}
+.payments-box li {
+  text-align: left;
+  margin-bottom: 6px;
+}
+.payments-box img {
+  width: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
 .gold-rates-box {
   position: fixed;
   bottom: 20px;
   right: 20px;
+  text-align: center;
+}
+.gold-rates-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+.rate-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 100px;
+  border: 1px solid #ffcc00;
+  box-shadow: 0 0 10px #ffcc00;
+}
+.rate-box span {
+  font-size: 1.2em;
+  color: #ffcc00;
+}
+.gold-rates-box h3 img {
+  height: 24px;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 4px #ffcc00);
 }
 
-/* ----- Misc Styling ----- */
+/* ----- MISC ----- */
+h1 {
+  color: #0417e4;
+  margin-top: 20px;
+  text-shadow: 0 0 10px #fd0000, 0 0 20px #fff;
+  animation: flicker 1.5s infinite alternate;
+}
+@keyframes flicker {
+  from {
+    text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #fff;
+  }
+  to {
+    text-shadow: 0 0 2px #ffcc00, 0 0 5px #ffcc00, 0 0 10px #fff;
+  }
+}
 footer {
   margin-top: 60px;
   font-size: 14px;
