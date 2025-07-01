@@ -60,11 +60,14 @@
       scroll-behavior: smooth;
     }
 .discord-button-wrapper {
+   position: relative;
   margin-top: 10px;
 }
 /* Hide mobile menu button and mobile-menu on desktop */
 .mobile-menu-button {
   display: none;
+position: relative;
+  z-index: 1000;
   font-size: 28px;         /* Bigger hamburger icon */
   cursor: pointer;
   color: #ffcc00;
@@ -74,13 +77,12 @@
 
 
 .mobile-menu {
-  display: none;
-  flex-direction: column;
   position: absolute;
-  top: 100%; /* aligns right below the navbar */
-   left: 50%;
+  top: 100%;
+  left: 50%;
   transform: translateX(-50%);
-  width: auto;
+  text-align: center;
+  width: max-content;
   min-width: 180px;
   background-color: rgba(20, 20, 30, 0.95);
   border: 1px solid #9333ea;
@@ -668,6 +670,9 @@ html {
     <a href="cart.html" class="nav-item cart">
       <i class="fas fa-shopping-cart"></i> Cart
     </a>
+ <div class="auth-buttons desktop-auth">
+  <!-- dynamically inserted login/register here -->
+</div>
   </div>
 
   <!-- MOBILE ☰ BUTTON -->
@@ -705,6 +710,9 @@ html {
     <a href="cart.html" class="nav-item cart">
       <i class="fas fa-shopping-cart"></i> Cart
     </a>
+<!-- Add this at the end of #mobile-menu -->
+<a href="login.html" class="nav-item login mobile-only">Login</a>
+<a href="register.html" class="nav-item register mobile-only">Register</a>
   </div>
 </div>
 
@@ -790,51 +798,47 @@ html {
 
 <script>
   const username = localStorage.getItem('username');
-  const navbar = document.querySelector('.navbar');
+const desktopAuth = document.querySelector('.auth-buttons');
 
-  function createAuthButtons() {
-    const loginBtn = document.createElement('a');
-    loginBtn.href = 'login.html';
-    loginBtn.textContent = 'Login';
+function createAuthButtons() {
+  const loginBtn = document.createElement('a');
+  loginBtn.href = 'login.html';
+  loginBtn.textContent = 'Login';
+  loginBtn.className = 'nav-item login';
 
-    const registerBtn = document.createElement('a');
-    registerBtn.href = 'register.html';
-    registerBtn.textContent = 'Register';
+  const registerBtn = document.createElement('a');
+  registerBtn.href = 'register.html';
+  registerBtn.textContent = 'Register';
+  registerBtn.className = 'nav-item register';
 
-    navbar.appendChild(loginBtn);
-    navbar.appendChild(registerBtn);
-  }
+  desktopAuth.appendChild(loginBtn);
+  desktopAuth.appendChild(registerBtn);
+}
 
-  if (username) {
-    // Remove login & register links if they exist
-    navbar.querySelectorAll('a').forEach(link => {
-      if (link.href.includes('login.html') || link.href.includes('register.html')) {
-        link.remove();
-      }
-    });
+if (username) {
+  desktopAuth.innerHTML = '';
 
-    // Add profile button
-    const profileLink = document.createElement('a');
-    profileLink.href = '#';
-    profileLink.innerHTML = `
-      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" style="height: 20px; vertical-align: middle; border-radius: 50%; margin-right: 5px;">
-      ${username}
-    `;
-    navbar.appendChild(profileLink);
+  const profileLink = document.createElement('a');
+  profileLink.href = '#';
+  profileLink.innerHTML = `
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" style="height: 20px; vertical-align: middle; border-radius: 50%; margin-right: 5px;">
+    ${username}
+  `;
+  profileLink.className = 'nav-item login';
+  desktopAuth.appendChild(profileLink);
 
-    // Add logout button
-    const logoutBtn = document.createElement('a');
-    logoutBtn.href = '#';
-    logoutBtn.textContent = 'Logout';
-    logoutBtn.style.marginLeft = '15px';
-    logoutBtn.onclick = () => {
-      localStorage.removeItem('username');
-      location.reload(); // Triggers re-check and brings back login/register
-    };
-    navbar.appendChild(logoutBtn);
-  } else {
-    createAuthButtons(); // Show login/register
-  }
+  const logoutBtn = document.createElement('a');
+  logoutBtn.href = '#';
+  logoutBtn.textContent = 'Logout';
+  logoutBtn.className = 'nav-item register';
+  logoutBtn.onclick = () => {
+    localStorage.removeItem('username');
+    location.reload();
+  };
+  desktopAuth.appendChild(logoutBtn);
+} else {
+  createAuthButtons();
+}
 </script>
 <script>
 function toggleMobileMenu() {
