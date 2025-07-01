@@ -90,6 +90,10 @@ body::before {
   background: rgba(0, 0, 0, 0.4);
   z-index: -1;
 }
+/* When the button is clicked, rotate it */
+.mobile-menu-button.active {
+  transform: rotate(90deg);
+}
 
 /* ----- Basic Navbar layout ----- */
 .navbar {
@@ -262,36 +266,34 @@ body::before {
   display: block;
 }
 
-#mobile-menu a:hover {
-  background-color: rgba(255, 204, 0, 0.08);
-}
-
-/* ----- RESPONSIVE DESIGN ----- */
+/* Mobile layout */
 @media screen and (max-width: 768px) {
   .navbar {
-    flex-direction: column; /* Stack navbar items vertically on mobile */
-    padding: 10px 15px; /* Adjust padding for mobile */
-    height: auto; /* Allow flexible height */
+    flex-direction: column;
+    padding: 10px 15px;
+    height: auto;
+  }
+
+  /* Hide the navbar items on mobile */
+  .nav-center,
+  .navbar-right {
+    display: none;
   }
 
   /* Mobile menu button (3 dots) */
   .mobile-menu-button {
-    display: block; /* Make the hamburger button visible on mobile */
+    display: block;
     font-size: 30px;
     color: #fff;
     cursor: pointer;
-    margin-left: auto; /* Align hamburger button to the right */
-  }
-
-  /* Hide the navbar items on mobile */
-  .nav-center, .navbar-right {
-    display: none;
+    margin-left: auto;
   }
 
   /* Show mobile menu when the button is clicked */
   .mobile-menu.show {
     display: block;
   }
+}
 
   /* Ensure center items take full width */
   .navbar .nav-center {
