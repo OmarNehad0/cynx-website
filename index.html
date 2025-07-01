@@ -109,20 +109,44 @@ body::before {
 }
 
 /* ----- Logo alignment ----- */
+/* LOGO */
 .cynx-logo {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-right: auto; /* Push logo to the left */
+  text-decoration: none;
+  margin-right: 20px;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
+.cynx-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px #9333ea);
+}
 .cynx-logo img {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 8px;
   box-shadow: 0 0 10px #9333ea;
 }
-
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.1;
+}
+.logo-text span {
+  font-size: 26px;
+  font-weight: 700;
+  color: #9333ea;
+  text-shadow: 0 0 4px #9333ea;
+}
+.logo-text strong {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 800;
+}
 /* ----- Center items ----- */
 .nav-center {
   display: flex;
