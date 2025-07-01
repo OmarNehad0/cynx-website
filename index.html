@@ -108,6 +108,15 @@ body::before {
   box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15);
   overflow: hidden;
 }
+/* Make navbar items wrap properly on mobile */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack items vertically */
+  }
+  .nav-center {
+    width: 100%; /* Ensure full width on mobile */
+  }
+}
 .navbar a {
   color: #ffcc00;
   font-weight: bold;
@@ -183,11 +192,11 @@ body::before {
   font-weight: 800;
 }
 
-/* ----- DROPDOWN MENU ----- */
-.dropdown {
-  position: relative;
-}
 /* Ensure dropdown content is visible on hover */
+.dropdown {
+  position: relative; /* Ensure the parent container is positioned */
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -204,6 +213,7 @@ body::before {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 .dropdown-content a {
   display: flex;
   align-items: center;
@@ -214,12 +224,14 @@ body::before {
   transition: all 0.3s ease-in-out;
   border-bottom: 1px solid transparent;
 }
+
 .dropdown-content a:hover {
   background-color: #2b2b2b;
   color: #fff;
   border-bottom: 1px solid #ffcc00;
   box-shadow: inset 0 0 10px rgba(255, 204, 0, 0.2);
 }
+
 .dropbtn {
   color: #ffcc00;
   text-decoration: none;
@@ -237,9 +249,11 @@ body::before {
   .desktop-auth, .desktop-menu, .nav-center {
     display: none !important;
   }
-  .mobile-menu-button {
-    display: none;
-  }
+  /* Initially hide the mobile menu button on larger screens */
+.mobile-menu-button {
+  display: none; /* Hidden by default */
+}
+
 /* Show the button on mobile screens */
 @media screen and (max-width: 768px) {
   .mobile-menu-button {
@@ -248,16 +262,16 @@ body::before {
     color: #fff; /* Change color if needed */
     cursor: pointer;
   }
-}
-  .mobile-only {
-    display: block !important;
-  }
+
   .mobile-menu {
     display: none;
   }
-.mobile-menu.show {
-  display: block;
+
+  .mobile-menu.show {
+    display: block;
+  }
 }
+
   .payments-box, .gold-rates-box {
     position: static;
     margin: 20px auto;
