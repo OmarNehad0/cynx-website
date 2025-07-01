@@ -209,22 +209,25 @@ body::before {
   width: 100%;
 }
 
-/* Ensure dropdown button aligns with other items in the navbar */
+/* Ensure dropdown stays visible while hovering over button or content */
 .dropdown {
-  display: inline-flex; /* Use inline-flex to align it properly in the same row */
-  align-items: center; /* Vertically center the dropdown button */
-  margin: 0; /* Remove margin if present */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
 }
 
+/* Dropdown button styling */
 .dropbtn {
-  display: inline-flex; /* Align the dropdown button text and image in the same row */
-  align-items: center; /* Vertically center the text and icon */
+  display: inline-flex;
+  align-items: center;
   font-weight: bold;
-  font-size: 17px; /* Ensure the font size matches the other navbar items */
+  font-size: 17px;
   color: #ffcc00;
   cursor: pointer;
+  padding: 10px 15px;
 }
 
+/* Dropdown content: hidden by default */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -236,18 +239,23 @@ body::before {
   top: 100%; /* Position it directly below the dropdown button */
 }
 
-/* Show dropdown when hovering on .dropdown */
+/* Show dropdown when hovering on the entire dropdown (button or items) */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Adjust the padding for items inside the dropdown */
+/* Dropdown item styles */
 .dropdown-content a {
   display: flex;
-  align-items: center; /* Align icons and text properly */
+  align-items: center; /* Vertically center the icon and text */
   padding: 12px 16px;
   color: #ffcc00;
   text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #333;
+  border-radius: 4px;
 }
 
 /* Hide navbar items on mobile */
