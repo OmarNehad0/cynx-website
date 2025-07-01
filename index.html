@@ -102,14 +102,6 @@ body::before {
   cursor: pointer;
   margin-left: auto;
 }
-
-/* Show hamburger menu on mobile */
-@media screen and (max-width: 768px) {
-  .mobile-menu-button {
-    display: block; /* Make the hamburger button visible on mobile */
-  }
-}
-
 /* ----- Basic Navbar layout ----- */
 .navbar {
   display: flex;
@@ -281,57 +273,55 @@ body::before {
   display: block;
 }
 
-/* Hide the navbar items on mobile */
+/* ----- Mobile layout adjustments ----- */
 @media screen and (max-width: 768px) {
-  .mobile-menu-button {
-    display: block; /* Make the hamburger button visible on mobile */
+  .navbar {
+    flex-direction: column;
+    padding: 10px 15px;
+    height: auto;
   }
-}
 
-  /* Hide the navbar items on mobile */
+  /* Hide navbar items on mobile */
   .nav-center,
   .navbar-right {
     display: none;
   }
 
-  /* Mobile menu button (3 dots) */
-.mobile-menu-button {
-  display: none; /* Hidden on desktop by default */
-  font-size: 30px;
-  color: #fff;
-  cursor: pointer;
-  margin-left: auto; /* Align hamburger button to the right */
-}
+  /* Show hamburger menu on mobile */
+  .mobile-menu-button {
+    display: block; /* Make the hamburger button visible on mobile */
+  }
 
   /* Show mobile menu when the button is clicked */
   .mobile-menu.show {
-    display: block; /* Show mobile menu */
+    display: block;
   }
 }
 
-  /* Ensure center items take full width */
-  .navbar .nav-center {
-    width: 100%;
-  }
+/* Ensure center items take full width */
+.navbar .nav-center {
+  width: 100%;
+}
 
-  /* Hide the login/register on mobile */
-  .navbar-right {
-    display: none;
-  }
+.navbar .cynx-logo {
+  margin-right: auto; /* Align logo to the left on mobile */
+}
 
-  .navbar .cynx-logo {
-    margin-right: auto; /* Align logo to the left on mobile */
+/* Hide the login/register on mobile */
+.navbar-right {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  /* Hide the mobile menu button and mobile menu on desktop */
+  .mobile-menu, .mobile-menu-button {
+    display: none !important;
   }
 }
   .payments-box, .gold-rates-box {
     position: static;
     margin: 20px auto;
     width: 90%;
-  }
-}
-@media (min-width: 769px) {
-  .mobile-menu, .mobile-menu-button {
-    display: none !important;
   }
 }
 
