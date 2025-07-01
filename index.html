@@ -87,6 +87,14 @@ body::before {
   z-index: -1;
 }
 /* Custom Trustpilot Button Styles */
+.custom-trustpilot-button {
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  align-items: center; /* Center the content vertically */
+  margin-top: 20px; /* Optional margin for spacing */
+}
+
+/* Styling the button itself */
 .custom-trustpilot-button a {
   display: flex;
   align-items: center;
@@ -97,14 +105,18 @@ body::before {
   padding: 12px 20px;
   border-radius: 5px; /* Rounded corners */
   transition: background-color 0.3s, transform 0.3s;
-  width: fit-content;
-  margin: 20px 0; /* Margin for spacing */
+  width: fit-content; /* Button adjusts to content width */
 }
 
 /* Trustpilot Logo */
 .trustpilot-logo {
   height: 20px; /* Adjust logo size */
-  margin-right: 10px; /* Space between logo and text */
+  margin-left: 10px; /* Space between text and logo */
+}
+
+/* Text Styling */
+.custom-trustpilot-button a span {
+  margin-right: 10px; /* Space between 'Review Us On' and logo */
 }
 
 /* Hover effect */
@@ -117,6 +129,8 @@ body::before {
 .custom-trustpilot-button a:focus {
   outline: none;
 }
+
+
 
 
 /* ----- Basic Navbar layout ----- */
@@ -669,10 +683,12 @@ ul.features li i {
 <!-- Custom TrustPilot Button -->
 <div class="custom-trustpilot-button">
   <a href="https://www.trustpilot.com/review/cynxosrs.com?utm_medium=trustbox&utm_source=TrustBoxReviewCollector" target="_blank" rel="noopener">
+    <span>Review Us On</span>
     <img src="https://cdn.trustpilot.net/brand-assets/4.3.0/logo-white.svg" alt="Trustpilot Logo" class="trustpilot-logo">
-    Leave a Review on Trustpilot
+    TrustPilot
   </a>
 </div>
+
   </div>
 
   <h1>
