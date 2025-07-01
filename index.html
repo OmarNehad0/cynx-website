@@ -91,12 +91,13 @@ body::before {
   z-index: -1;
 }
 
-/* Navbar layout */
+/* Basic Navbar layout */
 .navbar {
   display: flex;
   justify-content: space-between; /* Spread out logo, center items, and login/register */
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap; /* Keep items in a row */
+  height: 65px; /* Adjust navbar height */
   padding: 12px 30px;
   position: sticky;
   top: 0;
@@ -147,35 +148,32 @@ body::before {
 .navbar .cynx-logo {
   margin-right: auto; /* Push logo to the left */
 }
+
+/* Center items */
 .nav-center {
   display: flex;
   justify-content: center;
-  flex: 1;
+  flex: 1; /* Allow the center items to take up available space */
 }
 
-/* Login and Register on the right */
+/* Login and Register buttons */
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 15px;
   margin-left: auto; /* Push login/register to the right */
 }
-
-/* ----- LOGO ----- */
-/* Logo on the left */
+/* Logo styling */
 .cynx-logo {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-right: auto; /* Push logo to the left */
 }
-.cynx-logo:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 10px #9333ea);
-}
+
 .cynx-logo img {
-  width: 40px; /* Adjust logo width */
-  height: 40px; /* Adjust logo height */
+  width: 40px;
+  height: 40px;
   border-radius: 8px;
   box-shadow: 0 0 10px #9333ea;
 }
@@ -198,9 +196,9 @@ body::before {
   font-weight: 800;
 }
 
-/* Dropdown styling */
+/* Dropdown menu styling */
 .dropdown {
-  position: relative; /* Dropdown relative to navbar */
+  position: relative; /* Allow dropdown to be positioned below */
 }
 
 .dropbtn {
@@ -212,10 +210,11 @@ body::before {
   cursor: pointer;
 }
 
+/* Dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%; /* Position dropdown below the button */
+  top: 100%; /* Position the dropdown below the button */
   left: 0;
   background-color: #1a1e3c;
   min-width: 160px;
@@ -225,6 +224,7 @@ body::before {
   padding: 10px 0;
 }
 
+/* Style for each dropdown item */
 .dropdown-content a {
   color: #ffcc00;
   padding: 12px 16px;
@@ -232,8 +232,9 @@ body::before {
   display: block;
 }
 
+/* Show dropdown content on hover */
 .dropdown:hover .dropdown-content {
-  display: block; /* Show dropdown on hover */
+  display: block;
 }
 
 /* ----- RESPONSIVE DESIGN ----- */
@@ -250,16 +251,16 @@ body::before {
   display: none; /* Hidden on desktop by default */
 }
 
-/* Ensure mobile menu works properly */
+/* Show hamburger menu on mobile */
 @media screen and (max-width: 768px) {
   .navbar {
-    flex-direction: row; /* Keep navbar items in a row on mobile */
+    flex-direction: row; /* Stack navbar items on mobile */
     justify-content: flex-start; /* Align items to the left */
-    height: auto; /* Remove fixed height */
-    padding: 10px 15px; /* Adjust padding for better fit */
+    height: auto; /* Allow flexible height */
+    padding: 10px 15px; /* Adjust padding */
   }
 
-  /* Hide login/register on mobile */
+  /* Hide login/register buttons on mobile */
   .navbar-right {
     display: none;
   }
