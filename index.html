@@ -91,13 +91,13 @@ body::before {
   z-index: -1;
 }
 
-/* ----- Navbar Layout ----- */
+/* ----- Basic Navbar layout ----- */
 .navbar {
   display: flex;
   justify-content: space-between; /* Spread out logo, center items, and login/register */
   align-items: center;
   flex-wrap: nowrap; /* Keep items in a row */
-  height: 65px;
+  height: 65px; /* Adjust navbar height */
   padding: 12px 30px;
   position: sticky;
   top: 0;
@@ -108,7 +108,7 @@ body::before {
   box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15);
 }
 
-/* Logo Alignment */
+/* ----- Logo alignment ----- */
 .cynx-logo {
   display: flex;
   align-items: center;
@@ -123,14 +123,14 @@ body::before {
   box-shadow: 0 0 10px #9333ea;
 }
 
-/* Center items */
+/* ----- Center items ----- */
 .nav-center {
   display: flex;
   justify-content: center;
   flex: 1; /* Allow center items to take up available space */
 }
 
-/* Login/Register buttons */
+/* ----- Login/Register buttons ----- */
 .navbar-right {
   display: flex;
   align-items: center;
@@ -148,6 +148,7 @@ body::before {
   position: relative;
   transition: 0.3s;
 }
+
 .navbar a:hover {
   background-color: rgba(255, 204, 0, 0.08);
   border-radius: 6px;
@@ -190,7 +191,7 @@ body::before {
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 100%; /* Position dropdown below the button */
   left: 0;
   background-color: #1a1e3c;
   min-width: 160px;
@@ -209,45 +210,6 @@ body::before {
 
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
-/* ----- Responsive Design ----- */
-@media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column; /* Stack navbar items vertically on mobile */
-    padding: 10px 15px;
-    height: auto;
-  }
-
-  /* Mobile menu button (3 dots) */
-  .mobile-menu-button {
-    display: block; /* Make the hamburger button visible on mobile */
-    font-size: 30px;
-    color: #fff;
-    cursor: pointer;
-    margin-left: auto; /* Align hamburger button to the right */
-  }
-
-  /* Hide login/register on mobile */
-  .navbar-right {
-    display: none;
-  }
-
-  /* Display mobile menu when the button is clicked */
-  .mobile-menu.show {
-    display: block;
-  }
-
-  /* Center items take full width */
-  .navbar .nav-center {
-    width: 100%;
-  }
-
-  .navbar-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
 }
 
 /* ----- Mobile Menu ----- */
@@ -278,6 +240,45 @@ body::before {
   background-color: rgba(255, 204, 0, 0.08);
 }
 
+/* ----- Responsive Design ----- */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack navbar items vertically on mobile */
+    padding: 10px 15px; /* Adjust padding for mobile */
+    height: auto; /* Allow flexible height */
+  }
+
+  /* Mobile menu button (3 dots) */
+  .mobile-menu-button {
+    display: block; /* Make the hamburger button visible on mobile */
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: auto; /* Align hamburger button to the right */
+  }
+
+  /* Hide login/register on mobile */
+  .navbar-right {
+    display: none;
+  }
+
+  /* Show mobile menu when the button is clicked */
+  .mobile-menu.show {
+    display: block;
+  }
+
+  /* Ensure center items take full width */
+  .navbar .nav-center {
+    width: 100%;
+  }
+
+  .navbar-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
 /* ----- Payments & Gold Box ----- */
 .payments-box,
 .gold-rates-box {
@@ -306,6 +307,49 @@ footer {
   margin-top: 60px;
   font-size: 14px;
   color: gray;
+}
+.buttons {
+  margin: 20px 0;
+}
+.buttons a {
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  margin: 0 10px;
+  font-weight: bold;
+  display: inline-block;
+  transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+.buttons a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #fff, 0 0 20px #ffcc00;
+}
+.discord-btn {
+  background-color: #5865f2;
+  color: white;
+}
+.vouches-btn {
+  background-color: #ffcc00;
+  color: black;
+}
+ul.features {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: auto;
+  text-align: left;
+  animation: fadeIn 1s ease-in-out;
+}
+ul.features li {
+  margin: 12px 0;
+  font-size: 16px;
+}
+ul.features li i {
+  margin-right: 10px;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 </style>
