@@ -594,18 +594,14 @@ ul.features li i {
       <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> Cart
     </a>
   </div>
-<!-- RIGHT SIDE -->
+
+  <!-- RIGHT SIDE -->
 <div class="navbar-right">
   <div class="auth-buttons desktop-auth">
     <a href="login.html" class="nav-item login">Login</a>
     <a href="register.html" class="nav-item register">Register</a>
   </div>
-
-  <!-- RIGHT SIDE -->
-  <div class="navbar-right">
-    <div class="auth-buttons desktop-auth"></div>
-    <div class="mobile-menu-button" onclick="toggleMobileMenu()">☰</div>
-  </div>
+  <div class="mobile-menu-button" onclick="toggleMobileMenu()">☰</div>
 </div>
 
 <!-- MOBILE MENU -->
@@ -643,16 +639,6 @@ ul.features li i {
   <a href="login.html" class="nav-item login mobile-only">Login</a>
   <a href="register.html" class="nav-item register mobile-only">Register</a>
 </div>
-
-<script>
-  function toggleMobileMenu() {
-    const menu = document.getElementById("mobile-menu");
-    menu.classList.toggle("show");
-  }
-</script>
-
-
-
 
      <!-- TrustBox widget - Review Collector -->
 <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6842e4f92868929dafb26497" data-style-height="52px" data-style-width="100%">
@@ -733,14 +719,11 @@ ul.features li i {
 </div>
 
 <script>
-  // Function to toggle the mobile menu
 function toggleMobileMenu() {
   const menu = document.getElementById("mobile-menu");
   menu.classList.toggle("show");
-  
-  // Rotate the hamburger button when active
-  const hamburger = document.querySelector('.mobile-menu-button');
-  hamburger.classList.toggle('active');
+  const button = document.querySelector(".mobile-menu-button");
+  button.classList.toggle("active");  // Optional: to add rotation effect to the 3 dots button
 }
 
 // Close the mobile menu if clicked outside
