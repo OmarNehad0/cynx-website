@@ -246,7 +246,7 @@ body::before {
   border-radius: 4px;
 }
 
-/* ----- Mobile Menu Button ----- */
+/* ----- Menu Button Styles (only for mobile) ----- */
 .menu-button {
   display: none; /* Hidden by default */
   font-size: 20px;
@@ -259,21 +259,22 @@ body::before {
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
+  margin-right: 15px; /* Add some spacing to the right */
 }
 
-/* Show the mobile button only on mobile */
+/* ----- Ensure the button only shows on mobile ----- */
 @media screen and (max-width: 768px) {
   .menu-button {
-    display: block; /* Show the button only on mobile */
+    display: block; /* Show the menu button only on mobile */
   }
 
-  /* Hide the nav items on mobile by default */
+  /* Hide navbar items on mobile by default */
   .nav-center,
   .navbar-right {
     display: none;
   }
 
-  /* Mobile menu itself */
+  /* Mobile Menu itself */
   #mobile-menu {
     display: none; /* Hidden by default */
     position: absolute;
@@ -298,7 +299,8 @@ body::before {
     display: block;
   }
 }
-/* Ensure center items take full width */
+
+/* ----- Mobile menu items ----- */
 .navbar .nav-center {
   width: 100%;
 }
@@ -307,9 +309,11 @@ body::before {
   margin-right: auto; /* Align logo to the left on mobile */
 }
 
+/* ----- Desktop-only styles ----- */
 @media (min-width: 769px) {
   /* Hide the mobile menu button and mobile menu on desktop */
-  .mobile-menu, .mobile-menu-button {
+  .menu-button,
+  #mobile-menu {
     display: none !important;
   }
 }
@@ -580,16 +584,15 @@ ul.features li i {
     </a>
   </div>
 
-<div class="navbar-right">
-  <!-- Dynamic Login/Logout or Register buttons will be placed here -->
-  <div class="auth-buttons desktop-auth"></div>
+  <div class="navbar-right">
+    <!-- Dynamic Login/Logout or Register buttons will be placed here -->
+    <div class="auth-buttons desktop-auth"></div>
 
-  <!-- Mobile Menu Button (Visible only on mobile) -->
-  <div class="menu-button" onclick="toggleMobileMenu()">Menu</div>
+    <!-- Menu Button (Visible only on mobile) -->
+    <div class="menu-button" onclick="toggleMobileMenu()">Menu</div>
+  </div>
 </div>
 
-
-</div>
 <!-- MOBILE MENU -->
 <div id="mobile-menu" class="mobile-menu">
   <a href="index.html" class="nav-item home">
@@ -711,7 +714,7 @@ function toggleMobileMenu() {
   menu.classList.toggle("show"); // Show or hide the menu
   
   const button = document.querySelector(".menu-button");
-  button.classList.toggle("active");  // Optional: adds rotation effect to the button
+  button.classList.toggle("active");  // Optional: add rotation effect to the button
 }
 
 // Close the mobile menu if clicking outside of it
