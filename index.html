@@ -90,13 +90,14 @@ body::before {
   background: rgba(0, 0, 0, 0.4);
   z-index: -1;
 }
-/* Basic Navbar layout */
+
+/* ----- Navbar Layout ----- */
 .navbar {
   display: flex;
   justify-content: space-between; /* Spread out logo, center items, and login/register */
   align-items: center;
   flex-wrap: nowrap; /* Keep items in a row */
-  height: 65px; /* Adjust navbar height */
+  height: 65px;
   padding: 12px 30px;
   position: sticky;
   top: 0;
@@ -106,12 +107,38 @@ body::before {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15);
 }
-/* Ensure the navbar is responsive */
-@media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column; /* Stack navbar items vertically on mobile */
-  }
+
+/* Logo Alignment */
+.cynx-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: auto; /* Push logo to the left */
 }
+
+.cynx-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #9333ea;
+}
+
+/* Center items */
+.nav-center {
+  display: flex;
+  justify-content: center;
+  flex: 1; /* Allow center items to take up available space */
+}
+
+/* Login/Register buttons */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto; /* Push login/register to the right */
+}
+
+/* Navbar Items Styling */
 .navbar a {
   color: #ffcc00;
   font-weight: bold;
@@ -129,6 +156,8 @@ body::before {
   box-shadow: 0 0 10px #ffcc00;
   text-shadow: 0 0 4px #ffcc00;
 }
+
+/* Navbar links underline on hover */
 .navbar a::after {
   content: '';
   position: absolute;
@@ -143,61 +172,8 @@ body::before {
 .navbar a:hover::after {
   width: 100%;
 }
-/* Ensure items are aligned properly */
-.navbar .cynx-logo {
-  margin-right: auto; /* Push logo to the left */
-}
 
-/* Center items */
-.nav-center {
-  display: flex;
-  justify-content: center;
-  flex: 1; /* Allow center items to take up available space */
-}
-
-/* Login/Register buttons */
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-left: auto; /* Push login/register to the right */
-}
-/* Logo styling */
-/* Logo alignment */
-.cynx-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-right: auto; /* Push logo to the left */
-}
-
-.cynx-logo img {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #9333ea;
-}
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-family: 'Segoe UI', sans-serif;
-  line-height: 1.1;
-}
-.logo-text span {
-  font-size: 26px;
-  font-weight: 700;
-  color: #9333ea;
-  text-shadow: 0 0 4px #9333ea;
-}
-.logo-text strong {
-  font-size: 24px;
-  color: #fff;
-  font-weight: 800;
-}
-
-/* Dropdown menu styling */
-/* ----- Dropdown Styling ----- */
+/* Dropdown Menu Styling */
 .dropdown {
   position: relative;
 }
@@ -214,7 +190,7 @@ body::before {
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%; /* Position dropdown below the button */
+  top: 100%;
   left: 0;
   background-color: #1a1e3c;
   min-width: 160px;
@@ -235,31 +211,21 @@ body::before {
   display: block;
 }
 
-/* ----- RESPONSIVE DESIGN ----- */
-@media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-  }
-  .desktop-auth, .desktop-menu, .nav-center {
-    display: none !important;
-  }
-  /* Initially hide the mobile menu button on larger screens */
-/* Mobile menu button (3 dots) */
-/* ----- Mobile Menu Button ----- */
-.mobile-menu-button {
-  display: none; /* Hidden on desktop by default */
-  font-size: 30px;
-  color: #fff;
-  cursor: pointer;
-  margin-left: auto; /* Align hamburger button to the right */
-}
-
 /* ----- Responsive Design ----- */
 @media screen and (max-width: 768px) {
   .navbar {
     flex-direction: column; /* Stack navbar items vertically on mobile */
-    padding: 10px 15px; /* Adjust padding for mobile */
-    height: auto; /* Allow flexible height */
+    padding: 10px 15px;
+    height: auto;
+  }
+
+  /* Mobile menu button (3 dots) */
+  .mobile-menu-button {
+    display: block; /* Make the hamburger button visible on mobile */
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: auto; /* Align hamburger button to the right */
   }
 
   /* Hide login/register on mobile */
@@ -267,119 +233,52 @@ body::before {
     display: none;
   }
 
-  /* Mobile menu button (3 dots) */
-  .mobile-menu-button {
-    display: block; /* Make the hamburger button visible on mobile */
-  }
-
-  /* Show mobile menu when the button is clicked */
+  /* Display mobile menu when the button is clicked */
   .mobile-menu.show {
     display: block;
   }
 
-/* Ensure center items take full width */
+  /* Center items take full width */
   .navbar .nav-center {
     width: 100%;
   }
-}
 
   .navbar-right {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
   }
-
-}
-  .payments-box, .gold-rates-box {
-    position: static;
-    margin: 20px auto;
-    width: 90%;
-  }
-}
-@media (min-width: 769px) {
-  .mobile-menu, .mobile-menu-button {
-    display: none !important;
-  }
 }
 
-/* ----- NAV LINK COLORS & HOVERS ----- */
-.nav-item.home { color: #00ffff; }
-.nav-item.osrs { color: #ff0000; }
-.nav-item.gold { color: #ffcc00; }
-.nav-item.cart { color: #00ff44; }
-.nav-item.login, .nav-item.register { color: #6a009b; }
-.nav-item:hover {
-  color: white;
-  box-shadow: 0 0 8px currentColor;
-  text-shadow: 0 0 5px currentColor;
+/* ----- Mobile Menu ----- */
+#mobile-menu {
+  display: none;
+  position: absolute;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  z-index: 999;
 }
-.nav-item.home:hover { color: #00ffff; }
-.nav-item.osrs:hover { color: #ff0077; }
-.nav-item.gold:hover { color: #ffcc00; }
-.nav-item.cart:hover { color: #00ff44; }
-.nav-item.login:hover { color: #3399ff; }
-.nav-item.register:hover { color: #ff6600; }
 
-/* ----- BUTTONS, EFFECTS, MODALS ----- */
-button, .nav-item, .dropdown-content a, .discord-button, .dropbtn {
-  transition: all 0.3s ease-in-out;
+#mobile-menu.show {
+  display: block;
 }
-.discord-button {
-  background-color: #5865f2;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  box-shadow: 0 0 10px #5865f2;
-}
-.discord-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #ffffff, 0 0 30px #5865f2;
-}
-.discord-button-wrapper {
-  position: relative;
-  margin-top: 10px;
-}
-.auth-modal {
-  position: fixed;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  background: #111;
-  padding: 20px;
-  border: 1px solid #ffcc00;
-  box-shadow: 0 0 15px #ffcc00;
-  z-index: 9999;
-  color: #fff;
-}
-.auth-modal input {
-  padding: 8px;
-  width: 90%;
-  margin: 10px 0;
-}
-.auth-buttons {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-.auth-buttons button {
-  background-color: #ffcc00;
-  color: #000;
-  font-weight: bold;
-  margin: 0 5px;
-  padding: 6px 12px;
-  cursor: pointer;
-}
-.desktop-auth { display: flex; }
 
-/* ----- PAYMENT & GOLD BOXES ----- */
+#mobile-menu a {
+  color: #ffcc00;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+}
+
+#mobile-menu a:hover {
+  background-color: rgba(255, 204, 0, 0.08);
+}
+
+/* ----- Payments & Gold Box ----- */
 .payments-box,
 .gold-rates-box {
   background-color: rgba(10, 10, 30, 0.85);
@@ -389,135 +288,26 @@ button, .nav-item, .dropdown-content a, .discord-button, .dropbtn {
   color: #fff;
   max-width: 280px;
 }
+
 .payments-box {
   position: fixed;
   bottom: 20px;
   left: 20px;
 }
-.payments-box h3,
-.gold-rates-box h3 {
-  color: #ffcc00;
-  margin-top: 0;
-  text-shadow: 0 0 10px #ffcc00;
-}
-@media screen and (max-width: 768px) {
-  .payments-box,
-  .gold-rates-box {
-    position: relative;
-    width: 100%;
-    bottom: auto;
-    left: auto;
-    padding: 10px;
-  }
-}
 
-.payments-box ul {
-  list-style: none;
-  padding-left: 0;
-}
-.payments-box li {
-  text-align: left;
-  margin-bottom: 6px;
-}
-.payments-box img {
-  width: 20px;
-  vertical-align: middle;
-  margin-right: 8px;
-}
 .gold-rates-box {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  text-align: center;
-}
-.gold-rates-inner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin: 10px 0;
-}
-.rate-box {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 10px;
-  border-radius: 8px;
-  min-width: 100px;
-  border: 1px solid #ffcc00;
-  box-shadow: 0 0 10px #ffcc00;
-}
-.rate-box span {
-  font-size: 1.2em;
-  color: #ffcc00;
-}
-.gold-rates-box h3 img {
-  height: 24px;
-  vertical-align: middle;
-  filter: drop-shadow(0 0 4px #ffcc00);
 }
 
-/* ----- MISC ----- */
-h1 {
-  color: #0417e4;
-  margin-top: 20px;
-  text-shadow: 0 0 10px #fd0000, 0 0 20px #fff;
-  animation: flicker 1.5s infinite alternate;
-}
-@keyframes flicker {
-  from {
-    text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #fff;
-  }
-  to {
-    text-shadow: 0 0 2px #ffcc00, 0 0 5px #ffcc00, 0 0 10px #fff;
-  }
-}
+/* ----- Misc Styling ----- */
 footer {
   margin-top: 60px;
   font-size: 14px;
   color: gray;
 }
-.buttons {
-  margin: 20px 0;
-}
-.buttons a {
-  text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 6px;
-  margin: 0 10px;
-  font-weight: bold;
-  display: inline-block;
-  transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
-}
-.buttons a:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px #fff, 0 0 20px #ffcc00;
-}
-.discord-btn {
-  background-color: #5865f2;
-  color: white;
-}
-.vouches-btn {
-  background-color: #ffcc00;
-  color: black;
-}
-ul.features {
-  list-style: none;
-  padding: 0;
-  max-width: 600px;
-  margin: auto;
-  text-align: left;
-  animation: fadeIn 1s ease-in-out;
-}
-ul.features li {
-  margin: 12px 0;
-  font-size: 16px;
-}
-ul.features li i {
-  margin-right: 10px;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+
 </style>
 
 </head>
