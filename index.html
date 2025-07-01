@@ -715,9 +715,19 @@ ul.features li i {
 
 <script>
   function toggleMobileMenu() {
-    const menu = document.getElementById("mobile-menu");
-    menu.classList.toggle("show");
+  const menu = document.getElementById("mobile-menu");
+  menu.classList.toggle("show");
+  const hamburger = document.querySelector('.mobile-menu-button');
+  hamburger.classList.toggle('active');
+}
+window.onclick = function(event) {
+  const menu = document.getElementById("mobile-menu");
+  const hamburger = document.querySelector('.mobile-menu-button');
+  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+    menu.classList.remove("show");
+    hamburger.classList.remove('active');
   }
+}
 
   const username = localStorage.getItem('username');
   const desktopAuth = document.querySelector('.auth-buttons');
