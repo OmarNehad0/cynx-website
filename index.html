@@ -249,12 +249,12 @@ body::before {
   display: block;
 }
 
-/* ----- Mobile layout adjustments ----- */
+/* Show hamburger menu on mobile */
 @media screen and (max-width: 768px) {
-  /* Mobile menu button (3 dots) */
   .mobile-menu-button {
     display: block; /* Make the hamburger button visible on mobile */
   }
+}
 
   /* Hide navbar items on mobile */
   .nav-center,
@@ -266,6 +266,13 @@ body::before {
   .mobile-menu.show {
     display: block;
   }
+}
+.mobile-menu-button {
+  display: none; /* Hidden on desktop by default */
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  margin-left: auto;
 }
 
 /* ----- Mobile Menu ----- */
@@ -574,14 +581,11 @@ ul.features li i {
     </a>
   </div>
 
-  <!-- RIGHT SIDE -->
-<div class="navbar-right">
-  <div class="auth-buttons desktop-auth">
-    <a href="login.html" class="nav-item login">Login</a>
-    <a href="register.html" class="nav-item register">Register</a>
+    <!-- RIGHT SIDE -->
+  <div class="navbar-right">
+    <div class="auth-buttons desktop-auth"></div> <!-- No hardcoded buttons here -->
+    <div class="mobile-menu-button" onclick="toggleMobileMenu()">☰</div>
   </div>
-  <div class="mobile-menu-button" onclick="toggleMobileMenu()">☰</div>
-</div>
 </div>
 <!-- MOBILE MENU -->
 <div id="mobile-menu" class="mobile-menu">
