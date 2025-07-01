@@ -188,6 +188,7 @@ body::before {
   position: relative;
   display: inline-block;
 }
+/* Ensure dropdown content is visible on hover */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -200,6 +201,7 @@ body::before {
   border-radius: 5px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
@@ -245,6 +247,9 @@ body::before {
   .mobile-menu {
     display: none;
   }
+.mobile-menu.show {
+  display: block;
+}
   .payments-box, .gold-rates-box {
     position: static;
     margin: 20px auto;
@@ -355,6 +360,17 @@ button, .nav-item, .dropdown-content a, .discord-button, .dropbtn {
   margin-top: 0;
   text-shadow: 0 0 10px #ffcc00;
 }
+@media screen and (max-width: 768px) {
+  .payments-box,
+  .gold-rates-box {
+    position: relative;
+    width: 100%;
+    bottom: auto;
+    left: auto;
+    padding: 10px;
+  }
+}
+
 .payments-box ul {
   list-style: none;
   padding-left: 0;
@@ -549,6 +565,13 @@ ul.features li i {
   <a href="login.html" class="nav-item login mobile-only">Login</a>
   <a href="register.html" class="nav-item register mobile-only">Register</a>
 </div>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobile-menu");
+    menu.classList.toggle("show");
+  }
+</script>
 
 
 
