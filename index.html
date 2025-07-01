@@ -283,9 +283,10 @@ body::before {
 
 /* Hide the navbar items on mobile */
 @media screen and (max-width: 768px) {
-  .nav-center, .navbar-right {
-    display: none; /* Hide the items */
+  .mobile-menu-button {
+    display: block; /* Make the hamburger button visible on mobile */
   }
+}
 
   /* Hide the navbar items on mobile */
   .nav-center,
@@ -294,13 +295,13 @@ body::before {
   }
 
   /* Mobile menu button (3 dots) */
-  .mobile-menu-button {
-    display: block;
-    font-size: 30px;
-    color: #fff;
-    cursor: pointer;
-    margin-left: auto;
-  }
+.mobile-menu-button {
+  display: none; /* Hidden on desktop by default */
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  margin-left: auto; /* Align hamburger button to the right */
+}
 
   /* Show mobile menu when the button is clicked */
   .mobile-menu.show {
@@ -593,11 +594,17 @@ ul.features li i {
       <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> Cart
     </a>
   </div>
+<!-- RIGHT SIDE -->
+<div class="navbar-right">
+  <div class="auth-buttons desktop-auth">
+    <a href="login.html" class="nav-item login">Login</a>
+    <a href="register.html" class="nav-item register">Register</a>
+  </div>
+  <div class="mobile-menu-button" onclick="toggleMobileMenu()">☰</div>
+</div>
 
   <!-- RIGHT SIDE -->
   <div class="navbar-right">
-   <a href="login.html" class="nav-item login mobile-only">Login</a>
-  <a href="register.html" class="nav-item register mobile-only">Register</a>
     <div class="auth-buttons desktop-auth"></div>
     <div class="mobile-menu-button" onclick="toggleMobileMenu()">☰</div>
   </div>
