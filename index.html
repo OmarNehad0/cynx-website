@@ -94,14 +94,14 @@ body::before {
 /* Navbar layout */
 .navbar {
   display: flex;
-  justify-content: space-between; /* Spread out logo, center items, and login/register */
+  justify-content: center; /* Center align navbar items */
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;  /* Allow navbar items to wrap correctly */
   height: 65px;
-  padding: 0 30px;
+  padding: 12px 30px;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 10; /* Ensure it's on top */
   backdrop-filter: blur(12px);
   background: rgba(15, 15, 30, 0.6);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -145,24 +145,18 @@ body::before {
 .navbar a:hover::after {
   width: 100%;
 }
-/* Center the items and logo */
 .nav-center {
   display: flex;
   justify-content: center;
   flex: 1; /* Allow the center items to take up available space */
 }
-.nav-center a,
-.dropdown-content a {
-  color: #ffea00;
-  text-shadow: 0 0 5px #ffd700;
-}
-.nav-center a:hover {
-  color: white;
-}
+
+/* Login and Register: aligned to the right */
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 15px;
+  margin-left: auto; /* Push login/register to the far right */
 }
 
 /* ----- LOGO ----- */
@@ -203,9 +197,10 @@ body::before {
   font-weight: 800;
 }
 
-/* Dropdown positioning */
+/* Dropdown styling */
 .dropdown {
-  position: relative; /* Allow dropdown to position itself properly */
+  position: relative;
+  display: inline-block; /* Ensures proper alignment */
 }
 
 /* Main button */
@@ -240,7 +235,6 @@ body::before {
   display: block; /* Show dropdown on hover */
 }
 
-
 /* ----- RESPONSIVE DESIGN ----- */
 @media screen and (max-width: 768px) {
   .navbar {
@@ -250,23 +244,30 @@ body::before {
     display: none !important;
   }
   /* Initially hide the mobile menu button on larger screens */
+/* Mobile menu button (3 dots) - Positioned on the right side */
 .mobile-menu-button {
-  display: none; /* Hidden by default */
+  display: none; /* Hidden on desktop by default */
 }
 
-/* Show the button on mobile screens */
+/* Show the hamburger menu only on mobile */
 @media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: row; /* Keep navbar items in a row */
+  }
+
   .mobile-menu-button {
-    display: block;  /* Make the button visible on small screens */
-    font-size: 30px;  /* Increase size of hamburger icon */
-    color: #fff; /* Change color if needed */
+    display: block;
+    font-size: 30px;
+    color: #fff;
     cursor: pointer;
+    margin-left: auto; /* Push hamburger button to the far right */
   }
 
-  .mobile-menu {
-    display: none;
+  .navbar-right {
+    display: none; /* Hide login/register on mobile */
   }
 
+  /* Show mobile menu when toggled */
   .mobile-menu.show {
     display: block;
   }
