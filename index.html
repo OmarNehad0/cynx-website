@@ -165,7 +165,7 @@ body::before {
   flex: 1; /* Allow center items to take up available space */
 }
 
-/* ----- Login/Register buttons ----- */
+/* ----- Right side - Login/Register buttons ----- */
 .navbar-right {
   display: flex;
   align-items: center;
@@ -249,6 +249,25 @@ body::before {
   display: block;
 }
 
+/* ----- Mobile layout adjustments ----- */
+@media screen and (max-width: 768px) {
+  /* Mobile menu button (3 dots) */
+  .mobile-menu-button {
+    display: block; /* Make the hamburger button visible on mobile */
+  }
+
+  /* Hide navbar items on mobile */
+  .nav-center,
+  .navbar-right {
+    display: none;
+  }
+
+  /* Show mobile menu when the button is clicked */
+  .mobile-menu.show {
+    display: block;
+  }
+}
+
 /* ----- Mobile Menu ----- */
 #mobile-menu {
   display: none;
@@ -273,31 +292,6 @@ body::before {
   display: block;
 }
 
-/* ----- Mobile layout adjustments ----- */
-@media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    padding: 10px 15px;
-    height: auto;
-  }
-
-  /* Hide navbar items on mobile */
-  .nav-center,
-  .navbar-right {
-    display: none;
-  }
-
-  /* Show hamburger menu on mobile */
-  .mobile-menu-button {
-    display: block; /* Make the hamburger button visible on mobile */
-  }
-
-  /* Show mobile menu when the button is clicked */
-  .mobile-menu.show {
-    display: block;
-  }
-}
-
 /* Ensure center items take full width */
 .navbar .nav-center {
   width: 100%;
@@ -305,11 +299,6 @@ body::before {
 
 .navbar .cynx-logo {
   margin-right: auto; /* Align logo to the left on mobile */
-}
-
-/* Hide the login/register on mobile */
-.navbar-right {
-  display: none;
 }
 
 @media (min-width: 769px) {
@@ -713,7 +702,7 @@ function toggleMobileMenu() {
   const menu = document.getElementById("mobile-menu");
   menu.classList.toggle("show");
   const button = document.querySelector(".mobile-menu-button");
-  button.classList.toggle("active");  // Optional: to add rotation effect to the 3 dots button
+  button.classList.toggle("active");  // Adds rotation effect to the 3 dots button
 }
 
 // Close the mobile menu if clicked outside
@@ -725,6 +714,7 @@ window.onclick = function(event) {
     hamburger.classList.remove('active');
   }
 }
+
 
 
   const username = localStorage.getItem('username');
