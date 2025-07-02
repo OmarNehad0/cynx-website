@@ -423,7 +423,12 @@
 .nav-item.cart:hover { color: #00ff44; }
 .nav-item.login:hover { color: #3399ff; }
 .nav-item.register:hover { color: #ff6600; }
-
+/* Hide Login/Register on Mobile */
+@media screen and (max-width: 768px) {
+  .navbar-right .auth-buttons {
+    display: none; /* Hide login/register on mobile */
+  }
+}
   </style>
 </head>
  <div class="navbar">
@@ -508,7 +513,13 @@
   <a href="register.html" class="nav-item register mobile-only">Register</a>
 </div>
 
-
+<script>
+  // Toggle mobile menu visibility
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('show');
+  }
+</script>
 
   <h1>
     <img src="https://oldschool.runescape.wiki/images/Zebak_%28dead%29.png?aec2d">
