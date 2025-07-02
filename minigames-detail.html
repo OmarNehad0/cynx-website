@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" type="image/webp">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>PVM Details</title>
+  <style>
+    html {
+  height: 100%;
+  background: transparent;
+}
+/* Base styles by item */
+.nav-item.home {
+  color: #00ffff;
+}
+.nav-item.osrs {
+  color: #ff0000;
+}
+.nav-item.gold {
+  color: #ffcc00;
+}
+.nav-item.cart {
+  color: #00ff44;
+}
+.nav-item.login {
+  color: #6a009b;
+}
+.nav-item.register {
+  color: #6a009b;
+}
+
+/* Base hover effect */
+.nav-item:hover {
+  color: white;
+  box-shadow: 0 0 8px currentColor;
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* Per-item theme colors */
+.nav-item.home:hover {
+  color: #00ffff; /* Cyan */
+}
+.nav-item.osrs:hover {
+  color: #ff0077; /* Magenta */
+}
+.nav-item.gold:hover {
+  color: #ffcc00; /* Gold */
+}
+.nav-item.cart:hover {
+  color: #00ff44; /* Green */
+}
+.nav-item.login:hover {
+  color: #3399ff; /* Blue */
+}
+.nav-item.register:hover {
+  color: #ff6600; /* Orange */
+}
+
+/* LOGO */
+.cynx-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin-right: 20px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.cynx-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px #9333ea);
+}
+.cynx-logo img {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #9333ea;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.1;
+}
+.logo-text span {
+  font-size: 26px;
+  font-weight: 700;
+  color: #9333ea;
+  text-shadow: 0 0 4px #9333ea;
+}
+.logo-text strong {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 800;
+}
+
+/* ----- Center items ----- */
+.nav-center {
+  display: flex;
+  justify-content: center;
+  flex: 1; /* Allow center items to take up available space */
+}
+/* Ensure dropdown stays visible while hovering over button or content */
+.dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Dropdown button styling */
+.dropbtn {
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 17px;
+  color: #ffcc00;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+/* Dropdown content: hidden by default */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1a1e3c;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  border-radius: 5px;
+  top: 100%; /* Position it directly below the dropdown button */
+}
+
+/* Show dropdown when hovering on the entire dropdown (button or items) */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Dropdown item styles */
+.dropdown-content a {
+  display: flex;
+  align-items: center; /* Vertically center the icon and text */
+  padding: 12px 16px;
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #333;
+  border-radius: 4px;
+}
+    body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("https://i.postimg.cc/sxZffykR/osrs-background-for-imgur.png");
+  background-color: transparent !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  color: #f8f9fa;
+  text-align: center;
+  position: relative;
+  z-index: 0;
+}
+
+.btn-glow {
+    background-color: #222;
+    border: 1px solid #00ffe0;
+    color: #00ffe0;
+    padding: 5px 12px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 3px;
+    transition: 0.3s ease-in-out;
+  }
+
+  .btn-glow:hover {
+    background-color: #00ffe0;
+    color: #000;
+    box-shadow: 0 0 10px #00ffe0;
+  }
+
+  .quantity-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+
+  .quantity-container input {
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+    background-color: #111;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 4px;
+  }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    h1 {
+      color: #0417e4;
+      margin-top: 20px;
+      text-shadow: 0 0 10px #fd0000, 0 0 20px #fff;
+      animation: flicker 1.5s infinite alternate;
+    }
+    .navbar {
+      background-color: #1a1e3c;
+      padding: 1em;
+    }
+    .navbar a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 1em;
+    }
+    .category-title {
+      color: #ffcc00;
+      font-size: 28px;
+      margin: 20px 0;
+    }
+    .card-container {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .service-card {
+      background-color: rgba(50, 40, 0, 0.7);
+      border-radius: 10px;
+      width: 200px;
+      padding: 15px;
+      box-shadow: 0 0 10px #ffcc00;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .service-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+    .service-name {
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    .price {
+      color: #ffcc00;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+/* ----- Basic Navbar layout ----- */
+.navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 65px;
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+  background: rgba(15, 15, 30, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15);
+}
+
+   /* ----- Right side - Login/Register buttons ----- */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto; /* Push login/register to the right */
+}
+
+/* Navbar Items Styling */
+.navbar a {
+  color: #ffcc00;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 10px 15px;
+  font-size: 17px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  background-color: rgba(255, 204, 0, 0.08);
+  border-radius: 6px;
+  padding: 8px 14px;
+  color: #ffffff;
+  box-shadow: 0 0 10px #ffcc00;
+  text-shadow: 0 0 4px #ffcc00;
+}
+
+/* Navbar links underline on hover */
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: #ffcc00;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+.navbar a:hover::after {
+  width: 100%;
+}
+
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: gray;
+    }
+
+@keyframes flicker {
+      from {
+        text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #fff;
+      }
+      to {
+        text-shadow: 0 0 2px #ffcc00, 0 0 5px #ffcc00, 0 0 10px #fff;
+      }
+    }
+
+    .buttons {
+      margin: 20px 0;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      margin: 0 10px;
+      font-weight: bold;
+      display: inline-block;
+      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .buttons a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #fff, 0 0 20px #ffcc00;
+    }
+
+    ul.features {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: auto;
+      text-align: left;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    ul.features li {
+      margin: 12px 0;
+      font-size: 16px;
+    }
+
+    ul.features li i {
+      margin-right: 10px;
+    }
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: gray;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+
+      .buttons a {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+        font-size: 16px;
+      }
+
+      ul.features {
+        padding: 0 20px;
+      }
+.auth-modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(50, 40, 0, 0.7);
+  padding: 20px;
+  border: 1px solid #ffcc00;
+  box-shadow: 0 0 15px #ffcc00;
+  z-index: 9999;
+  color: #fff;
+}
+.auth-modal input {
+  padding: 8px;
+  width: 90%;
+  margin: 10px 0;
+}
+.auth-buttons button {
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  margin: 0 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+/* Mobile Menu Button */
+.menu-button {
+  display: none; /* Hidden by default */
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #9333ea; /* Purple background */
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 15px; /* Add spacing */
+}
+
+/* Mobile Menu */
+#mobile-menu {
+  display: none;
+  position: absolute;
+  top: 65px; /* Below the navbar */
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 15px;
+  z-index: 999;
+}
+
+#mobile-menu.show {
+  display: block; /* Show mobile menu when active */
+}
+
+#mobile-menu a {
+  color: #ffcc00;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+}
+
+/* ----- Mobile View Styles ----- */
+@media screen and (max-width: 768px) {
+  /* Show the menu button on mobile */
+  .menu-button {
+    display: block;
+  }
+
+  /* Hide the normal navbar items on mobile */
+  .nav-center {
+    display: none;
+  }
+
+  /* Show the mobile menu when the button is clicked */
+  #mobile-menu.show {
+    display: block;
+  }
+}
+
+/* ----- Desktop View Styles ----- */
+@media (min-width: 769px) {
+  .menu-button,
+  #mobile-menu {
+    display: none; /* Hide the mobile menu button and menu on desktop */
+  }
+}
+/* ----- Mobile menu items ----- */
+.navbar .nav-center {
+  width: 100%;
+}
+
+.navbar .cynx-logo {
+  margin-right: auto; /* Align logo to the left on mobile */
+}
+/* Hide Login/Register on Mobile */
+@media screen and (max-width: 768px) {
+  .navbar-right .auth-buttons {
+    display: none; /* Hide login/register on mobile */
+  }
+}
+  </style>
+</head>
+<body>
+<div class="navbar">
+  <!-- LOGO LEFT -->
+  <a href="https://discord.gg/cynx" class="cynx-logo">
+    <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Cynx Icon">
+    <div class="logo-text"><span>Cynx</span><strong>Services</strong></div>
+  </a>
+
+  <!-- DESKTOP NAVIGATION -->
+  <div class="nav-center desktop-menu">
+    <a href="index.html" class="nav-item home">
+      <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle; margin-right: 5px;">
+      Home
+    </a>
+
+    <div class="dropdown">
+      <div class="dropbtn nav-item osrs">
+        <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2024/09/15/66f15b863272f_com.jagex.oldscape.android.png" style="height: 20px; vertical-align: middle; margin-right: 5px;">
+        OSRS Services ▾
+      </div>
+      <div class="dropdown-content">
+        <a href="pvm.html"><img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" style="height: 18px; margin-right: 5px;">PVM</a>
+        <a href="skilling.html"><img src="https://oldschool.runescape.wiki/images/Stats_icon.png?1b467" style="height: 18px; margin-right: 5px;">Skilling</a>
+        <a href="minigames.html"><img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f" style="height: 18px; margin-right: 5px;">MiniGames</a>
+        <a href="quests.html"><img src="https://oldschool.runescape.wiki/images/thumb/Quests.png/260px-Quests.png?f5120" style="height: 18px; margin-right: 5px;">Quests</a>
+        <a href="iron.html"><img src="https://oldschool.runescape.wiki/images/thumb/Ironman_chat_badge.png/50px-Ironman_chat_badge.png?b927b" style="height: 18px; margin-right: 5px;">Iron/HCIM</a>
+        <a href="diaries.html"><img src="https://oldschool.runescape.wiki/images/thumb/Diary_icon.png/40px-Diary_icon.png?d193e" style="height: 18px; margin-right: 5px;">Diaries</a>
+        <a href="bundles.html"><img src="https://oldschool.runescape.wiki/images/thumb/Stack_of_coins_5.png/240px-Stack_of_coins_5.png?c10f3" style="height: 18px; margin-right: 5px;">Bundles</a>
+      </div>
+    </div>
+
+    <a href="gold-detail.html" class="nav-item gold">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 20px; vertical-align: middle; margin-right: 5px;">
+      Gold (Buy/Sell)
+    </a>
+    <a href="cart.html" class="nav-item cart">
+      <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> Cart
+    </a>
+  </div>
+ <!-- Right side for Login/Register buttons -->
+  <div class="navbar-right">
+    <div class="auth-buttons desktop-auth">
+    </div>
+  <!-- Menu Button (only visible on mobile) -->
+  <div class="menu-button" onclick="toggleMobileMenu()">Menu</div>
+</div>
+</div>
+<!-- MOBILE MENU -->
+<div id="mobile-menu" class="mobile-menu">
+  <a href="index.html" class="nav-item home">
+    <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 18px; margin-right: 5px;">Home
+  </a>
+  <a href="pvm.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" style="height: 18px; margin-right: 5px;">PVM
+  </a>
+  <a href="skilling.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/Stats_icon.png?1b467" style="height: 18px; margin-right: 5px;">Skilling
+  </a>
+  <a href="minigames.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f" style="height: 18px; margin-right: 5px;">MiniGames
+  </a>
+  <a href="quests.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Quests.png/260px-Quests.png?f5120" style="height: 18px; margin-right: 5px;">Quests
+  </a>
+  <a href="iron.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Ironman_chat_badge.png/50px-Ironman_chat_badge.png?b927b" style="height: 18px; margin-right: 5px;">Iron/HCIM
+  </a>
+  <a href="diaries.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Diary_icon.png/40px-Diary_icon.png?d193e" style="height: 18px; margin-right: 5px;">Diaries
+  </a>
+  <a href="bundles.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Stack_of_coins_5.png/240px-Stack_of_coins_5.png?c10f3" style="height: 18px; margin-right: 5px;">Bundles
+  </a>
+  <a href="gold-detail.html" class="nav-item gold">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 18px; margin-right: 5px;">Gold (Buy/Sell)
+  </a>
+  <a href="cart.html" class="nav-item cart">
+    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>Cart
+  </a>
+  <a href="login.html" class="nav-item login mobile-only">Login</a>
+  <a href="register.html" class="nav-item register mobile-only">Register</a>
+</div>
+
+<script>
+  // Toggle mobile menu visibility
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('show');
+  }
+</script>
+
+
+  <div id="ba" class="card-container"></div>
+  <div id="brimagil" class="card-container"></div>
+  <div id="cw" class="card-container"></div>
+  <div id="champion" class="card-container"></div>
+  <div id="bird" class="card-container"></div>
+  <div id="bh" class="card-container"></div>
+  <div id="foundry" class="card-container"></div>
+  <div id="gotr" class="card-container"></div>
+  <div id="sepulchre" class="card-container"></div>
+  <div id="lms" class="card-container"></div>
+  <div id="mta" class="card-container"></div>
+  <div id="pc" class="card-container"></div>
+  <div id="herbi" class="card-container"></div>
+  <div id="mixology" class="card-container"></div>
+  <div id="pyramid" class="card-container"></div>
+  <div id="sw" class="card-container"></div>
+  <div id="tithe" class="card-container"></div>
+  <div id="warrior" class="card-container"></div>
+  <div id="brewing" class="card-container"></div>
+  <div id="vm" class="card-container"></div>
+<script>
+  function changeQuantity(id, delta, basePrice) {
+    const input = document.getElementById(id);
+    const priceLabel = document.getElementById(`price-${id}`);
+    let qty = parseInt(input.value);
+    qty = isNaN(qty) ? 1 : Math.max(1, qty + delta);
+    input.value = qty;
+
+    // Update visible price
+    const newPriceM = ((basePrice * qty) / 1_000_000).toFixed(1);
+    const newPriceUSD = ((basePrice * qty * 0.21) / 1_000_000).toFixed(2);
+    priceLabel.innerHTML = `${newPriceM}m (~$${newPriceUSD})`;
+  }
+
+  function addToCart(name, basePrice, id) {
+    const input = document.getElementById(id);
+    const qty = parseInt(input.value);
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    cart.push({
+      name: `${qty}x ${name}`,
+      price: (basePrice * qty) / 1_000_000,
+      quantity: qty
+    });
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${qty} x ${name} added to cart!`);
+  }
+</script>
+
+  <script>
+    const file = new URLSearchParams(window.location.search).get('file');
+
+    const data = {
+      [
+  {
+    "name": "Barbarian Assault",
+    "items": [
+      { "name": "Torso", "price": 60000000, "image": "https://oldschool.runescape.wiki/images/thumb/Fighter_torso_detail.png/1024px-Fighter_torso_detail.png?19a96" },
+      { "name": "Skirt", "price": 60000000, "image": "https://oldschool.runescape.wiki/images/Penance_skirt.png?97482" },
+      { "name": "Hat", "price": 35000000, "image": "https://oldschool.runescape.wiki/images/Fighter_hat.png?3859a" },
+      { "name": "Gloves", "price": 25000000, "image": "https://oldschool.runescape.wiki/images/Penance_gloves.png?e3d63" },
+      { "name": "Boots", "price": 20000000, "image": "https://oldschool.runescape.wiki/images/Runner_boots.png?068bd" },
+      { "name": "Price per round", "price": 15000000, "image": "https://oldschool.runescape.wiki/images/Attacker_icon.png?e4676" },
+      { "name": "Hard Diary", "price": 15000000, "image": "https://oldschool.runescape.wiki/images/thumb/Achievement_Diaries.png/260px-Achievement_Diaries.png?f3803" },
+      { "name": "Elite Diary", "price": 160000000, "image": "https://oldschool.runescape.wiki/images/thumb/Achievement_Diaries.png/260px-Achievement_Diaries.png?f3803" },
+      { "name": "High gamble", "price": 14000000, "image": "https://oldschool.runescape.wiki/images/Pet_penance_queen.png?c0946" },
+      { "name": "Low gamble", "price": 5000000, "image": "https://oldschool.runescape.wiki/images/Pet_penance_queen.png?c0946" },
+      { "name": "Level 5 In All Roles", "price": 150000000, "image": "https://oldschool.runescape.wiki/images/Healer_icon.png?e9676" }
+    ]
+  },
+  {
+    "name": "Brimhaven Agility",
+    "items": [
+      { "name": "Per ticket", "price": 190000, "image": "image_link_here" },
+      { "name": "Graceful outfit recolor", "price": 37500000, "image": "image_link_here" },
+      { "name": "Pirate Hook", "price": 134000000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "CastleWars",
+    "items": [
+      { "name": "Per ticket", "price": 1000000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Champions Cape",
+    "items": [
+      { "name": "Full Cape", "price": 3250000000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Bounty Hunter",
+    "items": [
+      { "name": "Per Point For Maxed Brackets", "price": 2300000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Giant's Foundry",
+    "items": [
+      { "name": "Lvl 30 to 55 Smithing - 50% Iron + 50% Steel", "price": 75000, "image": "image_link_here" },
+      { "name": "Lvl 30 to 55 Smithing - 70% Iron + 30% Steel", "price": 80000, "image": "image_link_here" },
+      { "name": "Lvl 55 to 70 Smithing - 50% Steel + 50% Mithril", "price": 65000, "image": "image_link_here" },
+      { "name": "Lvl 55 to 70 Smithing - 70% Steel + 30% Mithril", "price": 60000, "image": "image_link_here" },
+      { "name": "Lvl 70 to 85 Smithing - 50% Mithril + 50% Adamant", "price": 45000, "image": "image_link_here" },
+      { "name": "Lvl 70 to 85 Smithing - 70% Mithril + 30% Adamant", "price": 50000, "image": "image_link_here" },
+      { "name": "Lvl 85 Smithing - 50% Adamant + 50% Rune", "price": 35000, "image": "image_link_here" },
+      { "name": "Lvl 85 Smithing - 70% Adamant + 30% Rune", "price": 40000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Guardian's of the Rift (Points)",
+    "items": [
+      { "name": "Lvl 35 to 44", "price": 1000000, "image": "image_link_here" },
+      { "name": "Lvl 44 to 54", "price": 850000, "image": "image_link_here" },
+      { "name": "Lvl 54 to 65", "price": 750000, "image": "image_link_here" },
+      { "name": "Lvl 65 to 77", "price": 650000, "image": "image_link_here" },
+      { "name": "Lvl 77 to 99", "price": 550000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Hallowed Sepulchre",
+    "items": [
+      { "name": "Floor 1 - 52 Agility", "price": 500000, "image": "image_link_here" },
+      { "name": "Floor 2 - 62 Agility", "price": 450000, "image": "image_link_here" },
+      { "name": "Floor 3 - 72 Agility", "price": 400000, "image": "image_link_here" },
+      { "name": "Floor 4 - 82 Agility", "price": 350000, "image": "image_link_here" },
+      { "name": "Floor 5 - 92 Agility", "price": 300000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Last Man Standing (LMS)",
+    "items": [
+      { "name": "Per point", "price": 700000, "image": "image_link_here" },
+      { "name": "Rune Pouch", "price": 50000000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Magic Training Arena",
+    "items": [
+      { "name": "Bones to Peaches Unlock", "price": 70000000, "image": "image_link_here" },
+      { "name": "Infinity Hat", "price": 55000000, "image": "image_link_here" },
+      { "name": "Infinity Top", "price": 65000000, "image": "image_link_here" },
+      { "name": "Infinity Bottom", "price": 75000000, "image": "image_link_here" },
+      { "name": "Infinity Gloves", "price": 30000000, "image": "image_link_here" },
+      { "name": "Infinity Boots", "price": 25000000, "image": "image_link_here" },
+      { "name": "Full Infinity Outfit", "price": 250000000, "image": "image_link_here" },
+      { "name": "Mage's Book", "price": 120000000, "image": "image_link_here" },
+      { "name": "Beginner Wand", "price": 13000000, "image": "image_link_here" },
+      { "name": "Apprentice Wand", "price": 18000000, "image": "image_link_here" },
+      { "name": "Teacher Wand", "price": 31000000, "image": "image_link_here" },
+      { "name": "Master Wand", "price": 43000000, "image": "image_link_here" },
+      { "name": "Beginner Wand to Master", "price": 105000000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Pest Control (PC)",
+    "items": [
+      { "name": "Low", "price": 75000, "image": "image_link_here" },
+      { "name": "Med", "price": 65000, "image": "image_link_here" },
+      { "name": "High", "price": 55000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Herbiboar",
+    "items": [
+      { "name": "Herbi With Stamina", "price": 400000, "image": "image_link_here" },
+      { "name": "Herbi Without Stamina", "price": 500000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Mastering Mixology",
+    "items": [
+      { "name": "Aldarium", "price": 2000000, "image": "image_link_here" },
+      { "name": "Alchemist's amulet", "price": 110000000, "image": "image_link_here" },
+      { "name": "the outfit 3", "price": 150000000, "image": "image_link_here" },
+      { "name": "Prescription Goggles", "price": 115000000, "image": "image_link_here" },
+      { "name": "Potion storage", "price": 140000000, "image": "image_link_here" },
+      { "name": "Reagent pouch", "price": 180000000, "image": "image_link_here" },
+      { "name": "Chugging barrel", "price": 230000000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Chompy Bird Kills",
+    "items": [
+      { "name": "Per kill", "price": 140000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Pyramid Plunder",
+    "items": [
+      { "name": "Pharoah's Sceptre", "price": 120000000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Soul Wars (SW)",
+    "items": [
+      { "name": "1-500", "price": 130000, "image": "image_link_here" },
+      { "name": "500-2500", "price": 90000, "image": "image_link_here" },
+      { "name": "2500+", "price": 80000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Tithe Farm Items",
+    "items": [
+      { "name": "Farming outfit", "price": 90000000, "image": "image_link_here" },
+      { "name": "Seed box", "price": 80000000, "image": "image_link_here" },
+      { "name": "Herb sack", "price": 80000000, "image": "image_link_here" },
+      { "name": "Gricoller's can", "price": 60000000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Warrior Guild",
+    "items": [
+      { "name": "None to Rune defender", "price": 30000000, "image": "image_link_here" },
+      { "name": "None to Dragon", "price": 50000000, "image": "image_link_here" },
+      { "name": "Extra Dragon Defenders", "price": 5000000, "image": "image_link_here" },
+      { "name": "100 Warrior guild tokens", "price": 250000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Trouble Brewing",
+    "items": [
+      { "name": "One Piece Of Eight", "price": 800000, "image": "image_link_here" }
+    ]
+  },
+  {
+    "name": "Volcanic Mine",
+    "items": [
+      { "name": "Fertile Soil", "price": 100000000, "image": "image_link_here" },
+      { "name": "Ore Pack", "price": 12000000, "image": "image_link_here" }
+    ]
+  }
+];
+
+
+    const containerMap = {
+      'Barbarian Assault': 'ba',
+      'Brimhaven Agility': 'brimagil',
+      'CastleWars': 'cw',
+      'Champions Cape': 'champion',
+      'Chompy Bird Kills': 'bird',
+      'Bounty Hunter': 'bh',
+      'Giant's Foundry': 'foundry',
+      'Guardian's of the Rift (Points)': 'gotr',
+      'Hallowed Sepulchre': 'Sepulchre',
+      'Last Man Standing (LMS)': 'lms',
+      'Magic Training Arena': 'mta',
+      'Pest Control (PC)': 'pc',
+      'Herbiboar': 'herbi',
+      'Mastering Mixology': 'mixology',
+      'Pyramid Plunder': 'pyramid',
+      'Soul Wars (SW)': 'sw',
+      'Tithe Farm Items': 'tithe',
+      'Warrior Guild': 'warrior',
+      'Trouble Brewing': 'brewing',
+      'Volcanic Mine': 'vm'
+    };
+
+    if (data[file]) {
+  const containerId = containerMap[file];
+  const container = document.getElementById(containerId);
+  container.style.display = 'flex';
+
+  container.innerHTML = `<div class='category-title'>${file}</div>`;
+
+  data[file].forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'service-card';
+    container.appendChild(card);
+
+    let priceM = (item.price / 1000000).toFixed(1);
+    let priceUSD = (item.price * 0.21 / 1000000).toFixed(2);
+    const itemId = item.name.replace(/\s+/g, '-') + '-' + Math.floor(Math.random() * 100000);
+
+    card.innerHTML = `
+  <img src="${item.image}" alt="${item.name}">
+  <div class="service-name">${item.name}</div>
+  <div id="price-${itemId}" class="price">${priceM}m (~$${priceUSD})</div>
+  <div class="quantity-container">
+  <button class="btn-glow" onclick="changeQuantity('${itemId}', -1, ${item.price})">−</button>
+  <input id="${itemId}" type="number" value="1" min="1" />
+  <button class="btn-glow" onclick="changeQuantity('${itemId}', 1, ${item.price})">+</button>
+</div>
+<button class="btn-glow" style="width: 100%; margin-top: 8px;" onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
+
+`;
+  });
+}
+
+  </script>
+<script>
+
+// Handle login/logout dynamically
+const username = localStorage.getItem('username');
+const desktopAuth = document.querySelector('.auth-buttons');
+
+function createAuthButtons() {
+  const loginBtn = document.createElement('a');
+  loginBtn.href = 'login.html';
+  loginBtn.textContent = 'Login';
+  loginBtn.className = 'nav-item login';
+
+  const registerBtn = document.createElement('a');
+  registerBtn.href = 'register.html';
+  registerBtn.textContent = 'Register';
+  registerBtn.className = 'nav-item register';
+
+  desktopAuth.appendChild(loginBtn);
+  desktopAuth.appendChild(registerBtn);
+}
+
+if (username) {
+  desktopAuth.innerHTML = '';
+
+  const profileLink = document.createElement('a');
+  profileLink.href = '#';
+  profileLink.innerHTML = `
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" style="height: 20px; vertical-align: middle; border-radius: 50%; margin-right: 5px;">
+    ${username}
+  `;
+  profileLink.className = 'nav-item login';
+  desktopAuth.appendChild(profileLink);
+
+  const logoutBtn = document.createElement('a');
+  logoutBtn.href = '#';
+  logoutBtn.textContent = 'Logout';
+  logoutBtn.className = 'nav-item register';
+  logoutBtn.onclick = () => {
+    localStorage.removeItem('username');
+    location.reload();
+  };
+  desktopAuth.appendChild(logoutBtn);
+} else {
+  createAuthButtons();
+}
+</script>
+
+</body>
+</html>
