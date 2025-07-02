@@ -11,6 +11,84 @@
   height: 100%;
   background: transparent;
 }
+/* Mobile Menu Button */
+.menu-button {
+  display: none; /* Hidden by default */
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #9333ea; /* Purple background */
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 15px; /* Add spacing */
+}
+
+/* Mobile Menu */
+#mobile-menu {
+  display: none;
+  position: absolute;
+  top: 65px; /* Below the navbar */
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 15px;
+  z-index: 999;
+}
+
+#mobile-menu.show {
+  display: block; /* Show mobile menu when active */
+}
+
+#mobile-menu a {
+  color: #ffcc00;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+}
+
+/* ----- Mobile View Styles ----- */
+@media screen and (max-width: 768px) {
+  /* Show the menu button on mobile */
+  .menu-button {
+    display: block;
+  }
+
+  /* Hide the normal navbar items on mobile */
+  .nav-center {
+    display: none;
+  }
+
+  /* Show the mobile menu when the button is clicked */
+  #mobile-menu.show {
+    display: block;
+  }
+}
+
+/* ----- Desktop View Styles ----- */
+@media (min-width: 769px) {
+  .menu-button,
+  #mobile-menu {
+    display: none; /* Hide the mobile menu button and menu on desktop */
+  }
+}
+/* ----- Mobile menu items ----- */
+.navbar .nav-center {
+  width: 100%;
+}
+
+.navbar .cynx-logo {
+  margin-right: auto; /* Align logo to the left on mobile */
+}
+/* Hide Login/Register on Mobile */
+@media screen and (max-width: 768px) {
+  .navbar-right .auth-buttons {
+    display: none; /* Hide login/register on mobile */
+  }
+}
 /* Base styles by item */
 .nav-item.home {
   color: #00ffff;
@@ -452,45 +530,95 @@
   </style>
 </head>
 <body>
- <div class="navbar">
+<div class="navbar">
   <!-- LOGO LEFT -->
   <a href="https://discord.gg/cynx" class="cynx-logo">
     <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Cynx Icon">
     <div class="logo-text"><span>Cynx</span><strong>Services</strong></div>
   </a>
 
-  <!-- CENTERED NAVIGATION -->
-  <div class="nav-center">
+  <!-- DESKTOP NAVIGATION -->
+  <div class="nav-center desktop-menu">
     <a href="index.html" class="nav-item home">
       <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle; margin-right: 5px;">
       Home
     </a>
 
     <div class="dropdown">
-      <a href="index.html" class="nav-item osrs dropbtn">
+      <div class="dropbtn nav-item osrs">
         <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2024/09/15/66f15b863272f_com.jagex.oldscape.android.png" style="height: 20px; vertical-align: middle; margin-right: 5px;">
         OSRS Services ▾
-      </a>
+      </div>
       <div class="dropdown-content">
-        <a href="pvm.html"><img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" style="height: 18px; vertical-align: middle; margin-right: 5px;">PVM</a>
-        <a href="skilling.html"><img src="https://oldschool.runescape.wiki/images/Stats_icon.png?1b467" style="height: 18px; vertical-align: middle; margin-right: 5px;">Skilling</a>
-        <a href="minigames.html"><img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f" style="height: 18px; vertical-align: middle; margin-right: 5px;">MiniGames</a>
-        <a href="quests.html"><img src="https://oldschool.runescape.wiki/images/thumb/Quests.png/260px-Quests.png?f5120" style="height: 18px; vertical-align: middle; margin-right: 5px;">Quests</a>
-        <a href="iron.html"><img src="https://oldschool.runescape.wiki/images/thumb/Ironman_chat_badge.png/50px-Ironman_chat_badge.png?b927b" style="height: 18px; vertical-align: middle; margin-right: 5px;">Iron/HCIM</a>
-        <a href="diaries.html"><img src="https://oldschool.runescape.wiki/images/thumb/Diary_icon.png/40px-Diary_icon.png?d193e" style="height: 18px; vertical-align: middle; margin-right: 5px;">Diaries</a>
-        <a href="bundles.html"><img src="https://oldschool.runescape.wiki/images/thumb/Stack_of_coins_5.png/240px-Stack_of_coins_5.png?c10f3" style="height: 18px; vertical-align: middle; margin-right: 5px;">Bundles</a>
+        <a href="pvm.html"><img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" style="height: 18px; margin-right: 5px;">PVM</a>
+        <a href="skilling.html"><img src="https://oldschool.runescape.wiki/images/Stats_icon.png?1b467" style="height: 18px; margin-right: 5px;">Skilling</a>
+        <a href="minigames.html"><img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f" style="height: 18px; margin-right: 5px;">MiniGames</a>
+        <a href="quests.html"><img src="https://oldschool.runescape.wiki/images/thumb/Quests.png/260px-Quests.png?f5120" style="height: 18px; margin-right: 5px;">Quests</a>
+        <a href="iron.html"><img src="https://oldschool.runescape.wiki/images/thumb/Ironman_chat_badge.png/50px-Ironman_chat_badge.png?b927b" style="height: 18px; margin-right: 5px;">Iron/HCIM</a>
+        <a href="diaries.html"><img src="https://oldschool.runescape.wiki/images/thumb/Diary_icon.png/40px-Diary_icon.png?d193e" style="height: 18px; margin-right: 5px;">Diaries</a>
+        <a href="bundles.html"><img src="https://oldschool.runescape.wiki/images/thumb/Stack_of_coins_5.png/240px-Stack_of_coins_5.png?c10f3" style="height: 18px; margin-right: 5px;">Bundles</a>
       </div>
     </div>
 
     <a href="gold-detail.html" class="nav-item gold">
-      <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 20px; vertical-align: middle;">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 20px; vertical-align: middle; margin-right: 5px;">
       Gold (Buy/Sell)
     </a>
-
-    <a href="cart.html" class="nav-item cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+    <a href="cart.html" class="nav-item cart">
+      <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> Cart
+    </a>
   </div>
+ <!-- Right side for Login/Register buttons -->
+  <div class="navbar-right">
+    <div class="auth-buttons desktop-auth">
+    </div>
+  <!-- Menu Button (only visible on mobile) -->
+  <div class="menu-button" onclick="toggleMobileMenu()">Menu</div>
+</div>
+</div>
+<!-- MOBILE MENU -->
+<div id="mobile-menu" class="mobile-menu">
+  <a href="index.html" class="nav-item home">
+    <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 18px; margin-right: 5px;">Home
+  </a>
+  <a href="pvm.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" style="height: 18px; margin-right: 5px;">PVM
+  </a>
+  <a href="skilling.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/Stats_icon.png?1b467" style="height: 18px; margin-right: 5px;">Skilling
+  </a>
+  <a href="minigames.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f" style="height: 18px; margin-right: 5px;">MiniGames
+  </a>
+  <a href="quests.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Quests.png/260px-Quests.png?f5120" style="height: 18px; margin-right: 5px;">Quests
+  </a>
+  <a href="iron.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Ironman_chat_badge.png/50px-Ironman_chat_badge.png?b927b" style="height: 18px; margin-right: 5px;">Iron/HCIM
+  </a>
+  <a href="diaries.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Diary_icon.png/40px-Diary_icon.png?d193e" style="height: 18px; margin-right: 5px;">Diaries
+  </a>
+  <a href="bundles.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Stack_of_coins_5.png/240px-Stack_of_coins_5.png?c10f3" style="height: 18px; margin-right: 5px;">Bundles
+  </a>
+  <a href="gold-detail.html" class="nav-item gold">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 18px; margin-right: 5px;">Gold (Buy/Sell)
+  </a>
+  <a href="cart.html" class="nav-item cart">
+    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>Cart
+  </a>
+  <a href="login.html" class="nav-item login mobile-only">Login</a>
+  <a href="register.html" class="nav-item register mobile-only">Register</a>
 </div>
 
+<script>
+  // Toggle mobile menu visibility
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('show');
+  }
+</script>
 
 
   <div id="chambers" class="card-container"></div>
