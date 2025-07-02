@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiniGames Directory</title>
+  <link rel="icon" href="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" type="image/webp">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * { scroll-behavior: smooth; }
+
+
+    html {
+  height: 100%;
+  background: transparent;
+}
+/* Base styles by item */
+.nav-item.home {
+  color: #00ffff;
+}
+.nav-item.osrs {
+  color: #ff0000;
+}
+.nav-item.gold {
+  color: #ffcc00;
+}
+.nav-item.cart {
+  color: #00ff44;
+}
+.nav-item.login {
+  color: #6a009b;
+}
+.nav-item.register {
+  color: #6a009b;
+}
+
+/* Base hover effect */
+.nav-item:hover {
+  color: white;
+  box-shadow: 0 0 8px currentColor;
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* Per-item theme colors */
+.nav-item.home:hover {
+  color: #00ffff; /* Cyan */
+}
+.nav-item.osrs:hover {
+  color: #ff0077; /* Magenta */
+}
+.nav-item.gold:hover {
+  color: #ffcc00; /* Gold */
+}
+.nav-item.cart:hover {
+  color: #00ff44; /* Green */
+}
+.nav-item.login:hover {
+  color: #3399ff; /* Blue */
+}
+.nav-item.register:hover {
+  color: #ff6600; /* Orange */
+}
+
+/* LOGO */
+.cynx-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin-right: 20px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.cynx-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px #9333ea);
+}
+.cynx-logo img {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #9333ea;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.1;
+}
+.logo-text span {
+  font-size: 26px;
+  font-weight: 700;
+  color: #9333ea;
+  text-shadow: 0 0 4px #9333ea;
+}
+.logo-text strong {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 800;
+}
+
+/* NAV LINKS CENTER */
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.nav-center a {
+  color: #ffc107;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+/* DROPDOWN SUPPORT */
+.dropdown {
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1a1a1a;
+  padding: 10px 0;
+  min-width: 180px;
+  z-index: 999;
+  box-shadow: 0 0 10px #000;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  display: flex;
+  align-items: center;
+  color: #ffc107;
+  padding: 8px 16px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.dropdown-content a:hover {
+  background-color: #2b2b2b;
+}
+    body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("https://i.postimg.cc/sxZffykR/osrs-background-for-imgur.png");
+  background-color: transparent !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  color: #f8f9fa;
+  text-align: center;
+  position: relative;
+  z-index: 0;
+}
+
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+/* Dropdown wrapper */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Main PVM button */
+.dropbtn {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 1em;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Dropdown content: hidden by default */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1a1e3c;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+/* Each link in the dropdown */
+.dropdown-content a {
+  color: #ffcc00;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Show dropdown when hovering on .dropdown */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+   .navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 65px;
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+  background: rgba(15, 15, 30, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15);
+}
+
+    .navbar a {
+  color: #ffcc00;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 10px 15px;
+  font-size: 17px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  background-color: rgba(255, 204, 0, 0.08);
+  border-radius: 6px;
+  padding: 8px 14px;
+  color: #ffffff;
+  box-shadow: 0 0 10px #ffcc00;
+  text-shadow: 0 0 4px #ffcc00;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: #ffcc00;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+    h1 {
+      color: #0417e4;
+      margin: 20px 0;
+      text-shadow: 0 0 10px #ff4444, 0 0 20px #fff;
+      animation: flicker 1.5s infinite alternate;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    h1 img {
+      height: 50px;
+      filter: drop-shadow(0 0 6px #ffcc00);
+    }
+
+    @keyframes flicker {
+      from {
+        text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #fff;
+      }
+      to {
+        text-shadow: 0 0 2px #ffcc00, 0 0 5px #ffcc00, 0 0 10px #fff;
+      }
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2em;
+    }
+
+    .card {
+      background-color: rgba(50, 40, 0, 0.7);
+      border-radius: 10px;
+      padding: 1.5em;
+      margin: 1em;
+      width: 250px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ffcc00;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ffffff;
+    }
+
+    .card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .card a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 768px) {
+      .grid {
+        padding: 1em;
+      }
+
+      .card {
+        width: 90%;
+        margin: 1em auto;
+      }
+    }
+/* Mobile Menu Button */
+.menu-button {
+  display: none; /* Hidden by default */
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #9333ea; /* Purple background */
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 15px; /* Add spacing */
+}
+
+/* Mobile Menu */
+#mobile-menu {
+  display: none;
+  position: absolute;
+  top: 65px; /* Below the navbar */
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 15px;
+  z-index: 999;
+}
+
+#mobile-menu.show {
+  display: block; /* Show mobile menu when active */
+}
+
+#mobile-menu a {
+  color: #ffcc00;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+}
+
+/* ----- Mobile View Styles ----- */
+@media screen and (max-width: 768px) {
+  /* Show the menu button on mobile */
+  .menu-button {
+    display: block;
+  }
+
+  /* Hide the normal navbar items on mobile */
+  .nav-center {
+    display: none;
+  }
+
+  /* Show the mobile menu when the button is clicked */
+  #mobile-menu.show {
+    display: block;
+  }
+}
+
+/* ----- Desktop View Styles ----- */
+@media (min-width: 769px) {
+  .menu-button,
+  #mobile-menu {
+    display: none; /* Hide the mobile menu button and menu on desktop */
+  }
+}
+/* ----- Mobile menu items ----- */
+.navbar .nav-center {
+  width: 100%;
+}
+
+.navbar .cynx-logo {
+  margin-right: auto; /* Align logo to the left on mobile */
+}
+/* ----- NAV LINK COLORS & HOVERS ----- */
+.nav-item.home { color: #00ffff; }
+.nav-item.osrs { color: #ff0000; }
+.nav-item.gold { color: #ffcc00; }
+.nav-item.cart { color: #00ff44; }
+.nav-item.login, .nav-item.register { color: #6a009b; }
+.nav-item:hover {
+  color: white;
+  box-shadow: 0 0 8px currentColor;
+  text-shadow: 0 0 5px currentColor;
+}
+.nav-item.home:hover { color: #00ffff; }
+.nav-item.osrs:hover { color: #ff0077; }
+.nav-item.gold:hover { color: #ffcc00; }
+.nav-item.cart:hover { color: #00ff44; }
+.nav-item.login:hover { color: #3399ff; }
+.nav-item.register:hover { color: #ff6600; }
+/* Hide Login/Register on Mobile */
+@media screen and (max-width: 768px) {
+  .navbar-right .auth-buttons {
+    display: none; /* Hide login/register on mobile */
+  }
+}
+  </style>
+</head>
+ <div class="navbar">
+  <!-- LOGO LEFT -->
+  <a href="https://discord.gg/cynx" class="cynx-logo">
+    <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Cynx Icon">
+    <div class="logo-text"><span>Cynx</span><strong>Services</strong></div>
+  </a>
+
+  <!-- DESKTOP NAVIGATION -->
+  <div class="nav-center desktop-menu">
+    <a href="index.html" class="nav-item home">
+      <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle; margin-right: 5px;">
+      Home
+    </a>
+
+    <div class="dropdown">
+      <div class="dropbtn nav-item osrs">
+        <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2024/09/15/66f15b863272f_com.jagex.oldscape.android.png" style="height: 20px; vertical-align: middle; margin-right: 5px;">
+        OSRS Services ▾
+      </div>
+      <div class="dropdown-content">
+        <a href="pvm.html"><img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" style="height: 18px; margin-right: 5px;">PVM</a>
+        <a href="skilling.html"><img src="https://oldschool.runescape.wiki/images/Stats_icon.png?1b467" style="height: 18px; margin-right: 5px;">Skilling</a>
+        <a href="minigames.html"><img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f" style="height: 18px; margin-right: 5px;">MiniGames</a>
+        <a href="quests.html"><img src="https://oldschool.runescape.wiki/images/thumb/Quests.png/260px-Quests.png?f5120" style="height: 18px; margin-right: 5px;">Quests</a>
+        <a href="iron.html"><img src="https://oldschool.runescape.wiki/images/thumb/Ironman_chat_badge.png/50px-Ironman_chat_badge.png?b927b" style="height: 18px; margin-right: 5px;">Iron/HCIM</a>
+        <a href="diaries.html"><img src="https://oldschool.runescape.wiki/images/thumb/Diary_icon.png/40px-Diary_icon.png?d193e" style="height: 18px; margin-right: 5px;">Diaries</a>
+        <a href="bundles.html"><img src="https://oldschool.runescape.wiki/images/thumb/Stack_of_coins_5.png/240px-Stack_of_coins_5.png?c10f3" style="height: 18px; margin-right: 5px;">Bundles</a>
+      </div>
+    </div>
+
+    <a href="gold-detail.html" class="nav-item gold">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 20px; vertical-align: middle; margin-right: 5px;">
+      Gold (Buy/Sell)
+    </a>
+    <a href="cart.html" class="nav-item cart">
+      <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> Cart
+    </a>
+  </div>
+ <!-- Right side for Login/Register buttons -->
+  <div class="navbar-right">
+    <div class="auth-buttons desktop-auth">
+    </div>
+  <!-- Menu Button (only visible on mobile) -->
+  <div class="menu-button" onclick="toggleMobileMenu()">Menu</div>
+</div>
+</div>
+<!-- MOBILE MENU -->
+<div id="mobile-menu" class="mobile-menu">
+  <a href="index.html" class="nav-item home">
+    <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 18px; margin-right: 5px;">Home
+  </a>
+  <a href="pvm.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" style="height: 18px; margin-right: 5px;">PVM
+  </a>
+  <a href="skilling.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/Stats_icon.png?1b467" style="height: 18px; margin-right: 5px;">Skilling
+  </a>
+  <a href="minigames.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f" style="height: 18px; margin-right: 5px;">MiniGames
+  </a>
+  <a href="quests.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Quests.png/260px-Quests.png?f5120" style="height: 18px; margin-right: 5px;">Quests
+  </a>
+  <a href="iron.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Ironman_chat_badge.png/50px-Ironman_chat_badge.png?b927b" style="height: 18px; margin-right: 5px;">Iron/HCIM
+  </a>
+  <a href="diaries.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Diary_icon.png/40px-Diary_icon.png?d193e" style="height: 18px; margin-right: 5px;">Diaries
+  </a>
+  <a href="bundles.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Stack_of_coins_5.png/240px-Stack_of_coins_5.png?c10f3" style="height: 18px; margin-right: 5px;">Bundles
+  </a>
+  <a href="gold-detail.html" class="nav-item gold">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 18px; margin-right: 5px;">Gold (Buy/Sell)
+  </a>
+  <a href="cart.html" class="nav-item cart">
+    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>Cart
+  </a>
+  <a href="login.html" class="nav-item login mobile-only">Login</a>
+  <a href="register.html" class="nav-item register mobile-only">Register</a>
+</div>
+
+<script>
+  // Toggle mobile menu visibility
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('show');
+  }
+</script>
+
+  <h1>
+    <img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f">
+    MiniGames Services
+    <img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f" alt="Right Boss">
+  </h1>
+
+  <div class="grid" id="MiniGamesList"></div>
+
+  <script>
+    const jsonFiles = [
+      { name: "Barbarian Assuault", image: "https://oldschool.runescape.wiki/images/Penance_Fighter_%28wave_4%29.png?24043" },
+      { name: "Brimhaven Agility", image: "https://oldschool.runescape.wiki/images/thumb/Graceful_top_%28Agility_Arena%29_detail.png/300px-Graceful_top_%28Agility_Arena%29_detail.png?15d44" },
+      { name: "CastleWars", image: "https://oldschool.runescape.wiki/images/thumb/Castle_wars_ticket_detail.png/800px-Castle_wars_ticket_detail.png?194c8" },
+      { name: "Chompy Bird Kills", image: "https://oldschool.runescape.wiki/images/thumb/Chompy_bird.png/500px-Chompy_bird.png?6d30f" },
+      { name: "Bounty Hunter", image: "https://oldschool.runescape.wiki/images/thumb/Esoteric_emblem_%28tier_10%29_detail.png/800px-Esoteric_emblem_%28tier_10%29_detail.png?cd88e" },
+      { name: "Giant's Foundry", image: "https://oldschool.runescape.wiki/images/thumb/Smiths_tunic_detail.png/300px-Smiths_tunic_detail.png?5f7ce" },
+      { name: "Guardian's of the Rift (Points)", image: "https://oldschool.runescape.wiki/images/thumb/Raiments_of_the_eye_equipped_male.png/240px-Raiments_of_the_eye_equipped_male.png?25109" },
+      { name: "Hallowed Sepulchre", image: "https://oldschool.runescape.wiki/images/thumb/Hallowed_mark_detail.png/240px-Hallowed_mark_detail.png?e9975" },
+      { name: "Last Man Standing (LMS)", image: "https://oldschool.runescape.wiki/images/Last_Man_Standing_logo.png?1e913" },
+      { name: "Magic Training Arena", image: "https://oldschool.runescape.wiki/images/Mage%27s_book.png?8bd5a" },
+      { name: "Pest Control (PC)", image: "https://oldschool.runescape.wiki/images/thumb/Elite_void_top_detail.png/260px-Elite_void_top_detail.png?b68c7" },
+      { name: "Herbiboar", image: "https://oldschool.runescape.wiki/images/thumb/K%27ril_Tsutsaroth.png/560px-K%27ril_Tsutsaroth.png?73bda" },
+      { name: "Mastering Mixology", image: "https://oldschool.runescape.wiki/images/thumb/Dizana%27s_quiver_detail.png/150px-Dizana%27s_quiver_detail.png?f6c23" },
+      { name: "Pyramid Plunder", image: "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39" },
+      { name: "Soul Wars (SW)", image: "https://oldschool.runescape.wiki/images/thumb/Araxxor.png/280px-Araxxor.png?35d2e" },
+      { name: "Tithe Farm Items", image: "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e" },
+      { name: "Warrior Guild", image: "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023" },
+      { name: "Trouble Brewing", image: "https://oldschool.runescape.wiki/images/thumb/Zebak.png/580px-Zebak.png?23978" },
+      { name: "Volcanic Mine", image: "https://oldschool.runescape.wiki/images/Callisto.png?bfba7" }
+    ];
+
+    const container = document.getElementById("MiniGamesList");
+
+    jsonFiles.forEach(entry => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <a href="minigames-detail.html?file=${encodeURIComponent(entry.name)}">
+          <img src="${entry.image}" alt="${entry.name}">
+          <div>${entry.name}</div>
+        </a>`;
+      container.appendChild(card);
+    });
+  </script>
+<script>
+
+// Handle login/logout dynamically
+const username = localStorage.getItem('username');
+const desktopAuth = document.querySelector('.auth-buttons');
+
+function createAuthButtons() {
+  const loginBtn = document.createElement('a');
+  loginBtn.href = 'login.html';
+  loginBtn.textContent = 'Login';
+  loginBtn.className = 'nav-item login';
+
+  const registerBtn = document.createElement('a');
+  registerBtn.href = 'register.html';
+  registerBtn.textContent = 'Register';
+  registerBtn.className = 'nav-item register';
+
+  desktopAuth.appendChild(loginBtn);
+  desktopAuth.appendChild(registerBtn);
+}
+
+if (username) {
+  desktopAuth.innerHTML = '';
+
+  const profileLink = document.createElement('a');
+  profileLink.href = '#';
+  profileLink.innerHTML = `
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" style="height: 20px; vertical-align: middle; border-radius: 50%; margin-right: 5px;">
+    ${username}
+  `;
+  profileLink.className = 'nav-item login';
+  desktopAuth.appendChild(profileLink);
+
+  const logoutBtn = document.createElement('a');
+  logoutBtn.href = '#';
+  logoutBtn.textContent = 'Logout';
+  logoutBtn.className = 'nav-item register';
+  logoutBtn.onclick = () => {
+    localStorage.removeItem('username');
+    location.reload();
+  };
+  desktopAuth.appendChild(logoutBtn);
+} else {
+  createAuthButtons();
+}
+</script>
+
+
+</body>
+</html>
