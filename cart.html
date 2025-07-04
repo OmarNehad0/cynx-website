@@ -528,6 +528,11 @@
   document.getElementById('checkoutButton').addEventListener('click', function() {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
+    if (cartItems.length === 0) {
+      alert("Your cart is empty. Please add items before checking out.");
+      return;
+    }
+
     // Format the message to send to Tawk.to
     let checkoutMessage = "New Checkout Request:\n\n";
     cartItems.forEach(item => {
@@ -540,15 +545,21 @@
 
     checkoutMessage += `\nTotal: ${totalM.toFixed(1)}m (~$${totalUSD.toFixed(2)})`;
 
-    // Check if Tawk_API is available
+    // Check if Tawk_API is available and initialized
     if (typeof Tawk_API !== 'undefined' && Tawk_API) {
-      // Open chat if not already open
+      // Open chat if it's not already open
       Tawk_API.toggle();
-      // Send the formatted message directly to the live chat
-      Tawk_API.sendMessage(checkoutMessage);
+      
+      // Wait for the chat to load, then send the message
+      setTimeout(() => {
+        Tawk_API.sendMessage(checkoutMessage);
+      }, 1000); // Delay for 1 second to make sure the chat is loaded
+    } else {
+      console.error("Tawk_API is not initialized. Please check your Tawk.to integration.");
     }
   });
 </script>
+
 
 
 
