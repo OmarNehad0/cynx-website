@@ -842,13 +842,20 @@ const skillMethods = {
       };
       skillGrid.appendChild(box);
     });
-function addToCart(skill, method, price) {
+function addToCart(skill, method, price, startLevel, endLevel) {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const itemName = `${skill} - ${method}`;
+  
+  // Format the item name to include the level range and the skill icon
+  const itemName = `${skill} (${startLevel}-${endLevel}) - ${method} <img src="https://oldschool.runescape.wiki/images/Stats_icon.png?1b467" alt="Icon" style="height: 18px; vertical-align: middle;">`;
+  
+  // Add the item to the cart
   cart.push({ name: itemName, price });
   localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Show an alert with the added item and its price
   alert(`${itemName} added to cart for ${price}M!`);
 }
+
 
 
     function calculateSkill() {
