@@ -524,7 +524,6 @@
     }
   </script>
 <script>
-  // Add this to the existing script below the cart handling logic
   document.getElementById('checkoutButton').addEventListener('click', function() {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -547,18 +546,29 @@
 
     // Check if Tawk_API is available and initialized
     if (typeof Tawk_API !== 'undefined' && Tawk_API) {
-      // Open chat if it's not already open
+      // Simulate a click on the chat widget to open it
       Tawk_API.toggle();
-      
-      // Wait for the chat to load, then send the message
+
+      // Wait for the chat to open and be ready to send the message
       setTimeout(() => {
-        Tawk_API.sendMessage(checkoutMessage);
-      }, 1000); // Delay for 1 second to make sure the chat is loaded
+        // Check if the chat is ready
+        if (Tawk_API.isChatOpen()) {
+          // Send the formatted message directly to the live chat
+          Tawk_API.sendMessage(checkoutMessage);
+        } else {
+          // If the chat is not open, try again after a short delay
+          console.error("Chat is not ready yet. Retrying...");
+          setTimeout(() => {
+            Tawk_API.sendMessage(checkoutMessage);
+          }, 1000);
+        }
+      }, 1000); // Delay for 1 second to make sure the chat is opened
     } else {
       console.error("Tawk_API is not initialized. Please check your Tawk.to integration.");
     }
   });
 </script>
+
 
 
 
