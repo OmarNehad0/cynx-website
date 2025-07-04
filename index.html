@@ -256,24 +256,50 @@ body::before {
   color: #ffcc00;
   cursor: pointer;
   padding: 10px 15px;
+  background-color: transparent;
+  border-radius: 5px;
+  transition: 0.3s; /* Same transition as navbar */
 }
 
 /* Dropdown content: hidden by default */
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #1a1e3c;
+  background-color: transparent; /* Make dropdown background transparent */
   min-width: 160px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
   z-index: 1;
   border-radius: 5px;
   top: 100%; /* Position it directly below the dropdown button */
-  backdrop-filter: blur(12px);
-  background: rgba(15, 15, 30, 0.6);
+  backdrop-filter: blur(12px); /* Match blur effect from navbar */
+  background: rgba(15, 15, 30, 0.6); /* Same as navbar hover effect */
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15);
 }
-
+/* Dropdown item hover effects (similar to navbar items) */
+.dropdown-content a:hover {
+  background-color: rgba(15, 15, 30, 0.6); /* Same as navbar hover background */
+  color: #ffcc00;
+  box-shadow: 0 0 10px #ffcc00; /* Match navbar shadow effect */
+  text-shadow: 0 0 4px #ffcc00;
+  backdrop-filter: blur(12px); /* Same blur effect from navbar */
+  padding: 10px 15px; /* Same padding for consistency */
+}
+/* Dropdown items underline on hover */
+.dropdown-content a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: #ffcc00;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+.dropdown-content a:hover::after {
+  width: 100%;
+}
 /* Show dropdown when hovering on the entire dropdown (button or items) */
 .dropdown:hover .dropdown-content {
   display: block;
@@ -282,10 +308,13 @@ body::before {
 /* Dropdown item styles */
 .dropdown-content a {
   display: flex;
-  align-items: center; /* Vertically center the icon and text */
+  align-items: center;
   padding: 12px 16px;
   color: #ffcc00;
   text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  border-radius: 5px; /* Make the corners round like navbar items */
 }
 
 .dropdown-content a:hover {
