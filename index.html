@@ -265,17 +265,25 @@ body::before {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: transparent; /* Same as navbar background */
+  background-color: rgba(15, 15, 30, 0.6); /* Keep this dark */
   min-width: 160px;
   box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15); /* Same shadow as navbar */
-  z-index: 1;
+  z-index: 9999; /* Ensure it overlays other content */
   border-radius: 5px;
   top: 100%; /* Position it directly below the dropdown button */
   backdrop-filter: blur(12px); /* Apply blur effect to match navbar */
-  background: rgba(15, 15, 30, 0.6); /* Apply same background color as navbar */
   border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Apply same border as navbar */
   box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15); /* Same box shadow */
+  transition: visibility 0.3s, opacity 0.3s ease;
 }
+
+/* Show dropdown when hovering on the entire dropdown (button or items) */
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
 /* Dropdown item styles */
 .dropdown-content a {
   display: flex;
@@ -299,6 +307,7 @@ body::before {
   backdrop-filter: blur(12px); /* Same blur effect from navbar */
   padding: 10px 15px; /* Same padding for consistency */
 }
+
 /* Dropdown items underline on hover */
 .dropdown-content a::after {
   content: '';
@@ -311,18 +320,23 @@ body::before {
   transition: all 0.3s ease-in-out;
   transform: translateX(-50%);
 }
+
 .dropdown-content a:hover::after {
   width: 100%;
 }
+
 /* Sticky navbar styles (for dropdowns to follow same behavior) */
 .dropdown-content {
   position: sticky; /* Ensure it remains sticky like navbar */
   top: 0;
+  z-index: 9999; /* High z-index to ensure dropdown content stays on top */
 }
-/* Show dropdown when hovering on the entire dropdown (button or items) */
-.dropdown:hover .dropdown-content {
-  display: block;
+
+/* Prevent navbar items from disappearing when hovering */
+.navbar a:hover {
+  visibility: visible !important; /* Ensure navbar items stay visible */
 }
+
 
 /* Mobile Menu Button */
 .menu-button {
