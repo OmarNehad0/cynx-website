@@ -527,28 +527,30 @@
   // Add this to the existing script below the cart handling logic
   document.getElementById('checkoutButton').addEventListener('click', function() {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    const totalM = cartItems.reduce((total, item) => total + parseFloat(item.price), 0);
-    const totalUSD = totalM * 0.21; // Convert to USD for display
 
     // Format the message to send to Tawk.to
     let checkoutMessage = "New Checkout Request:\n\n";
     cartItems.forEach(item => {
-      const itemPriceUSD = (parseFloat(item.price) * 0.21).toFixed(2);
-      checkoutMessage += `Item: ${item.name} - ${item.price}m (~$${itemPriceUSD})\n`;
+      checkoutMessage += `Item: ${item.name} - ${item.price}m (~$${(parseFloat(item.price) * 0.21).toFixed(2)})\n`;
     });
+
+    // Calculate total
+    const totalM = cartItems.reduce((total, item) => total + parseFloat(item.price), 0);
+    const totalUSD = totalM * 0.21; // Convert totalM to USD for display
+
     checkoutMessage += `\nTotal: ${totalM.toFixed(1)}m (~$${totalUSD.toFixed(2)})`;
 
-    // Send the message to Tawk.to live chat
+    // Check if Tawk_API is available
     if (typeof Tawk_API !== 'undefined' && Tawk_API) {
-      Tawk_API.addEvent('checkout', {
-        message: checkoutMessage
-      });
-
-      // Optionally, open the chat directly if not already opened
+      // Open chat if not already open
       Tawk_API.toggle();
+      // Send the formatted message directly to the live chat
+      Tawk_API.sendMessage(checkoutMessage);
     }
   });
 </script>
+
+
 
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
