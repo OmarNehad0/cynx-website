@@ -265,17 +265,31 @@ body::before {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: transparent; /* Make dropdown background transparent */
+  background-color: transparent; /* Same as navbar background */
   min-width: 160px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15); /* Same shadow as navbar */
   z-index: 1;
   border-radius: 5px;
   top: 100%; /* Position it directly below the dropdown button */
-  backdrop-filter: blur(12px); /* Match blur effect from navbar */
-  background: rgba(15, 15, 30, 0.6); /* Same as navbar hover effect */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15);
+  backdrop-filter: blur(12px); /* Apply blur effect to match navbar */
+  background: rgba(15, 15, 30, 0.6); /* Apply same background color as navbar */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Apply same border as navbar */
+  box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15); /* Same box shadow */
 }
+/* Dropdown item styles */
+.dropdown-content a {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  border-radius: 5px; /* Make the corners round like navbar items */
+  background-color: transparent; /* Maintain transparency for items */
+  box-shadow: none; /* Ensure no shadow by default */
+}
+
 /* Dropdown item hover effects (similar to navbar items) */
 .dropdown-content a:hover {
   background-color: rgba(15, 15, 30, 0.6); /* Same as navbar hover background */
@@ -300,26 +314,14 @@ body::before {
 .dropdown-content a:hover::after {
   width: 100%;
 }
+/* Sticky navbar styles (for dropdowns to follow same behavior) */
+.dropdown-content {
+  position: sticky; /* Ensure it remains sticky like navbar */
+  top: 0;
+}
 /* Show dropdown when hovering on the entire dropdown (button or items) */
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
-/* Dropdown item styles */
-.dropdown-content a {
-  display: flex;
-  align-items: center;
-  padding: 12px 16px;
-  color: #ffcc00;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-  border-radius: 5px; /* Make the corners round like navbar items */
-}
-
-.dropdown-content a:hover {
-  background-color: #333;
-  border-radius: 4px;
 }
 
 /* Mobile Menu Button */
