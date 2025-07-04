@@ -634,20 +634,25 @@
     priceLabel.innerHTML = `${newPriceM}m (~$${newPriceUSD})`;
   }
 
-  function addToCart(name, basePrice, id) {
-    const input = document.getElementById(id);
-    const qty = parseInt(input.value);
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+ function addToCart(name, basePrice, id) {
+  const input = document.getElementById(id);
+  const qty = parseInt(input.value);
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    cart.push({
-      name: `${qty}x ${name}`,
-      price: (basePrice * qty) / 1_000_000,
-      quantity: qty
-    });
+  // Add the image before the name in the cart item
+  const icon = `<img src="https://oldschool.runescape.wiki/images/Minigames.png?d639f" alt="${name}" style="height: 18px; vertical-align: middle; margin-right: 5px;">`;
 
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${qty} x ${name} added to cart!`);
-  }
+  // Push item with icon before name
+  cart.push({
+    name: `${icon} ${qty}x ${name}`,  // Add image as icon before the name
+    price: (basePrice * qty) / 1_000_000,
+    quantity: qty
+  });
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(`${qty} x ${name} added to cart!`);
+}
+
 </script>
 
   <script>
