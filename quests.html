@@ -707,58 +707,62 @@
 
 const questContainer = document.getElementById("questContainer");
 
-  quests.forEach((quest) => {
-    const itemDiv = document.createElement("div");
-    itemDiv.className = "quest-item";
+quests.forEach((quest) => {
+  const itemDiv = document.createElement("div");
+  itemDiv.className = "quest-item";
 
-    const gpPrice = Number(quest.price);
-    if (isNaN(gpPrice)) return;
+  const gpPrice = Number(quest.price);
+  if (isNaN(gpPrice)) return;
 
-    const priceM = (gpPrice / 1_000_000).toFixed(1);
-    const priceUSD = (gpPrice * 0.21 / 1_000_000).toFixed(2);
+  const priceM = (gpPrice / 1_000_000).toFixed(1);
+  const priceUSD = (gpPrice * 0.21 / 1_000_000).toFixed(2);
 
-    itemDiv.innerHTML = `
-      <span>
-        <img class="quest-icon" src="https://oldschool.runescape.wiki/images/thumb/Quests.png/130px-Quests.png?f5120">
-        ${quest.name}
-      </span>
-      <div class="price-box">${priceM}M / $${priceUSD}</div>
-      <button class="add-to-cart-btn" data-name="${quest.name}" data-price="${gpPrice}">Add to Cart</button>
-    `;
+  // Adding quest icon before the name
+  itemDiv.innerHTML = `
+    <span>
+      <img class="quest-icon" src="https://oldschool.runescape.wiki/images/thumb/Quests.png/260px-Quests.png?f5120" alt="Quest Icon" style="height: 18px; vertical-align: middle; margin-right: 5px;">
+      ${quest.name}
+    </span>
+    <div class="price-box">${priceM}M / $${priceUSD}</div>
+    <button class="add-to-cart-btn" data-name="${quest.name}" data-price="${gpPrice}">Add to Cart</button>
+  `;
 
-    const button = itemDiv.querySelector(".add-to-cart-btn");
-    button.addEventListener("click", () => {
-      const name = button.dataset.name;
-      const rawPrice = Number(button.dataset.price); // in GP
+  const button = itemDiv.querySelector(".add-to-cart-btn");
+  button.addEventListener("click", () => {
+    const name = button.dataset.name;
+    const rawPrice = Number(button.dataset.price); // in GP
 
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      const existing = cart.find(item => item.name === name);
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existing = cart.find(item => item.name === name);
 
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({
-          name: name,
-          price: rawPrice / 1000000, // 💥 store as GP only
-          quantity: 1
-        });
-      }
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      // Add quest with icon to cart
+      cart.push({
+        name: `<img src="https://oldschool.runescape.wiki/images/thumb/Quests.png/260px-Quests.png?f5120" alt="Quest Icon" style="height: 18px; vertical-align: middle; margin-right: 5px;"> ${name}`, // Add icon before name in cart
+        price: rawPrice / 1000000, // 💥 store as GP only
+        quantity: 1
+      });
+    }
 
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert(`${name} added to cart!`);
-    });
-
-    questContainer.appendChild(itemDiv);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${name} added to cart!`);
   });
+
+  questContainer.appendChild(itemDiv);
+});
+
 document.getElementById("questSearch").addEventListener("input", function () {
-    const searchValue = this.value.toLowerCase();
-    const questItems = document.querySelectorAll(".quest-item");
+  const searchValue = this.value.toLowerCase();
+  const questItems = document.querySelectorAll(".quest-item");
 
-    questItems.forEach(item => {
-      const name = item.querySelector("span").innerText.toLowerCase();
-      item.style.display = name.includes(searchValue) ? "flex" : "none";
-    });
+  questItems.forEach(item => {
+    const name = item.querySelector("span").innerText.toLowerCase();
+    item.style.display = name.includes(searchValue) ? "flex" : "none";
   });
+});
+
 </script>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
