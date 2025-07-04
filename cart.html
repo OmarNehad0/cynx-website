@@ -360,6 +360,30 @@
     display: none; /* Hide login/register on mobile */
   }
 }
+/* Checkout button style */
+#checkoutButton {
+  padding: 12px 20px;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+  margin-top: 20px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#checkoutButton:hover {
+  background-color: #ffd700;
+  transform: scale(1.05);
+}
+
+#checkoutButton:active {
+  transform: scale(0.95);
+}
+
   </style>
 </head>
 <body>
@@ -458,6 +482,9 @@
   <h1>🛒 Your Cart 🕵️‍♂️</h1>
   <div class="cart-container" id="cartItems"></div>
   <div class="cart-total" id="cartTotal"></div>
+  <!-- Add this button below your cart items -->
+  <button id="checkoutButton">Checkout</button>
+
 
   <script>
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
@@ -496,6 +523,33 @@
       location.reload();
     }
   </script>
+<script>
+  // Add this to the existing script below the cart handling logic
+  document.getElementById('checkoutButton').addEventListener('click', function() {
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalM = cartItems.reduce((total, item) => total + parseFloat(item.price), 0);
+    const totalUSD = totalM * 0.21; // Convert to USD for display
+
+    // Format the message to send to Tawk.to
+    let checkoutMessage = "New Checkout Request:\n\n";
+    cartItems.forEach(item => {
+      const itemPriceUSD = (parseFloat(item.price) * 0.21).toFixed(2);
+      checkoutMessage += `Item: ${item.name} - ${item.price}m (~$${itemPriceUSD})\n`;
+    });
+    checkoutMessage += `\nTotal: ${totalM.toFixed(1)}m (~$${totalUSD.toFixed(2)})`;
+
+    // Send the message to Tawk.to live chat
+    if (typeof Tawk_API !== 'undefined' && Tawk_API) {
+      Tawk_API.addEvent('checkout', {
+        message: checkoutMessage
+      });
+
+      // Optionally, open the chat directly if not already opened
+      Tawk_API.toggle();
+    }
+  });
+</script>
+
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
