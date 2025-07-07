@@ -898,7 +898,7 @@
   const container = document.getElementById(containerId);
   container.style.display = 'flex';
 
-  container.innerHTML = <div class='category-title'>${file}</div>;
+  container.innerHTML = `<div class='category-title'>${file}</div>`;
 
   data[file].forEach(item => {
     const card = document.createElement('div');
