@@ -296,12 +296,13 @@
     }
 
     .card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 10px;
-    }
+  width: 100%;
+  height: 140px;
+  object-fit: contain;  /* Ensure the image fits within the card without being cut off */
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
 
     .card a {
       color: #fff;
