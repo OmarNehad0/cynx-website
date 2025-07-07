@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diaries Directory</title>
+  <link rel="icon" href="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" type="image/webp">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * { scroll-behavior: smooth; }
+
+
+    html {
+  height: 100%;
+  background: transparent;
+}
+/* ----- NAV LINK COLORS & HOVERS ----- */
+.nav-item.home { color: #ffffff !important ; }
+.nav-item.osrs { color: #ff0000; }
+.nav-item.gold { color: #ffffff; }
+.nav-item.cart { color: #ffffff; }
+.nav-item.login { color: #ffffff; }
+.nav-item.register { color: #ffffff; }
+.nav-item:hover {
+  color: white;
+  box-shadow: 0 0 8px currentColor;
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* Per-item theme colors */
+.nav-item.home:hover {
+  color: #00ffff; /* Cyan */
+}
+.nav-item.osrs:hover {
+  color: #ff0077; /* Magenta */
+}
+.nav-item.gold:hover {
+  color: #ffcc00; /* Gold */
+}
+.nav-item.cart:hover {
+  color: #00ff44; /* Green */
+}
+.nav-item.login:hover {
+  color: #3399ff; /* Blue */
+}
+.nav-item.register:hover {
+  color: #ff6600; /* Orange */
+}
+
+/* LOGO */
+.cynx-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin-right: 20px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.cynx-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px #9333ea);
+}
+.cynx-logo img {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #9333ea;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.1;
+}
+.logo-text span {
+  font-size: 26px;
+  font-weight: 700;
+  color: #9333ea;
+  text-shadow: 0 0 4px #9333ea;
+}
+.logo-text strong {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 800;
+}
+
+/* NAV LINKS CENTER */
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.nav-center a {
+  color: #ffc107;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+/* DROPDOWN SUPPORT */
+.dropdown {
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1a1a1a;
+  padding: 10px 0;
+  min-width: 180px;
+  z-index: 999;
+  box-shadow: 0 0 10px #000;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  display: flex;
+  align-items: center;
+  color: #ffc107;
+  padding: 8px 16px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.dropdown-content a:hover {
+  background-color: #2b2b2b;
+}
+    body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("https://i.postimg.cc/sxZffykR/osrs-background-for-imgur.png");
+  background-color: transparent !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  color: #f8f9fa;
+  text-align: center;
+  position: relative;
+  z-index: 0;
+}
+
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+/* Dropdown wrapper */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Main PVM button */
+.dropbtn {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 1em;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Dropdown content: hidden by default */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1a1e3c;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+/* Each link in the dropdown */
+.dropdown-content a {
+  color: #ffcc00;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Show dropdown when hovering on .dropdown */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+   .navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 65px;
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+  background: rgba(15, 15, 30, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 16px rgba(147, 51, 234, 0.15);
+}
+
+    .navbar a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 10px 15px;
+  font-size: 17px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  background-color: rgba(255, 204, 0, 0.08);
+  border-radius: 6px;
+  padding: 8px 14px;
+  color: #ffffff;
+  box-shadow: 0 0 10px #ffcc00;
+  text-shadow: 0 0 4px #ffcc00;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: #ffcc00;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+    h1 {
+      color: #0417e4;
+      margin: 20px 0;
+      text-shadow: 0 0 10px #ff4444, 0 0 20px #fff;
+      animation: flicker 1.5s infinite alternate;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    h1 img {
+      height: 50px;
+      filter: drop-shadow(0 0 6px #ffcc00);
+    }
+
+    @keyframes flicker {
+      from {
+        text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #fff;
+      }
+      to {
+        text-shadow: 0 0 2px #ffcc00, 0 0 5px #ffcc00, 0 0 10px #fff;
+      }
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2em;
+    }
+
+    .card {
+      background-color: rgba(50, 40, 0, 0.7);
+      border-radius: 10px;
+      padding: 1.5em;
+      margin: 1em;
+      width: 250px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ffcc00;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ffffff;
+    }
+
+    .card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .card a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 768px) {
+      .grid {
+        padding: 1em;
+      }
+
+      .card {
+        width: 90%;
+        margin: 1em auto;
+      }
+    }
+/* Mobile Menu Button */
+.menu-button {
+  display: none; /* Hidden by default */
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #9333ea; /* Purple background */
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 15px; /* Add spacing */
+}
+
+/* Mobile Menu */
+#mobile-menu {
+  display: none;
+  position: absolute;
+  top: 65px; /* Below the navbar */
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 15px;
+  z-index: 999;
+}
+
+#mobile-menu.show {
+  display: block; /* Show mobile menu when active */
+}
+
+#mobile-menu a {
+  color: #ffcc00;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+}
+
+/* ----- Mobile View Styles ----- */
+@media screen and (max-width: 768px) {
+  /* Show the menu button on mobile */
+  .menu-button {
+    display: block;
+  }
+
+  /* Hide the normal navbar items on mobile */
+  .nav-center {
+    display: none;
+  }
+
+  /* Show the mobile menu when the button is clicked */
+  #mobile-menu.show {
+    display: block;
+  }
+}
+
+/* ----- Desktop View Styles ----- */
+@media (min-width: 769px) {
+  .menu-button,
+  #mobile-menu {
+    display: none; /* Hide the mobile menu button and menu on desktop */
+  }
+}
+/* ----- Mobile menu items ----- */
+.navbar .nav-center {
+  width: 100%;
+}
+
+.navbar .cynx-logo {
+  margin-right: auto; /* Align logo to the left on mobile */
+}
+/* Hide Login/Register on Mobile */
+@media screen and (max-width: 768px) {
+  .navbar-right .auth-buttons {
+    display: none; /* Hide login/register on mobile */
+  }
+}
+.vouches-container {
+  margin-top: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  color: #fff;
+  max-width: 80%;
+  margin: 0 auto;
+  overflow-y: auto;
+  height: 500px; /* Adjust height as necessary */
+}
+
+.vouch-box {
+  background-color: rgba(45, 45, 45, 0.9);  /* Slightly darker shade */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.vouch-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
+}
+
+.vouch-box p {
+  font-size: 16px;
+  color: #ddd;
+  margin-bottom: 10px;
+}
+
+.vouch-box span {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.vouch-box div {
+  font-size: 12px;
+  color: #ffcc00;
+  margin-top: 10px;
+}
+
+.vouch-box strong {
+  font-size: 18px;
+  color: #ffcc00;
+}
+
+.vouches-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.vouches-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+}
+
+.vouches-container::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+  </style>
+</head>
+ <div class="navbar">
+  <!-- LOGO LEFT -->
+  <a href="https://discord.gg/cynx" class="cynx-logo">
+    <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" alt="Cynx Icon">
+    <div class="logo-text"><span>Cynx</span><strong>Services</strong></div>
+  </a>
+
+  <!-- DESKTOP NAVIGATION -->
+  <div class="nav-center desktop-menu">
+    <a href="index.html" class="nav-item home">
+      <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 20px; vertical-align: middle; margin-right: 5px;">
+      Home
+    </a>
+
+    <div class="dropdown">
+      <div class="dropbtn nav-item osrs">
+        <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2024/09/15/66f15b863272f_com.jagex.oldscape.android.png" style="height: 20px; vertical-align: middle; margin-right: 5px;">
+        OSRS Services ▾
+      </div>
+      <div class="dropdown-content">
+        <a href="pvm.html"><img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" style="height: 18px; margin-right: 5px;">PVM</a>
+        <a href="skilling.html"><img src="https://oldschool.runescape.wiki/images/Stats_icon.png?1b467" style="height: 18px; margin-right: 5px;">Skilling</a>
+        <a href="minigames.html"><img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f" style="height: 18px; margin-right: 5px;">MiniGames</a>
+        <a href="quests.html"><img src="https://oldschool.runescape.wiki/images/thumb/Quests.png/260px-Quests.png?f5120" style="height: 18px; margin-right: 5px;">Quests</a>
+        <a href="iron.html"><img src="https://oldschool.runescape.wiki/images/thumb/Ironman_chat_badge.png/50px-Ironman_chat_badge.png?b927b" style="height: 18px; margin-right: 5px;">Iron/HCIM</a>
+        <a href="diaries.html"><img src="https://oldschool.runescape.wiki/images/thumb/Diary_icon.png/40px-Diary_icon.png?d193e" style="height: 18px; margin-right: 5px;">Diaries</a>
+        <a href="bundles.html"><img src="https://oldschool.runescape.wiki/images/thumb/Stack_of_coins_5.png/240px-Stack_of_coins_5.png?c10f3" style="height: 18px; margin-right: 5px;">Bundles</a>
+      </div>
+    </div>
+
+    <a href="gold-detail.html" class="nav-item gold">
+      <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 20px; vertical-align: middle; margin-right: 5px;">
+      Gold (Buy/Sell)
+    </a>
+    <a href="cart.html" class="nav-item cart">
+      <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> Cart
+    </a>
+  </div>
+ <!-- Right side for Login/Register buttons -->
+  <div class="navbar-right">
+    <div class="auth-buttons desktop-auth">
+    </div>
+  <!-- Menu Button (only visible on mobile) -->
+  <div class="menu-button" onclick="toggleMobileMenu()">Menu</div>
+</div>
+</div>
+<!-- MOBILE MENU -->
+<div id="mobile-menu" class="mobile-menu">
+  <a href="index.html" class="nav-item home">
+    <img src="https://cdn.discordapp.com/emojis/1261406634802941994.webp?size=96" style="height: 18px; margin-right: 5px;">Home
+  </a>
+  <a href="pvm.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Kree%27arra.png/40px-Kree%27arra.png?ba75c" style="height: 18px; margin-right: 5px;">PVM
+  </a>
+  <a href="skilling.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/Stats_icon.png?1b467" style="height: 18px; margin-right: 5px;">Skilling
+  </a>
+  <a href="minigames.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f" style="height: 18px; margin-right: 5px;">MiniGames
+  </a>
+  <a href="quests.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Quests.png/260px-Quests.png?f5120" style="height: 18px; margin-right: 5px;">Quests
+  </a>
+  <a href="iron.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Ironman_chat_badge.png/50px-Ironman_chat_badge.png?b927b" style="height: 18px; margin-right: 5px;">Iron/HCIM
+  </a>
+  <a href="diaries.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Diary_icon.png/40px-Diary_icon.png?d193e" style="height: 18px; margin-right: 5px;">Diaries
+  </a>
+  <a href="bundles.html" class="nav-item osrs">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Stack_of_coins_5.png/240px-Stack_of_coins_5.png?c10f3" style="height: 18px; margin-right: 5px;">Bundles
+  </a>
+  <a href="gold-detail.html" class="nav-item gold">
+    <img src="https://oldschool.runescape.wiki/images/thumb/Coins_detail.png/240px-Coins_detail.png?404bc" style="height: 18px; margin-right: 5px;">Gold (Buy/Sell)
+  </a>
+  <a href="cart.html" class="nav-item cart">
+    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>Cart
+  </a>
+  <a href="login.html" class="nav-item login mobile-only">Login</a>
+  <a href="register.html" class="nav-item register mobile-only">Register</a>
+</div>
+
+<script>
+  // Toggle mobile menu visibility
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('show');
+  }
+</script>
+
+  <h1>
+    <img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f">
+    Diaries Services
+    <img src="https://oldschool.runescape.wiki/images/thumb/Minigames.png/240px-Minigames.png?d639f" alt="Right Boss">
+  </h1>
+
+  <div class="grid" id="pvmlist"></div>
+
+  <script>
+    const jsonFiles = [
+      { name: "Ardougne Diary", image: "https://oldschool.runescape.wiki/images/thumb/Ardougne_cloak_4_detail.png/800px-Ardougne_cloak_4_detail.png?e8ade" },
+      { name: "Desert Diary", image: "https://oldschool.runescape.wiki/images/Desert_amulet_4_detail.png?4f4ee" },
+      { name: "Falador Diary", image: "https://oldschool.runescape.wiki/images/thumb/Falador_shield_4_detail.png/800px-Falador_shield_4_detail.png?1bf07" },
+      { name: "Fremennik Diary", image: "https://oldschool.runescape.wiki/images/thumb/Fremennik_sea_boots_4_detail.png/800px-Fremennik_sea_boots_4_detail.png?7e39d" },
+      { name: "Kandarin Diary", image: "https://oldschool.runescape.wiki/images/thumb/Kandarin_headgear_4_detail.png/800px-Kandarin_headgear_4_detail.png?97040" },
+      { name: "Karamja Diary", image: "https://oldschool.runescape.wiki/images/thumb/Karamja_gloves_4_detail.png/800px-Karamja_gloves_4_detail.png?7080d" },
+      { name: "Kourend & Kebos Diary", image: "https://oldschool.runescape.wiki/images/thumb/Rada%27s_blessing_4_detail.png/800px-Rada%27s_blessing_4_detail.png?4c58f" },
+      { name: "Lumbridge & Draynor Diary", image: "https://oldschool.runescape.wiki/images/thumb/Explorer%27s_ring_4_detail.png/800px-Explorer%27s_ring_4_detail.png?d808d" },
+      { name: "Morytania Diary", image: "https://oldschool.runescape.wiki/images/thumb/Morytania_legs_4_detail.png/320px-Morytania_legs_4_detail.png?10d0e" },
+      { name: "Varrock Diary", image: "https://oldschool.runescape.wiki/images/thumb/Varrock_armour_4_detail.png/1280px-Varrock_armour_4_detail.png?bfe70" },
+      { name: "Western Provinces Diary", image: "https://oldschool.runescape.wiki/images/thumb/Western_banner_4_detail.png/300px-Western_banner_4_detail.png?4aebe" },
+      { name: "Wilderness Diary", image: "https://oldschool.runescape.wiki/images/thumb/Wilderness_sword_4_detail.png/800px-Wilderness_sword_4_detail.png?29623" }
+    ];
+
+    const container = document.getElementById("pvmlist");
+
+    jsonFiles.forEach(entry => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <a href="diaries-detail.html?file=${encodeURIComponent(entry.name)}">
+          <img src="${entry.image}" alt="${entry.name}">
+          <div>${entry.name}</div>
+        </a>`;
+      container.appendChild(card);
+    });
+  </script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6868316db5e9f0190b212e81/1ivbg250v';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+<!-- Main Content -->
+<div style="padding: 50px 0; text-align: center;">
+  <!-- Line separating content -->
+  <hr style="border: 0; border-top: 2px solid #ffcc00; margin: 50px 0;">
+
+  <!-- Header for the Vouches section -->
+  <h2 style="font-size: 36px; font-weight: bold; color: #ffcc00;">Cynx Trust & Some Vouches</h2>
+
+  <!-- Small footer text -->
+  <p style="font-size: 16px; color: #ffffff; font-style: italic; max-width: 80%; margin: 0 auto;">
+    These vouches come from satisfied clients on Sythe. We are trusted, reliable, and always ready to provide top-notch services. See the feedback from users who have trusted us with their valuable accounts and in-game progress. We pride ourselves on exceptional service and customer care!
+  </p>
+  <!-- Vouches Container -->
+  <div class="vouches-container" style="max-height: 600px; overflow-y: auto; margin-top: 30px;">
+    
+    <!-- Each vouch box -->
+    <div class="vouch-box">
+      <strong>LuigiX3</strong>
+      <p>"Had Cynx complete 90kc Sire on a maxed UIM with 2b+ worth of risk, also completing relevant Combat Achievements in and amongst that. Would happily use again and cannot recommend more."</p>
+      <span><small>Feb 24, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>xbtera</strong>
+      <p>"Tons of cg and cox kc done on a limited iron. Will continue to use <3"</p>
+      <span><small>Feb 25, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>Cashed</strong>
+      <p>"Huge vouch, extremely professional and very polite. Knows his stuff very well, thanks for the services as always! <3"</p>
+      <span><small>Feb 28, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>Moneymaker7819</strong>
+      <p>"These guys are pretty solid. Been using their services for months ranging from skilling to hard-mode TOBs and CMs. All trusted on a near-max end-game iron man."</p>
+      <span><small>Mar 2, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>Moneymaker7819</strong>
+      <p>"Just got 600m GP, quick and easy, amazing prices! All with 750 Leviathan KC, and 40 CMs."</p>
+      <span><small>Mar 4, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>9xMega</strong>
+      <p>"- Trust worthy - tons of knowledgeable workers - so respectful and respectable team work - gettin my work done in NOTIME!!!!"</p>
+      <span><small>Mar 9, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>Skinner28</strong>
+      <p>"Clean workers. Good service. Perfect time. Good server. I appreciate them"</p>
+      <span><small>Mar 9, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>Cashed</strong>
+      <p>"Huge vouch yet again, great staff as they went out of there way to sell me 1b 07, thank you once again! <3"</p>
+      <span><small>Mar 17, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>JordanRS</strong>
+      <p>"Great team, great communication, completed my order faster than expected, will be back for more work!"</p>
+      <span><small>Mar 20, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>SJordan</strong>
+      <p>"+1 Trusted Team Good Communication"</p>
+      <span><small>Mar 24, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>xbtera</strong>
+      <p>"Bought a discord bot from me. Super easy and responsive customer. Also knocked out 99 fishing and cooking on one of my accounts really fast and provided daily updates. Great partner to work with in general <3"</p>
+      <span><small>Mar 31, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>Botsndots</strong>
+      <p>"A HUGE vouch!! Completed 13 quests with requirements and levels, kept me up to date the whole way through very quick and efficient could not be happier will definitely be using again. ❤️"</p>
+      <span><small>Apr 3, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>DZ Demon</strong>
+      <p>"advertising cynx services within my discord all giveaways have been paid very nice people to work with appreciate u guys"</p>
+      <span><small>Apr 6, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>beast07</strong>
+      <p>"Cynx did a 1+28 for my hcim and got me a mega rare! Tyvm and 10/10!!"</p>
+      <span><small>Apr 11, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>Obby guyy</strong>
+      <p>"Absolute gamers, smashed DT2 and prequest in record time tyvm guys!"</p>
+      <span><small>Apr 15, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>chinolc</strong>
+      <p>"Cynx brought my zerk to a max main, got the +5 boost for the ornate jewelry box and rejuvenation pool, and has sold me around 400m gold. I trusted him on my 2b bank with no problems. Easily the best service I've ever used 10/10 would recommend!"</p>
+      <span><small>Apr 17, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>beast07</strong>
+      <p>"@cynx_services finished off 150k sunfire splinters on my maxed iron man with 6b+ bank. Very well communication and good and fast service from him 10/10 for this server! They can do many more jobs on my account ❤️❤️"</p>
+      <span><small>Apr 19, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>gamedex</strong>
+      <p>"Big vouch for this man. He's been working with me for ages and never ran into issues. Done massive orders on my 8b+ bank iron and on my big HCIMS. Recently did 99fm on my new GHCIM, working on a maxed iron from scratch and bunch of quests on a fresh hcim. Also he did a megascaled and sniped a DHCB, tyvm brother and keep it up"</p>
+      <span><small>Apr 20, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+    <div class="vouch-box">
+      <strong>JordanRS</strong>
+      <p>"smashed my order went above and beyond and even added extras to help me out, best service I’ve experienced, wouldn’t go anywhere else!"</p>
+      <span><small>Apr 22, 2024</small></span>
+      <div><small><strong>Source:</strong> Sythe</small></div>
+    </div>
+
+<div class="vouch-box">
+    <strong>YanLiLi</strong>
+    <p>"Sold me 7b+ osrs nice"</p>
+    <small>Sep 13, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>allrage</strong>
+    <p>"Amazing service as always, they are the best around so friendly and amazing people looking forward to doing more business with them 10/10"</p>
+    <small>Sep 15, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>Wajker</strong>
+    <p>"Big vouch, completed easy and hard diaries on my account. Always quick and reliable."</p>
+    <small>Sep 21, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>Runeshero</strong>
+    <p>"10/10 services was able to get pvm and skilling done in a timely well communicated fashion. Service was done legitimately and promptly. Would and plan using again for other service needs."</p>
+    <small>Sep 22, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>SafeRS</strong>
+    <p>"Big vouch for completing 2/4 of the awakened DT2 bosses for me. Highly recommend this service, they are so fast and very professional. Thanks folks."</p>
+    <small>Sep 25, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>Defonic</strong>
+    <p>"Sold me 250m! Was quick and easy, probably the easiest RS transaction I've had, to the point where I've made an account here to say as much :)"</p>
+    <small>Sep 25, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>Runeshero</strong>
+    <p>"Infernal parsec order went flawlessly. 10/10 service great team of people willing to work with you to get the job done. Highly recommend!"</p>
+    <small>Oct 2, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>Mar410</strong>
+    <p>"I sold 1500M, he was fast and reliable <3"</p>
+    <small>Oct 12, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>beabeaus1982</strong>
+    <p>"Top service, trusted with account to do cg/quiver, quick easy and the guys are super helpful. Defo recommend."</p>
+    <small>Oct 14, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>Maxed_Cape</strong>
+    <p>"By far the best in the business. All the Cynx members of staff are professional, customer service second to none. Never have I used a company this good, completing GM combat achievements from hard in less than 2 weeks. Omar and the team smashed it, I have literally nothing but good things to say about Omar and Cynx, top notch service. Best prices going, best customer service going, fastest service providers I'm sure. These guys are the real deal, already recommended them to all of my mates. Nice one guys!! <3"</p>
+    <small>Oct 15, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>UsedWhale</strong>
+    <p>"These guys are awesome, huge shout out to Omar. They have done tons of scaled COX and TOB on my near maxed ironman and even got me a TBow!!!!!! Highly recommend them, wouldn't use anyone else. They are very responsive and always send updates and screenshots of progress and juicy drops."</p>
+    <small>Oct 15, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>Borin</strong>
+    <p>"Amazing service. Omar made the process super easy and good to deal with. Highly recommend CYNX and the boys. They also keep you updated the whole time. Thanks guys"</p>
+    <small>Oct 17, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>Aria_SC</strong>
+    <p>"Vouch quick easy trade highly recommend"</p>
+    <small>Oct 17, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>allrage</strong>
+    <p>"Great service will always use fast and very trustworthy."</p>
+    <small>Oct 17, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>CupofDry</strong>
+    <p>"Got quiver done through CYNX! quick, easy, good price, great team! Thanks legends!"</p>
+    <small>Oct 20, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>Bala magic</strong>
+    <p>"Unreal service!! Can’t thank these guys enough!! High recommend!"</p>
+    <small>Oct 29, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>SpokeSkilling</strong>
+    <p>"Amazing service, thank you CYNX for the quickest and most professional service I've ever had completed. These guys trained 5 accounts and quested them for me within hours of the order. I WILL be back for more."</p>
+    <small>Nov 1, 2024</small>
+  </div>
+
+  <div class="vouch-box">
+    <strong>UsedWhale</strong>
+    <p>"HUGE vouch for the guys.. Omar, Milo, Drako. They have done Cox megas, hundreds of TOB, hundreds of DT2 bosses, and hundreds of gwd bosses. Wouldn't use anyone else for services, always nice to work with, quickly reply, and professional. Also I think their rng is cracked because they always hit uniques. Trusted them with a 5+ bil bank. They know the deal with ironmen and the lack of supplies but always make it work."</p>
+    <small>Nov 3, 2024</small>
+
+<!-- Each vouch box -->
+<div class="vouch-box">
+  <strong>Pyrgeez</strong>
+  <p>"Smooth 72-79 RC session done at GOTR by these guys! Highly recommend these guys like always. <3"</p>
+  <span><small>Mar 30, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>nissan altim</strong>
+  <p>"Big vouch for the Cynx guys, cheap membership at a great price. They were able to get me two bonds swiftly and at unbeatable prices!"</p>
+  <span><small>Apr 1, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Moneymaker7819</strong>
+  <p>"Huge vouch! 50 HMT order got dust and sanguine kit in under 25 raids! 8b max iron trust. Always coming back!"</p>
+  <span><small>Apr 5, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>kleeed</strong>
+  <p>"Another vouch for Cynx, they always provide a tier 1 service which I recommend others to try."</p>
+  <span><small>Apr 5, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Piparinlipsuttaja</strong>
+  <p>"Very fast barrows gloves for HCIM and 99 firemaking. Good guys i recommend."</p>
+  <span><small>Apr 5, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>MaxPoppy12345</strong>
+  <p>"Thanks for the quiver from a few weeks back, done via parsec, much love."</p>
+  <span><small>Apr 6, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Tartufo</strong>
+  <p>"1500 amethist done over night, what a service!"</p>
+  <span><small>Apr 7, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>unknownpeople</strong>
+  <p>"Bought a bond. Transaction went smoothly and without hassle! :) Thanks!"</p>
+  <span><small>Apr 8, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Headshot</strong>
+  <p>"Big vouch love doing business with this guy very professional!"</p>
+  <span><small>Apr 9, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Ben GP</strong>
+  <p>"sold me 1104m"</p>
+  <span><small>Apr 10, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>kwreakstyle</strong>
+  <p>"amazing fast service. will be back forsure!"</p>
+  <span><small>Apr 11, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>ATW</strong>
+  <p>"sold him few b 07, ty"</p>
+  <span><small>Apr 12, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>time enjoyer</strong>
+  <p>"Used a few times now. Always very professional, secure, and prompt. Ty for the enh!"</p>
+  <span><small>Apr 13, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Rana Muhammad shaban</strong>
+  <p>"124m sold nice man"</p>
+  <span><small>Apr 14, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Dimeh</strong>
+  <p>"+1 inf cape done for me tyvm"</p>
+  <span><small>Apr 15, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>kwreakstyle</strong>
+  <p>"got me a quiver fast and easy!"</p>
+  <span><small>Apr 16, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Pyrgeez</strong>
+  <p>"Did 80 kril for me, kept updated after every trip & spooned spear & staff. <3 Highly recommend!"</p>
+  <span><small>Apr 17, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Hero007</strong>
+  <p>"Awesome guys done couple quests and some gold, Great Service!!!!!"</p>
+  <span><small>Apr 18, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>kleeed</strong>
+  <p>"Cynx always deliver the best service and they never disappoint. They have the best workers, would recommend you try them out."</p>
+  <span><small>Apr 19, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<!-- Each vouch box -->
+<div class="vouch-box">
+  <strong>kleeed</strong>
+  <p>"Another vouch for CYNX and their services. I've used them multiple times for various tasks, and they've always been fast, efficient, and completely trustworthy. Communication is spot on, updates are regular, and the service is always completed safely without any issues. Highly recommend to anyone looking for a reliable and professional provider."</p>
+  <span><small>Apr 30, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Unjustified</strong>
+  <p>"Vouch for the CYNX crew knocking out ma1 & 2 for me on a HC account. Appreciate it boys! Would recommend these guys."</p>
+  <span><small>Apr 30, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>RPGStash.com</strong>
+  <p>"Sold me 509m 07"</p>
+  <span><small>Apr 30, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>kwreakstyle</strong>
+  <p>"did 20 toa with a 4b ironman trust! use these guys if you need services!"</p>
+  <span><small>May 4, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Ausiim8</strong>
+  <p>"Sold me 07gold, A+ service!"</p>
+  <span><small>May 10, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>RPGStash.com</strong>
+  <p>"Sold me 510m 07"</p>
+  <span><small>May 10, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Unjustified</strong>
+  <p>"Back with another vouch for the CYNX crew. They knocked out a PvM order for me and provided constant updates!"</p>
+  <span><small>May 25, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Laza</strong>
+  <p>"Fast and enjoyable experience, tyvm"</p>
+  <span><small>May 29, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Prince ENTERPRISES</strong>
+  <p>"Vouched bought 400M+ OSRS TYVM all went smooth"</p>
+  <span><small>May 29, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>avianosrs</strong>
+  <p>"Great service, completed a lot of quests/diaries for me, finished within a day. Progress is also automatically updated in discord which is nice. Great prices as well compared to other services I checked."</p>
+  <span><small>May 29, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>skittle385</strong>
+  <p>"Joined the discord, opened a ticket, and had the yama contracts I needed pretty much completed in 1 attempt each. Was straightforward and reliable for me!"</p>
+  <span><small>Jun 1, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Noonyman747</strong>
+  <p>"Blorva in under an hour!!!! Under 400m gear! 4 orbs 4 kc. These guys are absolute beasts! They update you every few minutes and are incredibly friendly. First time using their services and I will return for sure!! 10/10 job 10/10 customer satisfaction"</p>
+  <span><small>Jun 1, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>raymon</strong>
+  <p>"sold him 214m all good"</p>
+  <span><small>Jun 6, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>ziggggy</strong>
+  <p>"Huge vouch for Omar and the guys at Cynx! They're unbelievably kind and professional. Always trying to improve your experience. They have earned a customer for life. Thank you guys!"</p>
+  <span><small>Jun 7, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Mr venom</strong>
+  <p>"The best service provider i ever used, they made sure everything goes smooth. trusted with 16b main and 7b iron in JL A+++"</p>
+  <span><small>Jun 8, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Vicezone</strong>
+  <p>"Huge shoutout to this team. They’ve been incredibly helpful and trustworthy working on my HCIM account. They got me my MA2 cape and cleared big quests like DS2, SOTE, and plenty more. Always fast, super affordable, and consistently offer great deals. They're easy to work with, keep me updated, and start on my orders right away. Really glad I found them and will definitely keep using their service. Thanks again!"</p>
+  <span><small>Jun 10, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>mentrum</strong>
+  <p>"The Cynx guys helped me out with some Zulrah KC, super quick, efficient and I love that I was kept informed including screens of the drops for each KC!"</p>
+  <span><small>Jun 11, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Romanak</strong>
+  <p>"Hye"</p>
+  <span><small>Jun 12, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>mentrum</strong>
+  <p>"The Cynx guys helped me out with a TD task, even came out the gates hard with a synapse + claw drop!"</p>
+  <span><small>Jun 13, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+<div class="vouch-box">
+  <strong>Nella</strong>
+  <p>"Dude, I cant thank these people enough. We got spooned a corp pet in under 100kc. Super professional. Will come back to continue to try my luck with other pets. Def recommend giving them your business!"</p>
+  <span><small>Jun 14, 2025</small></span>
+  <div><small><strong>Source:</strong> Sythe</small></div>
+</div>
+
+  </div>
+ </div>
+ </div>
+
+<script>
+
+// Handle login/logout dynamically
+const username = localStorage.getItem('username');
+const desktopAuth = document.querySelector('.auth-buttons');
+
+function createAuthButtons() {
+  const loginBtn = document.createElement('a');
+  loginBtn.href = 'login.html';
+  loginBtn.textContent = 'Login';
+  loginBtn.className = 'nav-item login';
+
+  const registerBtn = document.createElement('a');
+  registerBtn.href = 'register.html';
+  registerBtn.textContent = 'Register';
+  registerBtn.className = 'nav-item register';
+
+  desktopAuth.appendChild(loginBtn);
+  desktopAuth.appendChild(registerBtn);
+}
+
+if (username) {
+  desktopAuth.innerHTML = '';
+
+  const profileLink = document.createElement('a');
+  profileLink.href = '#';
+  profileLink.innerHTML = `
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" style="height: 20px; vertical-align: middle; border-radius: 50%; margin-right: 5px;">
+    ${username}
+  `;
+  profileLink.className = 'nav-item login';
+  desktopAuth.appendChild(profileLink);
+
+  const logoutBtn = document.createElement('a');
+  logoutBtn.href = '#';
+  logoutBtn.textContent = 'Logout';
+  logoutBtn.className = 'nav-item register';
+  logoutBtn.onclick = () => {
+    localStorage.removeItem('username');
+    location.reload();
+  };
+  desktopAuth.appendChild(logoutBtn);
+} else {
+  createAuthButtons();
+}
+</script>
+
+
+</body>
+</html>
