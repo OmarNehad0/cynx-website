@@ -663,26 +663,26 @@
   <div id="wil" class="card-container"></div>
 
 <script>
-    function changeQuantity(id, delta, basePrice) {
-        const input = document.getElementById(id);
-        const priceLabel = document.getElementById(`price-${id}`);
-        let qty = parseInt(input.value);
-        qty = isNaN(qty) ? 1 : Math.max(1, qty + delta);
-        input.value = qty;
+  function changeQuantity(id, delta, basePrice) {
+    const input = document.getElementById(id);
+    const priceLabel = document.getElementById(`price-${id}`);
+    let qty = parseInt(input.value);
+    qty = isNaN(qty) ? 1 : Math.max(1, qty + delta);
+    input.value = qty;
 
-        // Update visible price
-        const newPriceM = ((basePrice * qty) / 1_000_000).toFixed(1);
-        const newPriceUSD = ((basePrice * qty * 0.21) / 1_000_000).toFixed(2);
-        priceLabel.innerHTML = `${newPriceM}m (~$${newPriceUSD})`;
-    }
+    // Update visible price
+    const newPriceM = ((basePrice * qty) / 1_000_000).toFixed(1);
+    const newPriceUSD = ((basePrice * qty * 0.21) / 1_000_000).toFixed(2);
+    priceLabel.innerHTML = `${newPriceM}m (~$${newPriceUSD})`;
+  }
 
-    function addToCart(name, basePrice, id, file) {
+  function addToCart(name, basePrice, id, file) {
     const input = document.getElementById(id);
     const qty = parseInt(input.value);
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     // Get the corresponding diary image (based on the diary file name)
-    const diaryImage = `https://oldschool.runescape.wiki/images/thumb/${file.replace(/\s+/g, '_')}.png`;
+    const diaryImage = `https://oldschool.runescape.wiki/images/thumb/${file.replace(/\s+/g, '_')}.png`; // Fixed image URL
 
     // Add the item to the cart
     cart.push({
@@ -696,9 +696,10 @@
 
     // Provide feedback to the user
     alert(`${qty} x ${name} added to cart!`);
-}
-// Example function to render the cart (simplified version)
-function renderCart() {
+  }
+
+  // Example function to render the cart (simplified version)
+  function renderCart() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartContainer = document.getElementById('cart-container'); // Assuming there's a container with id "cart-container"
 
@@ -711,9 +712,6 @@ function renderCart() {
         cartContainer.appendChild(cartItem);
     });
 }
-
-
-</script>
 
 
   <script>
@@ -816,44 +814,39 @@ function renderCart() {
       'Wilderness Diary': 'wil',
     };
 
-   if (data[file]) {
+  if (data[file]) {
     const containerId = containerMap[file];
     const container = document.getElementById(containerId);
     container.style.display = 'flex';
 
     container.innerHTML = `<div class='category-title'>${file}</div>`;
 
-  data[file].forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'service-card';
-    container.appendChild(card);
+    data[file].forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'service-card';
+      container.appendChild(card);
 
-    let priceM = (item.price / 1000000).toFixed(1);
-    let priceUSD = (item.price * 0.21 / 1000000).toFixed(2);
-    const itemId = item.name.replace(/\s+/g, '-') + '-' + Math.floor(Math.random() * 100000);
+      let priceM = (item.price / 1000000).toFixed(1);
+      let priceUSD = (item.price * 0.21 / 1000000).toFixed(2);
+      const itemId = item.name.replace(/\s+/g, '-') + '-' + Math.floor(Math.random() * 100000);
 
-    // Add the diary name and image (before the item details)
-    card.innerHTML = `
+      // Add the diary name and image (before the item details)
+      card.innerHTML = `
         <div class="diary-header">
-            <img src="https://oldschool.runescape.wiki/images/thumb/${file.replace(/\s+/g, '_')}.png" alt="${file}" style="height: 50px; margin-right: 10px;">
-            <div class="diary-name">${file}</div>
+            <img src="${item.image}" alt="${item.name}" style="height: 20px; margin-right: 10px;">
+            <div class="diary-name">${item.name}</div>
         </div>
-        <img src="${item.image}" alt="${item.name}" style="width: 100px; height: 100px; margin-right: 10px;">
-        <div class="service-name">${item.name}</div>
         <div id="price-${itemId}" class="price">${priceM}m (~$${priceUSD})</div>
         <div class="quantity-container">
           <button class="btn-glow" onclick="changeQuantity('${itemId}', -1, ${item.price})">−</button>
           <input id="${itemId}" type="number" value="1" min="1" />
           <button class="btn-glow" onclick="changeQuantity('${itemId}', 1, ${item.price})">+</button>
         </div>
-        <button class="btn-glow" style="width: 100%; margin-top: 8px;" onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
-    `;
-});
-
+        <button class="btn-glow" style="width: 100%; margin-top: 8px;" onclick="addToCart('${item.name}', ${item.price}, '${itemId}', '${file}')">Add to Cart</button>
+      `;
+    });
   }
-
-
-  </script>
+</script>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
