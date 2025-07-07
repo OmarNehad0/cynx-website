@@ -694,23 +694,28 @@
         priceLabel.innerHTML = `${newPriceM}m (~$${newPriceUSD})`;
     }
 
-    function addToCart(name, basePrice, id) {
-        const input = document.getElementById(id);
-        const qty = parseInt(input.value);
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    function addToCart(name, basePrice, id, file) {
+    const input = document.getElementById(id);
+    const qty = parseInt(input.value);
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // Correct string interpolation
-        cart.push({
-            name: `${qty}x ${name}`,
-            price: (basePrice * qty) / 1_000_000,
-            quantity: qty
-        });
+    // Get the corresponding diary image (based on the diary file name)
+    const diaryImage = `https://oldschool.runescape.wiki/images/thumb/${file.replace(/\s+/g, '_')}.png`;
 
-        localStorage.setItem('cart', JSON.stringify(cart));
+    // Add the item to the cart
+    cart.push({
+        name: `<img src="${diaryImage}" alt="${file}" style="height: 20px; margin-right: 10px;"> ${qty}x ${name}`,  // Include the image before the name
+        price: (basePrice * qty) / 1_000_000,  // Price in M
+        quantity: qty
+    });
 
-        // Displaying alert correctly
-        alert(`${qty} x ${name} added to cart!`);
-    }
+    // Save the updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Provide feedback to the user
+    alert(`${qty} x ${name} added to cart!`);
+}
+
 
 </script>
 
@@ -822,7 +827,7 @@
 
     container.innerHTML = `<div class='category-title'>${file}</div>`;
 
-   data[file].forEach(item => {
+  data[file].forEach(item => {
     const card = document.createElement('div');
     card.className = 'service-card';
     container.appendChild(card);
@@ -831,10 +836,10 @@
     let priceUSD = (item.price * 0.21 / 1000000).toFixed(2);
     const itemId = item.name.replace(/\s+/g, '-') + '-' + Math.floor(Math.random() * 100000);
 
-    // Add the diary name and image before the item details
+    // Add the diary name and image (before the item details)
     card.innerHTML = `
         <div class="diary-header">
-            <img src="https://oldschool.runescape.wiki/images/thumb/${file.replace(/\s+/g, '_')}.png" alt="${item.name}" style="height: 50px; margin-right: 10px;">
+            <img src="https://oldschool.runescape.wiki/images/thumb/${file.replace(/\s+/g, '_')}.png" alt="${file}" style="height: 50px; margin-right: 10px;">
             <div class="diary-name">${file}</div>
         </div>
         <img src="${item.image}" alt="${item.name}" style="width: 100px; height: 100px; margin-right: 10px;">
@@ -848,6 +853,7 @@
         <button class="btn-glow" style="width: 100%; margin-top: 8px;" onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
     `;
 });
+
   }
 
 
