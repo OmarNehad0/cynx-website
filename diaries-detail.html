@@ -681,12 +681,12 @@
     const qty = parseInt(input.value);
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Get the corresponding diary image (based on the diary file name)
-    const diaryImage = `https://oldschool.runescape.wiki/images/thumb/${file.replace(/\s+/g, '_')}.png`; // Fixed image URL
+    // Generate correct diary image URL
+    const diaryImage = data[file]?.[0]?.image || ''; // Fix to avoid undefined
 
     // Add the item to the cart
     cart.push({
-        name: `<img src="${diaryImage}" alt="${file}" style="height: 20px; margin-right: 10px;"> ${qty}x ${name}`,  // Include the image before the name
+        name: `<img src="${diaryImage}" alt="${file}" style="height: 25px; margin-right: 10px;"> ${qty}x ${name}`,  // Include the image before the name
         price: (basePrice * qty) / 1_000_000,  // Price in M
         quantity: qty
     });
@@ -835,7 +835,7 @@
       // Add the diary name and image (before the item details)
       card.innerHTML = `
         <div class="diary-header">
-            <img src="${item.image}" alt="${item.name}" style="height: 20px; margin-right: 10px;">
+            <img src="${item.image}" alt="${item.name}" style="height: 50px; margin-right: 10px;">
             <div class="diary-name">${item.name}</div>
         </div>
         <div id="price-${itemId}" class="price">${priceM}m (~$${priceUSD})</div>
