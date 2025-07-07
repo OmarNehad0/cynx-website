@@ -681,12 +681,12 @@
     const qty = parseInt(input.value);
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Generate correct diary image URL
-    const diaryImage = data[file]?.[0]?.image || ''; // Fix to avoid undefined
+    // Generate the image for the diary
+    const diaryImage = data[file]?.[0]?.image || ''; // Get the correct image URL
 
     // Add the item to the cart
     cart.push({
-        name: `<img src="${diaryImage}" alt="${file}" style="height: 25px; margin-right: 10px;"> ${qty}x ${name}`,  // Include the image before the name
+        name: `<img src="${diaryImage}" alt="${file}" style="height: 25px; margin-right: 10px;"> ${file} - ${name} (${qty}x)`,  // Include the diary name before the item details
         price: (basePrice * qty) / 1_000_000,  // Price in M
         quantity: qty
     });
@@ -708,12 +708,12 @@
     cart.forEach(item => {
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
-        cartItem.innerHTML = item.name;  // The item name will already include the image HTML
+        cartItem.innerHTML = item.name;  // The item name will already include the image and diary name
         cartContainer.appendChild(cartItem);
     });
 }
-
 </script>
+
 
 
   <script>
