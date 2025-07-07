@@ -555,24 +555,6 @@
 .vouches-container::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.1);
 }
-.diary-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.diary-name {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #ffcc00;
-}
-
-.diary-header img {
-    width: 50px;
-    height: 50px;
-    border-radius: 6px;
-}
   </style>
 </head>
 <body>
@@ -714,6 +696,20 @@
 
     // Provide feedback to the user
     alert(`${qty} x ${name} added to cart!`);
+}
+// Example function to render the cart (simplified version)
+function renderCart() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartContainer = document.getElementById('cart-container'); // Assuming there's a container with id "cart-container"
+
+    cartContainer.innerHTML = ''; // Clear existing cart items
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = item.name;  // The item name will already include the image HTML
+        cartContainer.appendChild(cartItem);
+    });
 }
 
 
