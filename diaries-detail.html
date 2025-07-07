@@ -713,6 +713,8 @@
     });
 }
 
+</script>
+
 
   <script>
     const file = new URLSearchParams(window.location.search).get('file');
@@ -814,7 +816,7 @@
       'Wilderness Diary': 'wil',
     };
 
-  if (data[file]) {
+   if (data[file]) {
     const containerId = containerMap[file];
     const container = document.getElementById(containerId);
     container.style.display = 'flex';
