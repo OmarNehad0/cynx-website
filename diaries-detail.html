@@ -555,6 +555,24 @@
 .vouches-container::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.1);
 }
+.diary-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.diary-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+.diary-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+}
   </style>
 </head>
 <body>
@@ -813,7 +831,12 @@
     let priceUSD = (item.price * 0.21 / 1000000).toFixed(2);
     const itemId = item.name.replace(/\s+/g, '-') + '-' + Math.floor(Math.random() * 100000);
 
+    // Add the diary name and image before the item details
     card.innerHTML = `
+        <div class="diary-header">
+            <img src="https://oldschool.runescape.wiki/images/thumb/${file.replace(/\s+/g, '_')}.png" alt="${item.name}" style="height: 50px; margin-right: 10px;">
+            <div class="diary-name">${file}</div>
+        </div>
         <img src="${item.image}" alt="${item.name}" style="width: 100px; height: 100px; margin-right: 10px;">
         <div class="service-name">${item.name}</div>
         <div id="price-${itemId}" class="price">${priceM}m (~$${priceUSD})</div>
