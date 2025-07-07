@@ -663,37 +663,39 @@
   <div id="wil" class="card-container"></div>
 
 <script>
-  function changeQuantity(id, delta, basePrice) {
-    const input = document.getElementById(id);
-    const priceLabel = document.getElementById(`price-${id}`);
-    let qty = parseInt(input.value);
-    qty = isNaN(qty) ? 1 : Math.max(1, qty + delta);
-    input.value = qty;
+    function changeQuantity(id, delta, basePrice) {
+        const input = document.getElementById(id);
+        const priceLabel = document.getElementById(`price-${id}`);
+        let qty = parseInt(input.value);
+        qty = isNaN(qty) ? 1 : Math.max(1, qty + delta);
+        input.value = qty;
 
-    // Update visible price
-    const newPriceM = ((basePrice * qty) / 1_000_000).toFixed(1);
-    const newPriceUSD = ((basePrice * qty * 0.21) / 1_000_000).toFixed(2);
-    priceLabel.innerHTML = `${newPriceM}m (~$${newPriceUSD})`;
-  }
+        // Update visible price
+        const newPriceM = ((basePrice * qty) / 1_000_000).toFixed(1);
+        const newPriceUSD = ((basePrice * qty * 0.21) / 1_000_000).toFixed(2);
+        priceLabel.innerHTML = `${newPriceM}m (~$${newPriceUSD})`;
+    }
 
- function addToCart(name, basePrice, id) {
-    const input = document.getElementById(id);
-    const qty = parseInt(input.value);
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    function addToCart(name, basePrice, id) {
+        const input = document.getElementById(id);
+        const qty = parseInt(input.value);
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    cart.push({
-      name: ${qty}x ${name},
-      price: (basePrice * qty) / 1_000_000,
-      quantity: qty
-    });
+        // Correct string interpolation
+        cart.push({
+            name: `${qty}x ${name}`,
+            price: (basePrice * qty) / 1_000_000,
+            quantity: qty
+        });
 
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(${qty} x ${name} added to cart!);
-  }
+        localStorage.setItem('cart', JSON.stringify(cart));
 
-
+        // Displaying alert correctly
+        alert(`${qty} x ${name} added to cart!`);
+    }
 
 </script>
+
 
   <script>
     const file = new URLSearchParams(window.location.search).get('file');
@@ -802,16 +804,16 @@
 
     container.innerHTML = `<div class='category-title'>${file}</div>`;
 
-    data[file].forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'service-card';
-      container.appendChild(card);
+   data[file].forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'service-card';
+    container.appendChild(card);
 
-      let priceM = (item.price / 1000000).toFixed(1);
-      let priceUSD = (item.price * 0.21 / 1000000).toFixed(2);
-      const itemId = item.name.replace(/\s+/g, '-') + '-' + Math.floor(Math.random() * 100000);
+    let priceM = (item.price / 1000000).toFixed(1);
+    let priceUSD = (item.price * 0.21 / 1000000).toFixed(2);
+    const itemId = item.name.replace(/\s+/g, '-') + '-' + Math.floor(Math.random() * 100000);
 
-      card.innerHTML = `
+    card.innerHTML = `
         <img src="${item.image}" alt="${item.name}" style="width: 100px; height: 100px; margin-right: 10px;">
         <div class="service-name">${item.name}</div>
         <div id="price-${itemId}" class="price">${priceM}m (~$${priceUSD})</div>
@@ -821,8 +823,8 @@
           <button class="btn-glow" onclick="changeQuantity('${itemId}', 1, ${item.price})">+</button>
         </div>
         <button class="btn-glow" style="width: 100%; margin-top: 8px;" onclick="addToCart('${item.name}', ${item.price}, '${itemId}')">Add to Cart</button>
-      `;
-    });
+    `;
+});
   }
 
 
